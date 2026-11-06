@@ -650,6 +650,9 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .mp-c b { font-size: clamp(17px, 1.9vw, 23px); }
 .mp-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; } .mp-pills span { font-size: clamp(12.5px, 1.3vw, 15px); padding: 4px 12px; border-radius: 999px; background: rgba(var(--fg-rgb), .12); border: 1px solid rgba(var(--fg-rgb), .2); }
 @media (max-width: 900px) { .mp { grid-template-columns: 1fr; } .mp-mapa { max-width: 360px; } }
+/* O vídeo nunca encolhe até sumir: em tela baixa a página rola. */
+.vd-palco { flex: 0 0 auto; min-height: 210px; }
+.vd-fita, .vd-tempos, .vd-barra, .vd-ger { flex-shrink: 0; }
 
 /* Tema claro e escuro. O escuro é o padrão (valores em comum.css). Aqui ficam só as trocas do claro.
    Cores da marca seguem o manual do SME: vermelho e preto. Os tons azul, verde, rosa, amarelo, violeta, laranja e azul-água são cores de dados, não da marca,
