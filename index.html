@@ -3280,7 +3280,7 @@ var UCIL = (function () {
      Início e fim ficam gravados neste navegador. Arquivo do computador precisa ser escolhido de novo a cada abertura. */
   (function () {
     var CH = 'video-trecho', arqUrl = null, arqNome = '';
-    function carrega() { try { var d = JSON.parse(localStorage.getItem(CH) || 'null'); if (d) return d; } catch (x) { } return { titulo: 'Claude tinha um negócio no nosso escritório (Anthropic, Projeto Vend)', link: 'https://youtu.be/5KTHvKCrQ00', ini: '0:00', fim: '6:10' }; }
+    function carrega() { try { var d = JSON.parse(localStorage.getItem(CH) || 'null'); if (d) return d; } catch (x) { } return { titulo: 'Construindo um dos maiores assistentes financeiros no Whatsapp do Brasil (Bruno Okamoto)', link: 'https://youtu.be/DjL84x8qsLA', ini: '08:35', fim: '11:35' }; }
     function grava(d) { try { localStorage.setItem(CH, JSON.stringify(d)); return true; } catch (x) { return false; } }
     function seg(t) {
       t = String(t || '').trim(); if (!t) return 0;
@@ -3350,7 +3350,7 @@ var UCIL = (function () {
           var d = carrega(); d.link = ''; d.titulo = d.titulo || f.name.replace(/\.[^.]+$/, ''); d.ini = $('#vd-i').value.trim() || d.ini; d.fim = $('#vd-f').value.trim() || d.fim; grava(d);
           renderiza(); ger.hidden = true; gerB.setAttribute('aria-expanded', 'false');
         });
-        $('#vd-limpa').addEventListener('click', function () { if (arqUrl) { URL.revokeObjectURL(arqUrl); arqUrl = null; } grava({ titulo: '', link: '', ini: '0:00', fim: '' }); renderiza(); });
+        $('#vd-limpa').addEventListener('click', function () { if (arqUrl) { URL.revokeObjectURL(arqUrl); arqUrl = null; } grava({ titulo: '', link: '', ini: '08:35', fim: '11:35' }); renderiza(); });
         renderiza();
         if (!carrega().link) { ger.hidden = false; gerB.setAttribute('aria-expanded', 'true'); }
       } });
