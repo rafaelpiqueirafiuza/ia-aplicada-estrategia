@@ -787,6 +787,17 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .slide:has([class*="i0-"]) h2 { max-width: none; }
 @media (max-height: 760px) and (min-width: 901px) { .i0-nc { padding: 6px 14px; } .i0-nc p { font-size: 13.5px; } .i0-nl { gap: 6px; } .i0-nin .ilu-p { max-width: 300px; } .i0-ings { gap: 5px; } .i0-ing small { display: none; } .i0-sai .i0-pr { min-height: 0; font-size: 15px; } .i0-vivo { padding: 14px 18px; gap: 8px; } }
 
+/* Três pedidos e citação inventada */
+.i0-tq { display: grid; gap: 14px; width: 100%; max-width: 900px; flex-shrink: 0; } .i0-tq .chip { cursor: pointer; font-size: clamp(14px, 1.5vw, 17px); } .i0-tq .chip[aria-pressed="true"] { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+.i0-qc { min-height: 150px; align-content: start; } .i0-e1 { animation: i0Pula .4s both; } .i0-e2 { animation: i0Pula .4s .45s both; }
+.i0-porq { padding: 10px 18px; border-radius: 16px; border-left: 5px solid var(--cuidado-c); background: rgba(var(--fg-rgb), .08); font-size: clamp(16px, 1.9vw, 23px); font-weight: 700; } .i0-porq.entra { animation: ftEntra .45s .7s both; }
+.i0-alu { position: relative; padding-bottom: 22px; } .i0-alu .i0-bal { font-size: clamp(14px, 1.55vw, 18px); max-width: 92%; }
+.i0-carimbo { position: absolute; right: 6px; bottom: 0; z-index: 2; pointer-events: none; }
+.i0-carimbo u { display: block; padding: 6px 16px; border: 4px solid var(--vermelho); border-radius: 12px; color: var(--vermelho); background: var(--solid); font-size: clamp(20px, 2.8vw, 34px); font-weight: 800; letter-spacing: .04em; text-decoration: none; transform: rotate(-7deg); }
+.i0-carimbo.vis u { animation: ftCarimbo .45s cubic-bezier(.2, .9, .3, 1.2); }
+html[data-tema="claro"] .i0-carimbo u { background: #fff; }
+.i0-carimbo { position: static; justify-self: end; margin-top: 2px; } .i0-alu { padding-bottom: 0; }
+
 /* Use Case: Accenture Technology Vision 2025 */
 .acc-h { display: grid; gap: 6px; width: 100%; }
 .acc-h h2 { font-size: clamp(24px, 3.3vw, 44px); max-width: 46ch; }
@@ -1668,7 +1679,7 @@ var A2 = (function () {
      insp: autores que ele citou como inspiração (conferir antes de usar em aula). Módulo sem previa tem conteúdo próprio nos outros arquivos. */
   var MODS = [
     { id: 'intro', nome: 'Introdução: onde a IA se encaixa na estratégia', curto: 'Introdução', d: 'O que vamos fazer na disciplina e o framework que se repete em todos os temas.', lib: true },
-    { id: 'iazero', nome: 'IA do zero: o básico, na prática', curto: 'IA do zero', d: 'O que é um LLM, como fazer um bom prompt, a diferença entre modelos, vibe coding e cuidados, com testes ao vivo.', lib: true },
+    { id: 'iazero', nome: 'IA do zero: o básico, na prática', curto: 'IA do zero', d: 'O que é um LLM, como fazer um bom prompt, a diferença entre modelos, vibe coding e cuidados.', lib: true },
     { id: 'ferramenta', nome: 'A ferramenta certa para o momento certo', curto: 'Ferramenta certa', d: 'Quando usar IA, machine learning, RPA, julgamento humano e desenho do processo.', lib: true },
     { id: 'artefatos', nome: 'Artefatos de estratégia', curto: 'Artefatos', d: 'Nove artefatos e onde a IA entra em cada um.', lib: true },
     { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.',
@@ -1853,21 +1864,9 @@ var A2 = (function () {
     } });
 
 
-  /* ---------- IA do zero: nivelamento lúdico, com brinquedos e demonstrações ao vivo no Claude ---------- */
+  /* ---------- IA do zero: nivelamento lúdico. A tela é para o aluno: sem roteiro do professor e sem depender do Claude aberto ---------- */
   var I0 = {};
   function i0Esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  function i0Copia(txt, btn) {
-    function ok() { var t = btn.dataset.t || btn.textContent; btn.dataset.t = t; btn.textContent = 'Copiado!'; btn.classList.add('ok'); setTimeout(function () { btn.textContent = t; btn.classList.remove('ok'); }, 1500); }
-    function velho() { var a = document.createElement('textarea'); a.value = txt; a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); ok(); } catch (x) { } a.remove(); }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, velho); else velho();
-  }
-  /* Cartão "Agora no Claude": prompt pronto, botão de copiar e link para abrir o Claude. */
-  function i0AoVivo(prompt, dica, cls) {
-    return '<div class="i0-vivo ' + (cls || '') + '"><div class="i0-vivo-t"><i class="i0-rec"></i>Agora no Claude</div><p class="i0-pr">' + i0Esc(prompt) + '</p>' +
-      '<div class="i0-vivo-b"><button type="button" class="i0-btn i0-forte" data-copia>Copiar prompt</button><a class="i0-btn" href="https://claude.ai/new" target="_blank" rel="noopener">Abrir o Claude ↗</a></div>' + (dica ? '<p class="i0-dica">' + dica + '</p>' : '') + '</div>';
-  }
-  function i0LigaCopia(el) { [].forEach.call(el.querySelectorAll('[data-copia]'), function (b) { b.addEventListener('click', function () { var p = b.closest('.i0-vivo').querySelector('.i0-pr'); i0Copia(p.textContent, b); }); }); }
-
   /* 1. Abertura: a trilha do módulo */
   var I0_ICO = {
     term: '<svg viewBox="0 0 24 24"><path d="M12 3a2 2 0 012 2v9a4 4 0 11-4 0V5a2 2 0 012-2z"/><circle cx="12" cy="17" r="1.6"/></svg>',
@@ -1882,9 +1881,9 @@ var A2 = (function () {
     '<div class="i0-trilha"><i class="i0-bola"></i>' + I0_TRILHA.map(function (t, i) { return '<button type="button" class="i0-par" data-i0="' + t[0] + '" style="--i:' + i + '"><span class="ic">' + I0_ICO[t[0]] + '</span><b>' + t[1] + '</b></button>'; }).join('') + '</div>',
     on: function (el) { [].forEach.call(el.querySelectorAll('[data-i0]'), function (b) { b.addEventListener('click', function () { ir(I0[b.dataset.i0], 0); }); }); } });
 
-  /* 2. Termômetro da turma: o professor conta as mãos levantadas */
+  /* 2. Termômetro da turma: contagem de mãos levantadas */
   var I0_TERM = ['Uso IA no trabalho toda semana', 'Sei escrever um bom prompt', 'Sei o que é um LLM', 'Sei a diferença entre os modelos', 'Já ouvi falar de vibe coding'];
-  I0.term = add('iazero', { html: '<p class="rot-sec">Termômetro</p><h2>Quem levanta a mão?</h2><p class="sub">Conte as mãos em cada frase. O termômetro mostra de onde a turma parte.</p>' +
+  I0.term = add('iazero', { html: '<p class="rot-sec">Termômetro</p><h2>Quem levanta a mão?</h2><p class="sub">Cinco frases para descobrir de onde a turma parte.</p>' +
     '<div class="i0-termo"><div class="i0-lin">' + I0_TERM.map(function (t, i) { return '<div class="i0-l" data-l="' + i + '"><span class="i0-lt">' + t + '</span><i class="i0-tr"><i></i></i><span class="i0-st"><button type="button" data-m aria-label="Uma mão a menos">−</button><b>0</b><button type="button" data-p aria-label="Uma mão a mais">+</button></span></div>'; }).join('') + '</div>' +
     '<div class="i0-tub"><svg viewBox="0 0 90 240" aria-hidden="true"><rect class="i0-vidro" x="30" y="10" width="30" height="180" rx="15"/><rect class="i0-merc" x="36" y="16" width="18" height="168" rx="9"/><circle class="i0-bulbo" cx="45" cy="205" r="26"/></svg><b class="i0-pct">0%</b><span class="i0-diag">Ninguém contou ainda</span></div></div>',
     on: function (el) {
@@ -1915,7 +1914,7 @@ var A2 = (function () {
 
   /* 4. O jogo da próxima palavra */
   var I0_PAL = [[['adiada', 34], ['produtiva', 27], ['longa', 22], ['cancelada', 17]], [['porque', 46], ['e', 28], ['mas', 16], ['ontem', 10]], [['o CEO', 38], ['o mercado', 26], ['todos', 22], ['ninguém', 14]], [['mudou de ideia', 41], ['pediu números', 31], ['ficou em silêncio', 18], ['saiu mais cedo', 10]]];
-  add('iazero', { html: '<p class="rot-sec">O que é um LLM</p><h2>O jogo da próxima palavra</h2><p class="sub">Um LLM escreve assim: calcula as palavras prováveis, escolhe uma e repete. Jogue com a turma.</p>' +
+  add('iazero', { html: '<p class="rot-sec">O que é um LLM</p><h2>O jogo da próxima palavra</h2><p class="sub">Um LLM escreve assim: calcula as palavras prováveis, escolhe uma e repete.</p>' +
     '<div class="i0-jogo"><p class="i0-frase" aria-live="polite"></p><div class="i0-ops"></div><div class="i0-jb"><button type="button" class="i0-btn i0-forte" data-sorteia>Deixar o modelo sortear</button><button type="button" class="i0-btn" data-reinicia>Recomeçar</button></div><p class="i0-fim" hidden>Pronto, uma frase que soa perfeita. E ninguém conferiu se ela é verdade: é por isso que um LLM pode errar com total segurança.</p></div><p class="fonte">Porcentagens ilustrativas, inventadas para mostrar a ideia. Um modelo real escolhe entre muito mais opções, e pedaços de palavra.</p>',
     on: function (el) {
       var passo = 0, fr = ['A reunião de diretoria foi'], ops = el.querySelector('.i0-ops'), frase = el.querySelector('.i0-frase'), fim = el.querySelector('.i0-fim'), sorteia = el.querySelector('[data-sorteia]');
@@ -1938,7 +1937,7 @@ var A2 = (function () {
     } });
 
   /* 5. Tokens: o texto picado ao vivo */
-  add('iazero', { html: '<p class="rot-sec">O que é um LLM</p><h2>O modelo lê em pedacinhos</h2><p class="sub">Esses pedaços são os tokens. Modelos cobram e medem por eles. Digite qualquer frase.</p>' +
+  add('iazero', { html: '<p class="rot-sec">O que é um LLM</p><h2>O modelo lê em pedacinhos</h2><p class="sub">Esses pedaços são os tokens. Modelos cobram e medem por eles.</p>' +
     '<div class="i0-tok"><label class="sr" for="i0-tk">Frase para picar em tokens</label><input id="i0-tk" type="text" maxlength="180" value="Inteligência artificial aplicada à estratégia e competitividade" autocomplete="off"><div class="i0-chips" aria-hidden="true"></div><div class="i0-cont"><b class="i0-n">0</b><span>tokens, mais ou menos</span></div></div><p class="fonte">Divisão aproximada, feita só para ver a ideia. Cada modelo corta o texto do seu jeito.</p>',
     on: function (el) {
       var inp = el.querySelector('#i0-tk'), box = el.querySelector('.i0-chips'), n = el.querySelector('.i0-n');
@@ -1964,9 +1963,6 @@ var A2 = (function () {
       pinta();
     } });
 
-  /* 7. Ao vivo: pedir algo que ele não tem como saber */
-  add('iazero', { html: '<p class="rot-sec">O que é um LLM</p><h2>Vamos tentar enganar o modelo</h2>' + i0AoVivo('Qual é a quinta palavra da página 47 de Dom Casmurro?', 'Antes de enviar, a turma aposta: ele acerta, inventa ou admite que não sabe? Depois, pergunte: como ele teria como saber? Página muda de uma edição para outra.', 'i0-gde'), on: i0LigaCopia });
-
   /* 8. O montador de prompt */
   var I0_ING = [['papel', 'Papel', 'Você é um consultor de estratégia de varejo.', 'Muda o olhar e o tom da resposta.'],
     ['contexto', 'Contexto', 'Temos 40 farmácias e a margem caiu no último ano.', 'Tira a resposta do genérico.'],
@@ -1975,8 +1971,8 @@ var A2 = (function () {
     ['exemplo', 'Exemplo', 'Exemplo de linha: promoção demais | comparar margem por loja | baixo.', 'Mostrar costuma funcionar melhor que explicar.']];
   I0.prompt = add('iazero', { html: '<p class="rot-sec">Fazer um bom prompt</p><h2>Monte o prompt, peça por peça</h2>' +
     '<div class="dois i0-mp"><div class="i0-ings">' + I0_ING.map(function (g, i) { return '<button type="button" class="i0-ing" data-g="' + i + '" aria-pressed="' + (i === 2) + '"><i></i><span><b>' + g[1] + '</b><small>' + g[3] + '</small></span></button>'; }).join('') +
-    '<label class="i0-prob">Problema real de alguém da turma<input id="i0-prob" type="text" maxlength="160" placeholder="Digite aqui e ele vira a tarefa" autocomplete="off"></label></div>' +
-    '<div class="i0-vivo i0-sai"><div class="i0-vivo-t"><i class="i0-rec"></i>Agora no Claude</div><p class="i0-pr"></p><div class="i0-forca"><i></i></div><span class="i0-fl"></span><div class="i0-vivo-b"><button type="button" class="i0-btn i0-forte" data-copia>Copiar prompt</button><a class="i0-btn" href="https://claude.ai/new" target="_blank" rel="noopener">Abrir o Claude ↗</a></div></div></div><p class="fonte">Empresa fictícia, criada para este exercício.</p>',
+    '<label class="i0-prob">Outra tarefa<input id="i0-prob" type="text" maxlength="160" placeholder="Escreva aqui uma tarefa sua" autocomplete="off"></label></div>' +
+    '<div class="i0-vivo i0-sai"><div class="i0-vivo-t">Seu prompt</div><p class="i0-pr"></p><div class="i0-forca"><i></i></div><span class="i0-fl"></span></div></div><p class="fonte">Empresa fictícia, criada para este exercício.</p>',
     on: function (el) {
       var bs = el.querySelectorAll('.i0-ing'), pr = el.querySelector('.i0-pr'), prob = el.querySelector('#i0-prob'), fo = el.querySelector('.i0-forca i'), fl = el.querySelector('.i0-fl');
       function pinta() {
@@ -1985,7 +1981,7 @@ var A2 = (function () {
         fo.style.width = (n / 5 * 100) + '%'; fl.textContent = n <= 1 ? 'Pedido genérico: resposta genérica' : n <= 3 ? 'Melhorando' : 'Agora ele tem o que precisa';
       }
       [].forEach.call(bs, function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); pinta(); }); });
-      prob.addEventListener('input', pinta); i0LigaCopia(el); pinta();
+      prob.addEventListener('input', pinta); pinta();
     } });
 
   /* 9. Conversar e refinar */
@@ -1993,10 +1989,26 @@ var A2 = (function () {
   add('iazero', { builds: I0_CHAT.length, html: '<p class="rot-sec">Fazer um bom prompt</p><h2>O segredo é continuar a conversa</h2><p class="sub">Ninguém acerta de primeira. O primeiro resultado é rascunho: você corrige, corta e aprofunda.</p>' +
     '<div class="i0-chat">' + I0_CHAT.map(function (c, i) { return '<div class="i0-bal ' + c[0] + '" data-b="' + (i + 1) + '">' + c[1] + '</div>'; }).join('') + '</div><p class="fonte">Conversa ilustrativa, escrita para esta aula.</p>' });
 
+  /* 9b. Três pedidos que melhoram a resposta: escolha o pedido e a conversa muda */
+  var I0_TRQ = [['Peça perguntas', 'Preciso de um plano de lançamento. Antes de responder, me faça três perguntas.', '1. Qual é o produto? 2. Quem é o cliente? 3. Qual é o orçamento?', 'Ele para de adivinhar o que você quer.'],
+    ['Peça crítica', 'Agora critique o seu próprio plano: onde ele pode dar errado?', 'O maior risco é o canal: o plano supõe uma rede de parceiros que ainda não existe.', 'Modelos tendem a concordar com você. Pedir crítica compensa.'],
+    ['Troque o público', 'Explique isso para a diretoria em três linhas, sem jargão.', 'Vamos testar o produto em duas cidades, com orçamento limitado, antes de decidir a expansão.', 'A mesma ideia, ajustada a quem vai ler.']];
+  add('iazero', { html: '<p class="rot-sec">Fazer um bom prompt</p><h2>Três pedidos que melhoram qualquer resposta</h2>' +
+    '<div class="i0-tq"><div class="i0-tar">' + I0_TRQ.map(function (t, i) { return '<button type="button" class="chip" data-q="' + i + '" aria-pressed="' + (i === 0) + '">' + t[0] + '</button>'; }).join('') + '</div><div class="i0-chat i0-qc"></div><p class="i0-porq"></p></div><p class="fonte">Conversas ilustrativas, escritas para esta aula.</p>',
+    on: function (el) {
+      var box = el.querySelector('.i0-qc'), pq = el.querySelector('.i0-porq');
+      function pinta(i) {
+        var t = I0_TRQ[i]; box.innerHTML = '<div class="i0-bal eu i0-e1">' + t[1] + '</div><div class="i0-bal ia i0-e2">' + t[2] + '</div>'; pq.textContent = t[3]; pq.classList.remove('entra'); void pq.offsetWidth; pq.classList.add('entra');
+        [].forEach.call(el.querySelectorAll('[data-q]'), function (b) { b.setAttribute('aria-pressed', String(+b.dataset.q === i)); });
+      }
+      [].forEach.call(el.querySelectorAll('[data-q]'), function (b) { b.addEventListener('click', function () { pinta(+b.dataset.q); }); });
+      pinta(0);
+    } });
+
   /* 10. Modelos: que motor para qual tarefa */
   var I0_TIPOS = { rapido: ['Modelo rápido', 'Responde na hora e custa menos. Dá conta do dia a dia.', 90, 40, 20], prof: ['Modelo mais profundo', 'Pensa por mais tempo e custa mais. Vale em tarefa difícil ou de muitos passos.', 35, 95, 85], busca: ['Modelo com busca na web', 'O modelo sozinho conhece o que viu até o fim do treino. Para o que é recente, precisa buscar.', 55, 60, 50], img: ['Gerador de imagem', 'Modelos de imagem são treinados para isso. Nem todo assistente de texto cria imagens.', 45, 55, 60] };
   var I0_TAREFAS = [['Resumir um e-mail', 'rapido'], ['Analisar um contrato longo', 'prof'], ['Saber a notícia de hoje', 'busca'], ['Criar uma imagem para a apresentação', 'img'], ['Montar um plano de vários passos', 'prof'], ['Corrigir o português de um texto', 'rapido']];
-  I0.modelos = add('iazero', { html: '<p class="rot-sec">Diferença entre modelos</p><h2>Qual motor para qual tarefa?</h2><p class="sub">Não existe o melhor modelo, existe o melhor para aquela tarefa. Escolha uma.</p>' +
+  I0.modelos = add('iazero', { html: '<p class="rot-sec">Diferença entre modelos</p><h2>Qual motor para qual tarefa?</h2><p class="sub">Não existe o melhor modelo, existe o melhor para aquela tarefa.</p>' +
     '<div class="i0-mod"><div class="i0-tar">' + I0_TAREFAS.map(function (t, i) { return '<button type="button" class="chip" data-t="' + i + '" aria-pressed="' + (i === 0) + '">' + t[0] + '</button>'; }).join('') + '</div>' +
     '<div class="i0-pain"><div class="i0-res"><b></b><p></p></div><div class="i0-med">' + ['Velocidade', 'Profundidade', 'Custo'].map(function (m) { return '<div class="i0-mt"><svg viewBox="0 0 120 70" aria-hidden="true"><path class="i0-arco" pathLength="100" d="M10,62 A50,50 0 0 1 110,62"/><path class="i0-val" pathLength="100" d="M10,62 A50,50 0 0 1 110,62"/></svg><span>' + m + '</span></div>'; }).join('') + '</div></div></div><p class="fonte">Comparação didática, sem marcas e sem medição real. Os modelos mudam rápido: confira o que a sua ferramenta oferece hoje.</p>',
     on: function (el) {
@@ -2010,19 +2022,6 @@ var A2 = (function () {
       pinta(0);
     } });
 
-  /* 11. Ao vivo: o duelo de modelos */
-  add('iazero', { html: '<p class="rot-sec">Diferença entre modelos</p><h2>Duelo: a mesma pergunta em dois modelos</h2><div class="dois i0-du">' +
-    i0AoVivo('Uma fabricante de sabão em pó quer abrir lavanderias. Liste os três maiores riscos e como testar cada um em 30 dias.', 'Rode em dois modelos, leia as respostas e a turma vota.') +
-    '<div class="i0-votos"><div class="i0-vt" data-v="0"><b>Modelo A</b><i class="i0-tr"><i></i></i><span class="i0-st"><button type="button" data-m aria-label="Um voto a menos">−</button><b>0</b><button type="button" data-p aria-label="Um voto a mais">+</button></span></div><div class="i0-vt" data-v="1"><b>Modelo B</b><i class="i0-tr"><i></i></i><span class="i0-st"><button type="button" data-m aria-label="Um voto a menos">−</button><b>0</b><button type="button" data-p aria-label="Um voto a mais">+</button></span></div><p class="i0-placar">Quem ganhou? E por que a turma preferiu?</p></div></div>',
-    on: function (el) {
-      i0LigaCopia(el); var v = [0, 0];
-      [].forEach.call(el.querySelectorAll('.i0-vt'), function (l, i) {
-        function pinta() { l.querySelector('.i0-st b').textContent = v[i]; l.querySelector('.i0-tr i').style.width = (v[i] / 13 * 100) + '%'; }
-        l.querySelector('[data-p]').addEventListener('click', function () { v[i] = Math.min(13, v[i] + 1); pinta(); });
-        l.querySelector('[data-m]').addEventListener('click', function () { v[i] = Math.max(0, v[i] - 1); pinta(); });
-      });
-    } });
-
   /* 12. Vibe coding: da conversa ao protótipo */
   I0.vibe = add('iazero', { builds: 4, html: '<p class="rot-sec">Vibe coding</p><h2>Criar um protótipo só conversando</h2><p class="sub">Você descreve o que quer, a IA escreve o código e você reage ao resultado.</p>' +
     '<div class="i0-vb"><div class="i0-vp" data-b="1"><span class="i0-vt2">1. Você pede</span><div class="i0-bal eu">Quero uma página para a turma votar no melhor case.</div></div><i class="i0-sa" data-b="2"></i>' +
@@ -2030,20 +2029,10 @@ var A2 = (function () {
     '<div class="i0-vp" data-b="3"><span class="i0-vt2">3. Já dá para usar</span><div class="i0-app"><u></u><div class="i0-bar" style="--w:80%"></div><div class="i0-bar" style="--w:55%;--d:.2s"></div><div class="i0-bar" style="--w:34%;--d:.4s"></div></div></div></div>' +
     '<div class="i0-nao" data-b="4"><b>O que ele ainda não resolve:</b><span>Segurança</span><span>Escala</span><span>Dados de verdade</span><span>Manutenção</span></div><p class="fonte">Termo popularizado por Andrej Karpathy, em post de fevereiro de 2025.</p>' });
 
-  /* 13. Ao vivo: a turma pede, o Claude constrói */
-  add('iazero', { html: '<p class="rot-sec">Vibe coding</p><h2>A turma pede, o Claude constrói</h2><div class="i0-vibevivo"><label class="i0-prob">O que a turma quer criar?<input id="i0-vb" type="text" maxlength="140" value="uma página para a turma votar no melhor case" autocomplete="off"></label>' +
-    '<div class="i0-vivo"><div class="i0-vivo-t"><i class="i0-rec"></i>Agora no Claude</div><p class="i0-pr"></p><div class="i0-vivo-b"><button type="button" class="i0-btn i0-forte" data-copia>Copiar prompt</button><a class="i0-btn" href="https://claude.ai/new" target="_blank" rel="noopener">Abrir o Claude ↗</a></div><p class="i0-dica">Depois, a turma pede ajustes: uma cor, um botão, mais uma tela. Não use dados reais de ninguém.</p></div></div>',
-    on: function (el) { var i = el.querySelector('#i0-vb'), p = el.querySelector('.i0-pr'); function pinta() { p.textContent = 'Crie ' + (i.value.trim() || 'uma página simples') + '. Faça uma página única, bonita e interativa, com dados de exemplo inventados, e me mostre o resultado.'; } i.addEventListener('input', pinta); pinta(); i0LigaCopia(el); } });
-
-  /* 14. Cuidados: pode colar? */
-  var I0_COLA = [['Notícia já publicada', 1, 'É público.'], ['Planilha de salários com nomes', 0, 'Dado pessoal e sigiloso.'], ['Rascunho de e-mail sem nomes', 1, 'Sem dado sensível.'], ['Contrato com um cliente', 0, 'Só com autorização da empresa.'], ['Base de clientes com CPF', 0, 'Dado pessoal.'], ['Relatório anual já divulgado', 1, 'É público.']];
-  I0.cuidado = add('iazero', { html: '<p class="rot-sec">Cuidados</p><h2>Pode colar no chat?</h2><p class="sub">A turma responde primeiro. Depois, toque no cartão.</p><div class="i0-cola">' + I0_COLA.map(function (c) { return '<button type="button" class="i0-cc ' + (c[1] ? 'sim' : 'nao') + '" aria-pressed="false"><b>' + c[0] + '</b><span class="i0-ca"><u>' + (c[1] ? 'PODE' : 'NÃO') + '</u><small>' + c[2] + '</small></span></button>'; }).join('') + '</div><p class="fonte">Regra de bolso para a conversa em sala. O que vale é a política da sua empresa e o plano da ferramenta que você usa.</p>',
-    on: function (el) { [].forEach.call(el.querySelectorAll('.i0-cc'), function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', 'true'); }); }); } });
-
-  /* 15. Cuidados: conferir sempre */
-  var I0_CUID = [['Alucinação', 'Pode inventar com total segurança: fato, número, fonte.', 'var(--cuidado-c)'], ['Dados', 'O que você cola sai da sua mão. Veja a regra da empresa.', 'var(--pessoa-c)'], ['Viés', 'Aprendeu com textos do mundo, e herda os vieses deles.', 'var(--t-ml)'], ['Responsabilidade', 'Quem assina é você, e a IA não responde por você.', 'var(--motor-c)']];
-  add('iazero', { builds: 4, html: '<p class="rot-sec">Cuidados</p><h2>A resposta é sua. Confira.</h2><div class="dois i0-du"><div class="i0-cls">' + I0_CUID.map(function (c, i) { return '<div class="i0-cl" data-b="' + (i + 1) + '" style="--c:' + c[2] + '"><b>' + c[0] + '</b><p>' + c[1] + '</p></div>'; }).join('') + '</div>' +
-    i0AoVivo('Me dê cinco artigos acadêmicos sobre IA na estratégia de varejistas brasileiros, com autor, ano e link.', 'Agora abra os links com a turma e confira: o artigo existe? O autor é esse?') + '</div>', on: i0LigaCopia });
+  /* 15. Cuidados: uma citação convincente que não existe, e os quatro cuidados */
+  var I0_CUID = [['Alucinação', 'Pode inventar com total segurança: fato, número, fonte.', 'var(--cuidado-c)'], ['Dados', 'O que você cola sai da sua mão. Vale a regra da empresa.', 'var(--pessoa-c)'], ['Viés', 'Aprendeu com textos do mundo, e herda os vieses deles.', 'var(--t-ml)'], ['Responsabilidade', 'Quem assina é você, e a IA não responde por você.', 'var(--motor-c)']];
+  I0.cuidado = add('iazero', { builds: 7, html: '<p class="rot-sec">Cuidados</p><h2>Soa perfeito. E pode não existir.</h2><div class="dois i0-du"><div class="i0-chat i0-alu"><div class="i0-bal eu" data-b="1">Me dê um artigo acadêmico sobre IA no varejo brasileiro, com autor e ano.</div><div class="i0-bal ia" data-b="2">Claro! Silva e Moura (2021), “Inteligência artificial e margem no varejo brasileiro”, Revista de Estratégia Aplicada.</div><div class="i0-carimbo" data-b="3"><u>NÃO EXISTE</u></div></div>' +
+    '<div class="i0-cls">' + I0_CUID.map(function (c, i) { return '<div class="i0-cl" data-b="' + (i + 4) + '" style="--c:' + c[2] + '"><b>' + c[0] + '</b><p>' + c[1] + '</p></div>'; }).join('') + '</div></div><p class="fonte">Citação inventada para esta aula, para mostrar como o erro parece verdade.</p>' });
 
   /* 16. Fechamento */
   var I0_FIM = ['Sei explicar o que é um LLM', 'Sei escrever um bom prompt', 'Sei escolher um modelo para a tarefa', 'Sei quando não confiar na resposta'];
@@ -2557,7 +2546,7 @@ var UCIL = (function () {
   var idxUse = {}, iUseList;
   function ucPing(el) { var i = el.querySelector('.ilu-p'); if (!i) return; i.classList.remove('ping'); void i.offsetWidth; i.classList.add('ping'); }
   function montaUse() {
-  iUseList = add('cases', { html: '<p class="rot-sec">Banco de cases · Use Cases</p><h2>Use Cases</h2><p class="sub">Cases simples para discutir em sala. Abra um, leia na tela e peça comentários.</p>' +
+  iUseList = add('cases', { html: '<p class="rot-sec">Banco de cases · Use Cases</p><h2>Use Cases</h2><p class="sub">Cases simples para discutir em sala.</p>' +
     '<div class="uc-filtros" role="group" aria-label="Filtrar por tema"><button type="button" class="chip" data-filtro="" aria-pressed="true">Todos (' + USE.length + ')</button>' + UCTEMAS.map(function (t) { return '<button type="button" class="chip" data-filtro="' + ucEsc(t) + '" aria-pressed="false">' + ucEsc(t) + '</button>'; }).join('') + '</div>' +
     '<div class="tres uc-grade">' + USE.map(function (u, i) { return '<button type="button" class="cartao uc" style="--i:' + i + '" data-uc="' + u.id + '" data-tema="' + ucEsc(u.temas.join('|')) + '"><span class="uc-mini">' + ucIl(u) + '</span><span class="uc-tipo">' + ucEsc(u.tipo) + '</span><h3>' + ucEsc(u.nome) + '</h3><p>' + ucEsc(u.curto) + '</p></button>'; }).join('') + '</div>',
     on: function (el) {
@@ -2577,7 +2566,7 @@ var UCIL = (function () {
       u.pontos.map(function (p, i) { return '<div class="uc-pt" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div></div>',
       ao: function (b, el) { if (b > 0) ucPing(el); } });
     var n = u.perguntas.length + (u.ia ? 1 : 0);
-    add('cases', { builds: n, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Para a turma</p><h2>Perguntas para discussão</h2><div class="uc-pergs">' + u.perguntas.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + ucEsc(q[0]) + '</p></div>'; }).join('') +
+    add('cases', { builds: n, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Discussão</p><h2>Perguntas para discussão</h2><div class="uc-pergs">' + u.perguntas.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + ucEsc(q[0]) + '</p></div>'; }).join('') +
       (u.ia ? '<div class="uc-q uc-ia" data-b="' + n + '"><span class="n">IA</span><p>' + ucEsc(u.ia) + '</p></div>' : '') + '</div></div><div class="ilu-p uc-lado">' + ucIl(u) + '</div></div>',
       ao: function (b, el) { if (b > 0) ucPing(el); } });
   });
@@ -2869,7 +2858,7 @@ var UCIL = (function () {
         'Para deixar a IA agir sozinha numa tarefa da empresa de vocês, o que precisaria estar no lugar? Regras, testes, quem responde.',
         'Uma consultoria que vende projetos de IA escreveu o relatório. O que vocês aceitariam como está e o que conferiam antes de levar ao chefe?',
         'Qual das quatro tendências chegaria primeiro na empresa de vocês: software, marca, robôs ou pessoas? E qual seria a mais difícil?'];
-      add('cases', { builds: Q.length, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Para a turma</p><h2>Perguntas para discussão</h2><div class="uc-pergs acc-pergs">' +
+      add('cases', { builds: Q.length, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Discussão</p><h2>Perguntas para discussão</h2><div class="uc-pergs acc-pergs">' +
         Q.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + q + '</p></div>'; }).join('') +
         '</div></div><div class="ilu-p uc-lado">' + ACCIL.cerebro + '</div></div>', ao: pingue });
       return primeira;
