@@ -802,6 +802,23 @@ a.botao-peq { text-decoration: none; color: inherit; }
 
 .bc-fi { grid-template-columns: auto 1fr; padding: 7px 18px; } .bc-fi p { margin-top: 0; }
 
+.bc-escolha { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 760px; }
+.bc-op { text-align: left; gap: 8px; align-content: start; cursor: pointer; transition: transform .25s, background .25s; }
+.bc-op:hover { transform: translateY(-4px); background: rgba(var(--fg-rgb), .14); }
+.bc-op h3 { font-size: clamp(17px, 1.8vw, 24px); }
+.bc-op p { font-size: clamp(13.5px, 1.4vw, 17px); opacity: .88; line-height: 1.35; }
+.bc-ico { width: 64px; height: 64px; }
+@keyframes bcBarra { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.55); } }
+.bc-barra { transform-box: fill-box; transform-origin: bottom; animation: bcBarra 2.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.bc-pdfbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.bc-dl { background: var(--vermelho); border-color: var(--vermelho); color: #fff; font-weight: 700; text-decoration: none; }
+.bc-pdfbar a.botao-peq { text-decoration: none; color: inherit; }
+.bc-pdfbar a.bc-dl { color: #fff; }
+.bc-pdfpalco { width: 100%; height: calc(100vh - 385px); min-height: 320px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(var(--fg-rgb), .25); background: rgba(var(--fg-rgb), .06); }
+.bc-pdfpalco iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+@media (max-width: 900px) { .bc-escolha { grid-template-columns: 1fr; } .bc-pdfpalco { height: 58vh; } }
+@media (prefers-reduced-motion: reduce) { .bc-barra { animation: none; } }
+
 /* IA do zero: brinquedos e demonstrações ao vivo */
 .i0-trilha, .i0-termo, .i0-nin, .i0-jogo, .i0-tok, .i0-cx, .i0-vivo, .i0-mp, .i0-chat, .i0-mod, .i0-du, .i0-vb, .i0-nao, .i0-vibevivo, .i0-cola, .i0-fim2 { flex-shrink: 0; }
 .i0-h1 { max-width: 16ch; }
@@ -3537,7 +3554,11 @@ var UCIL = (function () {
   ];
   var BCFICHA = [['A decisão do grupo', 'O que o grupo recomenda, em uma ou duas linhas.'], ['Três razões', 'Por que essa decisão e não outra.'], ['O primeiro passo', 'Por onde o projeto começa.'], ['Os principais cuidados', 'O que pode dar errado e como evitar.'],
     ['O que faríamos com as pessoas', 'Ações para a mudança funcionar.'], ['Onde a IA entra e onde a pessoa decide', 'Os dois lados da mesma resposta.'], ['O que acompanharíamos', 'Como saber se deu certo.']];
-  var idxBus = {}, iBusList;
+  var BCPDF = { ups: ['business-cases/BC1_UPS_e_o_ORION.pdf', 'BC1 UPS e o ORION.pdf'], meridiano: ['business-cases/BC2_Meridiano_Seguros.pdf', 'BC2 Meridiano Seguros.pdf'], graos: ['business-cases/BC3_Graos_do_Cerrado.pdf', 'BC3 Graos do Cerrado.pdf'] };
+  var BCICO = {
+    pdf: '<svg class="bc-ico" viewBox="0 0 64 64" aria-hidden="true"><path class="il-fundo il-b" d="M14,6 H38 L52,20 V58 H14 Z"/><path class="il-linha" d="M38,6 V20 H52"/><path class="il-linha" d="M22,30 H44 M22,37 H44 M22,44 H36"/><g class="bc-bob"><circle class="il-acc" cx="46" cy="50" r="10"/><path d="M46,44 V54 M41.5,50 L46,54.5 L50.5,50" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>',
+    vis: '<svg class="bc-ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="il-fundo il-b" x="6" y="10" width="52" height="44" rx="8"/><rect class="il-acc bc-barra" style="--d:0s" x="14" y="34" width="8" height="14" rx="2"/><rect class="il-acc bc-barra" style="--d:.3s" x="27" y="26" width="8" height="22" rx="2"/><rect class="il-acc bc-barra" style="--d:.6s" x="40" y="18" width="8" height="30" rx="2"/></svg>' };
+  var idxBus = {}, idxBusVis = {}, idxBusPdf = {}, iBusList;
 
   function bcCartaoNum(it) {
     var n = it[0];
@@ -3548,8 +3569,24 @@ var UCIL = (function () {
       '<div class="tres uc-grade">' + BUS.map(function (u, i) { return '<button type="button" class="cartao uc" style="--i:' + i + '" data-bc="' + u.id + '"><span class="uc-mini">' + BCIL[u.id] + '</span><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + u.tipo + '</span><h3>' + ucEsc(u.nome) + '</h3><p>' + ucEsc(u.curto) + '</p></button>'; }).join('') + '</div>' });
     BUS.forEach(function (u) {
       var rot = 'Business Case · ' + u.tipo;
+      var pdf = BCPDF[u.id];
       idxBus[u.id] = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">' + ucEsc(rot) + '</p><h2>' + ucEsc(u.nome) + '</h2><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + ucEsc(u.tema) + '</span>' +
-        '<p class="bc-sit">' + ucEsc(u.situacao) + '</p><p class="bc-aviso">' + ucEsc(u.aviso) + '</p><div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + BCIL[u.id] + '</div></div>' });
+        '<p class="bc-sub">Como você quer começar?</p><div class="bc-escolha">' +
+        '<button type="button" class="cartao bc-op" data-bcpdf="' + u.id + '">' + BCICO.pdf + '<h3>Abrir o PDF completo</h3><p>O case inteiro, com anexos e ficha do grupo. Dá para baixar para o computador ou para o celular.</p></button>' +
+        '<button type="button" class="cartao bc-op" data-bcvis="' + u.id + '">' + BCICO.vis + '<h3>Ver o esquema visual resumido</h3><p>Telas animadas com o contexto, os números, as opções e as perguntas.</p></button></div>' +
+        '<div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + BCIL[u.id] + '</div></div>' });
+      idxBusPdf[u.id] = add('cases', { html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · PDF completo</p><h2>' + ucEsc(u.nome) + '</h2>' +
+        '<div class="bc-pdfbar"><a class="botao-peq bc-dl" href="' + pdf[0] + '" download="' + pdf[1] + '">Baixar o PDF</a><a class="botao-peq" href="' + pdf[0] + '" target="_blank" rel="noopener">Abrir em uma aba nova</a><button type="button" class="botao-peq" data-bcopc="' + u.id + '">Voltar às opções</button><button type="button" class="botao-peq" data-bcvis="' + u.id + '">Ver o esquema visual</button></div>' +
+        '<div class="bc-pdfpalco" data-pdf="' + pdf[0] + '"></div><p class="fonte">Se o PDF não aparecer aqui (alguns celulares não mostram PDF dentro da página), use Baixar o PDF ou Abrir em uma aba nova.</p></div>',
+        on: function (el) {
+          var palco = el.querySelector('.bc-pdfpalco'), aberta = false;
+          new MutationObserver(function () {
+            var at = el.classList.contains('ativa'); if (at === aberta) return; aberta = at;
+            if (at) palco.innerHTML = '<iframe title="' + ucEsc(u.nome) + ' em PDF" src="' + palco.dataset.pdf + '#view=FitH"></iframe>'; else palco.innerHTML = '';
+          }).observe(el, { attributes: true, attributeFilter: ['class'] });
+        } });
+      idxBusVis[u.id] = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">' + ucEsc(rot) + '</p><h2>' + ucEsc(u.nome) + '</h2><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + ucEsc(u.tema) + '</span>' +
+        '<p class="bc-sit">' + ucEsc(u.situacao) + '</p><p class="bc-aviso">' + ucEsc(u.aviso) + '</p><div class="acoes"><button type="button" class="botao-peq" data-bcopc="' + u.id + '">Voltar às opções</button><button type="button" class="botao-peq" data-bcpdf="' + u.id + '">Abrir o PDF completo</button></div></div><div class="ilu-p">' + BCIL[u.id] + '</div></div>' });
       var itensCtx = [].concat.apply([], u.contexto), grupos = [], pos = 0;
       (u.chunks || [3, 3, 2]).forEach(function (k) { if (pos < itensCtx.length) { grupos.push(itensCtx.slice(pos, pos + k)); pos += k; } });
       grupos.forEach(function (grupo, g) {
@@ -4169,7 +4206,7 @@ var UCIL = (function () {
   function vista(id) { ['home', 'aula'].forEach(function (v) { $('#' + v).hidden = v !== id; }); if (id !== 'aula') $('#setas').innerHTML = ''; }
   $('#b-menu').addEventListener('click', function () { vista('home'); });
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-lib],.aula.trava');
+    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-lib],.aula.trava');
     if (!t) return;
     if (t.classList.contains('trava')) { t.classList.remove('balanca'); void t.offsetWidth; t.classList.add('balanca'); dica('O próximo módulo ainda vai ser construído.'); return; }
     if (t.dataset.lib) { var idm = t.dataset.lib, card = t.closest('.aula'); LIB[idm] = true; salvaLib(); if (card) card.classList.add('abrindo'); setTimeout(function () { renderAbas(); renderHome(); vista('aula'); ponte = null; ir(topIdx[idm], 0); }, N.reduz ? 0 : 750); return; }
@@ -4177,6 +4214,9 @@ var UCIL = (function () {
     if (t.dataset.uclista) { ponte = null; ir(iUseList, 0); return; }
     if (t.dataset.bc) { ponte = null; ir(idxBus[t.dataset.bc], 0); return; }
     if (t.dataset.bclista) { ponte = null; ir(iBusList, 0); return; }
+    if (t.dataset.bcpdf) { ponte = null; ir(idxBusPdf[t.dataset.bcpdf], 0); return; }
+    if (t.dataset.bcvis) { ponte = null; ir(idxBusVis[t.dataset.bcvis], 0); return; }
+    if (t.dataset.bcopc) { ponte = null; ir(idxBus[t.dataset.bcopc], 0); return; }
     if (t.dataset.pasta) { if (t.dataset.pasta === 'usecases') { ponte = null; ir(iUseList, 0); } else if (t.dataset.pasta === 'business') { ponte = null; ir(iBusList, 0); } else if (t.dataset.pasta === 'artefatos') { ponte = null; ir(iCases, 0); } else dica('Ainda não há cases neste tema.'); return; }
     if (t.dataset.passo) { var cs = S[atual]; cs.b = +t.dataset.passo; aplicar(cs); botoes(); agendar(420); return; }
     if (t.dataset.volta) { var v = pilha.pop(); ponte = null; ir(v != null ? v : 0, 0); return; }
