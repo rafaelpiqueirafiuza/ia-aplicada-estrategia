@@ -673,6 +673,8 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .vb-play svg { width: 20px; height: 20px; fill: #fff; margin-left: 2px; }
 .vb-dur { position: absolute; right: 8px; bottom: 8px; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: rgba(0, 0, 0, .72); color: #fff; }
 .vb[hidden] { display: none; }
+.vb-outro { margin-left: auto; }
+.vb-filtros { width: 100%; }
 
 /* Business Cases: cases de grupo do sábado. Reaproveita os cartões, perguntas e ilustrações dos Use Cases. */
 .bc-tag { display: inline-block; font-size: 12px; padding: 4px 12px; border-radius: 999px; font-weight: 700; letter-spacing: .03em; width: fit-content; }
@@ -3275,11 +3277,104 @@ var UCIL = (function () {
   add('dinamicas', { html: '<p class="rot-sec">Dinâmicas</p><h2>Atividades em grupo, tema a tema</h2><p class="sub">As dinâmicas ficam organizadas pelos mesmos temas do mapa. Elas entram aqui conforme forem construídas.</p>' +
     '<div class="glass mini-trava"><div class="conteudo" aria-hidden="true"><i></i><i style="width:70%"></i></div><div class="cad"><span style="display:flex;gap:10px;align-items:center">' + cadeado.replace('<svg', '<svg style="width:26px;height:26px"') + 'A construir</span></div></div>' });
 
+  /* Banco de vídeos: cases em vídeo, cada um com o trecho sugerido.
+     Tipos: certo (deu certo), errado (deu errado), dois (os dois lados), bastidor (como a empresa organizou a adoção).
+     Todo número que aparece no resumo foi dito no próprio trecho (conferido na legenda), exceto onde o campo "depois" avisa.
+     Os números de empresas são os declarados por elas. */
+  var VBANCO = [
+    { id: 'vend', yt: '5KTHvKCrQ00', tipo: 'errado', nome: 'Anthropic deixou o Claude administrar uma loja',
+      curto: 'A IA deu desconto demais, teve crise de identidade e perdeu dinheiro. Depois melhorou.',
+      canal: 'Anthropic', lingua: 'en', ini: '0:00', fim: '6:10',
+      resumo: 'A Anthropic deixou o Claude, chamado de Claudius, tocar uma pequena loja no escritório: escolher produtos, fixar preços e atender clientes pelo Slack. Funcionários o convenceram a dar descontos e até um cubo de tungstênio de graça, e ele teve uma crise de identidade. Com um segundo agente no papel de CEO e mudanças na estrutura, a loja passou a dar um pequeno lucro.',
+      fonte: 'Anthropic, vídeo sobre o Projeto Vend, feito com a Andon Labs.' },
+    { id: 'magie', yt: 'DjL84x8qsLA', tipo: 'certo', nome: 'Magie: o fundador fez tudo à mão antes de automatizar',
+      curto: 'Nos dois primeiros meses, o cofundador atendia sozinho os pagamentos pelo WhatsApp.',
+      canal: 'Founder To Founder (Bruno Okamoto)', lingua: 'pt', ini: '8:35', fim: '11:35',
+      resumo: 'João Camargo, cofundador da Magie, conta como testaram a ideia de pagar contas pelo WhatsApp. Nos dois primeiros meses, até os 100 primeiros clientes, ele mesmo fazia os pagamentos, a qualquer hora. Os clientes sabiam que havia interferência humana, mas não que era só ele. Depois foram automatizando por partes, quando a precisão ficava num nível seguro, porque pagamento é uma atividade crítica.',
+      fonte: 'Founder To Founder, episódio 2, entrevista de Bruno Okamoto com João Camargo.' },
+    { id: 'klarna', yt: 'm3niSE-8ZvE', tipo: 'certo', nome: 'Klarna: o CEO explica como pôs a IA no atendimento',
+      curto: 'Chat resolvido em 2 minutos com IA contra 14 com atendente, segundo o CEO.',
+      canal: 'Sequoia Capital', lingua: 'en', ini: '9:00', fim: '16:25',
+      resumo: 'O CEO da Klarna conta que tratou a IA como um funcionário que esquece tudo todo dia, então manuais e instruções precisam ser bem claros. Segundo ele, o tempo médio para resolver um chat caiu de 14 minutos, com atendente humano, para 2 minutos, com IA. Comenta também o número que ficou famoso, o trabalho de 700 atendentes em tempo integral. Os números são ditos por ele.',
+      fonte: 'Sequoia Capital, entrevista com Sebastian Siemiatkowski.' },
+    { id: 'klarna2', yt: 'pNd4KlccWAY', tipo: 'dois', nome: 'Klarna: a manchete dizia que recuou, o CEO diz que acelerou',
+      curto: 'O CEO responde às notícias de que a Klarna teria voltado atrás na IA.',
+      canal: 'Alex Kantrowitz', lingua: 'en', ini: '0:00', fim: '4:25',
+      resumo: 'O CEO da Klarna responde às notícias de que a empresa teria recuado no uso de IA no atendimento. Diz que o agente de IA continua ativo, com cerca de 1,3 milhão de atendimentos por mês, o que equivale ao trabalho de cerca de 800 pessoas, e que os casos que ele resolve ficaram mais complexos. É a versão do próprio CEO.',
+      fonte: 'Alex Kantrowitz, entrevista com Sebastian Siemiatkowski.' },
+    { id: 'ups', yt: 'lBS-FVsUN4Y', tipo: 'certo', nome: 'UPS: dez anos até o ORION ser aceito',
+      curto: 'O sistema que define a rota de cada motorista enfrentou ironia dentro da própria empresa.',
+      canal: 'TED Institute', lingua: 'en', ini: '0:00', fim: '10:03',
+      resumo: 'Jack Levis, que liderou o projeto ORION, conta como o sistema que calcula a melhor rota de cada motorista levou cerca de dez anos, com até 700 pessoas, e enfrentou ceticismo interno. Segundo ele, com a implantação completa a UPS reduz 100 milhões de milhas rodadas por ano e de US$ 300 a 400 milhões em custos.',
+      fonte: 'TED Institute, palestra de Jack Levis.' },
+    { id: 'ikea', yt: 'APOPIfBB8ZM', tipo: 'certo', nome: 'IKEA: a IA atende e os atendentes viram consultores',
+      curto: 'O chatbot Billie assumiu perguntas simples e a IKEA requalificou quem atendia.',
+      canal: 'Reuters', lingua: 'en', ini: '0:00', fim: '1:14',
+      resumo: 'Reportagem da Reuters: a IKEA criou o chatbot Billie, que respondeu cerca de 47% das perguntas que iam para a central de atendimento em dois anos. A empresa diz que isso não significa, por ora, perda de empregos, e que treinou 8.500 atendentes desde 2021 para serem consultores de decoração por vídeo.',
+      fonte: 'Reuters. O percentual de 47% é da IKEA (Ingka), conferido em material da empresa.' },
+    { id: 'inter', yt: 'PdXNu1aQ_ts', tipo: 'certo', nome: 'Banco Inter: mais de 400 agentes de IA em operação',
+      curto: 'O CIO mostra o que mudou em contas, cheque digital e no app, com números do próprio banco.',
+      canal: 'NeoFeed Brasil (Revolução IA)', lingua: 'pt', ini: '13:10', fim: '19:25',
+      resumo: 'Guilherme Ximenes, CIO do Inter, diz que a IA generativa está ao alcance de todos, então a vantagem do banco está em ter dados e tecnologia modernizados há anos. Conta que o Inter tem mais de 400 agentes, que o cheque digital passou de 20 pessoas para 1 ou 2, e que a abertura de contas foi de 30 mil com 80 a 100 pessoas para 35 mil com 20 pessoas. Os números são do executivo.',
+      fonte: 'NeoFeed Brasil, podcast Revolução IA, entrevista com Guilherme Ximenes.' },
+    { id: 'itau', yt: 'HHwycjp-bGM', tipo: 'bastidor', nome: 'Itaú: a IA cria trabalhos que não existiam',
+      curto: 'Um time novo registra como os assessores decidem, para a IA conseguir usar.',
+      canal: 'NeoFeed Brasil (Revolução IA)', lingua: 'pt', ini: '0:00', fim: '2:00',
+      resumo: 'Ricardo Guerra, CIO do Itaú, explica que o agente de IA para recomendação de investimentos exigiu um time novo, que entrevista os assessores para entender como eles decidem e transforma isso em informação que a IA consiga usar. Diz que a empresa está no meio da jornada e que o cliente vê só uma parte: por trás, muda a forma de gerir a organização.',
+      fonte: 'NeoFeed Brasil, podcast Revolução IA, entrevista com Ricardo Guerra.' },
+    { id: 'nubank', yt: 'w5KwEUkV9x0', tipo: 'bastidor', nome: 'Nubank: IA nos fluxos de trabalho',
+      curto: 'Vídeo da própria empresa sobre como a IA muda a forma de trabalhar.',
+      canal: 'Nubank', lingua: 'en', ini: '13:10', fim: '15:20',
+      resumo: 'Carl Rivera, diretor de produto do Nubank, diz que a empresa está entre as mais avançadas na adoção interna de IA e que isso deve levar a uma organização mais plana, em que líderes de produto, design e engenharia fazem trabalho além do seu. Diz que a IA está dando novas ferramentas às pessoas e que ela não está substituindo ninguém. É um vídeo institucional, com a visão da empresa.',
+      fonte: 'Nubank, Nu Videocast com Carl Rivera, Eric Young e Ethan Eismann.' },
+    { id: 'salesforce', yt: 'Bewu2Jq_m1o', tipo: 'dois', nome: 'Salesforce: agentes de IA e pessoas atendendo juntos',
+      curto: 'Notas de satisfação parecidas, e o time de suporte encolheu, segundo o CEO.',
+      canal: 'CNBC Television', lingua: 'en', ini: '1:35', fim: '7:00',
+      resumo: 'Marc Benioff, CEO da Salesforce, diz que em nove meses agentes de IA e atendentes humanos responderam 1,5 milhão de perguntas cada, com notas de satisfação parecidas. Conta que o suporte foi de 6 a 8 mil pessoas no começo do ano para 4 a 5 mil, e que a empresa tem de 3 a 4 mil vendedores a mais. Os números são ditos pelo CEO.',
+      fonte: 'CNBC Television, entrevista com Marc Benioff.' },
+    { id: 'duolingo', yt: 'ADggr7xZaFI', tipo: 'dois', nome: 'Duolingo: o CEO revê o memo de "IA primeiro"',
+      curto: 'O que ele manteve e o que mudou depois da reação ao memo.',
+      canal: 'Rapid Response (Masters of Scale)', lingua: 'en', ini: '6:25', fim: '11:38',
+      resumo: 'Luis von Ahn, CEO da Duolingo, responde sobre o memo interno de IA que causou reação pública no ano anterior. Diz que a empresa nunca fez demissões e que retirou a regra de avaliar todo funcionário pelo uso de IA, porque algumas pessoas passaram a usar IA só para cumprir a regra. Diz também que não vai reduzir a qualidade só para usar IA, citando o trabalho de artistas e designers.',
+      fonte: 'Rapid Response, podcast da Masters of Scale, entrevista com Luis von Ahn.' },
+    { id: 'bcg', yt: 'dPJ6Bxsky0s', tipo: 'dois', nome: 'Consultores do BCG com IA: onde ajuda e onde atrapalha',
+      curto: 'Experimento com GPT-4: ganho nas tarefas que a IA faz bem, mais erro numa que ela faz mal.',
+      canal: 'Stanford Digital Economy Lab', lingua: 'en', ini: '29:35', fim: '33:05',
+      resumo: 'Ethan Mollick, professor da Wharton, apresenta um experimento com consultores do BCG que usaram o GPT-4. Quem tinha desempenho mais baixo melhorou 43%, e os melhores melhoraram menos. Numa tarefa que a IA fazia mal, 84,5% de quem trabalhou sem IA acertou, contra 60% a 70% de quem usou IA, e a IA ainda deixou as recomendações mais convincentes mesmo quando estavam erradas.',
+      fonte: 'Stanford Digital Economy Lab, palestra de Ethan Mollick sobre o estudo de Dell\'Acqua et al. (2023).' },
+    { id: 'zillow', yt: 'S8NL1EvPdYM', tipo: 'errado', nome: 'Zillow encerra a compra e venda de casas',
+      curto: 'A aposta era prever o preço de uma casa seis meses à frente.',
+      canal: 'CNBC Television', lingua: 'en', ini: '0:00', fim: '3:41',
+      resumo: 'O CEO da Zillow explica a decisão de encerrar o Zillow Offers, em que a empresa comprava casas para revender. Diz que a aposta era prever o preço de uma casa com seis meses de antecedência e pouca margem de erro, e que a pandemia tornou isso muito difícil. A decisão incluiu demitir cerca de 25% da equipe.',
+      fonte: 'CNBC Television, entrevista com o CEO da Zillow, Rich Barton.' },
+    { id: 'mcdonalds', yt: 'el_f82ZXGME', tipo: 'errado', nome: 'McDonald\'s encerra o teste de IA no drive-thru',
+      curto: 'Pedidos errados viralizaram, como sorvete com bacon.',
+      canal: 'CBS News', lingua: 'en', ini: '0:00', fim: '3:37',
+      resumo: 'A McDonald\'s encerrou o teste de IA para anotar pedidos no drive-thru, que rodava em cerca de 100 restaurantes nos EUA, depois de erros que viralizaram, como sorvete com bacon. A reportagem diz que a empresa afirma que a pausa vale por enquanto e que há planos de voltar a testar.',
+      fonte: 'CBS News, com o repórter de negócios Nathan Bomey, do Axios.' },
+    { id: 'tacobell', yt: '709hd--GHUM', tipo: 'errado', nome: 'Taco Bell revê a IA no drive-thru',
+      curto: 'Mais de 500 restaurantes, 2 milhões de pedidos e um cliente que pediu 18 mil copos de água.',
+      canal: 'Steve Lehto', lingua: 'en', ini: '0:00', fim: '3:55',
+      resumo: 'O advogado Steve Lehto comenta uma reportagem da BBC: a Taco Bell usa IA de voz em mais de 500 restaurantes desde 2023 e disse que vai repensar o uso depois que vídeos de erros foram vistos milhões de vezes, como o de um cliente que pediu 18 mil copos de água. A empresa diz que 2 milhões de pedidos foram processados com sucesso, e ele questiona como se conta um pedido bem-sucedido.',
+      fonte: 'Steve Lehto, comentando reportagem da BBC.' },
+    { id: 'aircanada', yt: 'avEPVMmjRM0', tipo: 'errado', nome: 'Air Canada: o chatbot errou e a empresa foi responsabilizada',
+      curto: 'O bot prometeu um reembolso que a política da empresa não previa.',
+      canal: 'ABC News', lingua: 'en', ini: '0:00', fim: '1:55',
+      resumo: 'Um passageiro perguntou ao chatbot da Air Canada sobre desconto em voo por luto e ouviu que podia pedir o reembolso até 90 dias depois da viagem, o que contrariava a política escrita. A companhia negou, e o vídeo levanta a pergunta de quem responde pelo que um chatbot diz.',
+      depois: 'Depois do vídeo: em fevereiro de 2024, o tribunal da Colúmbia Britânica decidiu contra a empresa e mandou indenizar o passageiro.',
+      fonte: 'ABC News. A decisão (Moffatt v. Air Canada, 2024 BCCRT 149) foi conferida em reportagens, e a decisão em si não foi lida.' },
+    { id: 'deloitte', yt: '045GE7zOFhg', tipo: 'errado', nome: 'Deloitte devolve parte do valor por relatório com erros de IA',
+      curto: 'Estudos e casos judiciais que não existem num relatório de US$ 440 mil.',
+      canal: 'Firstpost', lingua: 'en', ini: '0:00', fim: '2:15',
+      resumo: 'A Deloitte entregou ao governo australiano um relatório de US$ 440 mil com erros, como estudos e casos judiciais que não existem. Na versão corrigida, admitiu ter usado um modelo da OpenAI pelo Azure e concordou em devolver parte do valor.',
+      fonte: 'Firstpost, programa Vantage.' }
+  ];
+
   /* Vídeos: um trecho de vídeo para discutir em sala, gerenciado pela própria página.
      Aceita link do YouTube ou de um arquivo de vídeo (mp4, webm) e também um arquivo escolhido no computador.
      Início e fim ficam gravados neste navegador. Arquivo do computador precisa ser escolhido de novo a cada abertura. */
   (function () {
-    var CH = 'video-trecho', arqUrl = null, arqNome = '';
+    var CH = 'video-trecho', arqUrl = null, arqNome = '', override = null, tocarJa = false, vdToca = null, vdGer = null, iVdPlayer = -1;
     function carrega() { try { var d = JSON.parse(localStorage.getItem(CH) || 'null'); if (d) return d; } catch (x) { } return { titulo: 'Construindo um dos maiores assistentes financeiros no Whatsapp do Brasil (Bruno Okamoto)', link: 'https://youtu.be/DjL84x8qsLA', ini: '08:35', fim: '11:35' }; }
     function grava(d) { try { localStorage.setItem(CH, JSON.stringify(d)); return true; } catch (x) { return false; } }
     function seg(t) {
@@ -3291,11 +3386,40 @@ var UCIL = (function () {
     function fmt(s) { s = Math.max(0, Math.round(s)); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), r = s % 60; return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (r < 10 ? '0' : '') + r; }
     function ytId(u) { var m = String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtube-nocookie\.com\/embed\/)([\w-]{11})/); return m ? m[1] : null; }
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+    var TIPOS = { certo: 'Deu certo', errado: 'Deu errado', dois: 'Os dois lados', bastidor: 'Bastidores' };
+    function fichaDe(d) { var id = d.link ? ytId(d.link) : null; if (!id) return null; for (var i = 0; i < VBANCO.length; i++) if (VBANCO[i].yt === id) return VBANCO[i]; return null; }
+    function durTxt(v) { var n = seg(v.fim) - seg(v.ini); return n < 60 ? n + ' s' : (n % 60 < 30 ? Math.floor(n / 60) : Math.ceil(n / 60)) + ' min'; }
 
-    add('videos', { html: '<p class="rot-sec">Vídeos</p><h2 class="vd-tit">Vídeo para discutir</h2>' +
+    var VB_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>';
+    var vbTipos = ['certo', 'errado', 'dois', 'bastidor'];
+    add('videos', { html: '<p class="rot-sec">Vídeos · Banco de vídeos</p><h2>Banco de vídeos</h2><p class="sub">Cases de IA em vídeo, cada um com o trecho sugerido. Clique na capa para assistir aqui mesmo.</p>' +
+      '<div class="uc-filtros vb-filtros" role="group" aria-label="Filtrar por tipo"><button type="button" class="chip" data-vbf="" aria-pressed="true">Todos (' + VBANCO.length + ')</button>' +
+        vbTipos.map(function (t) { var n = VBANCO.filter(function (v) { return v.tipo === t; }).length; return n ? '<button type="button" class="chip" data-vbf="' + t + '" aria-pressed="false">' + TIPOS[t] + ' (' + n + ')</button>' : ''; }).join('') + '<button type="button" class="botao-peq vb-outro" id="vb-outro">Usar outro vídeo</button></div>' +
+      '<div class="tres uc-grade vb-grade">' + VBANCO.map(function (v, i) {
+        return '<button type="button" class="cartao uc vb" style="--i:' + i + '" data-vb="' + v.id + '" data-tipo="' + v.tipo + '">' +
+          '<span class="vb-capa"><img src="https://i.ytimg.com/vi/' + v.yt + '/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="vb-play">' + VB_PLAY + '</span><span class="vb-dur">' + durTxt(v) + '</span></span>' +
+          '<span class="vb-linha"><span class="vb-tipo vb-' + v.tipo + '">' + TIPOS[v.tipo] + '</span><span class="vb-lg">' + (v.lingua === 'en' ? 'EN' : 'PT') + '</span></span>' +
+          '<h3>' + esc(v.nome) + '</h3><p>' + esc(v.curto) + '</p></button>';
+      }).join('') + '</div>',
+      on: function (el) {
+        var fs = el.querySelectorAll('[data-vbf]');
+        [].forEach.call(fs, function (f) { f.addEventListener('click', function () {
+          var v = f.dataset.vbf, k = 0;
+          [].forEach.call(fs, function (x) { x.setAttribute('aria-pressed', String(x === f)); });
+          [].forEach.call(el.querySelectorAll('.vb'), function (c) { var h = !!v && c.dataset.tipo !== v; c.hidden = h; if (!h) { c.style.setProperty('--i', k++); c.classList.remove('re'); void c.offsetWidth; c.classList.add('re'); } });
+        }); });
+        el.querySelector('#vb-outro').addEventListener('click', function () { if (vdGer) { vdGer(); ir(iVdPlayer, 0); } });
+        [].forEach.call(el.querySelectorAll('.vb'), function (c) { c.addEventListener('click', function () {
+          var v = VBANCO.filter(function (x) { return x.id === c.dataset.vb; })[0];
+          if (v && vdToca) { vdToca(v); ir(iVdPlayer, 0); }
+        }); });
+      } });
+
+    iVdPlayer = add('videos', { html: '<p class="rot-sec">Vídeos</p><h2 class="vd-tit">Vídeo para discutir</h2>' +
       '<div class="vd-palco" id="vd-palco"></div>' +
       '<div class="vd-fita" id="vd-fita" hidden><i class="vd-seg" id="vd-seg"></i></div><div class="vd-tempos" id="vd-tempos" hidden><span id="vd-t1"></span><span id="vd-t3"></span><span id="vd-t2"></span></div>' +
-      '<div class="vd-barra"><span class="vd-trecho" id="vd-trecho"></span><button type="button" class="botao-peq" id="vd-volta" hidden>Voltar ao início do trecho</button><a class="botao-peq" id="vd-yt" target="_blank" rel="noopener" hidden>Abrir no YouTube</a><button type="button" class="botao-peq" id="vd-ger-b" aria-expanded="false">Gerenciar vídeo</button></div>' +
+      '<div class="vd-barra"><span class="vd-trecho" id="vd-trecho"></span><button type="button" class="botao-peq" id="vd-volta" hidden>Voltar ao início do trecho</button><a class="botao-peq" id="vd-yt" target="_blank" rel="noopener" hidden>Abrir no YouTube</a><button type="button" class="botao-peq" id="vd-banco-b">Voltar às capas</button><button type="button" class="botao-peq" id="vd-ger-b" aria-expanded="false">Gerenciar vídeo</button></div>' +
+      '<div class="vd-ficha" id="vd-ficha" hidden></div>' +
       '<form class="vd-ger glass" id="vd-ger" hidden autocomplete="off">' +
         '<label>Título (opcional)<input id="vd-t" type="text" maxlength="120" placeholder="Nome do vídeo ou do canal"></label>' +
         '<label class="vd-l">Link do YouTube ou de um arquivo de vídeo<input id="vd-link" type="url" placeholder="https://www.youtube.com/watch?v=..."></label>' +
@@ -3309,16 +3433,22 @@ var UCIL = (function () {
         var palco = $('#vd-palco'), ger = $('#vd-ger'), gerB = $('#vd-ger-b'), vElem = null, ini = 0, fim = 0;
         function mostraForm(d) { $('#vd-t').value = d.titulo || ''; $('#vd-link').value = d.link || ''; $('#vd-i').value = d.ini || ''; $('#vd-f').value = d.fim || ''; }
         function renderiza() {
-          var d = carrega(); mostraForm(d); ini = seg(d.ini); fim = seg(d.fim); vElem = null;
+          var d = override || carrega(); mostraForm(d); ini = seg(d.ini); fim = seg(d.fim); vElem = null;
           el.querySelector('.vd-tit').textContent = d.titulo || 'Vídeo para discutir';
           $('#vd-trecho').textContent = (d.link || arqUrl) ? 'Trecho de ' + fmt(ini) + ' a ' + fmt(fim) + (fim > ini ? ' (' + fmt(fim - ini) + ')' : '') : '';
           var tem = !!(d.link || arqUrl); $('#vd-fita').hidden = !tem || !(fim > ini); $('#vd-tempos').hidden = $('#vd-fita').hidden;
           $('#vd-t1').textContent = fmt(ini); $('#vd-t2').textContent = fmt(fim); $('#vd-t3').textContent = 'trecho de ' + fmt(Math.max(0, fim - ini));
           var yt = $('#vd-yt'), volta = $('#vd-volta'); yt.hidden = true; volta.hidden = true;
+          var fc = d.ficha || fichaDe(d), fh = $('#vd-ficha');
+          if (fc) {
+            fh.hidden = false;
+            fh.innerHTML = '<div class="vb-linha"><span class="vb-tipo vb-' + fc.tipo + '">' + TIPOS[fc.tipo] + '</span><span class="vb-lg">' + (fc.lingua === 'en' ? 'Em inglês' : 'Em português') + '</span><span class="vb-lg">' + esc(fc.canal) + '</span></div><p>' + esc(fc.resumo) + '</p>' + (fc.depois ? '<p class="vb-dep">' + esc(fc.depois) + '</p>' : '') +
+              '<p class="fonte">Fonte: ' + esc(fc.fonte) + (fc.lingua === 'en' ? ' Para ver em português, ative a legenda (CC) e escolha a tradução automática.' : '') + '</p>';
+          } else { fh.hidden = true; fh.innerHTML = ''; }
           var id = d.link ? ytId(d.link) : null;
           if (id) {
-            var q = '?rel=0&modestbranding=1&playsinline=1&start=' + ini + (fim > ini ? '&end=' + fim : '');
-            palco.innerHTML = '<iframe title="' + esc(d.titulo || 'Vídeo') + '" src="https://www.youtube-nocookie.com/embed/' + id + q + '" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+            var q = '?rel=0&modestbranding=1&playsinline=1&hl=pt-BR&start=' + ini + (fim > ini ? '&end=' + fim : '') + (fc && fc.lingua === 'en' ? '&cc_load_policy=1&cc_lang_pref=pt' : '') + (tocarJa ? '&autoplay=1' : ''); tocarJa = false;
+            palco.innerHTML = '<iframe title="' + esc(d.titulo || 'Vídeo') + '" src="https://www.youtube-nocookie.com/embed/' + id + q + '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
             yt.href = 'https://youtu.be/' + id + '?t=' + ini; yt.hidden = false; return;
           }
           var src = d.link && !id ? d.link : arqUrl;
@@ -3338,7 +3468,7 @@ var UCIL = (function () {
         ger.addEventListener('submit', function (e) {
           e.preventDefault();
           var d = { titulo: $('#vd-t').value.trim(), link: $('#vd-link').value.trim(), ini: $('#vd-i').value.trim() || '0:00', fim: $('#vd-f').value.trim() };
-          if (d.link) arqUrl = null;
+          override = null; if (d.link) arqUrl = null;
           if (!grava(d)) $('.vd-nota').textContent = 'Este navegador não deixou salvar. O vídeo carrega agora, mas some ao fechar a página.';
           renderiza(); ger.hidden = true; gerB.setAttribute('aria-expanded', 'false');
         });
@@ -3347,11 +3477,23 @@ var UCIL = (function () {
           var f = e.target.files && e.target.files[0]; if (!f) return;
           if (arqUrl) URL.revokeObjectURL(arqUrl);
           arqUrl = URL.createObjectURL(f); arqNome = f.name;
-          var d = carrega(); d.link = ''; d.titulo = d.titulo || f.name.replace(/\.[^.]+$/, ''); d.ini = $('#vd-i').value.trim() || d.ini; d.fim = $('#vd-f').value.trim() || d.fim; grava(d);
+          override = null; var d = carrega(); d.link = ''; d.titulo = d.titulo || f.name.replace(/\.[^.]+$/, ''); d.ini = $('#vd-i').value.trim() || d.ini; d.fim = $('#vd-f').value.trim() || d.fim; grava(d);
           renderiza(); ger.hidden = true; gerB.setAttribute('aria-expanded', 'false');
         });
-        $('#vd-limpa').addEventListener('click', function () { if (arqUrl) { URL.revokeObjectURL(arqUrl); arqUrl = null; } grava({ titulo: '', link: '', ini: '08:35', fim: '11:35' }); renderiza(); });
-        renderiza();
+        $('#vd-limpa').addEventListener('click', function () { override = null; if (arqUrl) { URL.revokeObjectURL(arqUrl); arqUrl = null; } grava({ titulo: '', link: '', ini: '08:35', fim: '11:35' }); renderiza(); });
+        vdToca = function (v) {
+          override = { titulo: v.nome, link: 'https://youtu.be/' + v.yt, ini: v.ini, fim: v.fim, ficha: v }; tocarJa = true;
+          if (arqUrl) { URL.revokeObjectURL(arqUrl); arqUrl = null; }
+          ger.hidden = true; gerB.setAttribute('aria-expanded', 'false');
+        };
+        vdGer = function () { override = null; tocarJa = false; ger.hidden = false; gerB.setAttribute('aria-expanded', 'true'); };
+        $('#vd-banco-b').addEventListener('click', function () { ir(topIdx.videos, 0); });
+        /* O player só existe enquanto a tela está aberta: ao sair, o vídeo para. */
+        var aberta = false;
+        new MutationObserver(function () {
+          var at = el.classList.contains('ativa'); if (at === aberta) return; aberta = at;
+          if (at) renderiza(); else { palco.innerHTML = ''; vElem = null; }
+        }).observe(el, { attributes: true, attributeFilter: ['class'] });
         if (!carrega().link) { ger.hidden = false; gerB.setAttribute('aria-expanded', 'true'); }
       } });
   })();
