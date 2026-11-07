@@ -676,6 +676,89 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .vb-outro { margin-left: auto; }
 .vb-filtros { width: 100%; }
 
+/* Aba de notícias. Cores dos assuntos: rosa (pessoas), azul (processos) e âmbar (estratégia), fechadas o bastante para texto branco nos dois temas.
+   Toda ilustração termina no estado normal do elemento. A animação só parte de um estado inicial, então com movimento reduzido a figura aparece pronta. */
+.nt-e-pessoas { --nc: #b8265c; } .nt-e-processos { --nc: #2756c5; } .nt-e-estrategia { --nc: #8a6200; }
+.nt-tag { font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 3px 11px; border-radius: 999px; color: #fff; background: var(--nc); }
+.nt-data { font-size: 12.5px; opacity: .75; }
+.nt-linha { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.nt-filtros { width: 100%; }
+.nt-card { gap: 8px; padding: 12px 14px 16px; }
+.nt-card h3 { font-size: clamp(16px, 1.5vw, 19px); line-height: 1.22; display: block; } .nt-card p { font-size: 13.5px; opacity: .85; }
+.nt-card[hidden] { display: none; }
+.nt-mini { position: relative; display: block; padding: 6px 8px; border-radius: 16px; background: rgba(var(--fg-rgb), .06); border: 1px solid rgba(var(--fg-rgb), .12); overflow: hidden; }
+.nt-mini .nt-svg { max-height: 118px; }
+.nt-mini-n { position: absolute; right: 10px; top: 6px; padding: 2px 10px; border-radius: 12px; background: rgba(var(--panel-rgb), .78); }
+.nt-mini-n .nt-n { font-size: 22px; line-height: 1.25; }
+
+/* Notícia aberta */
+.nt-tit { font-size: clamp(22px, 3vw, 40px); max-width: 34ch; }
+.nt-corpo { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: start; gap: 28px; }
+.nt-viz { display: grid; gap: 10px; padding: 16px 20px 20px; border-radius: 30px; background: linear-gradient(145deg, rgba(var(--fg-rgb), .12), rgba(var(--fg-rgb), .03)); border: 1px solid rgba(var(--fg-rgb), .18); position: sticky; top: 0; }
+.nt-num .nt-n { display: block; font-size: clamp(44px, 6.2vw, 88px); line-height: 1; }
+.nt-num p { margin-top: 6px; font-size: 14.5px; opacity: .88; }
+.nt-txt { display: grid; gap: 16px; }
+.nt-blk h3 { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-bottom: 8px; }
+.nt-fatos { display: grid; gap: 9px; }
+.nt-fatos li { position: relative; padding-left: 18px; font-size: clamp(14.5px, 1.45vw, 17.5px); line-height: 1.42; }
+.nt-fatos li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--vermelho); }
+.nt-lados { display: grid; gap: 8px; }
+.nt-lados > div { display: grid; grid-template-columns: minmax(96px, 150px) 1fr; gap: 4px 14px; padding: 10px 14px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .14); }
+.nt-lados dt { font-weight: 700; font-size: 14.5px; } .nt-lados dd { margin: 0; font-size: clamp(14px, 1.4vw, 16.5px); line-height: 1.4; }
+.nt-at { padding: 12px 18px 14px; border-radius: 20px; border: 1px solid var(--cuidado-c); border-left-width: 6px; background: color-mix(in srgb, var(--cuidado-c) 12%, transparent); }
+.nt-at p { font-size: clamp(14px, 1.4vw, 16.5px); line-height: 1.42; }
+.nt-fonte a { text-decoration: underline; text-underline-offset: 3px; }
+.nt-fonte a:hover { opacity: .8; }
+
+/* Ilustrações */
+.nt-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.nt-lb { fill: rgba(var(--fg-rgb), .78); font: 600 10.5px var(--fonte); } .nt-lb-d { font-size: 9.5px; fill: var(--fg); }
+.nt-tx { fill: var(--fg); font: 700 12px var(--fonte); }
+.nt-pt { fill: var(--fg); font: 700 12px var(--fonte); }
+.nt-eixo { stroke: rgba(var(--fg-rgb), .4); stroke-width: 2; stroke-linecap: round; } .nt-eixo-c { fill: var(--fg); opacity: .85; }
+.nt-bl { fill: var(--il-acc); }
+.nt-sai { fill: rgba(var(--fg-rgb), .55); opacity: .16; }
+.nt-b0 { fill: rgba(var(--fg-rgb), .22); stroke: rgba(var(--fg-rgb), .5); stroke-width: 1.4; }
+.nt-b1 { fill: var(--il-acc); }
+.nt-b2 { fill: transparent; stroke: rgba(var(--fg-rgb), .6); stroke-width: 1.6; stroke-dasharray: 5 5; }
+.nt-poste { stroke: rgba(var(--fg-rgb), .65); stroke-width: 2.4; stroke-linecap: round; fill: none; } .nt-base { fill: rgba(var(--fg-rgb), .45); }
+.nt-pan { fill: rgba(var(--fg-rgb), .16); stroke: rgba(var(--fg-rgb), .6); stroke-width: 1.6; } .nt-pan-a { fill: var(--il-acc); stroke: var(--il-acc); } .nt-pan-a + .nt-pt { fill: #fff; }
+.nt-coin { fill: var(--il-acc); } .nt-coin-i { fill: none; stroke: rgba(255, 255, 255, .7); stroke-width: 1.4; }
+.nt-pt-d { fill: var(--fg); opacity: .88; } .nt-pt-d.nt-sai { fill: var(--il-acc); opacity: .95; }
+.nt-deg { fill: rgba(var(--fg-rgb), .12); stroke: rgba(var(--fg-rgb), .45); stroke-width: 1.4; }
+.nt-trilho { stroke: rgba(var(--fg-rgb), .6); stroke-width: 2.4; stroke-dasharray: 3 8; stroke-linecap: round; }
+.nt-ia { fill: #fff; font: 700 9px var(--fonte); } .nt-ia-g { font-size: 15px; }
+.nt-trilho-a { fill: none; stroke: rgba(var(--fg-rgb), .16); stroke-width: 16; }
+.nt-arco { fill: none; stroke: var(--il-acc); stroke-width: 16; stroke-linecap: round; stroke-dasharray: var(--cc); stroke-dashoffset: var(--off); }
+.nt-corpo-p { fill: var(--fg); opacity: .85; }
+.nt-ring { fill: none; stroke: rgba(var(--fg-rgb), .3); stroke-width: 1.4; stroke-dasharray: 3 7; }
+.nt-pn { fill: var(--fg); opacity: .8; } .nt-pn-a { fill: var(--il-acc); opacity: 1; }
+.nt-centro { fill: var(--il-acc); }
+.nt-orb { transform-origin: 160px 92px; animation: ntGira linear infinite; }
+.nt-beam { transform-origin: 160px 56px; animation: ntBal 5.5s ease-in-out infinite; }
+
+/* Só correm quando a tela está aberta */
+.slide.ativa .nt-sai:not(.nt-pt-d) { animation: ntSai .9s var(--d, 0ms) both; }
+.slide.ativa .nt-pt-d.nt-sai { animation: ntPonto .6s var(--d, 0ms) both; }
+.slide.ativa .nt-b0, .slide.ativa .nt-b1, .slide.ativa .nt-b2 { transform-box: fill-box; transform-origin: 50% 100%; animation: ntCresce .9s var(--d, 0ms) cubic-bezier(.2, .8, .2, 1) both; }
+.slide.ativa .nt-moeda { animation: ntCai .7s var(--d, 0ms) cubic-bezier(.3, 1.4, .5, 1) both; }
+.slide.ativa .nt-deg { transform-box: fill-box; transform-origin: 50% 100%; animation: ntCresce .6s var(--d, 0ms) both; }
+.slide.ativa .nt-agente { animation: ntSobe 4.6s .6s ease-in-out both; }
+.slide.ativa .nt-arco { animation: ntAnel 1.3s .2s cubic-bezier(.3, .7, .2, 1) both; }
+@keyframes ntSai { from { opacity: 1; transform: none; } }
+@keyframes ntPonto { from { fill: var(--fg); opacity: .88; } }
+@keyframes ntCresce { from { transform: scaleY(0); } }
+@keyframes ntCai { from { transform: translateY(-70px); opacity: 0; } }
+@keyframes ntSobe { 0%, 12% { transform: translate(-216px, 84px); } 28%, 40% { transform: translate(-144px, 56px); } 52%, 64% { transform: translate(-72px, 28px); } 80%, 100% { transform: translate(0, 0); } }
+@keyframes ntAnel { from { stroke-dashoffset: var(--cc); } }
+@keyframes ntGira { to { transform: rotate(360deg); } }
+@keyframes ntBal { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+
+@media (max-width: 860px) {
+  .nt-corpo { grid-template-columns: 1fr; } .nt-viz { position: static; }
+  .nt-lados > div { grid-template-columns: 1fr; }
+}
+
 /* Business Cases: cases de grupo do sábado. Reaproveita os cartões, perguntas e ilustrações dos Use Cases. */
 .bc-tag { display: inline-block; font-size: 12px; padding: 4px 12px; border-radius: 999px; font-weight: 700; letter-spacing: .03em; width: fit-content; }
 .bc-tag.real { background: var(--vermelho); color: #fff; }
@@ -948,6 +1031,45 @@ html[data-tema="claro"] .i0-carimbo u { background: #fff; }
 @media (max-height: 760px) and (min-width: 901px) { .in-curvas svg { max-height: 44vh; } .in-mat svg { max-height: 52vh; } .in-sat svg { max-height: 46vh; } .slide:has(.in-grade) .sub { font-size: 14.5px; max-width: none; } .slide:has(.in-grade) { gap: 8px; } .in-cel { min-height: 54px; } .in-sls { gap: 12px; } .in-orb { width: 120px; } .in-vd { min-height: 0; } }
 @media (max-height: 760px) and (min-width: 901px) { .in-curvas svg { max-height: 38vh; } .in-mat svg { max-height: 44vh; } .in-sat svg { max-height: 40vh; } .slide:has(.in-hz), .slide:has(.in-mz), .slide:has(.in-ob) { gap: 8px; } .in-h { padding: 6px 14px; } .in-h p { font-size: 13px; } .in-oi { padding: 5px 12px; } }
 
+/* Mercados que a IA destrava */
+.mk-gt, .mk-me, .mk-br, .mk-dv, .mk-bn, .mk-as, .mk-ct, .mk-tr, .mk-bz { flex-shrink: 0; width: 100%; }
+.slide:has([class*="mk-"]) h2 { max-width: none; }
+.mk-gt { display: grid; gap: 14px; } .mk-gt .chip, .mk-cb .chip, .mk-bp .chip { cursor: pointer; } .mk-gt .chip[aria-pressed="true"], .mk-cb .chip[aria-pressed="true"], .mk-bp .chip[aria-pressed="true"] { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+.mk-tot { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; } .mk-n { font-size: clamp(38px, 6vw, 74px); line-height: 1; font-variant-numeric: tabular-nums; } .mk-tot span { font-size: clamp(14px, 1.7vw, 20px); }
+.mk-stk { display: flex; gap: 4px; height: clamp(70px, 13vh, 110px); } .mk-stk i { flex: 1 1 0; min-width: 0; display: grid; align-content: center; justify-items: center; padding: 4px; border-radius: 12px; background: var(--c); color: #16090d; font-style: normal; overflow: hidden; transition: flex-grow .7s cubic-bezier(.2, .9, .3, 1); } .mk-stk b { font-size: clamp(11px, 1.45vw, 18px); white-space: nowrap; } .mk-stk u { text-decoration: none; font-weight: 800; font-size: clamp(14px, 2vw, 25px); }
+.mk-q { font-size: clamp(15px, 1.8vw, 22px); line-height: 1.28; font-weight: 600; }
+.mk-me { align-items: center; } .mk-cols { display: flex; align-items: flex-end; justify-content: center; gap: 22px; height: clamp(220px, 44vh, 340px); } .mk-col { flex: 1 1 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; text-align: center; } .mk-col b { font-size: clamp(14px, 1.8vw, 22px); } .mk-col span { font-size: 13.5px; opacity: .85; } .mk-col i { width: 100%; height: 0; border-radius: 12px 12px 4px 4px; background: linear-gradient(180deg, #ff6b92, var(--vermelho)); transition: height .8s cubic-bezier(.2, .9, .3, 1); } .mk-col.vis i { height: calc(var(--h) * .72); }
+.mk-cb { display: grid; gap: 12px; } .mk-cb > b { font-size: clamp(16px, 1.9vw, 23px); } .mk-cabo { display: flex; height: 54px; gap: 3px; } .mk-cabo i { flex: 1 1 0; min-width: 0; display: grid; place-items: center; font-style: normal; color: #fff; font-weight: 800; font-size: clamp(15px, 2vw, 24px); overflow: hidden; transition: flex-grow .7s cubic-bezier(.2, .9, .3, 1); } .mk-cabo .st { background: var(--vermelho); border-radius: 12px 0 0 12px; } .mk-cabo .in { background: rgba(var(--fg-rgb), .3); color: var(--fg); border-radius: 0 12px 12px 0; }
+.mk-pn { display: grid; gap: 10px; align-content: start; padding: 16px 20px; border-radius: 24px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); } .mk-ey { font-size: 13px; font-weight: 700; opacity: .85; } .mk-src { font-size: 12px; opacity: .7; }
+.mk-br { align-items: stretch; } .mk-pr { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; } .mk-pr b { display: block; font-size: clamp(17px, 2.2vw, 27px); white-space: nowrap; } .mk-pr small { font-size: 12px; opacity: .75; } .mk-pr svg { width: 100%; height: 66px; } .mk-dw { fill: none; stroke: var(--vermelho); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; } .mk-pn.vis .mk-dw { animation: ftDesenha 1.2s .2s forwards; }
+.mk-big { font-size: clamp(32px, 5vw, 62px); font-weight: 800; line-height: 1.02; color: var(--pessoa-c); }
+.mk-arr { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .mk-arr > div { padding: 10px; border-radius: 16px; background: rgba(var(--fg-rgb), .07); display: grid; gap: 3px; } .mk-arr svg { width: 44px; height: 44px; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; } .mk-arr .up svg { stroke: var(--elemento-c); animation: i0Tranco 1.4s ease-in-out infinite; } .mk-arr .down svg { stroke: var(--pessoa-c); } .mk-arr b { font-size: clamp(14.5px, 1.6vw, 19px); } .mk-arr p { font-size: clamp(12.5px, 1.3vw, 15px); } .mk-q2 { font-size: clamp(14px, 1.5vw, 18px); }
+.mk-dv { position: relative; display: grid; gap: 12px; } .mk-eix { position: absolute; top: 0; bottom: 0; left: 62%; width: 2px; background: rgba(var(--fg-rgb), .45); }
+.mk-rw { display: grid; grid-template-columns: minmax(0, 32%) minmax(0, 1fr); align-items: center; gap: 10px; min-height: 58px; position: relative; } .mk-rw > span { font-size: clamp(14px, 1.7vw, 21px); font-weight: 600; } .mk-tk { position: relative; height: 44px; } .mk-tk i { position: absolute; top: 0; bottom: 0; width: 0; transition: width .9s cubic-bezier(.2, .9, .3, 1); } .mk-rw.vis .mk-tk i, .mk-rw .mk-tk i { } .mk-rw.vis .mk-tk i { width: calc(var(--v) * .44); }
+.mk-rw.d .mk-tk i { right: 44.1%; border-radius: 10px 0 0 10px; background: var(--pessoa-c); } .mk-rw.u .mk-tk i { left: 55.9%; border-radius: 0 10px 10px 0; background: var(--elemento-c); } .mk-rw > b { position: absolute; top: 50%; transform: translateY(-50%); font-size: clamp(15px, 2vw, 25px); white-space: nowrap; } .mk-rw.d > b { left: 74%; } .mk-rw.u > b { right: 0; } .mk-sb { max-width: none; }
+.mk-dv2 .mk-eix { left: 66%; } .mk-dv2 .mk-rw { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); }
+.mk-bn { align-items: center; } .mk-mx { display: grid; gap: 6px; } .mk-gd { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; aspect-ratio: 1.4; max-height: 44vh; width: 100%; } .mk-yl, .mk-xl { font-size: 12.5px; font-weight: 700; } .mk-xl { text-align: right; }
+.mk-c { border-radius: 18px; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 13%, transparent); color: var(--fg); cursor: pointer; transition: background .3s, transform .2s; } .mk-c:hover { transform: scale(1.02); } .mk-c b { font-size: clamp(14px, 1.9vw, 24px); } .mk-c[aria-pressed="true"] { background: color-mix(in srgb, var(--c) 42%, transparent); box-shadow: 0 0 18px var(--c); } .mk-rs { display: block; margin-top: 8px; font-size: clamp(14px, 1.6vw, 19px); font-weight: 700; color: var(--fg); }
+.mk-as { align-items: center; } .mk-sim { display: grid; gap: 14px; } .mk-sim label { display: grid; gap: 7px; } .mk-sim b { font-size: clamp(15px, 1.8vw, 22px); } .mk-sim input { width: 100%; height: 26px; accent-color: var(--vermelho); } .mk-seats { display: grid; grid-template-columns: repeat(10, 1fr); gap: 7px; } .mk-seats i { aspect-ratio: 1.1; max-height: 40px; border-radius: 9px 9px 5px 5px; background: var(--motor-c); transition: background .4s, transform .4s, opacity .4s; } .mk-seats i.off { background: rgba(var(--fg-rgb), .1); transform: scale(.75); opacity: .55; }
+.mk-pv { display: grid; gap: 14px; } .mk-pv > div { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; align-items: center; } .mk-pv > div span { font-size: 13.5px; font-weight: 700; } .mk-pv > div .i0-tr { grid-column: 1; height: 18px; } .mk-pv > div b { grid-column: 2; grid-row: 1 / span 2; font-size: clamp(20px, 2.8vw, 34px); font-variant-numeric: tabular-nums; } .mk-pv .a { background: var(--pessoa-c); } .mk-pv .b { background: var(--elemento-c); }
+.mk-ct { align-items: stretch; } .mk-tw { display: grid; gap: 8px; } .mk-tb { display: flex; flex-direction: column; height: clamp(170px, 34vh, 280px); width: 100%; max-width: 360px; border-radius: 14px; overflow: hidden; border: 2px solid rgba(var(--fg-rgb), .3); } .mk-gap { flex: 40 1 0; display: grid; place-items: center; background: repeating-linear-gradient(135deg, rgba(191, 0, 55, .55) 0 10px, rgba(191, 0, 55, .22) 10px 20px); font-style: normal; text-align: center; padding: 4px; color: var(--fg); } .mk-ok { flex: 60 1 0; display: grid; place-items: center; background: rgba(var(--fg-rgb), .16); font-style: normal; text-align: center; padding: 6px; } .mk-gap b { font-size: clamp(15px, 2vw, 25px); } .mk-ok b { font-size: clamp(12.5px, 1.35vw, 16px); font-weight: 600; } .mk-tw .mk-big { font-size: clamp(26px, 3.6vw, 44px); }
+.mk-dl { display: grid; gap: 10px; align-content: start; } .mk-do { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .mk-do b { display: block; font-size: clamp(34px, 5vw, 60px); line-height: 1; } .mk-do span { font-size: 13.5px; } .mk-do div:first-child b { color: var(--elemento-c); } .mk-sp { display: flex; gap: 3px; height: 44px; } .mk-sp i { flex: var(--w) 1 0; min-width: 0; display: grid; place-items: center; overflow: hidden; border-radius: 8px; background: var(--c); color: #16090d; font-style: normal; font-weight: 800; font-size: clamp(10.5px, 1.15vw, 14px); text-align: center; line-height: 1.05; } .mk-sp i:last-child { color: var(--fg); }
+.mk-tr { align-items: stretch; } .mk-fat { display: grid; gap: 8px; } .mk-fat li { padding: 8px 12px; border-radius: 12px; background: rgba(var(--fg-rgb), .08); font-size: clamp(14px, 1.6vw, 19px); }
+.mk-dv2 .mk-rw > span { font-size: clamp(12.5px, 1.4vw, 16px); } .mk-pn.vis .mk-dv2 .mk-rw .mk-tk i { width: calc(var(--v) * .44); }
+.mk-bz { align-items: center; } .mk-wf { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; max-width: 360px; width: 100%; margin-inline: auto; } .mk-wf i { aspect-ratio: 1; border-radius: 50%; background: rgba(var(--fg-rgb), .13); transition: background .35s; transition-delay: calc(var(--k) * 8ms); } .mk-wf i.on { background: var(--vermelho); } .mk-wf i.nw { background: #ff7a9a; box-shadow: 0 0 8px #ff7a9a; }
+.mk-bp { display: grid; gap: 10px; } .mk-pct { font-size: clamp(60px, 10vw, 120px); line-height: 1; font-variant-numeric: tabular-nums; color: var(--pessoa-c); }
+@media (max-width: 900px) { .mk-me, .mk-br, .mk-bn, .mk-as, .mk-ct, .mk-tr, .mk-bz { grid-template-columns: 1fr; } .mk-cols { height: 220px; } .mk-rw { grid-template-columns: 1fr; min-height: 0; } .mk-eix { display: none; } .mk-rw > b { position: static; transform: none; } .mk-tk { height: 26px; } .mk-rw.d .mk-tk i { right: auto; left: 0; border-radius: 8px; } .mk-rw.u .mk-tk i { left: 0; border-radius: 8px; } .mk-rw.vis .mk-tk i, .mk-pn.vis .mk-dv2 .mk-rw .mk-tk i { width: var(--v); } }
+@media (max-height: 760px) and (min-width: 901px) { .slide:has([class*="mk-"]) { gap: 9px; } .mk-cols { height: 36vh; } .mk-gd { max-height: 38vh; } .mk-pn { padding: 10px 16px; gap: 6px; } .mk-tb { height: 28vh; } .mk-big { font-size: 34px; } .mk-pr svg { height: 46px; } .mk-arr svg { width: 32px; height: 32px; } .mk-wf { max-width: 280px; gap: 4px; } }
+/* Barras divergentes: rótulo, trilha com eixo central e valor em colunas próprias */
+.mk-rw, .mk-dv2 .mk-rw { grid-template-columns: minmax(0, 30%) minmax(0, 1fr) minmax(96px, 150px); }
+.mk-tk::before { content: ""; position: absolute; left: 50%; top: -6px; bottom: -6px; width: 2px; background: rgba(var(--fg-rgb), .5); }
+.mk-rw.vis .mk-tk i, .mk-pn.vis .mk-dv2 .mk-rw .mk-tk i { width: calc(var(--v) * .5); }
+.mk-rw.d .mk-tk i { right: 50%; left: auto; } .mk-rw.u .mk-tk i { left: 50%; right: auto; }
+.mk-rw > b, .mk-rw.d > b, .mk-rw.u > b { position: static; transform: none; text-align: right; font-size: clamp(14px, 1.8vw, 23px); white-space: normal; line-height: 1.1; }
+.mk-dv2 .mk-rw { grid-template-columns: minmax(0, 36%) minmax(0, 1fr) 60px; }
+@media (max-width: 900px) { .mk-rw, .mk-dv2 .mk-rw { grid-template-columns: 1fr auto; } .mk-rw > span { grid-column: 1 / -1; } .mk-tk { grid-column: 1; height: 26px; } }
+.mk-fimg { max-width: none; grid-template-columns: repeat(3, minmax(0, 1fr)); flex-shrink: 0; } .mk-fimg .i0-fi { padding: 12px 16px; font-size: clamp(14.5px, 1.7vw, 21px); } @media (max-width: 900px) { .mk-fimg { grid-template-columns: 1fr; } }
+
 /* Use Case: Accenture Technology Vision 2025 */
 .acc-h { display: grid; gap: 6px; width: 100%; }
 .acc-h h2 { font-size: clamp(24px, 3.3vw, 44px); max-width: 46ch; }
@@ -1104,7 +1226,7 @@ html[data-tema="claro"] .ft-brinca, html[data-tema="claro"] .ft-ctrl, html[data-
     <p class="rot-sec">Mapa de temas</p>
     <h1>IA aplicada à Estratégia e Competitividade</h1>
     <p class="lead">Os temas se abrem conforme a gente avança. Os que ainda vão ser construídos aparecem trancados.</p>
-    <div class="atalhos"><button type="button" class="atalho glass" data-top="eu"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span><b>Quem sou eu</b><span class="d">Apresentação</span></span></button><button type="button" class="atalho glass" data-top="juntos"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span><b>Bora montar juntos</b><span class="d">Quadro de ideias da turma</span></span></button><button type="button" class="atalho glass" data-top="cases"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span><b>Banco de cases</b><span class="d">Use Cases e Business Cases</span></span></button><button type="button" class="atalho glass" data-top="dinamicas"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M3 20c0-3.6 2.7-5.8 6-5.8s6 2.2 6 5.8M15.5 14.6c3 0 5.5 1.7 5.5 5"/></svg></span><span><b>Dinâmicas</b><span class="d">Atividades em grupo</span></span></button><button type="button" class="atalho glass" data-top="videos"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></span><span><b>Vídeos</b><span class="d">Trechos para discutir</span></span></button></div>
+    <div class="atalhos"><button type="button" class="atalho glass" data-top="eu"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span><b>Quem sou eu</b><span class="d">Apresentação</span></span></button><button type="button" class="atalho glass" data-top="juntos"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span><b>Bora montar juntos</b><span class="d">Quadro de ideias da turma</span></span></button><button type="button" class="atalho glass" data-top="cases"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span><b>Banco de cases</b><span class="d">Use Cases e Business Cases</span></span></button><button type="button" class="atalho glass" data-top="dinamicas"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M3 20c0-3.6 2.7-5.8 6-5.8s6 2.2 6 5.8M15.5 14.6c3 0 5.5 1.7 5.5 5"/></svg></span><span><b>Dinâmicas</b><span class="d">Atividades em grupo</span></span></button><button type="button" class="atalho glass" data-top="videos"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></span><span><b>Vídeos</b><span class="d">Trechos para discutir</span></span></button><button type="button" class="atalho glass" data-top="noticias"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11v16H7a2 2 0 01-2-2z"/><path d="M16 8h3v10a2 2 0 01-2 2"/><path d="M8 8h5M8 12h5M8 16h3"/></svg></span><span><b>Notícias</b><span class="d">Mercado e IA, recentes</span></span></button></div>
     <p class="rot-sec rot-mapa">Temas</p>
     <div class="aulas" id="aulas" style="margin-top:12px"></div>
   </div>
@@ -1833,8 +1955,7 @@ var A2 = (function () {
     { id: 'ferramenta', nome: 'A ferramenta certa para o momento certo', curto: 'Ferramenta certa', d: 'Quando usar IA, machine learning, RPA, julgamento humano e desenho do processo.', lib: true },
     { id: 'artefatos', nome: 'Artefatos de estratégia', curto: 'Artefatos', d: 'Nove artefatos e onde a IA entra em cada um.', lib: true },
     { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.', lib: true },
-    { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Horizonte 2 na prática, com o Oceano Azul e a curva de valor.',
-      previa: { itens: ['Horizonte 2 da inovação na prática', 'Estratégia do Oceano Azul', 'Curva de valor'], insp: 'Kim e Mauborgne, Blue Ocean Strategy (2005).' } },
+    { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Para onde vai o dinheiro, quem ganha, quem perde e o que muda no preço, com base em 10 fontes.', lib: true },
     { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'Que parte a empresa faz sozinha e que parte faz com outros.', previa: { itens: [], insp: '' } },
     { id: 'aberta', nome: 'Inovação aberta e a era das startups AI native', curto: 'Startups AI native', d: 'Quando comprar, aliar ou construir.', previa: { itens: [], insp: '' } },
     { id: 'gtm', nome: 'Como a IA impacta o go-to-market comercial', curto: 'Go-to-market com IA', d: 'Ofertas, canal, pitch de vendas, modelo de negócio e quanto o mercado está disposto a pagar.',
@@ -1859,7 +1980,7 @@ var A2 = (function () {
   try { var sv = JSON.parse(localStorage.getItem('temas-liberados') || '{}'); Object.keys(sv).forEach(function (k) { if (k in LIB && sv[k]) LIB[k] = true; }); } catch (x) { }
   function salvaLib() { try { localStorage.setItem('temas-liberados', JSON.stringify(LIB)); } catch (x) { } }
   function aberto(top) { return !ISMOD[top] || !!LIB[top]; }
-  var TOP = [{ id: 'eu', nome: 'Quem sou eu' }].concat(MODS.map(function (m) { return { id: m.id, nome: m.curto }; })).concat([{ id: 'cases', nome: 'Banco de cases' }, { id: 'dinamicas', nome: 'Dinâmicas' }, { id: 'videos', nome: 'Vídeos' }, { id: 'juntos', nome: 'Bora montar juntos' }]);
+  var TOP = [{ id: 'eu', nome: 'Quem sou eu' }].concat(MODS.map(function (m) { return { id: m.id, nome: m.curto }; })).concat([{ id: 'cases', nome: 'Banco de cases' }, { id: 'dinamicas', nome: 'Dinâmicas' }, { id: 'videos', nome: 'Vídeos' }, { id: 'noticias', nome: 'Notícias' }, { id: 'juntos', nome: 'Bora montar juntos' }]);
 
   var COR = { motor: '#8db3ff', elemento: '#6fe0a5', pessoa: '#ff7a9a', cuidado: '#ffcf70' };
   var cadeado = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2.6" fill="#fff"/><path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>';
@@ -2682,6 +2803,53 @@ var A2 = (function () {
   /* 8. Fechamento */
   var IN_FIM = ['Sei separar os três horizontes', 'Sei posicionar uma aposta na matriz de ambição', 'Sei que cada horizonte pede a sua métrica', 'Sei onde a IA muda o jogo, e onde só iguala'];
   add('inovacao', { builds: 4, html: '<p class="rot-sec">Inovação corporativa</p><h2>Agora vocês já sabem</h2><div class="i0-fim2">' + IN_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div>' });
+
+  /* ---------- Quais mercados a IA está destravando. Telas baseadas nas 10 fontes em Aulas/Pesquisa_mercados_IA/03_as_10_fontes.md. A tela fala com o aluno. ---------- */
+  function mkTween(el, to, fmt) { if (N.reduz) { el.textContent = fmt(to); return; } var from = el._v || 0, t0 = null; el._v = to; cancelAnimationFrame(el._r); function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 650), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(from + (to - from) * e); if (p < 1) el._r = requestAnimationFrame(f); } el._r = requestAnimationFrame(f); clearTimeout(el._t); el._t = setTimeout(function () { cancelAnimationFrame(el._r); el.textContent = fmt(to); }, 900); }
+  var MK_COR = ['var(--t-genai)', 'var(--motor-c)', 'var(--elemento-c)', 'var(--t-ml)'];
+
+  /* 1. Para onde vai o dinheiro */
+  var MK_G = { 2025: [981.9, 434.0, 288.2, 82.5, 1786.7], 2026: [1484.4, 576.5, 461.6, 148.0, 2670.5], 2027: [1977.7, 745.7, 656.4, 257.5, 3637.3] }, MK_GN = ['Infraestrutura', 'Serviços', 'Software', 'Outros'];
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Primeiro, o dinheiro vira data center</h2><div class="mk-gt"><div class="i0-tar">' + [2025, 2026, 2027].map(function (y) { return '<button type="button" class="chip" data-y="' + y + '" aria-pressed="' + (y === 2026) + '">' + y + '</button>'; }).join('') + '</div><div class="mk-tot"><b class="mk-n"></b><span>de gasto mundial em IA</span></div><div class="mk-stk">' + MK_GN.map(function (n, i) { return '<i style="--c:' + MK_COR[i] + '"><b>' + n + '</b><u></u></i>'; }).join('') + '</div><p class="mk-q">Infraestrutura fica com mais da metade. Os agentes e assistentes, de que tanto se fala, somam US$ 29 bilhões em 2026.</p></div><p class="fonte">Gartner, setembro de 2026. 2026 e 2027 são previsões. “Outros” reúne as demais categorias da tabela.</p>',
+    on: function (el) { var n = el.querySelector('.mk-n'), bs = el.querySelectorAll('.mk-stk i'); function p(y) { var d = MK_G[y]; mkTween(n, d[4], function (v) { return 'US$ ' + (v / 1000).toFixed(2).replace('.', ',') + ' tri'; }); [].forEach.call(bs, function (b, i) { b.style.flexGrow = d[i]; b.querySelector('u').textContent = Math.round(d[i] / d[4] * 100) + '%'; }); [].forEach.call(el.querySelectorAll('[data-y]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.y === y)); }); } [].forEach.call(el.querySelectorAll('[data-y]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.y); }); }); p(2026); } });
+
+  /* 2. Um mercado que nasceu em três anos, e quem ganha */
+  var MK_ST = [['Todas as aplicações', 63], ['Produto e engenharia', 71], ['Vendas', 78], ['Finanças e operações', 91]];
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Um mercado novo, e os novatos na frente</h2><div class="dois mk-me"><div class="mk-cols">' + [['2023', 1.7, 1], ['2024', 11.5, 2], ['2025', 37, 3]].map(function (c) { return '<div class="mk-col" data-b="' + c[2] + '" style="--h:' + Math.max(4, c[1] / 37 * 100) + '%"><b>US$ ' + String(c[1]).replace('.', ',') + ' bi</b><i></i><span>' + c[0] + '</span></div>'; }).join('') + '</div>' +
+    '<div class="mk-cb"><b>Em aplicações de IA, quem fica com a receita?</b><div class="i0-tar">' + MK_ST.map(function (s, i) { return '<button type="button" class="chip" data-s="' + i + '" aria-pressed="' + (i === 0) + '">' + s[0] + '</button>'; }).join('') + '</div><div class="mk-cabo"><i class="st"><span></span></i><i class="in"><span></span></i></div><div class="i0-leg"><span><i style="background:var(--vermelho)"></i>Startups</span><span><i style="background:rgba(var(--fg-rgb),.4)"></i>Empresas já estabelecidas</span></div><p class="mk-q">Mais da metade do gasto de 2025 foi para aplicações (US$ 19 bi). Distribuição e base de clientes não bastaram para os grandes.</p></div></div><p class="fonte">Menlo Ventures, 2025: gasto de empresas em IA generativa. O fundo investe em empresas de IA, então vale ler com cuidado.</p>',
+    on: function (el) { function p(i) { var v = MK_ST[i][1], a = el.querySelector('.st'), b = el.querySelector('.in'); a.style.flexGrow = v; b.style.flexGrow = 100 - v; a.querySelector('span').textContent = v + '%'; b.querySelector('span').textContent = (100 - v) + '%'; [].forEach.call(el.querySelectorAll('[data-s]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.s === i)); }); } [].forEach.call(el.querySelectorAll('[data-s]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.s); }); }); p(0); } });
+
+  /* 3. A barreira caiu: custo e novas empresas */
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Ficou mais barato entrar no jogo</h2><div class="dois mk-br"><div class="mk-pn" data-b="1"><span class="mk-ey">Custo por milhão de tokens, mesmo desempenho</span><div class="mk-pr"><div><b class="mk-b1">US$ 20,00</b><small>nov/2022</small></div><svg viewBox="0 0 120 60" aria-hidden="true"><path class="mk-dw" pathLength="1" d="M6,8 C40,10 60,50 112,52"/></svg><div><b class="mk-b2">US$ 0,07</b><small>out/2024</small></div></div><p class="mk-big">280 vezes menor</p><small class="mk-src">Stanford AI Index 2025</small></div>' +
+    '<div class="mk-pn" data-b="2"><span class="mk-ey">Depois do ChatGPT, em regiões da China com mais talento em IA</span><div class="mk-arr"><div class="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg><b>Pequenas empresas</b><p>Mais aberturas, com menos capital, sócios e fundadores</p></div><div class="down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg><b>Grandes empresas</b><p>Menos aberturas</p></div></div><p class="mk-q2">A IA generativa funcionando como cofundador: efeito mais forte entre quem empreende pela primeira vez. Equivale a 6% das aberturas do país.</p><small class="mk-src">Cai et al., 2025: dados da China, sem revisão por pares</small></div></div>' });
+
+  /* 4. Uns encolhem, outros nascem */
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Uns encolhem, outros nascem</h2><div class="mk-dv">' + [['Escrita e tradução', -35, '−20% a −50%', 'd'], ['Programação de machine learning', 24, '+24%', 'u'], ['Criação de chatbots com IA', 92, 'quase o triplo', 'u']].map(function (r, i) { return '<div class="mk-rw ' + r[3] + '" data-b="' + (i + 1) + '" style="--v:' + Math.abs(r[1]) + '%"><span>' + r[0] + '</span><div class="mk-tk"><i></i></div><b>' + r[2] + '</b></div>'; }).join('') + '</div><p class="sub mk-sb">O que a IA substitui perde demanda. O que ela complementa ganha, e mais para especialistas: a procura por novatos caiu.</p><p class="fonte">Teutloff et al., Journal of Economic Behavior & Organization, 2025: anúncios em uma grande plataforma de freelancers, comparados à tendência esperada. Barras fora de escala.</p>' });
+
+  /* 5. Matriz da Bain */
+  var MK_B = [['Fortaleza', 'A IA melhora o software', 'Depende de julgamento humano, e o rival não copia a lógica.', 'Proteger o dado próprio e cobrar pelo tempo economizado.', 0, 1], ['Mina de ouro', 'A IA brilha mais que o software', 'Dá para automatizar tudo, e a empresa tem dado e regras exclusivos.', 'Agentes de ponta a ponta, com preço por resultado.', 0, 0], ['Porta aberta', 'O gasto encolhe', 'Pessoas ainda atuam, mas agentes de terceiros entram e levam valor.', 'Lançar agentes próprios e aumentar o custo de troca.', 1, 1], ['Campo de batalha', 'A IA canibaliza o software', 'Fácil de automatizar, e fácil de copiar.', 'Trocar o próprio software por IA antes que outro troque.', 1, 0]];
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O software tem quatro destinos</h2><div class="dois mk-bn"><div class="mk-mx"><span class="mk-yl">A IA substitui a pessoa ↑</span><div class="mk-gd">' + [1, 3, 0, 2].map(function (i) { return '<button type="button" class="mk-c" data-c="' + i + '" aria-pressed="' + (i === 1) + '" style="--c:' + ['var(--elemento-c)', 'var(--cuidado-c)', 'var(--motor-c)', 'var(--pessoa-c)'][i] + '"><b>' + MK_B[i][0] + '</b></button>'; }).join('') + '</div><span class="mk-xl">Terceiros entram com facilidade →</span></div><div class="i0-res"><span class="in-zn"></span><b></b><p></p><small class="mk-rs"></small></div></div><p class="fonte">Bain & Company, Technology Report 2025. Nomes em português são adaptação da tradução.</p>',
+    on: function (el) { var r = el.querySelector('.i0-res'); function p(i) { var c = MK_B[i]; r.querySelector('.in-zn').textContent = c[1]; r.querySelector('b').textContent = c[0]; r.querySelector('p').textContent = c[2]; r.querySelector('.mk-rs').textContent = 'O que fazer: ' + c[3]; r.classList.remove('entra'); void r.offsetWidth; r.classList.add('entra'); [].forEach.call(el.querySelectorAll('[data-c]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.c === i)); }); } [].forEach.call(el.querySelectorAll('[data-c]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.c); }); }); p(1); } });
+
+  /* 6. Do assento ao resultado: simulador ilustrativo */
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Se o agente trabalha, quem paga o assento?</h2><div class="dois mk-as"><div class="mk-sim"><label><b>Trabalho feito por agentes: <output class="mk-o"></output></b><input type="range" min="0" max="80" step="10" value="0" aria-label="Porcentagem do trabalho feito por agentes"></label><div class="mk-seats"></div></div><div class="mk-pv"><div><span>Receita cobrando por assento</span><i class="i0-tr"><i class="a"></i></i><b class="ra"></b></div><div><span>Receita cobrando pelo resultado</span><i class="i0-tr"><i class="b"></i></i><b class="rb"></b></div><p class="mk-q">Assento supõe que valor cresce com gente. Por isso, a Deloitte espera modelos híbridos de uso e resultado, com muita experimentação.</p></div></div><p class="fonte">Simulação ilustrativa, com 40 assentos e o mesmo trabalho entregue. Deloitte, TMT Predictions 2026, prevê mudança em ritmo moderado, sem acontecer toda em 2026, e cita o Gartner: 35% das ferramentas pontuais de SaaS substituídas ou absorvidas por agentes até 2030.</p>',
+    on: function (el) { var r = el.querySelector('input'), s = el.querySelector('.mk-seats'), h = ''; for (var i = 0; i < 40; i++) h += '<i></i>'; s.innerHTML = h; function p() { var v = +r.value; el.querySelector('.mk-o').textContent = v + '%'; var off = Math.round(40 * v / 100); [].forEach.call(s.children, function (c, k) { c.classList.toggle('off', k >= 40 - off); }); el.querySelector('.a').style.width = (100 - v) + '%'; el.querySelector('.ra').textContent = (100 - v) + '%'; el.querySelector('.b').style.width = '100%'; el.querySelector('.rb').textContent = '100%'; } r.addEventListener('input', p); p(); } });
+
+  /* 7. A conta */
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>A conta ainda não fecha</h2><div class="dois mk-ct"><div class="mk-tw" data-b="1"><span class="mk-ey">Receita anual necessária em 2030 para pagar os data centers</span><div class="mk-tb"><i class="mk-gap"><b>Faltam US$ 800 bi</b></i><i class="mk-ok"><b>Orçamentos de TI migrados e economias com IA</b></i></div><p class="mk-big">US$ 2 trilhões</p><small class="mk-src">Bain, Technology Report 2025</small></div>' +
+    '<div class="mk-dl"><div class="mk-pn" data-b="2"><span class="mk-ey">Crescer a receita com IA</span><div class="mk-do"><div><b>20%</b><span>já conseguem</span></div><div><b>74%</b><span>esperam conseguir</span></div></div></div><div class="mk-pn" data-b="3"><span class="mk-ey">Até onde a IA chega no negócio</span><div class="mk-sp"><i style="--w:34;--c:var(--elemento-c)">34% transformam</i><i style="--w:30;--c:var(--motor-c)">30% redesenham</i><i style="--w:37;--c:rgba(var(--fg-rgb),.3)">37% superfície</i></div><small class="mk-src">Deloitte, State of AI in the Enterprise 2026</small></div></div></div>' });
+
+  /* 8. Trabalho */
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O trabalho sente primeiro na porta de entrada</h2><div class="dois mk-tr"><div class="mk-pn" data-b="1"><span class="mk-ey">Emprego de 22 a 25 anos, nov/2022 a jun/2026, nos EUA</span><div class="mk-dv mk-dv2"><div class="mk-rw d vis" style="--v:44%"><span>Ocupações mais expostas à IA</span><div class="mk-tk"><i></i></div><b>−11%</b></div><div class="mk-rw u vis" style="--v:40%"><span>Ocupações menos expostas</span><div class="mk-tk"><i></i></div><b>+10%</b></div></div></div><div class="mk-pn" data-b="2"><span class="mk-ey">O que os dados mostram</span><ul class="mk-fat"><li>Sem sinal de corte geral de empregos na economia.</li><li>Quem tem experiência não mostra a mesma diferença.</li><li>O efeito vem de menos contratação de jovens, mais do que de demissão.</li><li>Onde a IA complementa, o emprego fica estável ou sobe.</li></ul></div></div><p class="fonte">Brynjolfsson, Chandar e Chen, Canaries in the Coal Mine, agosto de 2026, com dados de folha de pagamento ADP. Estudo descritivo, sem prova de causa. Barras fora de escala.</p>' });
+
+  /* 9. Brasil */
+  var MK_BR = { 'Todas': [13, 17], 'Pequenas': [10, 15], 'Grandes': [38, 50] };
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>E no Brasil?</h2><div class="dois mk-bz"><div class="mk-wf" aria-hidden="true"></div><div class="mk-bp"><div class="i0-tar">' + Object.keys(MK_BR).map(function (k, i) { return '<button type="button" class="chip" data-k="' + k + '" aria-pressed="' + (i === 0) + '">' + k + '</button>'; }).join('') + '</div><b class="mk-pct"></b><p class="mk-q">das empresas usam aplicações de IA em 2025. Em 2024 eram <b class="mk-pa"></b>.</p></div></div><p class="fonte">Cetic.br, TIC Empresas 2025. Cada ponto representa 1 de cada 100 empresas.</p>',
+    on: function (el) { var w = el.querySelector('.mk-wf'), h = ''; for (var i = 0; i < 100; i++) h += '<i style="--k:' + i + '"></i>'; w.innerHTML = h; var pc = el.querySelector('.mk-pct'); function p(k) { var d = MK_BR[k]; mkTween(pc, d[1], function (v) { return Math.round(v) + '%'; }); el.querySelector('.mk-pa').textContent = d[0] + '%'; [].forEach.call(w.children, function (c, i) { c.className = i < d[0] ? 'on' : i < d[1] ? 'nw' : ''; }); [].forEach.call(el.querySelectorAll('[data-k]'), function (x) { x.setAttribute('aria-pressed', String(x.dataset.k === k)); }); } [].forEach.call(el.querySelectorAll('[data-k]'), function (b) { b.addEventListener('click', function () { p(b.dataset.k); }); }); p('Todas'); } });
+
+  /* 10. Fechamento */
+  var MK_FIM = ['A infraestrutura recebe mais da metade do dinheiro', 'Nas aplicações, os novatos estão ganhando', 'Entrar ficou mais barato', 'O que a IA substitui perde demanda', 'O preço migra do assento para o resultado', 'A receita prometida ainda não chegou para a maioria'];
+  add('crescimento', { builds: 6, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O mapa até aqui</h2><div class="i0-fim2 mk-fimg">' + MK_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div><p class="fonte">Fontes: Gartner (2026), Menlo Ventures (2025), Stanford AI Index (2025), Cai et al. (2025), Teutloff et al. (2025), Bain (2025), Deloitte (2025 e 2026), Brynjolfsson et al. (2026), Cetic.br (2025).</p>' });
 
   /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
   MODS.forEach(function (m) {
@@ -3600,6 +3768,292 @@ var UCIL = (function () {
         }).observe(el, { attributes: true, attributeFilter: ['class'] });
         if (!carrega().link) { ger.hidden = false; gerB.setAttribute('aria-expanded', 'true'); }
       } });
+  })();
+
+  /* Notícias recentes: dez notícias de mercado sobre como a IA vem mudando empresas, pessoas e processos.
+     Pesquisa de 06/11/2026. Cada notícia foi lida na reportagem indicada em "fontes". Os números são os divulgados por cada fonte.
+     O texto de cada notícia só leva o que está na reportagem. As notas do professor ficam em Aulas/Noticias_recentes/Noticias_banco.md.
+     Para incluir uma notícia, basta acrescentar um item em NOTICIAS (da mais nova para a mais antiga). */
+  (function () {
+    var EIXOS = {
+      pessoas: 'Pessoas e empregos',
+      processos: 'Processos e clientes',
+      estrategia: 'Estratégia, custo e governança'
+    };
+    var NOTICIAS = [
+      { id: 'nubank', eixo: 'pessoas', quando: '6 nov 2026', empresa: 'Nubank',
+        titulo: 'Nubank desliga parte da equipe antifraude depois que a IA reduziu a fila de golpes',
+        curto: 'Segundo a Folha, pouco mais de 30 pessoas saíram. Ex-funcionários falam em cerca de 100.',
+        num: { valor: 80, pre: '-', suf: '%' }, rotulo: 'foi a queda na fila de reclamações de golpes em cerca de seis meses de uso de IA, segundo a Folha citada pelo Finsiders',
+        viz: { t: 'fila' },
+        fatos: [
+          'Na terça-feira, 3 de novembro, o Nubank desligou pessoas da equipe que investigava fraudes. A maior parte delas cuidava de contas laranjas, que são contas usadas para receber o dinheiro de golpes.',
+          'O C-level, site de negócios da Folha de S.Paulo, contou pouco mais de 30 desligados. Ex-funcionários disseram ao Finsiders que o total chega a cerca de 100 se somados os que foram remanejados antes. O Nubank diz que esse número não procede e não informa o total.',
+          'Há cerca de seis meses o banco usa IA para analisar fraudes, e a fila de reclamações de golpes encolheu 80%, segundo a reportagem da Folha citada pelo Finsiders.'],
+        lados: [
+          ['Nubank', 'Em nota, diz que a área passou por uma reestruturação que levou ao desligamento de alguns profissionais. Pagou salários extras proporcionais ao tempo de casa, estendeu o plano de saúde por um período e diz que segue contratando no ritmo de sempre.'],
+          ['Quem saiu', 'Ex-funcionários, sem se identificar, contam que a liderança disse que a IA já faz 72% do serviço de fraude (um deles soube disso por colegas). Dizem também que, desde o início do ano, havia forte incentivo ao uso de IA e que a empresa negava que haveria cortes por isso.'],
+          ['CEO', 'Na teleconferência do 2º trimestre, David Vélez disse que a IA aumenta a produtividade das equipes e que não prevê um aumento grande no número de funcionários.']],
+        atencao: 'O Nubank fala em reestruturação e, nas notas citadas, não liga os desligamentos à IA. O 72% vem do relato de um ex-funcionário. O 80% é atribuído à Folha pelo Finsiders e a funcionários pela TV Sim Brasil. A reportagem original da Folha não foi lida.',
+        fontes: [['Finsiders Brasil, 06/11/2026', 'https://finsidersbrasil.com.br/noticias-sobre-fintechs/nubank-demite-equipe-que-cacava-golpistas-e-coloca-a-ia-no-lugar/'],
+          ['TV Sim Brasil, 06/11/2026', 'https://tvsimbrasil.com.br/brasil/tecnologia/noticia/2026/11/06/nubank-demite-equipe-antifraude-ia-reduz-fila']] },
+
+      { id: 'apple', eixo: 'estrategia', quando: '4 nov 2026', empresa: 'Apple',
+        titulo: 'Apple reduz o limite diário de gasto com IA de alguns engenheiros',
+        curto: 'O teto cairia de US$ 300 para US$ 200 em alguns casos. Microsoft, Tesla, Uber e Meta têm controles parecidos.',
+        num: { valor: 200, pre: 'US$ ' }, rotulo: 'por dia é o novo limite de uso de IA em alguns casos, contra US$ 300 antes',
+        viz: { t: 'custo' },
+        fatos: [
+          'Segundo uma reportagem de Mark Gurman, da Bloomberg, relatada pelo MacMagazine, a Apple reduziu de forma discreta o orçamento diário de IA de alguns engenheiros.',
+          'O limite passou de US$ 300 para US$ 200 em alguns casos, pode cair para US$ 100 em certas equipes e chegou a ser considerado em US$ 25. Quem precisar de mais pode pedir exceção.',
+          'Algumas divisões contrataram consultores externos, o que aumentou a ansiedade dos funcionários com possíveis reestruturações.'],
+        lados: [
+          ['Outras empresas', 'A matéria cita Microsoft, Tesla (teto semanal de US$ 200), Uber (US$ 1.500 por mês em ferramentas de programação) e Meta como empresas com controles parecidos.']],
+        atencao: 'É um relato de imprensa, e o título da matéria usa o verbo no condicional (“estaria”). A reportagem original da Bloomberg não foi aberta. O caso não fala de demissões. Fala do custo de usar IA todos os dias.',
+        fontes: [['MacMagazine, 04/11/2026', 'https://macmagazine.com.br/post/2026/11/04/apple-estaria-cortando-verbas-de-funcionarios-para-uso-de-ia/']] },
+
+      { id: 'sword', eixo: 'pessoas', quando: '4 nov 2026', empresa: 'Sword Health',
+        titulo: 'Sword Health: ex-funcionários dizem que mais de 50 pessoas saíram com a justificativa de troca por IA',
+        curto: 'A empresa responde que passou de 1.200 para 1.600 pessoas em 12 meses e que está contratando.',
+        num: { valor: 50, suf: '+' }, rotulo: 'saídas em dois meses, segundo fontes anônimas ouvidas pelo DN/Dinheiro Vivo',
+        viz: { t: 'balanca' },
+        fatos: [
+          'A Sword Health, empresa portuguesa de saúde digital, fez rescisões por mútuo acordo com dezenas de trabalhadores em setembro e outubro de 2026, segundo o jornal DN/Dinheiro Vivo.',
+          'A justificativa dada aos trabalhadores teria sido a substituição do posto de trabalho por IA. Fontes internas, sem se identificar, falam em mais de 50 pessoas nesses dois meses.',
+          'Há também relato de contratos de um ano de trainees que não foram renovados. A Headspace, comprada pela Sword em setembro, também está em reestruturação, segundo uma publicação americana citada pelo jornal.'],
+        lados: [
+          ['Sword', 'Respondeu que o número de colaboradores subiu de 1.200 para 1.600 nos últimos 12 meses no mundo e que está contratando ativamente.'],
+          ['Ex-funcionários', 'Dizem ter sido pegos de surpresa e criticam a reestruturação. Os relatos são anônimos e vêm de fontes internas e de redes sociais.']],
+        atencao: 'A reportagem não confirma os números e não cita documento público. A empresa não negou de forma explícita a justificativa de troca por IA, só respondeu com dados de crescimento. Vale tratar como um caso de duas versões.',
+        fontes: [['DN/Dinheiro Vivo, 04/11/2026', 'https://dinheirovivo.dn.pt/empresas/sword-dispensa-mais-de-50-pessoas-para-substituir-trabalho-por-ia']] },
+
+      { id: 'itau', eixo: 'estrategia', quando: '27 out 2026', empresa: 'Itaú',
+        titulo: 'Itaú vai comprar a NeoSpace, startup de IA, por R$ 2,925 bilhões',
+        curto: 'A meta é criar modelos de IA próprios. A compra ainda precisa da aprovação do Cade e do Banco Central.',
+        num: { valor: 2.925, dec: 3, pre: 'R$ ', suf: ' bi' }, rotulo: 'pelo total das ações da NeoSpace, pagos em dinheiro, uma parte no fechamento e o resto em até cinco anos',
+        viz: { t: 'moedas' },
+        fatos: [
+          'O Itaú Unibanco assinou contrato para comprar todas as ações da NeoSpace, fundada em 2023, que desenvolve grandes modelos de IA treinados com dados (os chamados modelos fundacionais).',
+          'O pagamento é todo em dinheiro: uma parte no fechamento e o restante diluído em cinco anos, sujeito a condições. A conclusão depende do Cade e do Banco Central.',
+          'Segundo o banco, a NeoSpace presta serviços a ele há quase dois anos, treinando modelos de IA generativa para soluções de negócios e de clientes.'],
+        lados: [
+          ['Estrutura', 'A NeoSpace mantém gestão e estrutura autônomas, e o fundador, Bruno Pierobon, continua como CEO. Em 2019 o banco já havia comprado a Zup, outra empresa dele.'],
+          ['Bloomberg Línea', 'Lembra que o Itaú liderou uma rodada de US$ 18 milhões na startup no início de 2025 e informa que o banco vê os modelos como forma de personalizar o atendimento.']],
+        atencao: 'Os dados vêm da AI4Brazil, que cita a Reuters, a Bloomberg Línea e o fato relevante do Itaú. Esses originais não foram abertos. A reportagem não detalha quanto será pago à vista.',
+        fontes: [['AI4Brazil, 27/10/2026', 'https://ai4brazil.com/noticias/itau-fecha-compra-da-startup-de-ia-neospace-por-r-2-925-bilhoes/']] },
+
+      { id: 'barclays', eixo: 'pessoas', quando: '22 out 2026', empresa: 'Barclays',
+        titulo: 'Barclays vai cortar cerca de 5.000 vagas e diz que a IA deixa as pessoas mais produtivas',
+        curto: 'O CEO diz que nem todos os cortes vêm da IA. O sindicato diz que o banco usa a IA como desculpa.',
+        num: { valor: 5000 }, rotulo: 'vagas, cerca de 5% do quadro do banco britânico, que espera cortar ao longo deste ano',
+        viz: { t: 'gente', pct: 5, cap: 'cada ponto = 1% do quadro, vermelho = vagas cortadas' },
+        fatos: [
+          'Em 22 de outubro, ao divulgar os resultados do 3º trimestre, o banco britânico disse que espera cortar cerca de 5.000 vagas, perto de 5% da força de trabalho. Cerca de 1.000 já foram fechadas.',
+          'Cerca de 60% dos cortes atingem funções de apoio, incluindo desenvolvedores de software. A economia prevista passa de £ 1,1 bilhão em 2027.',
+          'O lucro antes de impostos do trimestre subiu 12%, para £ 2,3 bilhões.'],
+        lados: [
+          ['Diretora financeira', 'Anna Cross disse que haverá menos desenvolvedores porque a IA deixa as pessoas mais produtivas.'],
+          ['CEO', 'C.S. Venkatakrishnan afirmou que a IA tem um papel importante, mas que nem todos os cortes se devem a ela.'],
+          ['Sindicato Unite', 'A secretária-geral, Sharon Graham, disse que o banco usa a IA como desculpa para descartar trabalhadores leais.']],
+        atencao: 'Os cortes fazem parte de um programa de redução de custos de três anos e ainda estão sujeitos a consulta aos trabalhadores. Analistas ouvidos pela BBC têm uma leitura mais cautelosa sobre o peso real da IA nessa decisão.',
+        fontes: [['HR Director Australia, 23/10/2026', 'https://www.hcamag.com/au/news/general/barclays-cuts-5000-jobs-as-it-leans-on-ai-to-lower-costs/594608'],
+          ['The Star, reprodução do The New York Times, 23/10/2026', 'https://www.thestar.com.my/tech/tech-news/2026/10/23/barclays-to-cut-5000-jobs-in-ai-driven-push-to-lower-costs']] },
+
+      { id: 'bb', eixo: 'estrategia', quando: '19 out 2026', empresa: 'Banco do Brasil',
+        titulo: 'Banco do Brasil dá autonomia aos agentes de IA em etapas, com supervisão humana',
+        curto: 'O primeiro agente autônomo divulgado pelo banco teve eficiência de cerca de 90%, segundo a executiva.',
+        num: { valor: 90, suf: '%' }, rotulo: 'de eficiência do primeiro agente autônomo divulgado pelo banco, no 1º semestre de 2026, segundo a executiva',
+        viz: { t: 'escada' },
+        fatos: [
+          'Giuliane Paulista, executiva de IA e Dados do banco, disse em mesa do TI Inside Innovation Forum 2026 que o BB libera autonomia aos agentes de IA (programas que executam tarefas por conta própria) em etapas, com supervisão humana e governança desde a concepção.',
+          'Para ela, ampliar a capacidade de decisão do agente deve acompanhar os resultados de testes, a segurança das interações e a confiabilidade da arquitetura.',
+          'Com mais de 80 milhões de clientes, qualquer implantação do banco chega rápido a grande escala.'],
+        lados: [
+          ['Governança', 'Segundo a executiva, uma solução que não nasce com governança embutida não pode ir para o cliente. Sobre responsabilidade, ela disse: “A IA não tem CPF”.'],
+          ['Custo', 'Ela citou o aumento do consumo de tokens (a unidade de uso cobrada pelos modelos de IA) em soluções de atendimento e a movimentação de bancos americanos que avaliam arranjos híbridos.']],
+        atencao: 'Os 90% de eficiência e a afirmação de que o BB foi o primeiro banco do mundo a publicar diretrizes de IA ética para sistemas de agentes são falas da executiva, sem verificação independente. A reportagem não traz prazos.',
+        fontes: [['TI Inside, 19/10/2026', 'https://tiinside.com.br/19/10/2026/o-banco-do-brasil-adota-autonomia-gradual-para-os-agentes-de-ia-e-reforca-a-governanca/']] },
+
+      { id: 'kroger', eixo: 'pessoas', quando: '12 out 2026', empresa: 'Kroger',
+        titulo: 'Kroger planeja cortar 3.000 cargos corporativos enquanto amplia o uso de IA',
+        curto: 'O corte atingiria cerca de 37% dos funcionários corporativos da rede de supermercados, em três anos.',
+        num: { valor: 3000 }, rotulo: 'cargos corporativos em três anos, cerca de 37% dos 8.200 funcionários dessa área',
+        viz: { t: 'gente', pct: 37, cap: 'cada ponto = 1% dos corporativos, vermelho = cortes' },
+        fatos: [
+          'Segundo a Reuters, que cita um memorando do CEO Greg Foran, a rede americana de supermercados vai eliminar cerca de 3.000 cargos corporativos nos próximos três anos.',
+          'Isso equivale a cerca de 37% dos aproximadamente 8.200 funcionários corporativos. Em 22 de setembro, a empresa havia anunciado mais uso de modelos de IA próprios e de terceiros para otimizar fluxos de trabalho.',
+          'A Kroger oferece treinamento e ferramentas de IA a mais de 400.000 funcionários.'],
+        lados: [
+          ['Greg Foran', 'Segundo a Reuters, disse que a empresa precisa eliminar trabalho duplicado e se adaptar à tecnologia, e que o corte libera dinheiro para baixar preços e investir nos funcionários das lojas.'],
+          ['Yael Cosset', 'A diretora digital afirmou que os investimentos em IA permitem conectar sinais do negócio e da operação para decidir e agir mais rápido.']],
+        atencao: 'É um relato da Reuters sobre um memorando, e a Kroger não respondeu ao pedido de comentário da Fox Business. Detalhes devem sair nos próximos meses. A IA não aparece como única causa: a rede também enfrenta desaceleração das vendas e pressão por preços menores.',
+        fontes: [['Fox Business, 13/10/2026, com base na Reuters de 12/10', 'https://www.foxbusiness.com/retail/kroger-cut-3000-corporate-jobs-ai-expansion']] },
+
+      { id: 'manpower', eixo: 'pessoas', quando: '29 set 2026', empresa: 'ManpowerGroup',
+        titulo: 'Brasil tem a 2ª maior intenção de contratação do mundo, puxada por vagas de início de carreira',
+        curto: 'Em outros países, a IA vem reduzindo vagas de entrada. Aqui, as empresas dizem que vão procurar jovens.',
+        num: { valor: 65, suf: '%' }, rotulo: 'dos empregadores brasileiros dizem acelerar a busca por talentos em início de carreira, 20 pontos acima da média global',
+        viz: { t: 'anel', pct: 65 },
+        fatos: [
+          'A pesquisa Employment Outlook do 4º trimestre de 2026, da ManpowerGroup, ouviu empregadores em 42 países. No Brasil, 62% planejam ampliar o quadro entre outubro e dezembro.',
+          'A expectativa líquida de contratação (quem planeja contratar menos quem planeja demitir) é de 53%, a segunda maior do mundo, atrás da Índia (54%). A média global é 29%.',
+          'Entre os brasileiros, 65% dizem acelerar a busca por talentos em início de carreira. Os setores que mais buscam são manufatura (69%), finanças e seguros (67%) e informação (67%).'],
+        lados: [
+          ['ManpowerGroup', 'Nilson Pereira, responsável pela empresa no Brasil, diz que formar profissionais dentro de casa e reduzir a disputa por perfis prontos são vantagens competitivas.'],
+          ['Outros dados no texto', 'Na Suíça, os anúncios de vagas de nível inicial caíram 32% em 2025 sobre a média de 2019 a 2022. Nos EUA, empresas que adotaram IA generativa contrataram 7,7% menos em nível inicial após seis trimestres, segundo estudo de Harvard citado pela Forbes.']],
+        atencao: 'A pesquisa mede intenção, ou seja, o que as empresas dizem que vão fazer, e não contratações realizadas. A ligação com a IA vem do contexto da reportagem, não da pesquisa. O texto não traz a amostra nem o link do relatório.',
+        fontes: [['Forbes Brasil, 29/09/2026', 'https://forbes.com.br/carreira/2026/09/brasil-tem-2a-maior-intencao-de-contratacao-do-mundo-puxada-por-vagas-junior/']] },
+
+      { id: 'adecco', eixo: 'processos', quando: '15 set 2026', empresa: 'Adecco',
+        titulo: 'Adecco leva um colega de IA da Salesforce a 27.000 funcionários em mais de 40 países',
+        curto: 'O assistente roda sobre o Claude, da Anthropic, e a empresa tem contrato sem limite de uso até 2027.',
+        num: { valor: 27000 }, rotulo: 'funcionários com acesso ao assistente Agentforce Coworker, em mais de 40 países',
+        viz: { t: 'orbita' },
+        fatos: [
+          'Em 15 de setembro, o Adecco Group, empresa de recrutamento, anunciou a implantação do Agentforce Coworker, da Salesforce, depois de um piloto no Reino Unido e na França.',
+          'A ferramenta funciona dentro da plataforma Salesforce, usa o Claude, da Anthropic, e dá a vendedores e recrutadores acesso único a dados e sistemas. Recrutadores podem acionar agentes de pré-triagem, de recrutamento e de integração dos contratados.',
+          'Ela usará o contexto de mais de 2,5 milhões de interações entre agentes e candidatos desde abril de 2025. O contrato com a Salesforce, de março, vale até 2027 e dá acesso global ilimitado ao Agentforce 360.'],
+        lados: [
+          ['Denis Machuel, CEO', 'Disse que o piloto mostrou forte adesão em poucos dias.'],
+          ['No Dreamforce 2026', 'Segundo a CX Today, citada pela AI News, o CEO afirmou que os recrutadores economizaram de 35% a 40% do tempo, que a empresa colocou 20.000 pessoas a mais este ano e que a IA precisa acontecer com as pessoas.']],
+        atencao: 'Os números de produtividade e de colocação são da própria empresa, sem verificação independente, e a CX Today avisa isso. O comunicado não define prazo para concluir a implantação nos 40 países.',
+        fontes: [['AI News, 17/09/2026', 'https://www.artificialintelligence-news.com/news/agentforce-coworker-adecco-group-rollout/']] },
+
+      { id: 'bradesco', eixo: 'processos', quando: '10 ago 2026', empresa: 'Bradesco',
+        titulo: 'BIA, assistente do Bradesco, foi de 500 mil a 3,5 milhões de usuários por mês com a IA generativa',
+        curto: 'Os números são do próprio banco: as interações mensais passaram de 1,3 milhão para 10 milhões.',
+        num: { valor: 7, suf: ' vezes' }, rotulo: 'mais usuários ativos por mês em 12 meses, de cerca de 500 mil para cerca de 3,5 milhões, segundo o banco',
+        viz: { t: 'crescer' },
+        fatos: [
+          'Em entrevista ao Mobile Time, Daniel Pretti, superintendente de IA e plataformas digitais do Bradesco, disse que a BIA, assistente do banco, passou de cerca de 500 mil para cerca de 3,5 milhões de usuários ativos por mês em 12 meses.',
+          'As interações mensais foram de 1,3 milhão para 10 milhões, e a retenção (clientes que continuam usando) foi de 75% para 90%. Ele atribui o salto à IA generativa, a IA que conversa e escreve em linguagem natural.',
+          'O banco usa agentes de IA para monitorar essas conversas e libera apps de IA para cerca de 80 mil funcionários.'],
+        lados: [
+          ['“Agente com gente”', 'Rafael Cavalcanti, diretor de dados e CRM do Bradesco, explica que o humano muda de posição no processo, com foco em avaliação, perguntas e decisão, e diz que a IA não reduz necessariamente a relevância das pessoas.'],
+          ['Custo', 'Pretti diz que o banco está fazendo as contas da cobrança do WhatsApp por mensagem respondida, mas que a prioridade é a experiência do cliente.']],
+        atencao: 'Os números são informados pelo próprio banco e não foram verificados de forma independente. É a notícia mais antiga da lista, de agosto de 2026.',
+        fontes: [['Mobile Time, 10/08/2026', 'https://www.mobiletime.com.br/noticias/10/08/2026/bia-ia-generativa/'],
+          ['TI Inside, 25/08/2026', 'https://tiinside.com.br/25/08/2026/bradesco-aposta-em-agente-com-gente-para-ampliar-uso-de-ia/']] }
+    ];
+
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+    /* Ilustração animada de cada notícia. A forma final é o estado normal; a animação só entra a partir do estado inicial. */
+    function viz(n) {
+      var v = n.viz, h = '', i, c;
+      if (v.t === 'fila') {
+        h += '<text class="nt-lb" x="14" y="22">fila de reclamações de golpes</text>';
+        for (i = 0; i < 10; i++) h += '<rect class="nt-bl' + (i < 2 ? '' : ' nt-sai') + '" style="--d:' + (i * 120) + 'ms" x="' + (14 + i * 30) + '" y="40" width="24" height="84" rx="7"/>';
+        h += '<text class="nt-lb" x="14" y="148">cada bloco vale 10% da fila de antes</text><text class="nt-tx" x="14" y="172">sobraram 2 de 10 blocos</text>';
+      } else if (v.t === 'custo') {
+        h += '<line class="nt-eixo" x1="20" y1="150" x2="300" y2="150"/>';
+        [[40, 108, 'US$ 300', 'antes', 'nt-b0', 0], [130, 72, 'US$ 200', 'agora', 'nt-b1', 1], [220, 36, 'US$ 100', 'em certas equipes', 'nt-b2', 2]].forEach(function (b) {
+          h += '<rect class="' + b[4] + '" style="--d:' + (b[5] * 350) + 'ms" x="' + b[0] + '" y="' + (150 - b[1]) + '" width="60" height="' + b[1] + '" rx="8"/>' +
+            '<text class="nt-tx" x="' + (b[0] + 30) + '" y="' + (150 - b[1] - 8) + '" text-anchor="middle">' + b[2] + '</text><text class="nt-lb" x="' + (b[0] + 30) + '" y="168" text-anchor="middle">' + b[3] + '</text>';
+        });
+      } else if (v.t === 'balanca') {
+        h += '<rect class="nt-base" x="140" y="150" width="40" height="8" rx="4"/><line class="nt-poste" x1="160" y1="56" x2="160" y2="150"/>' +
+          '<g class="nt-beam"><line class="nt-poste" x1="46" y1="56" x2="274" y2="56"/>' +
+          '<path class="nt-poste" d="M46,56 L22,112 M46,56 L70,112 M274,56 L250,112 M274,56 L298,112"/>' +
+          '<rect class="nt-pan nt-pan-a" x="16" y="112" width="60" height="24" rx="9"/><text class="nt-pt" x="46" y="129" text-anchor="middle">50+</text>' +
+          '<rect class="nt-pan" x="244" y="112" width="60" height="24" rx="9"/><text class="nt-pt" x="274" y="129" text-anchor="middle">1.600</text></g>' +
+          '<circle class="nt-eixo-c" cx="160" cy="56" r="7"/>' +
+          '<text class="nt-lb" x="46" y="170" text-anchor="middle">saídas, fontes anônimas</text><text class="nt-lb" x="274" y="170" text-anchor="middle">pessoas, segundo a empresa</text>';
+      } else if (v.t === 'moedas') {
+        h += '<text class="nt-lb" x="30" y="26">compra de 100% das ações</text><text class="nt-lb" x="30" y="44">pago em dinheiro: parte agora, o resto em 5 anos</text><line class="nt-eixo" x1="30" y1="130" x2="290" y2="130"/>';
+        for (i = 0; i < 6; i++) {
+          var r = i === 0 ? 17 : 10;
+          h += '<line class="nt-eixo" x1="' + (30 + i * 52) + '" y1="124" x2="' + (30 + i * 52) + '" y2="136"/>' +
+            '<g class="nt-moeda" style="--d:' + (i * 280) + 'ms"><circle class="nt-coin" cx="' + (30 + i * 52) + '" cy="' + (124 - r - 4) + '" r="' + r + '"/><circle class="nt-coin-i" cx="' + (30 + i * 52) + '" cy="' + (124 - r - 4) + '" r="' + (r - 4) + '"/></g>' +
+            '<text class="nt-lb" x="' + (30 + i * 52) + '" y="154" text-anchor="middle">' + (i === 0 ? 'fechamento' : 'ano ' + i) + '</text>';
+        }
+      } else if (v.t === 'gente') {
+        var corte = 100 - v.pct;
+        for (i = 0; i < 100; i++) {
+          var f = i >= corte;
+          h += '<circle class="nt-pt-d' + (f ? ' nt-sai' : '') + '" style="--d:' + (400 + (i - corte) * 32) + 'ms" cx="' + (38 + (i % 10) * 27) + '" cy="' + (14 + Math.floor(i / 10) * 15.4) + '" r="5.4"/>';
+        }
+        h += '<text class="nt-lb" x="160" y="178" text-anchor="middle">' + esc(v.cap) + '</text>';
+      } else if (v.t === 'escada') {
+        var nomes = ['testes', 'segurança', 'confiabilidade', 'autonomia'];
+        for (i = 0; i < 4; i++) {
+          var al = 34 + i * 28, x0 = 20 + i * 72;
+          h += '<rect class="nt-deg" style="--d:' + (i * 200) + 'ms" x="' + x0 + '" y="' + (160 - al) + '" width="72" height="' + al + '" rx="6"/><text class="nt-lb nt-lb-d" x="' + (x0 + 36) + '" y="' + (160 - al + 17) + '" text-anchor="middle">' + nomes[i] + '</text>';
+        }
+        h += '<line class="nt-trilho" x1="20" y1="113" x2="308" y2="1"/><text class="nt-lb" x="20" y="62">supervisão humana</text>' +
+          '<g class="nt-agente"><circle class="nt-coin" cx="272" cy="32" r="10"/><text class="nt-ia" x="272" y="36" text-anchor="middle">IA</text></g>';
+      } else if (v.t === 'anel') {
+        var circ = 2 * Math.PI * 62;
+        h += '<circle class="nt-trilho-a" cx="160" cy="95" r="62"/><circle class="nt-arco" cx="160" cy="95" r="62" style="--cc:' + circ.toFixed(2) + ';--off:' + (circ * (1 - v.pct / 100)).toFixed(2) + '" transform="rotate(-90 160 95)"/>' +
+          '<circle class="nt-eixo-c" cx="160" cy="86" r="9"/><path class="nt-corpo-p" d="M142,116 C142,100 178,100 178,116 Z"/>' +
+          '<text class="nt-lb" x="160" y="184" text-anchor="middle">empregadores que aceleram a busca por quem está começando</text>';
+      } else if (v.t === 'orbita') {
+        [[40, 3, 12, 1], [60, 5, 18, -1], [80, 7, 26, 1]].forEach(function (o, k) {
+          h += '<circle class="nt-ring" cx="160" cy="92" r="' + o[0] + '"/><g class="nt-orb" style="animation-duration:' + o[2] + 's;animation-direction:' + (o[3] > 0 ? 'normal' : 'reverse') + '">';
+          for (i = 0; i < o[1]; i++) { var a = i * 2 * Math.PI / o[1] + k; h += '<circle class="nt-pn' + (i % 3 === 0 ? ' nt-pn-a' : '') + '" cx="' + (160 + o[0] * Math.cos(a)).toFixed(1) + '" cy="' + (92 + o[0] * Math.sin(a)).toFixed(1) + '" r="5"/>'; }
+          h += '</g>';
+        });
+        h += '<circle class="nt-centro" cx="160" cy="92" r="24"/><text class="nt-ia nt-ia-g" x="160" y="98" text-anchor="middle">IA</text><text class="nt-lb" x="160" y="188" text-anchor="middle">em mais de 40 países</text>';
+      } else if (v.t === 'crescer') {
+        h += '<line class="nt-eixo" x1="14" y1="150" x2="306" y2="150"/>';
+        [[28, 16, '500 mil', 0, 0], [72, 112, '3,5 mi', 1, 400], [178, 14, '1,3 mi', 0, 200], [222, 108, '10 mi', 1, 600]].forEach(function (b) {
+          h += '<rect class="' + (b[3] ? 'nt-b1' : 'nt-b0') + '" style="--d:' + b[4] + 'ms" x="' + b[0] + '" y="' + (150 - b[1]) + '" width="38" height="' + b[1] + '" rx="7"/><text class="nt-tx" x="' + (b[0] + 19) + '" y="' + (150 - b[1] - 7) + '" text-anchor="middle">' + b[2] + '</text>';
+        });
+        h += '<text class="nt-lb" x="65" y="168" text-anchor="middle">usuários por mês</text><text class="nt-lb" x="215" y="168" text-anchor="middle">interações por mês</text>';
+      }
+      return '<svg class="nt-svg" viewBox="0 0 320 190" aria-hidden="true">' + h + '</svg>';
+    }
+
+    var N = Nucleo;
+    function numero(n) { return N.numero(n.num, 'nt-n'); }
+    function tag(n) { return '<span class="nt-tag nt-e-' + n.eixo + '">' + EIXOS[n.eixo] + '</span>'; }
+    function conta(el) { [].forEach.call(el.querySelectorAll('.num'), function (x) { N.contar(x); }); }
+    /* Ao entrar na tela: os números recomeçam a contar. As animações recomeçam sozinhas pela classe "ativa". */
+    function aoAtivar(el, f) {
+      var on = false;
+      new MutationObserver(function () { var a = el.classList.contains('ativa'); if (a === on) return; on = a; if (a) f(); }).observe(el, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    var ordem = ['pessoas', 'processos', 'estrategia'], iLista = -1, idx = {};
+    iLista = add('noticias', {
+      html: '<p class="rot-sec">Notícias · Pesquisa de 06/11/2026</p><h2>Notícias recentes sobre IA no mercado</h2>' +
+        '<p class="sub">Dez notícias de empresas que estão mudando pessoas, processos e estratégia por causa da IA. Cada uma traz os fatos, o que cada lado diz e o que merece cuidado.</p>' +
+        '<div class="uc-filtros nt-filtros" role="group" aria-label="Filtrar por assunto"><button type="button" class="chip" data-ntf="" aria-pressed="true">Todas (' + NOTICIAS.length + ')</button>' +
+        ordem.map(function (e) { var k = NOTICIAS.filter(function (n) { return n.eixo === e; }).length; return k ? '<button type="button" class="chip" data-ntf="' + e + '" aria-pressed="false">' + EIXOS[e] + ' (' + k + ')</button>' : ''; }).join('') + '</div>' +
+        '<div class="tres uc-grade nt-grade">' + NOTICIAS.map(function (n, i) {
+          return '<button type="button" class="cartao uc nt-card" style="--i:' + i + '" data-nt="' + n.id + '" data-eixo="' + n.eixo + '">' +
+            '<span class="nt-mini">' + viz(n) + '<span class="nt-mini-n">' + numero(n) + '</span></span>' +
+            '<span class="nt-linha">' + tag(n) + '<span class="nt-data">' + n.quando + '</span></span>' +
+            '<h3>' + esc(n.titulo) + '</h3><p>' + esc(n.curto) + '</p></button>';
+        }).join('') + '</div>',
+      on: function (el) {
+        var fs = el.querySelectorAll('[data-ntf]');
+        [].forEach.call(fs, function (f) { f.addEventListener('click', function () {
+          var v = f.dataset.ntf, k = 0;
+          [].forEach.call(fs, function (x) { x.setAttribute('aria-pressed', String(x === f)); });
+          [].forEach.call(el.querySelectorAll('.nt-card'), function (c) { var h = !!v && c.dataset.eixo !== v; c.hidden = h; if (!h) { c.style.setProperty('--i', k++); c.classList.remove('re'); void c.offsetWidth; c.classList.add('re'); } });
+        }); });
+        [].forEach.call(el.querySelectorAll('.nt-card'), function (c) { c.addEventListener('click', function () { ir(idx[c.dataset.nt], 0); }); });
+        aoAtivar(el, function () { conta(el); });
+      } });
+
+    NOTICIAS.forEach(function (n) {
+      idx[n.id] = add('noticias', {
+        builds: 3,
+        html: '<p class="rot-sec">Notícias · ' + EIXOS[n.eixo] + ' · ' + n.quando + '</p><h2 class="nt-tit">' + esc(n.titulo) + '</h2>' +
+          '<div class="dois nt-corpo"><div class="nt-viz">' + viz(n) + '<div class="nt-num">' + numero(n) + '<p>' + esc(n.rotulo) + '</p></div></div>' +
+          '<div class="nt-txt">' +
+            '<section class="nt-blk" data-b="1"><h3>O que aconteceu</h3><ul class="nt-fatos">' + n.fatos.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></section>' +
+            '<section class="nt-blk" data-b="2"><h3>O que cada lado diz</h3><dl class="nt-lados">' + n.lados.map(function (l) { return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
+            '<section class="nt-blk nt-at" data-b="3"><h3>Atenção</h3><p>' + esc(n.atencao) + '</p></section>' +
+          '</div></div>' +
+          '<p class="fonte nt-fonte">Fontes: ' + n.fontes.map(function (f) { return '<a href="' + f[1] + '" target="_blank" rel="noopener noreferrer">' + esc(f[0]) + '</a>'; }).join(' · ') + '</p>' +
+          '<div class="vd-barra"><button type="button" class="botao-peq" data-ntvolta="1">Voltar às notícias</button></div>',
+        on: function (el) {
+          el.querySelector('[data-ntvolta]').addEventListener('click', function () { ir(iLista, 0); });
+          aoAtivar(el, function () { conta(el); });
+        } });
+    });
   })();
 
 
