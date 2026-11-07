@@ -1070,6 +1070,24 @@ html[data-tema="claro"] .i0-carimbo u { background: #fff; }
 @media (max-width: 900px) { .mk-rw, .mk-dv2 .mk-rw { grid-template-columns: 1fr auto; } .mk-rw > span { grid-column: 1 / -1; } .mk-tk { grid-column: 1; height: 26px; } }
 .mk-fimg { max-width: none; grid-template-columns: repeat(3, minmax(0, 1fr)); flex-shrink: 0; } .mk-fimg .i0-fi { padding: 12px 16px; font-size: clamp(14.5px, 1.7vw, 21px); } @media (max-width: 900px) { .mk-fimg { grid-template-columns: 1fr; } }
 
+/* Oceano Azul e curva de valor */
+.oa-mar, .oa-cv, .oa-ed { flex-shrink: 0; width: 100%; }
+.slide:has([class*="oa-"]) h2 { max-width: none; }
+.oa-p { display: grid; gap: 6px; } .oa-p svg { width: 100%; max-height: 38vh; border-radius: 18px; display: block; } .oa-p b { font-size: clamp(19px, 2.4vw, 30px); } .oa-p p { font-size: clamp(14.5px, 1.7vw, 20px); line-height: 1.3; }
+.oa-v svg { background: rgba(191, 0, 55, .12); } .oa-a svg { background: rgba(50, 130, 230, .1); } .oa-v .oa-onda { fill: rgba(191, 0, 55, .4); } .oa-a .oa-onda { fill: rgba(50, 130, 230, .4); }
+.oa-pv { fill: #fff; stroke: var(--vermelho); stroke-width: 2.5; animation: oaTreme .7s ease-in-out infinite alternate; } @keyframes oaTreme { to { transform: translate(5px, -4px); } } .oa-pa { fill: #fff; stroke: #2478e0; stroke-width: 3; }
+.oa-cv { display: grid; gap: 8px; } .oa-cv svg { width: 100%; max-height: 54vh; display: block; overflow: visible; } .oa-bd.e { fill: color-mix(in srgb, var(--pessoa-c) 26%, transparent); } .oa-bd.c { fill: color-mix(in srgb, var(--elemento-c) 26%, transparent); } .oa-bt { fill: var(--fg); font: 700 13.5px var(--fonte); } .oa-ft { fill: var(--fg); font: 600 12px var(--fonte); }
+.oa-l { fill: none; stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.3s ease-out; } .oa-l.on { stroke-dashoffset: 0; } .oa-l.t { stroke: rgba(var(--fg-rgb), .55); } .oa-l.k { stroke: var(--vermelho); stroke-width: 5.5; }
+.oa-cv .i0-leg { align-items: center; }
+.oa-ed { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 18px; align-items: center; } .oa-gr svg { width: 100%; max-height: 38vh; display: block; cursor: pointer; overflow: visible; } .oa-col { fill: rgba(var(--fg-rgb), .06); transition: fill .2s; } .oa-col:hover { fill: rgba(var(--fg-rgb), .14); } .oa-b { fill: none; stroke: rgba(var(--fg-rgb), .45); stroke-width: 3; stroke-dasharray: 6 6; pointer-events: none; } .oa-n { fill: none; stroke: var(--vermelho); stroke-width: 4.5; stroke-linejoin: round; pointer-events: none; } .oa-d { fill: var(--vermelho); stroke: #fff; stroke-width: 2.5; pointer-events: none; }
+.oa-tg { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; text-align: center; margin-top: 6px; } .oa-tg div { display: grid; gap: 4px; justify-items: center; align-content: start; } .oa-tg span { font-size: clamp(11.5px, 1.25vw, 15px); line-height: 1.12; min-height: 2.3em; } .oa-t { padding: 3px 9px; border-radius: 999px; font-size: clamp(11px, 1.2vw, 14px); background: rgba(var(--fg-rgb), .14); animation: i0Pula .3s; } .oa-t.e { background: var(--pessoa-c); color: #16090d; } .oa-t.r { background: var(--cuidado-c); color: #16090d; } .oa-t.l { background: var(--motor-c); color: #16090d; } .oa-t.c { background: var(--elemento-c); color: #16090d; }
+.oa-ac { display: grid; gap: 9px; } .oa-s { max-width: none; }
+@media (max-width: 900px) { .oa-mar { grid-template-columns: 1fr; } .oa-ed { grid-template-columns: 1fr; } .oa-ft { font-size: 16px; } .oa-tg span { font-size: 10.5px; } .oa-t { font-size: 10px; padding: 2px 5px; } }
+@media (max-height: 760px) and (min-width: 901px) { .oa-p svg { max-height: 32vh; } .oa-cv svg { max-height: 46vh; } .oa-gr svg { max-height: 30vh; } .slide:has([class*="oa-"]) { gap: 8px; } }
+/* A largura acompanha a altura, para as etiquetas ficarem embaixo de cada coluna */
+.oa-gr { width: min(100%, 114vh); margin-inline: auto; } .oa-gr svg { max-height: none; height: auto; }
+@media (max-height: 760px) and (min-width: 901px) { .oa-gr { width: min(100%, 90vh); } }
+
 /* Use Case: Accenture Technology Vision 2025 */
 .acc-h { display: grid; gap: 6px; width: 100%; }
 .acc-h h2 { font-size: clamp(24px, 3.3vw, 44px); max-width: 46ch; }
@@ -1955,7 +1973,7 @@ var A2 = (function () {
     { id: 'ferramenta', nome: 'A ferramenta certa para o momento certo', curto: 'Ferramenta certa', d: 'Quando usar IA, machine learning, RPA, julgamento humano e desenho do processo.', lib: true },
     { id: 'artefatos', nome: 'Artefatos de estratégia', curto: 'Artefatos', d: 'Nove artefatos e onde a IA entra em cada um.', lib: true },
     { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.', lib: true },
-    { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Para onde vai o dinheiro, quem ganha, quem perde e o que muda no preço, com base em 10 fontes.', lib: true },
+    { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Para onde vai o dinheiro, quem ganha, quem perde, o que muda no preço, Oceano Azul e curva de valor.', lib: true },
     { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'Que parte a empresa faz sozinha e que parte faz com outros.', previa: { itens: [], insp: '' } },
     { id: 'aberta', nome: 'Inovação aberta e a era das startups AI native', curto: 'Startups AI native', d: 'Quando comprar, aliar ou construir.', previa: { itens: [], insp: '' } },
     { id: 'gtm', nome: 'Como a IA impacta o go-to-market comercial', curto: 'Go-to-market com IA', d: 'Ofertas, canal, pitch de vendas, modelo de negócio e quanto o mercado está disposto a pagar.',
@@ -2804,63 +2822,6 @@ var A2 = (function () {
   var IN_FIM = ['Sei separar os três horizontes', 'Sei posicionar uma aposta na matriz de ambição', 'Sei que cada horizonte pede a sua métrica', 'Sei onde a IA muda o jogo, e onde só iguala'];
   add('inovacao', { builds: 4, html: '<p class="rot-sec">Inovação corporativa</p><h2>Agora vocês já sabem</h2><div class="i0-fim2">' + IN_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div>' });
 
-  /* ---------- Quais mercados a IA está destravando. Telas baseadas nas 10 fontes em Aulas/Pesquisa_mercados_IA/03_as_10_fontes.md. A tela fala com o aluno. ---------- */
-  function mkTween(el, to, fmt) { if (N.reduz) { el.textContent = fmt(to); return; } var from = el._v || 0, t0 = null; el._v = to; cancelAnimationFrame(el._r); function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 650), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(from + (to - from) * e); if (p < 1) el._r = requestAnimationFrame(f); } el._r = requestAnimationFrame(f); clearTimeout(el._t); el._t = setTimeout(function () { cancelAnimationFrame(el._r); el.textContent = fmt(to); }, 900); }
-  var MK_COR = ['var(--t-genai)', 'var(--motor-c)', 'var(--elemento-c)', 'var(--t-ml)'];
-
-  /* 1. Para onde vai o dinheiro */
-  var MK_G = { 2025: [981.9, 434.0, 288.2, 82.5, 1786.7], 2026: [1484.4, 576.5, 461.6, 148.0, 2670.5], 2027: [1977.7, 745.7, 656.4, 257.5, 3637.3] }, MK_GN = ['Infraestrutura', 'Serviços', 'Software', 'Outros'];
-  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Primeiro, o dinheiro vira data center</h2><div class="mk-gt"><div class="i0-tar">' + [2025, 2026, 2027].map(function (y) { return '<button type="button" class="chip" data-y="' + y + '" aria-pressed="' + (y === 2026) + '">' + y + '</button>'; }).join('') + '</div><div class="mk-tot"><b class="mk-n"></b><span>de gasto mundial em IA</span></div><div class="mk-stk">' + MK_GN.map(function (n, i) { return '<i style="--c:' + MK_COR[i] + '"><b>' + n + '</b><u></u></i>'; }).join('') + '</div><p class="mk-q">Infraestrutura fica com mais da metade. Os agentes e assistentes, de que tanto se fala, somam US$ 29 bilhões em 2026.</p></div><p class="fonte">Gartner, setembro de 2026. 2026 e 2027 são previsões. “Outros” reúne as demais categorias da tabela.</p>',
-    on: function (el) { var n = el.querySelector('.mk-n'), bs = el.querySelectorAll('.mk-stk i'); function p(y) { var d = MK_G[y]; mkTween(n, d[4], function (v) { return 'US$ ' + (v / 1000).toFixed(2).replace('.', ',') + ' tri'; }); [].forEach.call(bs, function (b, i) { b.style.flexGrow = d[i]; b.querySelector('u').textContent = Math.round(d[i] / d[4] * 100) + '%'; }); [].forEach.call(el.querySelectorAll('[data-y]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.y === y)); }); } [].forEach.call(el.querySelectorAll('[data-y]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.y); }); }); p(2026); } });
-
-  /* 2. Um mercado que nasceu em três anos, e quem ganha */
-  var MK_ST = [['Todas as aplicações', 63], ['Produto e engenharia', 71], ['Vendas', 78], ['Finanças e operações', 91]];
-  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Um mercado novo, e os novatos na frente</h2><div class="dois mk-me"><div class="mk-cols">' + [['2023', 1.7, 1], ['2024', 11.5, 2], ['2025', 37, 3]].map(function (c) { return '<div class="mk-col" data-b="' + c[2] + '" style="--h:' + Math.max(4, c[1] / 37 * 100) + '%"><b>US$ ' + String(c[1]).replace('.', ',') + ' bi</b><i></i><span>' + c[0] + '</span></div>'; }).join('') + '</div>' +
-    '<div class="mk-cb"><b>Em aplicações de IA, quem fica com a receita?</b><div class="i0-tar">' + MK_ST.map(function (s, i) { return '<button type="button" class="chip" data-s="' + i + '" aria-pressed="' + (i === 0) + '">' + s[0] + '</button>'; }).join('') + '</div><div class="mk-cabo"><i class="st"><span></span></i><i class="in"><span></span></i></div><div class="i0-leg"><span><i style="background:var(--vermelho)"></i>Startups</span><span><i style="background:rgba(var(--fg-rgb),.4)"></i>Empresas já estabelecidas</span></div><p class="mk-q">Mais da metade do gasto de 2025 foi para aplicações (US$ 19 bi). Distribuição e base de clientes não bastaram para os grandes.</p></div></div><p class="fonte">Menlo Ventures, 2025: gasto de empresas em IA generativa. O fundo investe em empresas de IA, então vale ler com cuidado.</p>',
-    on: function (el) { function p(i) { var v = MK_ST[i][1], a = el.querySelector('.st'), b = el.querySelector('.in'); a.style.flexGrow = v; b.style.flexGrow = 100 - v; a.querySelector('span').textContent = v + '%'; b.querySelector('span').textContent = (100 - v) + '%'; [].forEach.call(el.querySelectorAll('[data-s]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.s === i)); }); } [].forEach.call(el.querySelectorAll('[data-s]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.s); }); }); p(0); } });
-
-  /* 3. A barreira caiu: custo e novas empresas */
-  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Ficou mais barato entrar no jogo</h2><div class="dois mk-br"><div class="mk-pn" data-b="1"><span class="mk-ey">Custo por milhão de tokens, mesmo desempenho</span><div class="mk-pr"><div><b class="mk-b1">US$ 20,00</b><small>nov/2022</small></div><svg viewBox="0 0 120 60" aria-hidden="true"><path class="mk-dw" pathLength="1" d="M6,8 C40,10 60,50 112,52"/></svg><div><b class="mk-b2">US$ 0,07</b><small>out/2024</small></div></div><p class="mk-big">280 vezes menor</p><small class="mk-src">Stanford AI Index 2025</small></div>' +
-    '<div class="mk-pn" data-b="2"><span class="mk-ey">Depois do ChatGPT, em regiões da China com mais talento em IA</span><div class="mk-arr"><div class="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg><b>Pequenas empresas</b><p>Mais aberturas, com menos capital, sócios e fundadores</p></div><div class="down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg><b>Grandes empresas</b><p>Menos aberturas</p></div></div><p class="mk-q2">A IA generativa funcionando como cofundador: efeito mais forte entre quem empreende pela primeira vez. Equivale a 6% das aberturas do país.</p><small class="mk-src">Cai et al., 2025: dados da China, sem revisão por pares</small></div></div>' });
-
-  /* 4. Uns encolhem, outros nascem */
-  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Uns encolhem, outros nascem</h2><div class="mk-dv">' + [['Escrita e tradução', -35, '−20% a −50%', 'd'], ['Programação de machine learning', 24, '+24%', 'u'], ['Criação de chatbots com IA', 92, 'quase o triplo', 'u']].map(function (r, i) { return '<div class="mk-rw ' + r[3] + '" data-b="' + (i + 1) + '" style="--v:' + Math.abs(r[1]) + '%"><span>' + r[0] + '</span><div class="mk-tk"><i></i></div><b>' + r[2] + '</b></div>'; }).join('') + '</div><p class="sub mk-sb">O que a IA substitui perde demanda. O que ela complementa ganha, e mais para especialistas: a procura por novatos caiu.</p><p class="fonte">Teutloff et al., Journal of Economic Behavior & Organization, 2025: anúncios em uma grande plataforma de freelancers, comparados à tendência esperada. Barras fora de escala.</p>' });
-
-  /* 5. Matriz da Bain */
-  var MK_B = [['Fortaleza', 'A IA melhora o software', 'Depende de julgamento humano, e o rival não copia a lógica.', 'Proteger o dado próprio e cobrar pelo tempo economizado.', 0, 1], ['Mina de ouro', 'A IA brilha mais que o software', 'Dá para automatizar tudo, e a empresa tem dado e regras exclusivos.', 'Agentes de ponta a ponta, com preço por resultado.', 0, 0], ['Porta aberta', 'O gasto encolhe', 'Pessoas ainda atuam, mas agentes de terceiros entram e levam valor.', 'Lançar agentes próprios e aumentar o custo de troca.', 1, 1], ['Campo de batalha', 'A IA canibaliza o software', 'Fácil de automatizar, e fácil de copiar.', 'Trocar o próprio software por IA antes que outro troque.', 1, 0]];
-  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O software tem quatro destinos</h2><div class="dois mk-bn"><div class="mk-mx"><span class="mk-yl">A IA substitui a pessoa ↑</span><div class="mk-gd">' + [1, 3, 0, 2].map(function (i) { return '<button type="button" class="mk-c" data-c="' + i + '" aria-pressed="' + (i === 1) + '" style="--c:' + ['var(--elemento-c)', 'var(--cuidado-c)', 'var(--motor-c)', 'var(--pessoa-c)'][i] + '"><b>' + MK_B[i][0] + '</b></button>'; }).join('') + '</div><span class="mk-xl">Terceiros entram com facilidade →</span></div><div class="i0-res"><span class="in-zn"></span><b></b><p></p><small class="mk-rs"></small></div></div><p class="fonte">Bain & Company, Technology Report 2025. Nomes em português são adaptação da tradução.</p>',
-    on: function (el) { var r = el.querySelector('.i0-res'); function p(i) { var c = MK_B[i]; r.querySelector('.in-zn').textContent = c[1]; r.querySelector('b').textContent = c[0]; r.querySelector('p').textContent = c[2]; r.querySelector('.mk-rs').textContent = 'O que fazer: ' + c[3]; r.classList.remove('entra'); void r.offsetWidth; r.classList.add('entra'); [].forEach.call(el.querySelectorAll('[data-c]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.c === i)); }); } [].forEach.call(el.querySelectorAll('[data-c]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.c); }); }); p(1); } });
-
-  /* 6. Do assento ao resultado: simulador ilustrativo */
-  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Se o agente trabalha, quem paga o assento?</h2><div class="dois mk-as"><div class="mk-sim"><label><b>Trabalho feito por agentes: <output class="mk-o"></output></b><input type="range" min="0" max="80" step="10" value="0" aria-label="Porcentagem do trabalho feito por agentes"></label><div class="mk-seats"></div></div><div class="mk-pv"><div><span>Receita cobrando por assento</span><i class="i0-tr"><i class="a"></i></i><b class="ra"></b></div><div><span>Receita cobrando pelo resultado</span><i class="i0-tr"><i class="b"></i></i><b class="rb"></b></div><p class="mk-q">Assento supõe que valor cresce com gente. Por isso, a Deloitte espera modelos híbridos de uso e resultado, com muita experimentação.</p></div></div><p class="fonte">Simulação ilustrativa, com 40 assentos e o mesmo trabalho entregue. Deloitte, TMT Predictions 2026, prevê mudança em ritmo moderado, sem acontecer toda em 2026, e cita o Gartner: 35% das ferramentas pontuais de SaaS substituídas ou absorvidas por agentes até 2030.</p>',
-    on: function (el) { var r = el.querySelector('input'), s = el.querySelector('.mk-seats'), h = ''; for (var i = 0; i < 40; i++) h += '<i></i>'; s.innerHTML = h; function p() { var v = +r.value; el.querySelector('.mk-o').textContent = v + '%'; var off = Math.round(40 * v / 100); [].forEach.call(s.children, function (c, k) { c.classList.toggle('off', k >= 40 - off); }); el.querySelector('.a').style.width = (100 - v) + '%'; el.querySelector('.ra').textContent = (100 - v) + '%'; el.querySelector('.b').style.width = '100%'; el.querySelector('.rb').textContent = '100%'; } r.addEventListener('input', p); p(); } });
-
-  /* 7. A conta */
-  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>A conta ainda não fecha</h2><div class="dois mk-ct"><div class="mk-tw" data-b="1"><span class="mk-ey">Receita anual necessária em 2030 para pagar os data centers</span><div class="mk-tb"><i class="mk-gap"><b>Faltam US$ 800 bi</b></i><i class="mk-ok"><b>Orçamentos de TI migrados e economias com IA</b></i></div><p class="mk-big">US$ 2 trilhões</p><small class="mk-src">Bain, Technology Report 2025</small></div>' +
-    '<div class="mk-dl"><div class="mk-pn" data-b="2"><span class="mk-ey">Crescer a receita com IA</span><div class="mk-do"><div><b>20%</b><span>já conseguem</span></div><div><b>74%</b><span>esperam conseguir</span></div></div></div><div class="mk-pn" data-b="3"><span class="mk-ey">Até onde a IA chega no negócio</span><div class="mk-sp"><i style="--w:34;--c:var(--elemento-c)">34% transformam</i><i style="--w:30;--c:var(--motor-c)">30% redesenham</i><i style="--w:37;--c:rgba(var(--fg-rgb),.3)">37% superfície</i></div><small class="mk-src">Deloitte, State of AI in the Enterprise 2026</small></div></div></div>' });
-
-  /* 8. Trabalho */
-  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O trabalho sente primeiro na porta de entrada</h2><div class="dois mk-tr"><div class="mk-pn" data-b="1"><span class="mk-ey">Emprego de 22 a 25 anos, nov/2022 a jun/2026, nos EUA</span><div class="mk-dv mk-dv2"><div class="mk-rw d vis" style="--v:44%"><span>Ocupações mais expostas à IA</span><div class="mk-tk"><i></i></div><b>−11%</b></div><div class="mk-rw u vis" style="--v:40%"><span>Ocupações menos expostas</span><div class="mk-tk"><i></i></div><b>+10%</b></div></div></div><div class="mk-pn" data-b="2"><span class="mk-ey">O que os dados mostram</span><ul class="mk-fat"><li>Sem sinal de corte geral de empregos na economia.</li><li>Quem tem experiência não mostra a mesma diferença.</li><li>O efeito vem de menos contratação de jovens, mais do que de demissão.</li><li>Onde a IA complementa, o emprego fica estável ou sobe.</li></ul></div></div><p class="fonte">Brynjolfsson, Chandar e Chen, Canaries in the Coal Mine, agosto de 2026, com dados de folha de pagamento ADP. Estudo descritivo, sem prova de causa. Barras fora de escala.</p>' });
-
-  /* 9. Brasil */
-  var MK_BR = { 'Todas': [13, 17], 'Pequenas': [10, 15], 'Grandes': [38, 50] };
-  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>E no Brasil?</h2><div class="dois mk-bz"><div class="mk-wf" aria-hidden="true"></div><div class="mk-bp"><div class="i0-tar">' + Object.keys(MK_BR).map(function (k, i) { return '<button type="button" class="chip" data-k="' + k + '" aria-pressed="' + (i === 0) + '">' + k + '</button>'; }).join('') + '</div><b class="mk-pct"></b><p class="mk-q">das empresas usam aplicações de IA em 2025. Em 2024 eram <b class="mk-pa"></b>.</p></div></div><p class="fonte">Cetic.br, TIC Empresas 2025. Cada ponto representa 1 de cada 100 empresas.</p>',
-    on: function (el) { var w = el.querySelector('.mk-wf'), h = ''; for (var i = 0; i < 100; i++) h += '<i style="--k:' + i + '"></i>'; w.innerHTML = h; var pc = el.querySelector('.mk-pct'); function p(k) { var d = MK_BR[k]; mkTween(pc, d[1], function (v) { return Math.round(v) + '%'; }); el.querySelector('.mk-pa').textContent = d[0] + '%'; [].forEach.call(w.children, function (c, i) { c.className = i < d[0] ? 'on' : i < d[1] ? 'nw' : ''; }); [].forEach.call(el.querySelectorAll('[data-k]'), function (x) { x.setAttribute('aria-pressed', String(x.dataset.k === k)); }); } [].forEach.call(el.querySelectorAll('[data-k]'), function (b) { b.addEventListener('click', function () { p(b.dataset.k); }); }); p('Todas'); } });
-
-  /* 10. Fechamento */
-  var MK_FIM = ['A infraestrutura recebe mais da metade do dinheiro', 'Nas aplicações, os novatos estão ganhando', 'Entrar ficou mais barato', 'O que a IA substitui perde demanda', 'O preço migra do assento para o resultado', 'A receita prometida ainda não chegou para a maioria'];
-  add('crescimento', { builds: 6, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O mapa até aqui</h2><div class="i0-fim2 mk-fimg">' + MK_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div><p class="fonte">Fontes: Gartner (2026), Menlo Ventures (2025), Stanford AI Index (2025), Cai et al. (2025), Teutloff et al. (2025), Bain (2025), Deloitte (2025 e 2026), Brynjolfsson et al. (2026), Cetic.br (2025).</p>' });
-
-  /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
-  MODS.forEach(function (m) {
-    if (!m.previa) return;
-    var its = m.previa.itens;
-    add(m.id, { builds: its.length, html: '<p class="rot-sec">' + m.curto + '</p><h2>' + m.nome + '</h2><span class="ft-aviso">Módulo em construção</span>' +
-      (its.length ? '<div class="previa"><span class="rot-sec">O que vem aqui</span><ol class="lista-p">' + its.map(function (t, i) { return '<li data-b="' + (i + 1) + '">' + t + '</li>'; }).join('') + '</ol></div>' : '<p class="sub">Os tópicos deste módulo ainda vão ser definidos.</p>') +
-      (m.previa.insp ? '<p class="fonte">Inspirações: ' + m.previa.insp + '</p>' : '') });
-  });
-
-  /* Cases */
 /* Ilustrações animadas dos Use Cases. Mesmo vocabulário de ilus.js (classes il-*, fl, pl, mov), desenhadas em SVG para este material. */
 var UCIL = (function () {
   function svg(corpo) { return '<svg class="il" viewBox="0 0 240 180" aria-hidden="true">' + corpo + '</svg>'; }
@@ -3068,170 +3029,11 @@ var UCIL = (function () {
   });
   }
 
-  /* Business Cases do sábado: um case real e dois fictícios, marcados como tais na tela. */
-  var BCIL = (function () {
-    function svg(corpo) { return '<svg class="il" viewBox="0 0 240 180" aria-hidden="true">' + corpo + '</svg>'; }
-    var o = {};
-    /* UPS: paradas ligadas por uma rota, com o caminhão percorrendo a ordem melhor e a ordem antiga riscada ao fundo */
-    var pts = [[26, 140], [62, 62], [104, 120], [140, 44], [178, 108], [214, 36]];
-    var caminho = 'M' + pts.map(function (p) { return p[0] + ',' + p[1]; }).join(' L');
-    o.ups = svg(
-      '<path class="il-linha" d="M26,140 L140,44 L62,62 L214,36 L104,120 L178,108" stroke-dasharray="2 7" style="opacity:.4"/>' +
-      '<path class="il-linha il-acc-l bc-fluxo" d="' + caminho + '"/>' +
-      pts.map(function (p, i) { return '<circle class="il-fundo il-b" cx="' + p[0] + '" cy="' + p[1] + '" r="9"/><text class="il-txt il-sm" x="' + p[0] + '" y="' + (p[1] + 3.6) + '" text-anchor="middle">' + (i + 1) + '</text>'; }).join('') +
-      '<g><rect class="il-acc" x="-13" y="-8" width="26" height="14" rx="4"/><circle class="il-fundo il-b" cx="-6" cy="8" r="4"/><circle class="il-fundo il-b" cx="6" cy="8" r="4"/><animateMotion dur="7s" repeatCount="indefinite" path="' + caminho + '"/></g>' +
-      '<text class="il-txt il-sm" x="120" y="168" text-anchor="middle">100 a 120 paradas, uma ordem melhor</text>');
-    /* Meridiano: cinco tipos de contato chegando ao atendimento */
-    var tipos = [['boleto', 24], ['sinistro', 52], ['cobertura', 80], ['renovação', 108], ['reclamação', 136]];
-    o.meridiano = svg(
-      tipos.map(function (t, i) { return '<g class="fl" style="animation-delay:' + (-i * 1.1) + 's"><rect class="il-fundo il-b" x="12" y="' + t[1] + '" width="68" height="22" rx="11"/><text class="il-txt il-sm" x="46" y="' + (t[1] + 15) + '" text-anchor="middle">' + t[0] + '</text></g><path class="il-linha bc-fluxo" d="M82,' + (t[1] + 11) + ' C116,' + (t[1] + 11) + ' 124,90 150,90"/>'; }).join('') +
-      '<g class="pl"><circle class="il-acc" cx="178" cy="90" r="28"/><path class="il-fundo" d="M166,92 a12,12 0 0 1 24,0 v6 h-5 v-6 a7,7 0 0 0 -14,0 v6 h-5 z"/><rect class="il-fundo" x="164" y="92" width="6" height="12" rx="3"/><rect class="il-fundo" x="186" y="92" width="6" height="12" rx="3"/></g>' +
-      '<text class="il-txt il-sm" x="178" y="138" text-anchor="middle">96 mil por mês</text>');
-    /* Grãos do Cerrado: fábrica, esteira com caixas e prateleira com um espaço vazio e uma caixa vencendo */
-    o.graos = svg(
-      '<rect class="il-fundo il-b" x="10" y="78" width="64" height="58" rx="6"/><rect class="il-fundo il-b" x="20" y="52" width="12" height="28"/><rect class="il-fundo il-b" x="42" y="62" width="12" height="18"/>' +
-      '<path class="il-linha" d="M76,128 H150"/>' +
-      [0, 1, 2].map(function (i) { return '<rect class="il-acc" width="14" height="12" rx="2" y="114"><animate attributeName="x" values="76;140" dur="4.5s" begin="' + (-i * 1.5) + 's" repeatCount="indefinite"/></rect>'; }).join('') +
-      '<rect class="il-fundo il-b" x="156" y="40" width="74" height="96" rx="6"/><path class="il-linha" d="M156,72 H230 M156,104 H230"/>' +
-      [[164, 50], [184, 50], [204, 50], [164, 82], [184, 82], [164, 114]].map(function (p, i) { return '<rect class="il-acc bc-bob" style="opacity:.85;animation-delay:' + (-i * .5) + 's" x="' + p[0] + '" y="' + p[1] + '" width="14" height="16" rx="3"/>'; }).join('') +
-      '<rect class="il-linha il-acc-l" x="202" y="82" width="16" height="16" rx="3" stroke-dasharray="3 3"/><text class="il-txt il-sm" x="210" y="68" text-anchor="middle">falta</text>' +
-      '<rect class="il-fundo il-b" x="184" y="112" width="36" height="18" rx="9"/><text class="il-txt il-sm" x="202" y="125" text-anchor="middle">vence</text>' +
-      '<text class="il-txt il-sm" x="120" y="166" text-anchor="middle">falta aqui, sobra ali</text>');
-    return o;
-  })();
-
-  var BUS = [
-    { id: 'ups', nome: 'UPS e o ORION', real: true, tipo: 'Caso real', curto: 'Levar um sistema que define a rota a 55 mil motoristas.',
-      tema: 'Operação apoiada por dados e algoritmos, e adoção pelas pessoas',
-      situacao: 'No início de 2013, a UPS já tem um sistema, o ORION, que define em que ordem cada motorista deve fazer as entregas do dia. O sistema deu certo nos centros de distribuição onde foi testado. Agora a empresa quer usá-lo nas cerca de 55 mil rotas que opera na América do Norte. Isso muda a rotina de dezenas de milhares de motoristas, que hoje escolhem sozinhos a sequência das paradas. O grupo faz o papel da equipe que vai desenhar essa implantação.',
-      aviso: 'Este case reconstrói uma situação a partir de fontes públicas. Grande parte dos números vem da própria UPS. O momento da decisão é um recorte para a atividade: a empresa não divulgou como decidiu. Não há cenas nem falas inventadas.',
-      contexto: [
-        [['O negócio e o problema', 'Um motorista da UPS faz, em média, de 100 a 120 paradas por dia (as fontes divergem). A ordem das paradas muda a distância dirigida, o combustível gasto e o cumprimento dos horários combinados com os clientes.'],
-         ['Um problema difícil', 'Com 120 paradas, o número de sequências possíveis é, segundo uma das fontes, quase infinito. Ainda há horários combinados, regras de trânsito e ruas privadas que o mapa não mostra. A UPS calcula que cada milha a menos por motorista por dia vale até US$ 50 milhões por ano. A conta é da própria empresa.'],
-         ['Antes do ORION', 'De 1997 a 2003, a UPS usou o Package Flow. Ele definia a ordem de entrega e o carregamento do caminhão, mas não dava direções de uma parada à outra, e o plano ficava fixo desde a manhã.']],
-        [['Como o ORION funciona', 'As fontes descrevem otimização matemática: algoritmos que procuram a melhor sequência de paradas dentro de regras definidas pela UPS. Nenhuma fonte o chama de machine learning. É uma operação baseada em dados e algoritmos, e serve para discutir como uma empresa adota um sistema desse tipo.'],
-         ['No dia a dia do motorista', 'De manhã, a rota do dia aparece no coletor de mão que ele já usa para registrar as entregas. Durante o dia, a rota pode mudar se um cliente alterar o horário ou o endereço. Recalcular a rota inteira por causa do trânsito aparece como trabalho futuro nas fontes.'],
-         ['As regras vieram dos motoristas', 'A UPS convidou motoristas experientes a tentar vencer o computador e, dessas comparações, tirou regras que o sistema passou a respeitar.'],
-         ['O que as fontes não contam', 'O único motorista citado é apresentado pela própria UPS. Nenhuma fonte traz a opinião de motoristas contrários, o treinamento oferecido ou a reação de sindicatos. O grupo vai trabalhar com essa lacuna.']]
-      ],
-      numeros: { titulo: 'O que a UPS declarou', nota: 'Nenhum número foi verificado por fonte independente. Todos nascem na UPS. Os valores de 100 milhões de milhas e de US$ 250 milhões vêm da InformIT sem fonte direta e não foram verificados.',
-        itens: [[{ txt: '6 a 8' }, 'milhas a menos por rota, por dia (UPS, segundo FreightWaves e InformIT)'], [{ valor: 55000 }, 'rotas na América do Norte que receberiam o sistema'], [{ valor: 1.5, dec: 1, suf: ' mi' }, 'galões de combustível economizados em 2013 (projeção da UPS)'],
-          [{ valor: 100, suf: ' mi' }, 'milhas a menos por ano com a implantação completa (InformIT)'], [{ valor: 50, pre: 'US$ ', suf: ' mi' }, 'por ano, para cada milha a menos por motorista por dia (conta da UPS)'], [{ txt: 'US$ 250 mi' }, 'custo de construir e implantar, e economia anual esperada de US$ 300 a 400 mi (InformIT, sem fonte)']] },
-      tempo: { titulo: 'Da pesquisa à implantação', eventos: [['1997 a 2003', 'Package Flow: ordem de entrega e carregamento, plano fixo desde a manhã'], ['2003 a 2009', 'Algoritmo desenvolvido e testado em unidades da UPS'], ['2008', 'GPS e sensores instalados nos caminhões'],
-          ['2008 a 2011', 'Protótipos em 8 a 11 centros (as fontes divergem)'], ['2012', 'Seis centros em fase beta, que é um teste ampliado antes do lançamento'], ['2013', 'Primeira grande implantação, até 10 mil rotas, feita por uma equipe de 500 pessoas (redação ambígua na fonte)'], ['2016 ou 2017', 'Todas as rotas da América do Norte (as fontes divergem: terminou em 2016, ou estava planejada para 2017)']] },
-      tarefa: 'O sistema funciona nos testes. O que falta é fazer 55 mil motoristas usarem. Motoristas experientes têm o próprio jeito de montar o dia, conhecem as ruas e as manias dos clientes, e agora vão receber uma ordem de entregas calculada por um computador. O grupo propõe como a UPS conduz essa mudança.',
-      perguntas: ['Imagine que a UPS decidiu levar o ORION a todas as rotas. Qual seria o primeiro passo do grupo? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar? O que pode dar errado numa mudança desse tamanho?', 'Que ações a UPS deveria fazer com os motoristas para que eles adotem o sistema e confiem nele? Quem precisa convencer quem?',
-        'Em que situações o motorista deve poder decidir diferente do sistema? Como a empresa fica sabendo quando isso acontece, e o que faz com a informação?', 'Como a UPS saberia, seis meses depois, se a implantação deu certo? O que acompanharia além das milhas economizadas?', 'Hoje a UPS poderia ir além e usar IA mais avançada nessa operação, por exemplo para prever quanto tempo cada parada vai levar. Onde isso ajudaria e onde seria arriscado?'],
-      chunks: [3, 2, 2],
-      fonte: 'Fontes: Solomon, FreightWaves, 14/12/2018. Delen, InformIT, 14/11/2019. Hower, Sustainable Brands, out/2013. Henschen, InformationWeek, 04/11/2013.' },
-
-    { id: 'meridiano', nome: 'Meridiano Seguros', real: false, tipo: 'Caso fictício', curto: 'Onde a IA entra no atendimento? R$ 900 mil e cinco opções.',
-      tema: 'IA no atendimento ao cliente e adoção pelas pessoas',
-      situacao: 'Helena Tavares, diretora de operações da Meridiano Seguros, tem até a reunião de planejamento de 30 de novembro para levar ao presidente uma proposta de como usar R$ 900 mil em 2027. O dinheiro precisa reduzir o custo do atendimento e, ao mesmo tempo, frear a saída de clientes. Cinco fornecedores já ofereceram IA. Helena precisa decidir o que comprar, o que eliminar e o que continuar fazendo com pessoas.',
-      aviso: 'Caso fictício. A empresa, as pessoas, os números e os fornecedores foram criados para esta atividade. Qualquer semelhança com empresas ou pessoas reais é coincidência.',
-      contexto: [
-        [['Uma segunda-feira de outubro', 'O relatório mensal mostra que, em setembro, o atendimento recebeu 96 mil contatos por telefone, chat e e-mail. A conta do mês fechou em R$ 1,25 milhão. Multiplicada por doze, dá R$ 15 milhões por ano.'],
-         ['A mensagem do presidente', 'O presidente, Antônio Carvalho, escreveu: "Vi que a Seguro Já abriu em Minas. Preciso de um plano de IA para o atendimento até o dia 30." A Seguro Já é uma concorrente que só opera por aplicativo e não tem central de telefone.'],
-         ['Dois problemas escondidos', 'Um é o custo do atendimento. O outro é o cliente: o cancelamento na renovação subiu de 14% para 17% em doze meses, e as pesquisas apontam a demora para resolver sinistros como motivo principal.'],
-         ['A empresa e a concorrente', 'A Meridiano vende seguro de automóvel, residência e vida, em Belo Horizonte, com 410 mil clientes e 280 pessoas no atendimento. Construiu a reputação no contato próximo. A Seguro Já emite apólice em minutos e paga pequenos sinistros, como vidro quebrado, sem a pessoa falar com ninguém. É menor, mas cresce entre clientes de 25 a 40 anos.']],
-        [['O que a Helena tem', 'Dois analistas de dados e uma pessoa de TI. Os três conseguem tocar no máximo três projetos em 2027, e todos precisam estar no ar em até nove meses. O orçamento é de R$ 900 mil.'],
-         ['O que os fornecedores prometem', 'Um deles apresentou um assistente de IA generativa que "atende todos os tipos de contato, 24 horas por dia, e reduz em 60% o volume que chega às pessoas", por R$ 560 mil por ano. Outro propôs um modelo de machine learning para prever quem vai cancelar. Um terceiro vende automação simples para os pedidos mais fáceis.'],
-         ['O alerta do jurídico', 'Tudo que a Meridiano diz ao cliente sobre cobertura vale como informação da empresa.'],
-         ['As três perguntas da Helena', 'Escritas no quadro: o que dá para eliminar de vez, o que uma automação simples resolve e o que só uma pessoa resolve.']]
-      ],
-      barras: [{ titulo: 'Para onde vai o dinheiro do atendimento', sub: 'Custo mensal por tipo de contato, setembro de 2026. Total: R$ 1.251.500 por mês, cerca de R$ 15 milhões por ano.', fonte: 'Valores fictícios. A nota é dada pelo cliente depois do atendimento, de 0 a 10.',
-        linhas: [['Segunda via de boleto e apólice', 232500, 'R$ 232.500', ['31.000 contatos, R$ 7,50 cada', 'A resposta vem de uma consulta ao sistema', 'Custo de um erro: baixo', 'Nota 8,1']],
-          ['Situação do sinistro', 198000, 'R$ 198.000', ['22.000 contatos, R$ 9,00 cada', 'A resposta vem de uma consulta ao sistema', 'Custo de um erro: baixo', 'Nota 5,9, e o motivo mais citado é a espera']],
-          ['Dúvida de cobertura', 238000, 'R$ 238.000', ['17.000 contatos, R$ 14,00 cada', 'Depende do texto do contrato e do caso', ['Custo de um erro: alto', 1], 'Nota 6,4']],
-          ['Renovação e cotação', 165000, 'R$ 165.000', ['15.000 contatos, R$ 11,00 cada', 'Depende de regras de preço e de negociação', 'Custo de um erro: médio', 'Nota 7,0']],
-          ['Sinistro complexo e reclamação', 418000, 'R$ 418.000', ['11.000 contatos, R$ 38,00 cada', 'Depende da análise de uma pessoa', ['Custo de um erro: alto', 1], ['Nota 4,8', 1]]]] }],
-      opcoes: { titulo: 'As cinco opções para 2027', sub: 'Custos e efeitos estimados pelos fornecedores, sem teste na Meridiano. Limites: R$ 900 mil, no máximo três projetos, todos no ar em até nove meses.',
-        itens: [['O1', 'Mostrar a situação do sinistro no aplicativo e no WhatsApp, ligada ao sistema da empresa, para o cliente não precisar ligar', 'R$ 250 mil', 'Elimina 70% dos contatos desse tipo'],
-          ['O2', 'Automação simples, com regras fixas, para segunda via de boleto e apólice por WhatsApp', 'R$ 120 mil', 'Elimina 80% dos contatos desse tipo'],
-          ['O3', 'Copiloto de IA generativa para o atendente: busca no texto do contrato e propõe uma resposta de cobertura, que o atendente confere antes de enviar', 'R$ 480 mil por ano', 'Reduz 25% do tempo de cada contato de cobertura'],
-          ['O4', 'Assistente de IA generativa que conversa direto com o cliente em todos os tipos de contato', 'R$ 560 mil por ano', 'Reduz 60% dos contatos de todos os tipos que chegam a pessoas'],
-          ['O5', 'Modelo de machine learning para prever o cancelamento na renovação', 'R$ 300 mil', 'Sem estimativa de contatos. O fornecedor fala em reter "alguns pontos percentuais" de clientes. A empresa nunca testou ofertas de retenção e tem histórico parcial dos motivos de cancelamento']],
-        nota: 'O grupo monta a combinação que levaria a Helena e justifica. Pode usar de zero a três projetos, dentro do orçamento, e pode propor algo fora desta lista, inclusive não comprar nada em algum tipo de contato.' },
-      perguntas: ['A Helena precisa levar uma proposta ao presidente. Que combinação de opções o grupo levaria, e o que ficaria como está?', 'Aprovada a proposta, qual seria o primeiro passo do projeto? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar, principalmente nos contatos em que um erro custa caro?',
-        'Que ações a empresa deveria fazer com os 280 atendentes para que eles adotem as ferramentas e não as vejam como ameaça?', 'O que a Meridiano precisa preservar para continuar diferente da Seguro Já? Nesse ponto, a IA ajuda ou atrapalha?', 'O que a Helena acompanharia nos três primeiros meses, e o que a faria parar um projeto?'],
-      chunks: [3, 3, 2],
-      fonte: 'Caso fictício criado para a disciplina.' },
-
-    { id: 'graos', nome: 'Grãos do Cerrado', real: false, tipo: 'Caso fictício', curto: 'Prever a demanda ou simplificar o portfólio? R$ 1,2 milhão.',
-      tema: 'IA no planejamento da produção e adoção pelas pessoas',
-      situacao: 'Rogério Fantin, diretor de supply chain da Grãos do Cerrado Alimentos, tem R$ 1,2 milhão e 18 meses para reduzir duas perdas que andam juntas: o produto que falta na gôndola e o produto que vence no estoque. Ele precisa decidir se investe em previsão de demanda com IA, se corta parte do portfólio, se muda a forma de trabalhar com as redes de supermercado, ou uma combinação. A diretoria quer a resposta na reunião de resultados de 12 de dezembro.',
-      aviso: 'Caso fictício. A empresa, as pessoas, os números e as redes de supermercado foram criados para esta atividade. Qualquer semelhança com empresas ou pessoas reais é coincidência.',
-      contexto: [
-        [['Duas ligações na mesma terça-feira', 'Às 9h, a compradora da maior rede cliente reclama que um biscoito lançado há quatro meses acabou no Sudeste, em plena campanha. A rede cortou o espaço do produto na gôndola. Às 15h, a gerente de estoque avisa que 38 mil caixas de molho de tomate em embalagem pequena estão a três semanas do vencimento, e ninguém pede aquela embalagem há dois meses.'],
-         ['A empresa', 'A Grãos do Cerrado fabrica massas, biscoitos, molhos e snacks em Anápolis, Goiás. A receita de 2025 foi de R$ 358 milhões. Cinco redes de supermercado respondem por 60% da receita, e cerca de 900 atacadistas menores compram o resto. O portfólio tem 1.100 itens (cada versão de produto vendida é um item, ou SKU).'],
-         ['A estratégia', 'Dar ao supermercado uma razão para escolher a marca: variedade, novidades constantes e preço competitivo. Por isso o portfólio cresceu por anos. A área comercial decide os lançamentos, negocia com as redes e só depois avisa a produção.'],
-         ['Como a previsão é feita hoje', 'Numa planilha mensal, ajustada à mão pelos gerentes de categoria. Um analista de dados trabalha na área e a empresa guarda 36 meses de vendas por item e por cliente. O calendário de promoções não está no sistema: cada comprador combina as ações por e-mail, e o registro fica em planilhas da área comercial. Duas das cinco redes enviam toda semana os dados de venda dos caixas das lojas. As outras três dizem que não compartilham.']]
-      ],
-      numeros: { titulo: 'A Grãos do Cerrado em 2025', nota: 'Valores fictícios. As perdas por vencimento equivalem a 1,9% da receita.',
-        itens: [[{ valor: 358, pre: 'R$ ', suf: ' mi' }, 'de receita'], [{ valor: 90.6, dec: 1, suf: '%' }, 'dos pedidos atendidos no prazo pela fábrica'], [{ valor: 11, pre: 'R$ ', suf: ' mi' }, 'em vendas perdidas por falta de produto (estimativa da empresa)'], [{ valor: 6.8, dec: 1, pre: 'R$ ', suf: ' mi' }, 'perdidos com produtos que venceram']] },
-      barras: [{ titulo: 'Onde estão as perdas por vencimento', sub: 'Por categoria, em R$ milhões. O erro de previsão é a diferença percentual entre o previsto e o vendido, por item e por mês.', fonte: 'Valores fictícios. Total de perdas: R$ 6,8 milhões.',
-          linhas: [['Massas', 0.9, 'R$ 0,9 mi', ['41% da receita', 'Erro de previsão: 18%']], ['Biscoitos', 2.1, 'R$ 2,1 mi', ['30% da receita', 'Erro de previsão: 31%']], ['Molhos', 1.1, 'R$ 1,1 mi', ['14% da receita', 'Erro de previsão: 24%']],
-            ['Snacks e lançamentos de até 12 meses', 2.7, 'R$ 2,7 mi', ['15% da receita', ['Erro de previsão: 46%', 1]]]] },
-        { titulo: 'Poucos itens vendem quase tudo', sub: 'Concentração do portfólio de 1.100 itens. A barra mostra a perda por vencimento de cada grupo, em R$ milhões.', fonte: 'Valores fictícios. Total de perdas: R$ 6,8 milhões.',
-          linhas: [['Itens que mais vendem', 1.6, 'R$ 1,6 mi', ['118 itens', '80% da receita']], ['Itens de venda média', 2.4, 'R$ 2,4 mi', ['290 itens', '16% da receita']], ['Cauda longa, os itens que vendem pouco', 2.8, 'R$ 2,8 mi', ['692 itens', '4% da receita', ['41% das perdas', 1]]]] }],
-      opcoes: { titulo: 'As cinco opções disponíveis', sub: 'Custos e efeitos estimados pela empresa e por fornecedores, sem teste. Limites: R$ 1,2 milhão no total, 18 meses e uma equipe de dados com um analista, que pode ganhar reforço se o projeto exigir.',
-        itens: [['A', 'Modelo próprio de machine learning para previsão, construído pela equipe', 'R$ 1,1 milhão em 12 meses', 'Exige contratar dois cientistas de dados. Funciona melhor em itens que vendem de forma estável há tempo. Sem registro das promoções, erra nas semanas de ação'],
-          ['B', 'Solução de previsão de um fornecedor', 'R$ 700 mil por ano', 'Começa em 6 meses. Pede o calendário de promoções para funcionar bem. Sem histórico, não prevê lançamentos'],
-          ['C', 'Cortar 400 itens da cauda longa e padronizar embalagens', 'R$ 150 mil', 'Os 400 itens somam cerca de R$ 8 milhões de receita, e a empresa estima recuperar metade com itens substitutos. Reduz perdas e simplifica a fábrica'],
-          ['D', 'Acordos com as redes: elas compartilham os dados de venda dos caixas, e as duas partes combinam, semana a semana, quanto de cada lançamento será produzido e entregue', 'R$ 90 mil', 'Duas redes já aceitam. As outras três dependem de negociação da área comercial'],
-          ['E', 'Usar IA generativa para ler as planilhas e os e-mails de promoção e montar o calendário em formato de dados', 'R$ 120 mil', 'Ideia da equipe, ainda sem fornecedor. Depende de revisão por uma pessoa da área comercial']],
-        nota: 'O grupo monta a combinação que levaria o Rogério e a justifica, dentro do orçamento. Pode propor algo fora desta lista e pode decidir não fazer algo em alguma categoria.' },
-      perguntas: ['Que combinação de opções o grupo levaria ao Rogério, e o que ficaria como está?', 'Aprovada a proposta, qual seria o primeiro passo do projeto? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar? Pense nos dados que a empresa tem e nos que ela não tem.',
-        'Que ações a empresa deveria fazer com a área comercial e com as redes de supermercado para a mudança funcionar? Quem precisa estar convencido?', 'Em quais itens a previsão com IA ajuda e em quais não ajuda? Por quê?', 'O que o Rogério acompanharia mês a mês, e que resultado em 6 meses o faria mudar de rota?'],
-      chunks: [2, 2],
-      fonte: 'Caso fictício criado para a disciplina.' }
-  ];
-  var BCFICHA = [['A decisão do grupo', 'O que o grupo recomenda, em uma ou duas linhas.'], ['Três razões', 'Por que essa decisão e não outra.'], ['O primeiro passo', 'Por onde o projeto começa.'], ['Os principais cuidados', 'O que pode dar errado e como evitar.'],
-    ['O que faríamos com as pessoas', 'Ações para a mudança funcionar.'], ['Onde a IA entra e onde a pessoa decide', 'Os dois lados da mesma resposta.'], ['O que acompanharíamos', 'Como saber se deu certo.']];
-  var idxBus = {}, iBusList;
-
-  function bcCartaoNum(it) {
-    var n = it[0];
-    return n.txt ? '<span class="num">' + ucEsc(n.txt) + '</span>' : N.numero(n);
-  }
-  function montaBus() {
-    iBusList = add('cases', { html: '<p class="rot-sec">Banco de cases · Business Cases</p><h2>Business Cases</h2><p class="sub">Cases de estudo em grupo, aos sábados. Cada grupo recebe um case, lê, discute e apresenta a conclusão.</p>' +
-      '<div class="tres uc-grade">' + BUS.map(function (u, i) { return '<button type="button" class="cartao uc" style="--i:' + i + '" data-bc="' + u.id + '"><span class="uc-mini">' + BCIL[u.id] + '</span><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + u.tipo + '</span><h3>' + ucEsc(u.nome) + '</h3><p>' + ucEsc(u.curto) + '</p></button>'; }).join('') + '</div>' });
-    BUS.forEach(function (u) {
-      var rot = 'Business Case · ' + u.tipo;
-      idxBus[u.id] = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">' + ucEsc(rot) + '</p><h2>' + ucEsc(u.nome) + '</h2><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + ucEsc(u.tema) + '</span>' +
-        '<p class="bc-sit">' + ucEsc(u.situacao) + '</p><p class="bc-aviso">' + ucEsc(u.aviso) + '</p><div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + BCIL[u.id] + '</div></div>' });
-      var itensCtx = [].concat.apply([], u.contexto), grupos = [], pos = 0;
-      (u.chunks || [3, 3, 2]).forEach(function (k) { if (pos < itensCtx.length) { grupos.push(itensCtx.slice(pos, pos + k)); pos += k; } });
-      grupos.forEach(function (grupo, g) {
-        add('cases', { builds: grupo.length, html: '<div class="dois uc-pts"><div class="ilu-p">' + BCIL[u.id] + '</div><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · ' + (g === 0 ? 'O contexto' : 'Para entender melhor · ' + (g + 1) + ' de ' + grupos.length) + '</p><h2>' + (g === 0 ? 'A situação' : 'Continuando') + '</h2>' +
-          grupo.map(function (p, i) { return '<div class="uc-pt" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div></div>',
-          ao: function (b, el) { if (b > 0) ucPing(el); } });
-      });
-      if (u.numeros) add('cases', { builds: u.numeros.itens.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Números</p><h2>' + ucEsc(u.numeros.titulo) + '</h2><div class="numeros">' + u.numeros.itens.map(function (it, i) { return '<div class="cartao" data-b="' + (i + 1) + '">' + bcCartaoNum(it) + '<p>' + ucEsc(it[1]) + '</p></div>'; }).join('') + '</div><p class="bc-nota">' + ucEsc(u.numeros.nota) + '</p></div>' });
-      (u.barras || []).forEach(function (bx) {
-        var mx = Math.max.apply(null, bx.linhas.map(function (l) { return l[1]; }));
-        add('cases', { builds: bx.linhas.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Anexo</p><h2>' + ucEsc(bx.titulo) + '</h2><p class="bc-sub">' + ucEsc(bx.sub) + '</p><div class="bc-rows">' +
-          bx.linhas.map(function (l, i) { return '<div class="bc-row" data-b="' + (i + 1) + '" style="--w:' + Math.round(l[1] / mx * 100) + '%"><b>' + ucEsc(l[0]) + '</b><div class="bc-bar"><i></i></div><span class="bc-val">' + ucEsc(l[2]) + '</span><div class="bc-chips">' +
-            l[3].map(function (c) { var alto = Array.isArray(c); return '<span' + (alto ? ' class="alto"' : '') + '>' + ucEsc(alto ? c[0] : c) + '</span>'; }).join('') + '</div></div>'; }).join('') + '</div><p class="fonte">' + ucEsc(bx.fonte) + '</p></div>' });
-      });
-      if (u.tempo) add('cases', { builds: u.tempo.eventos.length, html: '<p class="rot-sec">' + ucEsc(u.nome) + ' · Linha do tempo</p><h2>' + ucEsc(u.tempo.titulo) + '</h2><div class="tempo">' + u.tempo.eventos.map(function (e, i) { return '<div class="ev" data-b="' + (i + 1) + '"><b>' + ucEsc(e[0]) + '</b><p>' + ucEsc(e[1]) + '</p></div>'; }).join('') + '</div>' });
-      if (u.opcoes) add('cases', { builds: u.opcoes.itens.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Opções</p><h2>' + ucEsc(u.opcoes.titulo) + '</h2><p class="bc-sub">' + ucEsc(u.opcoes.sub) + '</p><div class="bc-opl">' +
-        u.opcoes.itens.map(function (it, i) { return '<div class="bc-orow" data-b="' + (i + 1) + '"><span class="bc-cod">' + it[0] + '</span><div><b>' + ucEsc(it[1]) + '</b><p>' + ucEsc(it[3]) + '</p></div><span class="bc-custo">' + ucEsc(it[2]) + '</span></div>'; }).join('') + '</div><p class="bc-nota">' + ucEsc(u.opcoes.nota) + '</p></div>' });
-      var n = u.perguntas.length;
-      add('cases', { builds: n, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Para o grupo</p><h2>Perguntas do grupo</h2>' + (u.tarefa ? '<p class="bc-sub">' + ucEsc(u.tarefa) + '</p>' : '') + '<div class="uc-pergs">' +
-        u.perguntas.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + ucEsc(q) + '</p></div>'; }).join('') + '</div></div><div class="ilu-p uc-lado">' + BCIL[u.id] + '</div></div>',
-        ao: function (b, el) { if (b > 0) ucPing(el); } });
-      add('cases', { builds: BCFICHA.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Entrega</p><h2>Ficha de conclusão do grupo</h2><p class="bc-sub">Cada grupo preenche uma ficha em letras curtas e apresenta: 1 minuto contando o case e 4 minutos com a conclusão.</p><div class="bc-opl">' +
-        BCFICHA.map(function (p, i) { return '<div class="bc-orow bc-fi" data-b="' + (i + 1) + '"><span class="bc-cod">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div><div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div><p class="fonte">' + ucEsc(u.fonte) + '</p></div>',
-        ao: function (b, el) { if (b > 0) ucPing(el); } });
-    });
-  }
-
-  /* Use Case: Accenture Technology Vision 2025 ("AI: A Declaration of Autonomy").
+  /* Accenture Technology Vision 2025, dentro do módulo de mercados, a pedido do Rafael em 07/11/2026 ("AI: A Declaration of Autonomy").
      Tudo vem do PDF do relatório (Banco de PDFs, pasta 1). Na tela vai o que o relatório diz, e cada número leva o nome de quem o declarou.
      As perguntas de discussão (linhas "Para discutir" e a tela final) são sugestão minha e não vêm do relatório.
      Sem travessão em nenhum texto. */
+  var ACC_CASE;
   var ACCIL = (function () {
     function svg(c) { return '<svg class="il" viewBox="0 0 240 180" aria-hidden="true">' + c + '</svg>'; }
     var o = {};
@@ -3397,11 +3199,11 @@ var UCIL = (function () {
 
     function monta(u) {
       var tags = u.temas.map(function (t) { return '<span class="uc-tag">' + ucEsc(t) + '</span>'; }).join('');
-      var primeira = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">Use Case · ' + ucEsc(u.tipo) + '</p><h2>' + ucEsc(u.nome) + '</h2><p class="sub uc-res">' + ucEsc(u.resumo) + '</p><div class="uc-tags">' + tags + '</div><p class="fonte">' + ucEsc(u.fonte) + '</p>' +
-        '<div class="acoes"><button type="button" class="botao-peq" data-uclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + ACCIL.cerebro + '</div></div>' });
+      var primeira = add('crescimento', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">' + ucEsc(u.tipo) + '</p><h2>' + ucEsc(u.nome) + '</h2><p class="sub uc-res">' + ucEsc(u.resumo) + '</p><div class="uc-tags">' + tags + '</div><p class="fonte">' + ucEsc(u.fonte) + '</p>' +
+        '</div><div class="ilu-p">' + ACCIL.cerebro + '</div></div>' });
 
       /* Introdução */
-      add('cases', { builds: 5, html: cab(NOME + ' · Introdução', 'O que é este relatório', 'A Accenture publica o Technology Vision todo ano. A edição de 2025 reúne quatro tendências e uma pesquisa com executivos de vários países.') +
+      add('crescimento', { builds: 5, html: cab(NOME + ' · Introdução', 'O que é este relatório', 'A Accenture publica o Technology Vision todo ano. A edição de 2025 reúne quatro tendências e uma pesquisa com executivos de vários países.') +
         '<div class="acc-col">' + fig(ACCIL.radar) + '<div class="acc-stats">' +
         '<div class="cartao stat" data-b="1"><span class="num" data-valor="25"></span><p>edições. É a 25ª vez que o relatório sai</p></div>' +
         '<div class="cartao stat" data-b="2"><span class="num" data-valor="4021"></span><p>executivos ouvidos, de diretoria para cima, entre outubro e dezembro de 2024</p></div>' +
@@ -3411,7 +3213,7 @@ var UCIL = (function () {
         ao: function (b, el) { var c = el.querySelectorAll('.stat')[b - 1]; if (c && b > (this.u || 0)) N.contar(c.querySelector('.num')); this.u = b; } });
 
       /* A dor */
-      add('cases', { builds: 5, html: cab(NOME + ' · A dor', 'A IA se espalhou, mas poucas empresas conseguiram escalar') +
+      add('crescimento', { builds: 5, html: cab(NOME + ' · A dor', 'A IA se espalhou, mas poucas empresas conseguiram escalar') +
         '<div class="acc-col rev"><div class="acc-seq">' +
         '<div class="acc-barra" data-b="1"><div class="acc-bh"><span class="num" data-valor="36" data-suf="%"></span><span>dos executivos dizem que a empresa já escalou soluções de IA generativa</span></div><div class="acc-trilho"><i style="--w:36%"></i></div></div>' +
         '<div class="acc-barra" data-b="2"><div class="acc-bh"><span class="num" data-valor="13" data-suf="%"></span><span>dizem ter impacto significativo na empresa inteira</span></div><div class="acc-trilho"><i style="--w:13%"></i></div></div>' +
@@ -3422,7 +3224,7 @@ var UCIL = (function () {
         ao: function (b, el) { var c = el.querySelectorAll('.acc-barra')[b - 1]; if (c && b <= 3 && b > (this.u || 0)) N.contar(c.querySelector('.num')); this.u = b; pingue(b, el); } });
 
       /* A opinião 1: o que importa */
-      add('cases', { builds: 4, html: cab('A opinião da Accenture · 1 de 3', 'O que importa é a IA que já chegou') +
+      add('crescimento', { builds: 4, html: cab('A opinião da Accenture · 1 de 3', 'O que importa é a IA que já chegou') +
         '<div class="acc-col">' + fig(ACCIL.agi) + '<div class="uc-seq acc-seq">' +
         pt(1, 'A corrida pela AGI é distração', 'A AGI (inteligência artificial geral) prende líderes e governos. Para a Accenture, a maioria não pode bancar essa distração: a AGI ainda está longe, com desafios técnicos e éticos.') +
         pt(2, 'A IA se generalizou', 'Está acessível e sempre presente, com mais autonomia em sistemas, equipes e operações. O relatório cita que 75% dos trabalhadores do conhecimento usam IA generativa (Microsoft e LinkedIn, 2024).') +
@@ -3431,7 +3233,7 @@ var UCIL = (function () {
         '</div></div>' + PG('págs. 4 a 6.'), ao: pingue });
 
       /* A opinião 2: o cérebro digital cognitivo */
-      add('cases', { builds: 5, html: cab('A opinião da Accenture · 2 de 3', 'O “cérebro digital cognitivo” das empresas') +
+      add('crescimento', { builds: 5, html: cab('A opinião da Accenture · 2 de 3', 'O “cérebro digital cognitivo” das empresas') +
         '<div class="acc-col larga">' + fig(ACCIL.camadas, 'acc-larga') + '<div class="uc-seq acc-seq">' +
         pt(1, 'Conhecimento', 'Grafos de conhecimento e bancos vetoriais organizam os dados da empresa e de fora dela.') +
         pt(2, 'Modelos', 'IA generativa, aprendizado de máquina clássico e aprendizado profundo transformam dados em resultado.') +
@@ -3442,7 +3244,7 @@ var UCIL = (function () {
         ao: function (b, el) { [].forEach.call(el.querySelectorAll('.acc-cam'), function (g) { g.classList.toggle('on', b === 5 || +g.dataset.cam === b); }); } });
 
       /* A opinião 3: confiança */
-      add('cases', { builds: 4, html: cab('A opinião da Accenture · 3 de 3', 'O único limite é a confiança', 'Duas partes: a emocional (as pessoas gostam, temem ou se sentem usadas?) e a cognitiva (o sistema age como esperado?).') +
+      add('crescimento', { builds: 4, html: cab('A opinião da Accenture · 3 de 3', 'O único limite é a confiança', 'Duas partes: a emocional (as pessoas gostam, temem ou se sentem usadas?) e a cognitiva (o sistema age como esperado?).') +
         '<div class="acc-col">' + fig(ACCIL.confianca) + '<div class="uc-seq acc-seq">' +
         pt(1, 'Por que as grades importam', 'A Sakana AI testou um sistema que faz pesquisa sozinho. Sem tempo para terminar o experimento, ele alterou o próprio código para ganhar mais tempo.') +
         pt(2, 'Caminho 1: sistemas e dados', 'Reforçar a cibersegurança, com ideias como zero trust. Não se parte do zero: investimentos anteriores rendem de novo.') +
@@ -3455,12 +3257,12 @@ var UCIL = (function () {
         ['Marca', 'Your Face, in the Future', 'Se todo atendimento por IA soar igual, como a empresa mantém a sua personalidade?', ACCIL.rosto],
         ['Robôs', 'When LLMs get their Bodies', 'Modelos de base dão raciocínio a robôs que antes só repetiam tarefas.', ACCIL.robo],
         ['Pessoas', 'The New Learning Loop', 'A IA aprende com quem a usa. Tratada como automação, dá ganho único e desanima o time.', ACCIL.ciclo]];
-      add('cases', { builds: 4, html: cab(NOME + ' · As quatro tendências', 'Quatro tendências para a próxima fase da IA') +
+      add('crescimento', { builds: 4, html: cab(NOME + ' · As quatro tendências', 'Quatro tendências para a próxima fase da IA') +
         '<div class="acc-4">' + T4.map(function (t, i) { return '<div class="acc-t" data-b="' + (i + 1) + '"><span class="acc-ti ilu-p">' + t[3] + '</span><div><span class="acc-tg">' + (i + 1) + ' · ' + t[0] + '</span><b>' + t[1] + '</b><p>' + t[2] + '</p></div></div>'; }).join('') + '</div>' + PG('págs. 8 e 9.'),
         ao: function (b, el) { var c = el.querySelectorAll('.acc-t')[b - 1]; if (c && b > (this.u || 0)) ucPing(c); this.u = b; } });
 
       /* Tendência 1 */
-      add('cases', { builds: 5, html: cab('Tendência 1 de 4 · Software', 'The Binary Big Bang') +
+      add('crescimento', { builds: 5, html: cab('Tendência 1 de 4 · Software', 'The Binary Big Bang') +
         '<div class="acc-col">' + fig(ACCIL.bigbang) + '<div class="uc-seq acc-seq">' +
         pt(1, 'A virada da Salesforce', 'Em setembro de 2024, a Salesforce anunciou uma virada brusca para o Agentforce, sua plataforma de agentes de IA autônomos.') +
         pt(2, 'Três forças', 'Abundância (criar sistemas fica mais barato e rápido), abstração (pedir em linguagem natural em vez de operar o software) e autonomia (sistemas que criam e executam código).') +
@@ -3470,7 +3272,7 @@ var UCIL = (function () {
         '</div></div>' + PG('págs. 9 a 21.'), ao: pingue });
 
       /* Tendência 2 */
-      add('cases', { builds: 5, html: cab('Tendência 2 de 4 · Marca', 'Your Face, in the Future') +
+      add('crescimento', { builds: 5, html: cab('Tendência 2 de 4 · Marca', 'Your Face, in the Future') +
         '<div class="acc-col">' + fig(ACCIL.rosto) + '<div class="uc-seq acc-seq">' +
         pt(1, 'O risco da mesma cara', 'Os modelos de base vêm de poucas organizações e são feitos para soar neutros. Sem cuidado, toda empresa acaba com a mesma cara no atendimento.') +
         pt(2, 'O ganho de quem chega primeiro', 'A Gartner prevê que, até 2027, chatbots serão o principal canal de atendimento de cerca de um quarto das organizações. Com todo mundo usando, o ganho continua?') +
@@ -3480,7 +3282,7 @@ var UCIL = (function () {
         '</div></div>' + PG('págs. 22 a 33.'), ao: pingue });
 
       /* Tendência 3 */
-      add('cases', { builds: 5, html: cab('Tendência 3 de 4 · Robôs', 'When LLMs get their Bodies') +
+      add('crescimento', { builds: 5, html: cab('Tendência 3 de 4 · Robôs', 'When LLMs get their Bodies') +
         '<div class="acc-col">' + fig(ACCIL.robo) + '<div class="uc-seq acc-seq">' +
         pt(1, 'A cena da maçã', 'No início de 2024, o robô Figure 01 recebeu o pedido de algo para comer, entregou a maçã e explicou que era a única coisa comestível. Sem ajuda humana.') +
         pt(2, 'Três evoluções', 'Entender o contexto, se comunicar em linguagem natural e planejar a ação, mesmo em tarefas para as quais não foram treinados.') +
@@ -3490,7 +3292,7 @@ var UCIL = (function () {
         '</div></div>' + PG('págs. 34 a 46.'), ao: pingue });
 
       /* Tendência 4 */
-      add('cases', { builds: 5, html: cab('Tendência 4 de 4 · Pessoas', 'The New Learning Loop') +
+      add('crescimento', { builds: 5, html: cab('Tendência 4 de 4 · Pessoas', 'The New Learning Loop') +
         '<div class="acc-col">' + fig(ACCIL.ciclo) + '<div class="uc-seq acc-seq">' +
         pt(1, 'Um ciclo de aprendizado', 'Quanto mais as pessoas usam a IA, melhor ela fica, e mais as pessoas querem usar. Tratar como automação tradicional dá ganho único e pode desanimar o time.') +
         pt(2, 'Três ganhos para quem trabalha', 'Habilidades que a pessoa não tinha, mais engajamento e participação na mudança. Um profissional de marketing valida uma ideia com dados; um motorista de caminhão prototipa um app.') +
@@ -3500,7 +3302,7 @@ var UCIL = (function () {
         '</div></div>' + PG('págs. 47 a 58. O caso da Wayfair e o dado de 47% e 49% estão nas págs. 50 e 53.'), ao: pingue });
 
       /* Como ler */
-      add('cases', { builds: 4, html: cab('Antes de discutir', 'Quem está falando e o que isso pede de cuidado') +
+      add('crescimento', { builds: 4, html: cab('Antes de discutir', 'Quem está falando e o que isso pede de cuidado') +
         '<div class="acc-col">' + fig(ACCIL.lupa) + '<div class="uc-seq acc-seq">' +
         pt(1, 'Quem escreve', 'A Accenture é uma empresa de consultoria e tecnologia. No prefácio, diz que está ajudando executivos a escalar a IA com mais rapidez e segurança, e chama 2025 de ano da IA em escala.') +
         pt(2, 'De onde vêm os números', '36%, 13% e 77% vêm de pesquisas da própria Accenture e refletem o que os executivos declaram.') +
@@ -3514,17 +3316,266 @@ var UCIL = (function () {
         'Para deixar a IA agir sozinha numa tarefa da empresa de vocês, o que precisaria estar no lugar? Regras, testes, quem responde.',
         'Uma consultoria que vende projetos de IA escreveu o relatório. O que vocês aceitariam como está e o que conferiam antes de levar ao chefe?',
         'Qual das quatro tendências chegaria primeiro na empresa de vocês: software, marca, robôs ou pessoas? E qual seria a mais difícil?'];
-      add('cases', { builds: Q.length, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Discussão</p><h2>Perguntas para discussão</h2><div class="uc-pergs acc-pergs">' +
+      add('crescimento', { builds: Q.length, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Discussão</p><h2>Perguntas para discussão</h2><div class="uc-pergs acc-pergs">' +
         Q.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + q + '</p></div>'; }).join('') +
         '</div></div><div class="ilu-p uc-lado">' + ACCIL.cerebro + '</div></div>', ao: pingue });
       return primeira;
     }
 
-    USE.splice(6, 0, { id: 'accenture', nome: 'Accenture Technology Vision 2025', tipo: 'Relatório de tendências · IA autônoma', temas: ['Organização e governança', 'Dados e IA', 'Inovação com IA'],
+    ACC_CASE = { id: 'accenture', nome: 'Accenture Technology Vision 2025', tipo: 'Relatório de tendências · IA autônoma', temas: ['Organização e governança', 'Dados e IA', 'Inovação com IA'],
       curto: 'Por que a IA ainda não escala e por que a confiança é o limite.',
       resumo: 'Relatório anual da Accenture com as tendências de tecnologia que devem chegar às empresas nos próximos três a sete anos. A edição de 2025, “AI: A Declaration of Autonomy”, defende que a IA vai ganhar cada vez mais autonomia nos negócios e que o limite dessa autonomia é a confiança.',
-      fonte: 'Accenture, Technology Vision 2025: AI: A Declaration of Autonomy (25ª edição, janeiro de 2025). As páginas citadas aparecem em cada tela.', monta: monta });
+      fonte: 'Accenture, Technology Vision 2025: AI: A Declaration of Autonomy (25ª edição, janeiro de 2025). As páginas citadas aparecem em cada tela.', monta: monta };
   })();
+
+  /* ---------- Quais mercados a IA está destravando. Telas baseadas nas 10 fontes em Aulas/Pesquisa_mercados_IA/03_as_10_fontes.md. A tela fala com o aluno. ---------- */
+  function mkTween(el, to, fmt) { if (N.reduz) { el.textContent = fmt(to); return; } var from = el._v || 0, t0 = null; el._v = to; cancelAnimationFrame(el._r); function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 650), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(from + (to - from) * e); if (p < 1) el._r = requestAnimationFrame(f); } el._r = requestAnimationFrame(f); clearTimeout(el._t); el._t = setTimeout(function () { cancelAnimationFrame(el._r); el.textContent = fmt(to); }, 900); }
+  var MK_COR = ['var(--t-genai)', 'var(--motor-c)', 'var(--elemento-c)', 'var(--t-ml)'];
+
+  /* 1. Para onde vai o dinheiro */
+  var MK_G = { 2025: [981.9, 434.0, 288.2, 82.5, 1786.7], 2026: [1484.4, 576.5, 461.6, 148.0, 2670.5], 2027: [1977.7, 745.7, 656.4, 257.5, 3637.3] }, MK_GN = ['Infraestrutura', 'Serviços', 'Software', 'Outros'];
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Primeiro, o dinheiro vira data center</h2><div class="mk-gt"><div class="i0-tar">' + [2025, 2026, 2027].map(function (y) { return '<button type="button" class="chip" data-y="' + y + '" aria-pressed="' + (y === 2026) + '">' + y + '</button>'; }).join('') + '</div><div class="mk-tot"><b class="mk-n"></b><span>de gasto mundial em IA</span></div><div class="mk-stk">' + MK_GN.map(function (n, i) { return '<i style="--c:' + MK_COR[i] + '"><b>' + n + '</b><u></u></i>'; }).join('') + '</div><p class="mk-q">Infraestrutura fica com mais da metade. Os agentes e assistentes, de que tanto se fala, somam US$ 29 bilhões em 2026.</p></div><p class="fonte">Gartner, setembro de 2026. 2026 e 2027 são previsões. “Outros” reúne as demais categorias da tabela.</p>',
+    on: function (el) { var n = el.querySelector('.mk-n'), bs = el.querySelectorAll('.mk-stk i'); function p(y) { var d = MK_G[y]; mkTween(n, d[4], function (v) { return 'US$ ' + (v / 1000).toFixed(2).replace('.', ',') + ' tri'; }); [].forEach.call(bs, function (b, i) { b.style.flexGrow = d[i]; b.querySelector('u').textContent = Math.round(d[i] / d[4] * 100) + '%'; }); [].forEach.call(el.querySelectorAll('[data-y]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.y === y)); }); } [].forEach.call(el.querySelectorAll('[data-y]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.y); }); }); p(2026); } });
+
+  /* 2. Um mercado que nasceu em três anos, e quem ganha */
+  var MK_ST = [['Todas as aplicações', 63], ['Produto e engenharia', 71], ['Vendas', 78], ['Finanças e operações', 91]];
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Um mercado novo, e os novatos na frente</h2><div class="dois mk-me"><div class="mk-cols">' + [['2023', 1.7, 1], ['2024', 11.5, 2], ['2025', 37, 3]].map(function (c) { return '<div class="mk-col" data-b="' + c[2] + '" style="--h:' + Math.max(4, c[1] / 37 * 100) + '%"><b>US$ ' + String(c[1]).replace('.', ',') + ' bi</b><i></i><span>' + c[0] + '</span></div>'; }).join('') + '</div>' +
+    '<div class="mk-cb"><b>Em aplicações de IA, quem fica com a receita?</b><div class="i0-tar">' + MK_ST.map(function (s, i) { return '<button type="button" class="chip" data-s="' + i + '" aria-pressed="' + (i === 0) + '">' + s[0] + '</button>'; }).join('') + '</div><div class="mk-cabo"><i class="st"><span></span></i><i class="in"><span></span></i></div><div class="i0-leg"><span><i style="background:var(--vermelho)"></i>Startups</span><span><i style="background:rgba(var(--fg-rgb),.4)"></i>Empresas já estabelecidas</span></div><p class="mk-q">Mais da metade do gasto de 2025 foi para aplicações (US$ 19 bi). Distribuição e base de clientes não bastaram para os grandes.</p></div></div><p class="fonte">Menlo Ventures, 2025: gasto de empresas em IA generativa. O fundo investe em empresas de IA, então vale ler com cuidado.</p>',
+    on: function (el) { function p(i) { var v = MK_ST[i][1], a = el.querySelector('.st'), b = el.querySelector('.in'); a.style.flexGrow = v; b.style.flexGrow = 100 - v; a.querySelector('span').textContent = v + '%'; b.querySelector('span').textContent = (100 - v) + '%'; [].forEach.call(el.querySelectorAll('[data-s]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.s === i)); }); } [].forEach.call(el.querySelectorAll('[data-s]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.s); }); }); p(0); } });
+
+  /* 3. A barreira caiu: custo e novas empresas */
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Ficou mais barato entrar no jogo</h2><div class="dois mk-br"><div class="mk-pn" data-b="1"><span class="mk-ey">Custo por milhão de tokens, mesmo desempenho</span><div class="mk-pr"><div><b class="mk-b1">US$ 20,00</b><small>nov/2022</small></div><svg viewBox="0 0 120 60" aria-hidden="true"><path class="mk-dw" pathLength="1" d="M6,8 C40,10 60,50 112,52"/></svg><div><b class="mk-b2">US$ 0,07</b><small>out/2024</small></div></div><p class="mk-big">280 vezes menor</p><small class="mk-src">Stanford AI Index 2025</small></div>' +
+    '<div class="mk-pn" data-b="2"><span class="mk-ey">Depois do ChatGPT, em regiões da China com mais talento em IA</span><div class="mk-arr"><div class="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg><b>Pequenas empresas</b><p>Mais aberturas, com menos capital, sócios e fundadores</p></div><div class="down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg><b>Grandes empresas</b><p>Menos aberturas</p></div></div><p class="mk-q2">A IA generativa funcionando como cofundador: efeito mais forte entre quem empreende pela primeira vez. Equivale a 6% das aberturas do país.</p><small class="mk-src">Cai et al., 2025: dados da China, sem revisão por pares</small></div></div>' });
+
+  /* 4. Uns encolhem, outros nascem */
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Uns encolhem, outros nascem</h2><div class="mk-dv">' + [['Escrita e tradução', -35, '−20% a −50%', 'd'], ['Programação de machine learning', 24, '+24%', 'u'], ['Criação de chatbots com IA', 92, 'quase o triplo', 'u']].map(function (r, i) { return '<div class="mk-rw ' + r[3] + '" data-b="' + (i + 1) + '" style="--v:' + Math.abs(r[1]) + '%"><span>' + r[0] + '</span><div class="mk-tk"><i></i></div><b>' + r[2] + '</b></div>'; }).join('') + '</div><p class="sub mk-sb">O que a IA substitui perde demanda. O que ela complementa ganha, e mais para especialistas: a procura por novatos caiu.</p><p class="fonte">Teutloff et al., Journal of Economic Behavior & Organization, 2025: anúncios em uma grande plataforma de freelancers, comparados à tendência esperada. Barras fora de escala.</p>' });
+
+  /* 5. Matriz da Bain */
+  var MK_B = [['Fortaleza', 'A IA melhora o software', 'Depende de julgamento humano, e o rival não copia a lógica.', 'Proteger o dado próprio e cobrar pelo tempo economizado.', 0, 1], ['Mina de ouro', 'A IA brilha mais que o software', 'Dá para automatizar tudo, e a empresa tem dado e regras exclusivos.', 'Agentes de ponta a ponta, com preço por resultado.', 0, 0], ['Porta aberta', 'O gasto encolhe', 'Pessoas ainda atuam, mas agentes de terceiros entram e levam valor.', 'Lançar agentes próprios e aumentar o custo de troca.', 1, 1], ['Campo de batalha', 'A IA canibaliza o software', 'Fácil de automatizar, e fácil de copiar.', 'Trocar o próprio software por IA antes que outro troque.', 1, 0]];
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O software tem quatro destinos</h2><div class="dois mk-bn"><div class="mk-mx"><span class="mk-yl">A IA substitui a pessoa ↑</span><div class="mk-gd">' + [1, 3, 0, 2].map(function (i) { return '<button type="button" class="mk-c" data-c="' + i + '" aria-pressed="' + (i === 1) + '" style="--c:' + ['var(--elemento-c)', 'var(--cuidado-c)', 'var(--motor-c)', 'var(--pessoa-c)'][i] + '"><b>' + MK_B[i][0] + '</b></button>'; }).join('') + '</div><span class="mk-xl">Terceiros entram com facilidade →</span></div><div class="i0-res"><span class="in-zn"></span><b></b><p></p><small class="mk-rs"></small></div></div><p class="fonte">Bain & Company, Technology Report 2025. Nomes em português são adaptação da tradução.</p>',
+    on: function (el) { var r = el.querySelector('.i0-res'); function p(i) { var c = MK_B[i]; r.querySelector('.in-zn').textContent = c[1]; r.querySelector('b').textContent = c[0]; r.querySelector('p').textContent = c[2]; r.querySelector('.mk-rs').textContent = 'O que fazer: ' + c[3]; r.classList.remove('entra'); void r.offsetWidth; r.classList.add('entra'); [].forEach.call(el.querySelectorAll('[data-c]'), function (x) { x.setAttribute('aria-pressed', String(+x.dataset.c === i)); }); } [].forEach.call(el.querySelectorAll('[data-c]'), function (b) { b.addEventListener('click', function () { p(+b.dataset.c); }); }); p(1); } });
+
+  /* 6. Do assento ao resultado: simulador ilustrativo */
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>Se o agente trabalha, quem paga o assento?</h2><div class="dois mk-as"><div class="mk-sim"><label><b>Trabalho feito por agentes: <output class="mk-o"></output></b><input type="range" min="0" max="80" step="10" value="0" aria-label="Porcentagem do trabalho feito por agentes"></label><div class="mk-seats"></div></div><div class="mk-pv"><div><span>Receita cobrando por assento</span><i class="i0-tr"><i class="a"></i></i><b class="ra"></b></div><div><span>Receita cobrando pelo resultado</span><i class="i0-tr"><i class="b"></i></i><b class="rb"></b></div><p class="mk-q">Assento supõe que valor cresce com gente. Por isso, a Deloitte espera modelos híbridos de uso e resultado, com muita experimentação.</p></div></div><p class="fonte">Simulação ilustrativa, com 40 assentos e o mesmo trabalho entregue. Deloitte, TMT Predictions 2026, prevê mudança em ritmo moderado, sem acontecer toda em 2026, e cita o Gartner: 35% das ferramentas pontuais de SaaS substituídas ou absorvidas por agentes até 2030.</p>',
+    on: function (el) { var r = el.querySelector('input'), s = el.querySelector('.mk-seats'), h = ''; for (var i = 0; i < 40; i++) h += '<i></i>'; s.innerHTML = h; function p() { var v = +r.value; el.querySelector('.mk-o').textContent = v + '%'; var off = Math.round(40 * v / 100); [].forEach.call(s.children, function (c, k) { c.classList.toggle('off', k >= 40 - off); }); el.querySelector('.a').style.width = (100 - v) + '%'; el.querySelector('.ra').textContent = (100 - v) + '%'; el.querySelector('.b').style.width = '100%'; el.querySelector('.rb').textContent = '100%'; } r.addEventListener('input', p); p(); } });
+
+  /* 7. A conta */
+  add('crescimento', { builds: 3, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>A conta ainda não fecha</h2><div class="dois mk-ct"><div class="mk-tw" data-b="1"><span class="mk-ey">Receita anual necessária em 2030 para pagar os data centers</span><div class="mk-tb"><i class="mk-gap"><b>Faltam US$ 800 bi</b></i><i class="mk-ok"><b>Orçamentos de TI migrados e economias com IA</b></i></div><p class="mk-big">US$ 2 trilhões</p><small class="mk-src">Bain, Technology Report 2025</small></div>' +
+    '<div class="mk-dl"><div class="mk-pn" data-b="2"><span class="mk-ey">Crescer a receita com IA</span><div class="mk-do"><div><b>20%</b><span>já conseguem</span></div><div><b>74%</b><span>esperam conseguir</span></div></div></div><div class="mk-pn" data-b="3"><span class="mk-ey">Até onde a IA chega no negócio</span><div class="mk-sp"><i style="--w:34;--c:var(--elemento-c)">34% transformam</i><i style="--w:30;--c:var(--motor-c)">30% redesenham</i><i style="--w:37;--c:rgba(var(--fg-rgb),.3)">37% superfície</i></div><small class="mk-src">Deloitte, State of AI in the Enterprise 2026</small></div></div></div>' });
+
+  /* 8. Trabalho */
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O trabalho sente primeiro na porta de entrada</h2><div class="dois mk-tr"><div class="mk-pn" data-b="1"><span class="mk-ey">Emprego de 22 a 25 anos, nov/2022 a jun/2026, nos EUA</span><div class="mk-dv mk-dv2"><div class="mk-rw d vis" style="--v:44%"><span>Ocupações mais expostas à IA</span><div class="mk-tk"><i></i></div><b>−11%</b></div><div class="mk-rw u vis" style="--v:40%"><span>Ocupações menos expostas</span><div class="mk-tk"><i></i></div><b>+10%</b></div></div></div><div class="mk-pn" data-b="2"><span class="mk-ey">O que os dados mostram</span><ul class="mk-fat"><li>Sem sinal de corte geral de empregos na economia.</li><li>Quem tem experiência não mostra a mesma diferença.</li><li>O efeito vem de menos contratação de jovens, mais do que de demissão.</li><li>Onde a IA complementa, o emprego fica estável ou sobe.</li></ul></div></div><p class="fonte">Brynjolfsson, Chandar e Chen, Canaries in the Coal Mine, agosto de 2026, com dados de folha de pagamento ADP. Estudo descritivo, sem prova de causa. Barras fora de escala.</p>' });
+
+  /* 9. Brasil */
+  var MK_BR = { 'Todas': [13, 17], 'Pequenas': [10, 15], 'Grandes': [38, 50] };
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>E no Brasil?</h2><div class="dois mk-bz"><div class="mk-wf" aria-hidden="true"></div><div class="mk-bp"><div class="i0-tar">' + Object.keys(MK_BR).map(function (k, i) { return '<button type="button" class="chip" data-k="' + k + '" aria-pressed="' + (i === 0) + '">' + k + '</button>'; }).join('') + '</div><b class="mk-pct"></b><p class="mk-q">das empresas usam aplicações de IA em 2025. Em 2024 eram <b class="mk-pa"></b>.</p></div></div><p class="fonte">Cetic.br, TIC Empresas 2025. Cada ponto representa 1 de cada 100 empresas.</p>',
+    on: function (el) { var w = el.querySelector('.mk-wf'), h = ''; for (var i = 0; i < 100; i++) h += '<i style="--k:' + i + '"></i>'; w.innerHTML = h; var pc = el.querySelector('.mk-pct'); function p(k) { var d = MK_BR[k]; mkTween(pc, d[1], function (v) { return Math.round(v) + '%'; }); el.querySelector('.mk-pa').textContent = d[0] + '%'; [].forEach.call(w.children, function (c, i) { c.className = i < d[0] ? 'on' : i < d[1] ? 'nw' : ''; }); [].forEach.call(el.querySelectorAll('[data-k]'), function (x) { x.setAttribute('aria-pressed', String(x.dataset.k === k)); }); } [].forEach.call(el.querySelectorAll('[data-k]'), function (b) { b.addEventListener('click', function () { p(b.dataset.k); }); }); p('Todas'); } });
+
+  /* Oceano Azul: pedido pelo Rafael. Fonte: Kim e Mauborgne, e o slide 109 do deck de startups dele. */
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava · Horizonte 2 na prática</p><h2>Disputar o mesmo mar, ou abrir outro?</h2><div class="dois oa-mar"><div class="oa-p oa-v" data-b="1"><svg viewBox="0 0 300 150" aria-hidden="true"><path class="oa-onda" d="M0,28 Q25,14 50,28 T100,28 T150,28 T200,28 T250,28 T300,28 V150 H0 Z"/>' +
+    [[50, 70], [84, 96], [118, 62], [150, 104], [178, 72], [212, 98], [244, 66], [100, 124], [196, 126]].map(function (p, i) { return '<circle class="oa-pv" style="animation-delay:' + (-i * .35) + 's" cx="' + p[0] + '" cy="' + p[1] + '" r="11"/>'; }).join('') + '</svg><b>Oceano vermelho</b><p>Todos brigam pelos mesmos clientes, com os mesmos atributos. A saída vira preço.</p></div>' +
+    '<div class="oa-p oa-a" data-b="2"><svg viewBox="0 0 300 150" aria-hidden="true"><path class="oa-onda" d="M0,28 Q25,14 50,28 T100,28 T150,28 T200,28 T250,28 T300,28 V150 H0 Z"/><circle class="oa-pa" r="13"><animateMotion dur="9s" repeatCount="indefinite" path="M30,110 C90,50 170,130 270,60 C200,120 90,120 30,110"/></circle></svg><b>Oceano azul</b><p>Um espaço novo, onde a concorrência ainda não é a referência. Quem paga pode ser quem hoje não compra nada.</p></div></div><p class="fonte">Kim e Mauborgne, A Estratégia do Oceano Azul (Elsevier, 2015).</p>' });
+
+  var OA_F = ['Animais', 'Picadeiros', 'Humor', 'Atrações perigosas', 'Temas', 'Ambiente refinado', 'Várias produções', 'Música e dança'], OA_T = [9, 8, 7, 8, 2, 2, 2, 2], OA_C = [0, 1, 3, 0, 8, 8, 7, 9];
+  function oaPts(v, W, H, n, top) { return v.map(function (l, i) { return ((i + .5) * W / n).toFixed(1) + ',' + (top + H - l / 10 * H).toFixed(1); }).join(' '); }
+  add('crescimento', { builds: 2, html: '<p class="rot-sec">Mercados que a IA destrava · Curva de valor</p><h2>A curva de valor do Cirque du Soleil</h2><div class="oa-cv"><svg viewBox="0 0 640 270" role="img" aria-label="Curva de valor do circo tradicional e do Cirque du Soleil"><rect class="oa-bd e" x="0" y="0" width="320" height="24" rx="6"/><rect class="oa-bd c" x="320" y="0" width="320" height="24" rx="6"/><text class="oa-bt" x="160" y="17" text-anchor="middle">Reduziu ou eliminou</text><text class="oa-bt" x="480" y="17" text-anchor="middle">Criou</text><path class="il-linha" d="M0,214 H640" style="opacity:.5"/>' +
+    '<polyline class="oa-l t" pathLength="1" points="' + oaPts(OA_T, 640, 170, 8, 36) + '"/><polyline class="oa-l k" pathLength="1" points="' + oaPts(OA_C, 640, 170, 8, 36) + '"/>' + OA_F.map(function (f, i) { var x = (i + .5) * 80, w = f.split(' '), l1 = w[0], l2 = w.slice(1).join(' '); return '<text class="oa-ft" x="' + x + '" y="234" text-anchor="middle">' + l1 + '</text>' + (l2 ? '<text class="oa-ft" x="' + x + '" y="250" text-anchor="middle">' + l2 + '</text>' : ''); }).join('') + '</svg><div class="i0-leg"><span><i style="background:rgba(var(--fg-rgb),.55)"></i>Circo tradicional</span><span><i style="background:var(--vermelho)"></i>Cirque du Soleil</span><button type="button" class="botao-peq" data-uc="cirque">Abrir o Use Case</button></div></div><p class="fonte">Fatores do slide 109 do professor, a partir de Kim e Mauborgne (2015). A altura das linhas é ilustrativa.</p>',
+    ao: function (b, el) { el.querySelector('.oa-l.t').classList.toggle('on', b >= 1); el.querySelector('.oa-l.k').classList.toggle('on', b >= 2); } });
+
+  var OA2_F = ['Escritório físico', 'Reunião presencial', 'Análise profunda', 'Rapidez', 'Fora do horário', 'Linguagem simples'], OA2_T = [8, 8, 9, 3, 1, 3], OA2_E = [0, 1, 5, 9, 9, 9];
+  add('crescimento', { html: '<p class="rot-sec">Mercados que a IA destrava · Curva de valor</p><h2>Com IA, que curva você desenharia?</h2><p class="sub oa-s">Consultoria jurídica para pequena empresa. Clique em cada coluna para mudar o nível.</p><div class="oa-ed"><div class="oa-gr"><svg viewBox="0 0 600 200" aria-label="Curva de valor editável"><g class="oa-cs"></g><polyline class="oa-b" points=""/><polyline class="oa-n" points=""/><g class="oa-ds"></g></svg><div class="oa-tg"></div></div><div class="oa-ac"><button type="button" class="i0-btn i0-forte" data-ex>Ver um exemplo com IA</button><button type="button" class="i0-btn" data-vl>Voltar ao tradicional</button><div class="i0-leg"><span><i style="background:rgba(var(--fg-rgb),.55)"></i>Consultoria tradicional</span><span><i style="background:var(--vermelho)"></i>Sua curva</span></div></div></div><p class="fonte">Exemplo ilustrativo, com níveis inventados. Eliminar, reduzir, elevar e criar são as quatro ações de Kim e Mauborgne (2015).</p>',
+    on: function (el) {
+      var v = OA2_T.slice(), svg = el.querySelector('.oa-gr svg'), W = 600, H = 190, n = 6, cs = '';
+      for (var i = 0; i < n; i++) cs += '<rect class="oa-col" data-i="' + i + '" x="' + (i * W / n + 4) + '" y="0" width="' + (W / n - 8) + '" height="200" rx="10"/>';
+      el.querySelector('.oa-cs').innerHTML = cs; el.querySelector('.oa-b').setAttribute('points', oaPts(OA2_T, W, H - 14, n, 10));
+      function acao(i) { var t = OA2_T[i], a = v[i]; if (a === t) return ['Manter', 'm']; if (a === 0) return ['Eliminar', 'e']; if (a < t) return ['Reduzir', 'r']; return t <= 1 ? ['Criar', 'c'] : ['Elevar', 'l']; }
+      function pinta() {
+        el.querySelector('.oa-n').setAttribute('points', oaPts(v, W, H - 14, n, 10));
+        el.querySelector('.oa-ds').innerHTML = v.map(function (l, i) { return '<circle class="oa-d" cx="' + ((i + .5) * W / n) + '" cy="' + (10 + (H - 14) - l / 10 * (H - 14)) + '" r="9"/>'; }).join('');
+        el.querySelector('.oa-tg').innerHTML = OA2_F.map(function (f, i) { var a = acao(i); return '<div><span>' + f + '</span><b class="oa-t ' + a[1] + '">' + a[0] + '</b></div>'; }).join('');
+      }
+      svg.addEventListener('click', function (e) { var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var q = pt.matrixTransform(svg.getScreenCTM().inverse()); var i = Math.floor(q.x / (W / n)); if (i < 0 || i >= n) return; v[i] = Math.max(0, Math.min(10, Math.round((10 + (H - 14) - q.y) / (H - 14) * 10))); pinta(); });
+      el.querySelector('[data-ex]').addEventListener('click', function () { v = OA2_E.slice(); pinta(); });
+      el.querySelector('[data-vl]').addEventListener('click', function () { v = OA2_T.slice(); pinta(); });
+      pinta();
+    } });
+
+  /* Accenture Technology Vision 2025: 13 telas próprias, em accenture.js */
+  ACC_CASE.monta(ACC_CASE);
+
+  /* 10. Fechamento */
+  var MK_FIM = ['A infraestrutura recebe mais da metade do dinheiro', 'Nas aplicações, os novatos estão ganhando', 'Entrar ficou mais barato, e dá para abrir um oceano azul', 'O que a IA substitui perde demanda', 'O preço migra do assento para o resultado', 'A receita prometida ainda não chegou para a maioria'];
+  add('crescimento', { builds: 6, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O mapa até aqui</h2><div class="i0-fim2 mk-fimg">' + MK_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div><p class="fonte">Fontes: Gartner (2026), Menlo Ventures (2025), Stanford AI Index (2025), Cai et al. (2025), Teutloff et al. (2025), Bain (2025), Deloitte (2025 e 2026), Brynjolfsson et al. (2026), Cetic.br (2025), Kim e Mauborgne (2015).</p>' });
+
+  /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
+  MODS.forEach(function (m) {
+    if (!m.previa) return;
+    var its = m.previa.itens;
+    add(m.id, { builds: its.length, html: '<p class="rot-sec">' + m.curto + '</p><h2>' + m.nome + '</h2><span class="ft-aviso">Módulo em construção</span>' +
+      (its.length ? '<div class="previa"><span class="rot-sec">O que vem aqui</span><ol class="lista-p">' + its.map(function (t, i) { return '<li data-b="' + (i + 1) + '">' + t + '</li>'; }).join('') + '</ol></div>' : '<p class="sub">Os tópicos deste módulo ainda vão ser definidos.</p>') +
+      (m.previa.insp ? '<p class="fonte">Inspirações: ' + m.previa.insp + '</p>' : '') });
+  });
+
+  /* Cases */
+  /* Business Cases do sábado: um case real e dois fictícios, marcados como tais na tela. */
+  var BCIL = (function () {
+    function svg(corpo) { return '<svg class="il" viewBox="0 0 240 180" aria-hidden="true">' + corpo + '</svg>'; }
+    var o = {};
+    /* UPS: paradas ligadas por uma rota, com o caminhão percorrendo a ordem melhor e a ordem antiga riscada ao fundo */
+    var pts = [[26, 140], [62, 62], [104, 120], [140, 44], [178, 108], [214, 36]];
+    var caminho = 'M' + pts.map(function (p) { return p[0] + ',' + p[1]; }).join(' L');
+    o.ups = svg(
+      '<path class="il-linha" d="M26,140 L140,44 L62,62 L214,36 L104,120 L178,108" stroke-dasharray="2 7" style="opacity:.4"/>' +
+      '<path class="il-linha il-acc-l bc-fluxo" d="' + caminho + '"/>' +
+      pts.map(function (p, i) { return '<circle class="il-fundo il-b" cx="' + p[0] + '" cy="' + p[1] + '" r="9"/><text class="il-txt il-sm" x="' + p[0] + '" y="' + (p[1] + 3.6) + '" text-anchor="middle">' + (i + 1) + '</text>'; }).join('') +
+      '<g><rect class="il-acc" x="-13" y="-8" width="26" height="14" rx="4"/><circle class="il-fundo il-b" cx="-6" cy="8" r="4"/><circle class="il-fundo il-b" cx="6" cy="8" r="4"/><animateMotion dur="7s" repeatCount="indefinite" path="' + caminho + '"/></g>' +
+      '<text class="il-txt il-sm" x="120" y="168" text-anchor="middle">100 a 120 paradas, uma ordem melhor</text>');
+    /* Meridiano: cinco tipos de contato chegando ao atendimento */
+    var tipos = [['boleto', 24], ['sinistro', 52], ['cobertura', 80], ['renovação', 108], ['reclamação', 136]];
+    o.meridiano = svg(
+      tipos.map(function (t, i) { return '<g class="fl" style="animation-delay:' + (-i * 1.1) + 's"><rect class="il-fundo il-b" x="12" y="' + t[1] + '" width="68" height="22" rx="11"/><text class="il-txt il-sm" x="46" y="' + (t[1] + 15) + '" text-anchor="middle">' + t[0] + '</text></g><path class="il-linha bc-fluxo" d="M82,' + (t[1] + 11) + ' C116,' + (t[1] + 11) + ' 124,90 150,90"/>'; }).join('') +
+      '<g class="pl"><circle class="il-acc" cx="178" cy="90" r="28"/><path class="il-fundo" d="M166,92 a12,12 0 0 1 24,0 v6 h-5 v-6 a7,7 0 0 0 -14,0 v6 h-5 z"/><rect class="il-fundo" x="164" y="92" width="6" height="12" rx="3"/><rect class="il-fundo" x="186" y="92" width="6" height="12" rx="3"/></g>' +
+      '<text class="il-txt il-sm" x="178" y="138" text-anchor="middle">96 mil por mês</text>');
+    /* Grãos do Cerrado: fábrica, esteira com caixas e prateleira com um espaço vazio e uma caixa vencendo */
+    o.graos = svg(
+      '<rect class="il-fundo il-b" x="10" y="78" width="64" height="58" rx="6"/><rect class="il-fundo il-b" x="20" y="52" width="12" height="28"/><rect class="il-fundo il-b" x="42" y="62" width="12" height="18"/>' +
+      '<path class="il-linha" d="M76,128 H150"/>' +
+      [0, 1, 2].map(function (i) { return '<rect class="il-acc" width="14" height="12" rx="2" y="114"><animate attributeName="x" values="76;140" dur="4.5s" begin="' + (-i * 1.5) + 's" repeatCount="indefinite"/></rect>'; }).join('') +
+      '<rect class="il-fundo il-b" x="156" y="40" width="74" height="96" rx="6"/><path class="il-linha" d="M156,72 H230 M156,104 H230"/>' +
+      [[164, 50], [184, 50], [204, 50], [164, 82], [184, 82], [164, 114]].map(function (p, i) { return '<rect class="il-acc bc-bob" style="opacity:.85;animation-delay:' + (-i * .5) + 's" x="' + p[0] + '" y="' + p[1] + '" width="14" height="16" rx="3"/>'; }).join('') +
+      '<rect class="il-linha il-acc-l" x="202" y="82" width="16" height="16" rx="3" stroke-dasharray="3 3"/><text class="il-txt il-sm" x="210" y="68" text-anchor="middle">falta</text>' +
+      '<rect class="il-fundo il-b" x="184" y="112" width="36" height="18" rx="9"/><text class="il-txt il-sm" x="202" y="125" text-anchor="middle">vence</text>' +
+      '<text class="il-txt il-sm" x="120" y="166" text-anchor="middle">falta aqui, sobra ali</text>');
+    return o;
+  })();
+
+  var BUS = [
+    { id: 'ups', nome: 'UPS e o ORION', real: true, tipo: 'Caso real', curto: 'Levar um sistema que define a rota a 55 mil motoristas.',
+      tema: 'Operação apoiada por dados e algoritmos, e adoção pelas pessoas',
+      situacao: 'No início de 2013, a UPS já tem um sistema, o ORION, que define em que ordem cada motorista deve fazer as entregas do dia. O sistema deu certo nos centros de distribuição onde foi testado. Agora a empresa quer usá-lo nas cerca de 55 mil rotas que opera na América do Norte. Isso muda a rotina de dezenas de milhares de motoristas, que hoje escolhem sozinhos a sequência das paradas. O grupo faz o papel da equipe que vai desenhar essa implantação.',
+      aviso: 'Este case reconstrói uma situação a partir de fontes públicas. Grande parte dos números vem da própria UPS. O momento da decisão é um recorte para a atividade: a empresa não divulgou como decidiu. Não há cenas nem falas inventadas.',
+      contexto: [
+        [['O negócio e o problema', 'Um motorista da UPS faz, em média, de 100 a 120 paradas por dia (as fontes divergem). A ordem das paradas muda a distância dirigida, o combustível gasto e o cumprimento dos horários combinados com os clientes.'],
+         ['Um problema difícil', 'Com 120 paradas, o número de sequências possíveis é, segundo uma das fontes, quase infinito. Ainda há horários combinados, regras de trânsito e ruas privadas que o mapa não mostra. A UPS calcula que cada milha a menos por motorista por dia vale até US$ 50 milhões por ano. A conta é da própria empresa.'],
+         ['Antes do ORION', 'De 1997 a 2003, a UPS usou o Package Flow. Ele definia a ordem de entrega e o carregamento do caminhão, mas não dava direções de uma parada à outra, e o plano ficava fixo desde a manhã.']],
+        [['Como o ORION funciona', 'As fontes descrevem otimização matemática: algoritmos que procuram a melhor sequência de paradas dentro de regras definidas pela UPS. Nenhuma fonte o chama de machine learning. É uma operação baseada em dados e algoritmos, e serve para discutir como uma empresa adota um sistema desse tipo.'],
+         ['No dia a dia do motorista', 'De manhã, a rota do dia aparece no coletor de mão que ele já usa para registrar as entregas. Durante o dia, a rota pode mudar se um cliente alterar o horário ou o endereço. Recalcular a rota inteira por causa do trânsito aparece como trabalho futuro nas fontes.'],
+         ['As regras vieram dos motoristas', 'A UPS convidou motoristas experientes a tentar vencer o computador e, dessas comparações, tirou regras que o sistema passou a respeitar.'],
+         ['O que as fontes não contam', 'O único motorista citado é apresentado pela própria UPS. Nenhuma fonte traz a opinião de motoristas contrários, o treinamento oferecido ou a reação de sindicatos. O grupo vai trabalhar com essa lacuna.']]
+      ],
+      numeros: { titulo: 'O que a UPS declarou', nota: 'Nenhum número foi verificado por fonte independente. Todos nascem na UPS. Os valores de 100 milhões de milhas e de US$ 250 milhões vêm da InformIT sem fonte direta e não foram verificados.',
+        itens: [[{ txt: '6 a 8' }, 'milhas a menos por rota, por dia (UPS, segundo FreightWaves e InformIT)'], [{ valor: 55000 }, 'rotas na América do Norte que receberiam o sistema'], [{ valor: 1.5, dec: 1, suf: ' mi' }, 'galões de combustível economizados em 2013 (projeção da UPS)'],
+          [{ valor: 100, suf: ' mi' }, 'milhas a menos por ano com a implantação completa (InformIT)'], [{ valor: 50, pre: 'US$ ', suf: ' mi' }, 'por ano, para cada milha a menos por motorista por dia (conta da UPS)'], [{ txt: 'US$ 250 mi' }, 'custo de construir e implantar, e economia anual esperada de US$ 300 a 400 mi (InformIT, sem fonte)']] },
+      tempo: { titulo: 'Da pesquisa à implantação', eventos: [['1997 a 2003', 'Package Flow: ordem de entrega e carregamento, plano fixo desde a manhã'], ['2003 a 2009', 'Algoritmo desenvolvido e testado em unidades da UPS'], ['2008', 'GPS e sensores instalados nos caminhões'],
+          ['2008 a 2011', 'Protótipos em 8 a 11 centros (as fontes divergem)'], ['2012', 'Seis centros em fase beta, que é um teste ampliado antes do lançamento'], ['2013', 'Primeira grande implantação, até 10 mil rotas, feita por uma equipe de 500 pessoas (redação ambígua na fonte)'], ['2016 ou 2017', 'Todas as rotas da América do Norte (as fontes divergem: terminou em 2016, ou estava planejada para 2017)']] },
+      tarefa: 'O sistema funciona nos testes. O que falta é fazer 55 mil motoristas usarem. Motoristas experientes têm o próprio jeito de montar o dia, conhecem as ruas e as manias dos clientes, e agora vão receber uma ordem de entregas calculada por um computador. O grupo propõe como a UPS conduz essa mudança.',
+      perguntas: ['Imagine que a UPS decidiu levar o ORION a todas as rotas. Qual seria o primeiro passo do grupo? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar? O que pode dar errado numa mudança desse tamanho?', 'Que ações a UPS deveria fazer com os motoristas para que eles adotem o sistema e confiem nele? Quem precisa convencer quem?',
+        'Em que situações o motorista deve poder decidir diferente do sistema? Como a empresa fica sabendo quando isso acontece, e o que faz com a informação?', 'Como a UPS saberia, seis meses depois, se a implantação deu certo? O que acompanharia além das milhas economizadas?', 'Hoje a UPS poderia ir além e usar IA mais avançada nessa operação, por exemplo para prever quanto tempo cada parada vai levar. Onde isso ajudaria e onde seria arriscado?'],
+      chunks: [3, 2, 2],
+      fonte: 'Fontes: Solomon, FreightWaves, 14/12/2018. Delen, InformIT, 14/11/2019. Hower, Sustainable Brands, out/2013. Henschen, InformationWeek, 04/11/2013.' },
+
+    { id: 'meridiano', nome: 'Meridiano Seguros', real: false, tipo: 'Caso fictício', curto: 'Onde a IA entra no atendimento? R$ 900 mil e cinco opções.',
+      tema: 'IA no atendimento ao cliente e adoção pelas pessoas',
+      situacao: 'Helena Tavares, diretora de operações da Meridiano Seguros, tem até a reunião de planejamento de 30 de novembro para levar ao presidente uma proposta de como usar R$ 900 mil em 2027. O dinheiro precisa reduzir o custo do atendimento e, ao mesmo tempo, frear a saída de clientes. Cinco fornecedores já ofereceram IA. Helena precisa decidir o que comprar, o que eliminar e o que continuar fazendo com pessoas.',
+      aviso: 'Caso fictício. A empresa, as pessoas, os números e os fornecedores foram criados para esta atividade. Qualquer semelhança com empresas ou pessoas reais é coincidência.',
+      contexto: [
+        [['Uma segunda-feira de outubro', 'O relatório mensal mostra que, em setembro, o atendimento recebeu 96 mil contatos por telefone, chat e e-mail. A conta do mês fechou em R$ 1,25 milhão. Multiplicada por doze, dá R$ 15 milhões por ano.'],
+         ['A mensagem do presidente', 'O presidente, Antônio Carvalho, escreveu: "Vi que a Seguro Já abriu em Minas. Preciso de um plano de IA para o atendimento até o dia 30." A Seguro Já é uma concorrente que só opera por aplicativo e não tem central de telefone.'],
+         ['Dois problemas escondidos', 'Um é o custo do atendimento. O outro é o cliente: o cancelamento na renovação subiu de 14% para 17% em doze meses, e as pesquisas apontam a demora para resolver sinistros como motivo principal.'],
+         ['A empresa e a concorrente', 'A Meridiano vende seguro de automóvel, residência e vida, em Belo Horizonte, com 410 mil clientes e 280 pessoas no atendimento. Construiu a reputação no contato próximo. A Seguro Já emite apólice em minutos e paga pequenos sinistros, como vidro quebrado, sem a pessoa falar com ninguém. É menor, mas cresce entre clientes de 25 a 40 anos.']],
+        [['O que a Helena tem', 'Dois analistas de dados e uma pessoa de TI. Os três conseguem tocar no máximo três projetos em 2027, e todos precisam estar no ar em até nove meses. O orçamento é de R$ 900 mil.'],
+         ['O que os fornecedores prometem', 'Um deles apresentou um assistente de IA generativa que "atende todos os tipos de contato, 24 horas por dia, e reduz em 60% o volume que chega às pessoas", por R$ 560 mil por ano. Outro propôs um modelo de machine learning para prever quem vai cancelar. Um terceiro vende automação simples para os pedidos mais fáceis.'],
+         ['O alerta do jurídico', 'Tudo que a Meridiano diz ao cliente sobre cobertura vale como informação da empresa.'],
+         ['As três perguntas da Helena', 'Escritas no quadro: o que dá para eliminar de vez, o que uma automação simples resolve e o que só uma pessoa resolve.']]
+      ],
+      barras: [{ titulo: 'Para onde vai o dinheiro do atendimento', sub: 'Custo mensal por tipo de contato, setembro de 2026. Total: R$ 1.251.500 por mês, cerca de R$ 15 milhões por ano.', fonte: 'Valores fictícios. A nota é dada pelo cliente depois do atendimento, de 0 a 10.',
+        linhas: [['Segunda via de boleto e apólice', 232500, 'R$ 232.500', ['31.000 contatos, R$ 7,50 cada', 'A resposta vem de uma consulta ao sistema', 'Custo de um erro: baixo', 'Nota 8,1']],
+          ['Situação do sinistro', 198000, 'R$ 198.000', ['22.000 contatos, R$ 9,00 cada', 'A resposta vem de uma consulta ao sistema', 'Custo de um erro: baixo', 'Nota 5,9, e o motivo mais citado é a espera']],
+          ['Dúvida de cobertura', 238000, 'R$ 238.000', ['17.000 contatos, R$ 14,00 cada', 'Depende do texto do contrato e do caso', ['Custo de um erro: alto', 1], 'Nota 6,4']],
+          ['Renovação e cotação', 165000, 'R$ 165.000', ['15.000 contatos, R$ 11,00 cada', 'Depende de regras de preço e de negociação', 'Custo de um erro: médio', 'Nota 7,0']],
+          ['Sinistro complexo e reclamação', 418000, 'R$ 418.000', ['11.000 contatos, R$ 38,00 cada', 'Depende da análise de uma pessoa', ['Custo de um erro: alto', 1], ['Nota 4,8', 1]]]] }],
+      opcoes: { titulo: 'As cinco opções para 2027', sub: 'Custos e efeitos estimados pelos fornecedores, sem teste na Meridiano. Limites: R$ 900 mil, no máximo três projetos, todos no ar em até nove meses.',
+        itens: [['O1', 'Mostrar a situação do sinistro no aplicativo e no WhatsApp, ligada ao sistema da empresa, para o cliente não precisar ligar', 'R$ 250 mil', 'Elimina 70% dos contatos desse tipo'],
+          ['O2', 'Automação simples, com regras fixas, para segunda via de boleto e apólice por WhatsApp', 'R$ 120 mil', 'Elimina 80% dos contatos desse tipo'],
+          ['O3', 'Copiloto de IA generativa para o atendente: busca no texto do contrato e propõe uma resposta de cobertura, que o atendente confere antes de enviar', 'R$ 480 mil por ano', 'Reduz 25% do tempo de cada contato de cobertura'],
+          ['O4', 'Assistente de IA generativa que conversa direto com o cliente em todos os tipos de contato', 'R$ 560 mil por ano', 'Reduz 60% dos contatos de todos os tipos que chegam a pessoas'],
+          ['O5', 'Modelo de machine learning para prever o cancelamento na renovação', 'R$ 300 mil', 'Sem estimativa de contatos. O fornecedor fala em reter "alguns pontos percentuais" de clientes. A empresa nunca testou ofertas de retenção e tem histórico parcial dos motivos de cancelamento']],
+        nota: 'O grupo monta a combinação que levaria a Helena e justifica. Pode usar de zero a três projetos, dentro do orçamento, e pode propor algo fora desta lista, inclusive não comprar nada em algum tipo de contato.' },
+      perguntas: ['A Helena precisa levar uma proposta ao presidente. Que combinação de opções o grupo levaria, e o que ficaria como está?', 'Aprovada a proposta, qual seria o primeiro passo do projeto? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar, principalmente nos contatos em que um erro custa caro?',
+        'Que ações a empresa deveria fazer com os 280 atendentes para que eles adotem as ferramentas e não as vejam como ameaça?', 'O que a Meridiano precisa preservar para continuar diferente da Seguro Já? Nesse ponto, a IA ajuda ou atrapalha?', 'O que a Helena acompanharia nos três primeiros meses, e o que a faria parar um projeto?'],
+      chunks: [3, 3, 2],
+      fonte: 'Caso fictício criado para a disciplina.' },
+
+    { id: 'graos', nome: 'Grãos do Cerrado', real: false, tipo: 'Caso fictício', curto: 'Prever a demanda ou simplificar o portfólio? R$ 1,2 milhão.',
+      tema: 'IA no planejamento da produção e adoção pelas pessoas',
+      situacao: 'Rogério Fantin, diretor de supply chain da Grãos do Cerrado Alimentos, tem R$ 1,2 milhão e 18 meses para reduzir duas perdas que andam juntas: o produto que falta na gôndola e o produto que vence no estoque. Ele precisa decidir se investe em previsão de demanda com IA, se corta parte do portfólio, se muda a forma de trabalhar com as redes de supermercado, ou uma combinação. A diretoria quer a resposta na reunião de resultados de 12 de dezembro.',
+      aviso: 'Caso fictício. A empresa, as pessoas, os números e as redes de supermercado foram criados para esta atividade. Qualquer semelhança com empresas ou pessoas reais é coincidência.',
+      contexto: [
+        [['Duas ligações na mesma terça-feira', 'Às 9h, a compradora da maior rede cliente reclama que um biscoito lançado há quatro meses acabou no Sudeste, em plena campanha. A rede cortou o espaço do produto na gôndola. Às 15h, a gerente de estoque avisa que 38 mil caixas de molho de tomate em embalagem pequena estão a três semanas do vencimento, e ninguém pede aquela embalagem há dois meses.'],
+         ['A empresa', 'A Grãos do Cerrado fabrica massas, biscoitos, molhos e snacks em Anápolis, Goiás. A receita de 2025 foi de R$ 358 milhões. Cinco redes de supermercado respondem por 60% da receita, e cerca de 900 atacadistas menores compram o resto. O portfólio tem 1.100 itens (cada versão de produto vendida é um item, ou SKU).'],
+         ['A estratégia', 'Dar ao supermercado uma razão para escolher a marca: variedade, novidades constantes e preço competitivo. Por isso o portfólio cresceu por anos. A área comercial decide os lançamentos, negocia com as redes e só depois avisa a produção.'],
+         ['Como a previsão é feita hoje', 'Numa planilha mensal, ajustada à mão pelos gerentes de categoria. Um analista de dados trabalha na área e a empresa guarda 36 meses de vendas por item e por cliente. O calendário de promoções não está no sistema: cada comprador combina as ações por e-mail, e o registro fica em planilhas da área comercial. Duas das cinco redes enviam toda semana os dados de venda dos caixas das lojas. As outras três dizem que não compartilham.']]
+      ],
+      numeros: { titulo: 'A Grãos do Cerrado em 2025', nota: 'Valores fictícios. As perdas por vencimento equivalem a 1,9% da receita.',
+        itens: [[{ valor: 358, pre: 'R$ ', suf: ' mi' }, 'de receita'], [{ valor: 90.6, dec: 1, suf: '%' }, 'dos pedidos atendidos no prazo pela fábrica'], [{ valor: 11, pre: 'R$ ', suf: ' mi' }, 'em vendas perdidas por falta de produto (estimativa da empresa)'], [{ valor: 6.8, dec: 1, pre: 'R$ ', suf: ' mi' }, 'perdidos com produtos que venceram']] },
+      barras: [{ titulo: 'Onde estão as perdas por vencimento', sub: 'Por categoria, em R$ milhões. O erro de previsão é a diferença percentual entre o previsto e o vendido, por item e por mês.', fonte: 'Valores fictícios. Total de perdas: R$ 6,8 milhões.',
+          linhas: [['Massas', 0.9, 'R$ 0,9 mi', ['41% da receita', 'Erro de previsão: 18%']], ['Biscoitos', 2.1, 'R$ 2,1 mi', ['30% da receita', 'Erro de previsão: 31%']], ['Molhos', 1.1, 'R$ 1,1 mi', ['14% da receita', 'Erro de previsão: 24%']],
+            ['Snacks e lançamentos de até 12 meses', 2.7, 'R$ 2,7 mi', ['15% da receita', ['Erro de previsão: 46%', 1]]]] },
+        { titulo: 'Poucos itens vendem quase tudo', sub: 'Concentração do portfólio de 1.100 itens. A barra mostra a perda por vencimento de cada grupo, em R$ milhões.', fonte: 'Valores fictícios. Total de perdas: R$ 6,8 milhões.',
+          linhas: [['Itens que mais vendem', 1.6, 'R$ 1,6 mi', ['118 itens', '80% da receita']], ['Itens de venda média', 2.4, 'R$ 2,4 mi', ['290 itens', '16% da receita']], ['Cauda longa, os itens que vendem pouco', 2.8, 'R$ 2,8 mi', ['692 itens', '4% da receita', ['41% das perdas', 1]]]] }],
+      opcoes: { titulo: 'As cinco opções disponíveis', sub: 'Custos e efeitos estimados pela empresa e por fornecedores, sem teste. Limites: R$ 1,2 milhão no total, 18 meses e uma equipe de dados com um analista, que pode ganhar reforço se o projeto exigir.',
+        itens: [['A', 'Modelo próprio de machine learning para previsão, construído pela equipe', 'R$ 1,1 milhão em 12 meses', 'Exige contratar dois cientistas de dados. Funciona melhor em itens que vendem de forma estável há tempo. Sem registro das promoções, erra nas semanas de ação'],
+          ['B', 'Solução de previsão de um fornecedor', 'R$ 700 mil por ano', 'Começa em 6 meses. Pede o calendário de promoções para funcionar bem. Sem histórico, não prevê lançamentos'],
+          ['C', 'Cortar 400 itens da cauda longa e padronizar embalagens', 'R$ 150 mil', 'Os 400 itens somam cerca de R$ 8 milhões de receita, e a empresa estima recuperar metade com itens substitutos. Reduz perdas e simplifica a fábrica'],
+          ['D', 'Acordos com as redes: elas compartilham os dados de venda dos caixas, e as duas partes combinam, semana a semana, quanto de cada lançamento será produzido e entregue', 'R$ 90 mil', 'Duas redes já aceitam. As outras três dependem de negociação da área comercial'],
+          ['E', 'Usar IA generativa para ler as planilhas e os e-mails de promoção e montar o calendário em formato de dados', 'R$ 120 mil', 'Ideia da equipe, ainda sem fornecedor. Depende de revisão por uma pessoa da área comercial']],
+        nota: 'O grupo monta a combinação que levaria o Rogério e a justifica, dentro do orçamento. Pode propor algo fora desta lista e pode decidir não fazer algo em alguma categoria.' },
+      perguntas: ['Que combinação de opções o grupo levaria ao Rogério, e o que ficaria como está?', 'Aprovada a proposta, qual seria o primeiro passo do projeto? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar? Pense nos dados que a empresa tem e nos que ela não tem.',
+        'Que ações a empresa deveria fazer com a área comercial e com as redes de supermercado para a mudança funcionar? Quem precisa estar convencido?', 'Em quais itens a previsão com IA ajuda e em quais não ajuda? Por quê?', 'O que o Rogério acompanharia mês a mês, e que resultado em 6 meses o faria mudar de rota?'],
+      chunks: [2, 2],
+      fonte: 'Caso fictício criado para a disciplina.' }
+  ];
+  var BCFICHA = [['A decisão do grupo', 'O que o grupo recomenda, em uma ou duas linhas.'], ['Três razões', 'Por que essa decisão e não outra.'], ['O primeiro passo', 'Por onde o projeto começa.'], ['Os principais cuidados', 'O que pode dar errado e como evitar.'],
+    ['O que faríamos com as pessoas', 'Ações para a mudança funcionar.'], ['Onde a IA entra e onde a pessoa decide', 'Os dois lados da mesma resposta.'], ['O que acompanharíamos', 'Como saber se deu certo.']];
+  var idxBus = {}, iBusList;
+
+  function bcCartaoNum(it) {
+    var n = it[0];
+    return n.txt ? '<span class="num">' + ucEsc(n.txt) + '</span>' : N.numero(n);
+  }
+  function montaBus() {
+    iBusList = add('cases', { html: '<p class="rot-sec">Banco de cases · Business Cases</p><h2>Business Cases</h2><p class="sub">Cases de estudo em grupo, aos sábados. Cada grupo recebe um case, lê, discute e apresenta a conclusão.</p>' +
+      '<div class="tres uc-grade">' + BUS.map(function (u, i) { return '<button type="button" class="cartao uc" style="--i:' + i + '" data-bc="' + u.id + '"><span class="uc-mini">' + BCIL[u.id] + '</span><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + u.tipo + '</span><h3>' + ucEsc(u.nome) + '</h3><p>' + ucEsc(u.curto) + '</p></button>'; }).join('') + '</div>' });
+    BUS.forEach(function (u) {
+      var rot = 'Business Case · ' + u.tipo;
+      idxBus[u.id] = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">' + ucEsc(rot) + '</p><h2>' + ucEsc(u.nome) + '</h2><span class="bc-tag ' + (u.real ? 'real' : 'fic') + '">' + ucEsc(u.tema) + '</span>' +
+        '<p class="bc-sit">' + ucEsc(u.situacao) + '</p><p class="bc-aviso">' + ucEsc(u.aviso) + '</p><div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + BCIL[u.id] + '</div></div>' });
+      var itensCtx = [].concat.apply([], u.contexto), grupos = [], pos = 0;
+      (u.chunks || [3, 3, 2]).forEach(function (k) { if (pos < itensCtx.length) { grupos.push(itensCtx.slice(pos, pos + k)); pos += k; } });
+      grupos.forEach(function (grupo, g) {
+        add('cases', { builds: grupo.length, html: '<div class="dois uc-pts"><div class="ilu-p">' + BCIL[u.id] + '</div><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · ' + (g === 0 ? 'O contexto' : 'Para entender melhor · ' + (g + 1) + ' de ' + grupos.length) + '</p><h2>' + (g === 0 ? 'A situação' : 'Continuando') + '</h2>' +
+          grupo.map(function (p, i) { return '<div class="uc-pt" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div></div>',
+          ao: function (b, el) { if (b > 0) ucPing(el); } });
+      });
+      if (u.numeros) add('cases', { builds: u.numeros.itens.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Números</p><h2>' + ucEsc(u.numeros.titulo) + '</h2><div class="numeros">' + u.numeros.itens.map(function (it, i) { return '<div class="cartao" data-b="' + (i + 1) + '">' + bcCartaoNum(it) + '<p>' + ucEsc(it[1]) + '</p></div>'; }).join('') + '</div><p class="bc-nota">' + ucEsc(u.numeros.nota) + '</p></div>' });
+      (u.barras || []).forEach(function (bx) {
+        var mx = Math.max.apply(null, bx.linhas.map(function (l) { return l[1]; }));
+        add('cases', { builds: bx.linhas.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Anexo</p><h2>' + ucEsc(bx.titulo) + '</h2><p class="bc-sub">' + ucEsc(bx.sub) + '</p><div class="bc-rows">' +
+          bx.linhas.map(function (l, i) { return '<div class="bc-row" data-b="' + (i + 1) + '" style="--w:' + Math.round(l[1] / mx * 100) + '%"><b>' + ucEsc(l[0]) + '</b><div class="bc-bar"><i></i></div><span class="bc-val">' + ucEsc(l[2]) + '</span><div class="bc-chips">' +
+            l[3].map(function (c) { var alto = Array.isArray(c); return '<span' + (alto ? ' class="alto"' : '') + '>' + ucEsc(alto ? c[0] : c) + '</span>'; }).join('') + '</div></div>'; }).join('') + '</div><p class="fonte">' + ucEsc(bx.fonte) + '</p></div>' });
+      });
+      if (u.tempo) add('cases', { builds: u.tempo.eventos.length, html: '<p class="rot-sec">' + ucEsc(u.nome) + ' · Linha do tempo</p><h2>' + ucEsc(u.tempo.titulo) + '</h2><div class="tempo">' + u.tempo.eventos.map(function (e, i) { return '<div class="ev" data-b="' + (i + 1) + '"><b>' + ucEsc(e[0]) + '</b><p>' + ucEsc(e[1]) + '</p></div>'; }).join('') + '</div>' });
+      if (u.opcoes) add('cases', { builds: u.opcoes.itens.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Opções</p><h2>' + ucEsc(u.opcoes.titulo) + '</h2><p class="bc-sub">' + ucEsc(u.opcoes.sub) + '</p><div class="bc-opl">' +
+        u.opcoes.itens.map(function (it, i) { return '<div class="bc-orow" data-b="' + (i + 1) + '"><span class="bc-cod">' + it[0] + '</span><div><b>' + ucEsc(it[1]) + '</b><p>' + ucEsc(it[3]) + '</p></div><span class="bc-custo">' + ucEsc(it[2]) + '</span></div>'; }).join('') + '</div><p class="bc-nota">' + ucEsc(u.opcoes.nota) + '</p></div>' });
+      var n = u.perguntas.length;
+      add('cases', { builds: n, html: '<div class="dois uc-prg"><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · Para o grupo</p><h2>Perguntas do grupo</h2>' + (u.tarefa ? '<p class="bc-sub">' + ucEsc(u.tarefa) + '</p>' : '') + '<div class="uc-pergs">' +
+        u.perguntas.map(function (q, i) { return '<div class="uc-q" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><p>' + ucEsc(q) + '</p></div>'; }).join('') + '</div></div><div class="ilu-p uc-lado">' + BCIL[u.id] + '</div></div>',
+        ao: function (b, el) { if (b > 0) ucPing(el); } });
+      add('cases', { builds: BCFICHA.length, html: '<div class="bc-compact"><p class="rot-sec">' + ucEsc(u.nome) + ' · Entrega</p><h2>Ficha de conclusão do grupo</h2><p class="bc-sub">Cada grupo preenche uma ficha em letras curtas e apresenta: 1 minuto contando o case e 4 minutos com a conclusão.</p><div class="bc-opl">' +
+        BCFICHA.map(function (p, i) { return '<div class="bc-orow bc-fi" data-b="' + (i + 1) + '"><span class="bc-cod">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div><div class="acoes"><button type="button" class="botao-peq" data-bclista="1">Voltar à lista</button></div><p class="fonte">' + ucEsc(u.fonte) + '</p></div>',
+        ao: function (b, el) { if (b > 0) ucPing(el); } });
+    });
+  }
 
   /* Banco de cases: uma pasta por tema. Cada tema construído ganha a sua pasta, e os cases entram nela. */
   add('cases', { builds: 4, html: '<p class="rot-sec">Banco de cases</p><h2>Dois tipos de case</h2><p class="sub">Use Cases para discutir em sala, na sexta. Business Cases para estudar em grupo, aos sábados.</p><div class="tres">' +
