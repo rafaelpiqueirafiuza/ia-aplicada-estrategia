@@ -144,6 +144,8 @@ body { overflow: hidden; background: radial-gradient(90% 70% at 0% 100%, var(--b
 .slide.viva { display: flex; }
 /* Animações de entrada (carimbo, cartões 3D) passam da borda por um instante: sem rolagem lateral no celular. */
 .slide { overflow-x: hidden; }
+/* Projeção: os slides do tema Artefatos ficam 20% maiores (só em tela larga; no celular o tamanho segue o normal). */
+@media (min-width: 861px) { .slide[data-top="artefatos"] { zoom: 1.2; padding-top: 77px; padding-bottom: 93px; gap: 15px; } .slide[data-top="artefatos"] h2 { max-width: 60ch; } .slide[data-top="artefatos"] .sub { max-width: 90ch; } .slide[data-top="artefatos"] .dest { max-width: 60ch; } }
 .slide::before, .slide::after { content: ""; flex: 0 0 0; } .slide::before { margin-top: auto; } .slide::after { margin-bottom: auto; }
 .slide.antes { transform: translateX(-7%) scale(.98); }
 .slide.ativa { opacity: 1; transform: none; filter: none; pointer-events: auto; }
@@ -4201,7 +4203,7 @@ var UCIL = (function () {
   }
   renderAbas();
   S.forEach(function (s, i) {
-    var el = document.createElement('section'); el.className = 'slide'; el.innerHTML = s.html; el.setAttribute('aria-label', 'Tela ' + (i + 1) + ' de ' + S.length);
+    var el = document.createElement('section'); el.className = 'slide'; el.dataset.top = s.top; el.innerHTML = s.html; el.setAttribute('aria-label', 'Tela ' + (i + 1) + ' de ' + S.length);
     palco.appendChild(el); s.el = el; s.b = 0; s.builds = s.builds || 0;
     if (s.on) s.on(el); if (s.ao) s.ao(0, el);
   });
