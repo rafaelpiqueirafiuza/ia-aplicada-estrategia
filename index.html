@@ -144,8 +144,9 @@ body { overflow: hidden; background: radial-gradient(90% 70% at 0% 100%, var(--b
 .slide.viva { display: flex; }
 /* Animações de entrada (carimbo, cartões 3D) passam da borda por um instante: sem rolagem lateral no celular. */
 .slide { overflow-x: hidden; }
-/* Projeção: os slides do tema Artefatos ficam 20% maiores (só em tela larga; no celular o tamanho segue o normal). */
-@media (min-width: 861px) { .slide[data-top="artefatos"] { zoom: 1.2; padding-top: 70px; padding-bottom: 86px; gap: 12px; } .slide[data-top="artefatos"] h2 { max-width: 60ch; font-size: clamp(28px, 3.4vw, 48px); } .slide[data-top="artefatos"] .sub { max-width: 90ch; } .slide[data-top="artefatos"] .dest { max-width: 60ch; } }
+/* Projeção: os slides do tema Artefatos ficam maiores pelo fator --z (hoje 1,8; só em tela larga, no celular o tamanho segue o normal).
+   As margens e o espaçamento são divididos por --z para ocupar o mesmo espaço real de antes. */
+@media (min-width: 861px) { .slide[data-top="artefatos"] { --z: 1.8; zoom: var(--z); padding-top: calc(84px / var(--z)); padding-bottom: calc(103px / var(--z)); gap: calc(14px / var(--z)); } .slide[data-top="artefatos"] h2 { max-width: 60ch; font-size: clamp(28px, 3.4vw, 48px); } .slide[data-top="artefatos"] .sub { max-width: 90ch; } .slide[data-top="artefatos"] .dest { max-width: 60ch; } }
 .slide::before, .slide::after { content: ""; flex: 0 0 0; } .slide::before { margin-top: auto; } .slide::after { margin-bottom: auto; }
 .slide.antes { transform: translateX(-7%) scale(.98); }
 .slide.ativa { opacity: 1; transform: none; filter: none; pointer-events: auto; }
