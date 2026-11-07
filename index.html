@@ -138,7 +138,10 @@ body { overflow: hidden; background: radial-gradient(90% 70% at 0% 100%, var(--b
 .abas { display: flex; gap: 6px; overflow-x: auto; flex: 1; justify-content: center; scrollbar-width: none; padding: 2px; } .abas::-webkit-scrollbar { display: none; }
 .abas .pill[aria-current="true"] { background: rgba(var(--fg-rgb), .3); border-color: rgba(var(--fg-rgb), .7); }
 #palco { position: fixed; inset: 0; }
-.slide { position: absolute; inset: 0; padding: 92px max(28px, env(safe-area-inset-right, 0px)) 112px max(28px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; align-items: flex-start; gap: 18px; max-width: 1280px; margin: 0 auto; opacity: 0; transform: translateX(7%) scale(.98); filter: blur(10px); pointer-events: none; transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1), filter .5s ease; overflow: auto; }
+.slide { position: absolute; inset: 0; padding: 92px max(28px, env(safe-area-inset-right, 0px)) 112px max(28px, env(safe-area-inset-left, 0px)); display: none; flex-direction: column; align-items: flex-start; gap: 18px; max-width: 1280px; margin: 0 auto; opacity: 0; transform: translateX(7%) scale(.98); filter: blur(10px); pointer-events: none; transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1), filter .5s ease; overflow: auto; }
+/* Só o slide atual e o que está saindo existem na tela (classe viva, posta pelo script). Os outros ficam fora do layout:
+   com 173 camadas de tela inteira, o Safari do iPhone esgota a memória e a página trava em branco. */
+.slide.viva { display: flex; }
 .slide::before, .slide::after { content: ""; flex: 0 0 0; } .slide::before { margin-top: auto; } .slide::after { margin-bottom: auto; }
 .slide.antes { transform: translateX(-7%) scale(.98); }
 .slide.ativa { opacity: 1; transform: none; filter: none; pointer-events: auto; }
@@ -272,7 +275,7 @@ button.chip:hover { background: rgba(var(--fg-rgb), .22); }
   .tres, .quatro, .dois, .analise, .eu, .leg, .numeros { grid-template-columns: 1fr; } .numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tempo { grid-auto-flow: row; padding-top: 0; padding-left: 30px; } .tempo::before { left: 8px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; } .ev::before { left: -30px; top: 3px; }
   .enc { grid-template-columns: 1fr; } .enc p, .enc .ir { grid-column: 1; grid-row: auto; }
-  .slide { padding-top: 112px; } .topbar { flex-wrap: wrap; }
+  .slide { padding-top: 112px; filter: none; } .topbar { flex-wrap: wrap; }
  .abas { flex-basis: 100%; order: 3; justify-content: flex-start; } .barra { width: 34vw; } .poc { display: none; } .setas { display: none; }
 }
 /* Quem sou eu: tudo na mesma tela, entrando em sequência quando o slide abre */
@@ -4178,7 +4181,9 @@ var UCIL = (function () {
   function ir(i, b) {
     if (i < 0 || i >= S.length) return;
     if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
-    var s = S[i];
+    var s = S[i], velho = atual >= 0 ? S[atual] : null;
+    clearTimeout(s.tv); s.el.classList.add('viva'); void s.el.offsetWidth;
+    if (velho && velho !== s) { clearTimeout(velho.tv); velho.tv = setTimeout(function () { if (!velho.el.classList.contains('ativa')) velho.el.classList.remove('viva'); }, 750); }
     S.forEach(function (x, k) { x.el.classList.toggle('ativa', k === i); x.el.classList.toggle('antes', k < i); x.el.setAttribute('aria-hidden', String(k !== i)); });
     if (ponte && s.art !== ponte.enc.a) ponte = null;
     atual = i; s.b = b == null ? 0 : b; mostrarPonte(s); aplicar(s);
