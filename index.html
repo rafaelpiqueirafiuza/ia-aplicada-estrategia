@@ -3793,7 +3793,7 @@ var UCIL = (function () {
 
     var VB_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>';
     var vbTipos = ['certo', 'errado', 'dois', 'bastidor'];
-    add('videos', { html: '<p class="rot-sec">Vídeos · Banco de vídeos</p><h2>Banco de vídeos</h2><p class="sub">Cases de IA em vídeo, cada um com o trecho sugerido. Clique na capa para assistir aqui mesmo.</p>' +
+    add('videos', { html: '<p class="rot-sec">Vídeos · Banco de vídeos</p><h2>Banco de vídeos</h2><p class="sub">Cases de IA em vídeo, cada um com o trecho sugerido. Clique na capa para abrir o trecho no YouTube.</p>' +
       '<div class="uc-filtros vb-filtros" role="group" aria-label="Filtrar por tipo"><button type="button" class="chip" data-vbf="" aria-pressed="true">Todos (' + VBANCO.length + ')</button>' +
         vbTipos.map(function (t) { var n = VBANCO.filter(function (v) { return v.tipo === t; }).length; return n ? '<button type="button" class="chip" data-vbf="' + t + '" aria-pressed="false">' + TIPOS[t] + ' (' + n + ')</button>' : ''; }).join('') + '<button type="button" class="botao-peq vb-outro" id="vb-outro">Usar outro vídeo</button></div>' +
       '<div class="tres uc-grade vb-grade">' + VBANCO.map(function (v, i) {
@@ -3812,7 +3812,11 @@ var UCIL = (function () {
         el.querySelector('#vb-outro').addEventListener('click', function () { if (vdGer) { vdGer(); ir(iVdPlayer, 0); } });
         [].forEach.call(el.querySelectorAll('.vb'), function (c) { c.addEventListener('click', function () {
           var v = VBANCO.filter(function (x) { return x.id === c.dataset.vb; })[0];
-          if (v && vdToca) { vdToca(v); ir(iVdPlayer, 0); }
+          if (!v) return;
+          /* A capa abre o vídeo no navegador, numa aba nova, já no início do trecho. */
+          var w = window.open('https://www.youtube.com/watch?v=' + v.yt + '&t=' + seg(v.ini) + 's', '_blank');
+          if (w) w.opener = null;
+          else if (vdToca) { vdToca(v); ir(iVdPlayer, 0); }
         }); });
       } });
 
@@ -4250,7 +4254,8 @@ var UCIL = (function () {
   $('#b-menu').addEventListener('click', function () { vista('home'); });
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-lib],.aula.trava');
-    if (!t) return;
+    /* A própria tela (section.slide) também tem data-top, só para o CSS. Clique nela não é pedido de troca de módulo. */
+    if (!t || t.classList.contains('slide')) return;
     if (t.classList.contains('trava')) { t.classList.remove('balanca'); void t.offsetWidth; t.classList.add('balanca'); dica('O próximo módulo ainda vai ser construído.'); return; }
     if (t.dataset.lib) { var idm = t.dataset.lib, card = t.closest('.aula'); LIB[idm] = true; salvaLib(); if (card) card.classList.add('abrindo'); setTimeout(function () { renderAbas(); renderHome(); vista('aula'); ponte = null; ir(topIdx[idm], 0); }, N.reduz ? 0 : 750); return; }
     if (t.dataset.uc) { ponte = null; ir(idxUse[t.dataset.uc], 0); return; }
