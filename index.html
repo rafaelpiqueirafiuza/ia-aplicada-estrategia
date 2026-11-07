@@ -2849,21 +2849,6 @@ var UCIL = (function () {
       ia: UC_IA('a CashMe', 'na análise e na concessão de crédito'),
       fonte: 'Slides 53 e 54 de Transformação Digital e Modelos de Negócio, slide 17 de Inovação Digital.' }
   ];
-  /* Pivôs do Lean Startup: três linhas por empresa, como estão nos slides 88 a 95. */
-  [['sympla', 'Sympla', 'Zoom-in', 'Um recurso do produto se torna o próprio produto.', 'Plataforma de gerenciamento de eventos com várias funcionalidades.', 'Foco na venda de ingressos.', 'Principal plataforma de venda de ingressos no Brasil.', 'Slide 88'],
-    ['99', '99 (99Taxis)', 'Zoom-out', 'O produto original se torna um recurso de um produto maior.', 'Aplicativo focado exclusivamente em táxis.', 'Expansão para incluir carros particulares e outros serviços.', 'Plataforma de mobilidade completa com diversos serviços.', 'Slide 89'],
-    ['contaazul', 'Conta Azul', 'Segmento de cliente', 'Mudança no segmento de cliente ativo.', 'Focado em pequenas empresas.', 'Ajuste para microempreendedores e autônomos.', 'Ferramenta amplamente utilizada por microempreendedores.', 'Slide 90'],
-    ['vindi', 'Vindi', 'Necessidade do cliente', 'Descoberta de um problema maior do que o que está sendo resolvido.', 'Plataforma de pagamento online.', 'Foco em gestão de assinaturas e pagamentos recorrentes.', 'Líder no mercado de gestão de assinaturas no Brasil.', 'Slide 91'],
-    ['movile', 'Movile', 'Plataforma', 'Mudança de aplicativo para plataforma, ou de plataforma para aplicativo.', 'Aplicativos individuais para diversos serviços.', 'Transformação em plataforma unificada.', 'Holding de tecnologia abrangendo diversas marcas de sucesso.', 'Slide 92'],
-    ['gympass', 'Gympass (atual Wellhub)', 'Modelo de negócio', 'Ajuste na forma de gerar receita.', 'Venda de planos individuais para academias.', 'Mudança para modelo de assinatura corporativa.', 'Sucesso global oferecendo benefícios de bem-estar para funcionários.', 'Slide 93'],
-    ['meliuz', 'Méliuz', 'Canal', 'Ajuste no canal de distribuição.', 'Cashback para compras online.', 'Inclusão de cashback para compras em lojas físicas.', 'Plataforma integrada de cashback para online e varejo físico.', 'Slide 94'],
-    ['totvs', 'TOTVS', 'Tecnologia', 'Mudança na tecnologia que sustenta o produto.', 'Ferramenta de ERP baseada em arquitetura tradicional de software local.', 'Adoção de arquitetura baseada em nuvem e tecnologias de SaaS.', 'Líder em soluções de ERP na América Latina, com plataforma em nuvem e atualizações contínuas.', 'Slide 95']
-  ].forEach(function (p) {
-    USE.push({ id: 'pivo-' + p[0], rot: p[2], nome: p[1], tipo: 'Pivô · ' + p[2], temas: ['Prototipação', 'Go-to-market com IA'], curto: p[3], resumo: p[3] + ' Exemplo do pivô do tipo ' + p[2].toLowerCase() + ', no método Lean Startup.',
-      pontos: [['Antes do pivô', p[4]], ['Durante o pivô', p[5]], ['Hoje', p[6]]],
-      perguntas: [['O que a empresa percebeu para decidir mudar?', true], ['O que mudou e o que ficou igual depois do pivô?', true], ['Como a empresa poderia ter testado essa mudança antes de apostar nela?', true]],
-      fonte: 'Deck Lean Startup, ' + p[7].toLowerCase() + '. Referência do slide: Ries, E. The Lean Startup (2011).' });
-  });
   USE.push(
     { id: 'cirque', nome: 'Cirque du Soleil', tipo: 'Oceano Azul · curva de valor', temas: ['Mercados que a IA destrava'], curto: 'O que o circo reduziu, eliminou e criou.',
       resumo: 'O Cirque du Soleil criou um espaço novo de mercado ao reduzir ou eliminar fatores que o circo tradicional oferecia e ao criar outros.',
