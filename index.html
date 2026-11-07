@@ -906,6 +906,48 @@ html[data-tema="claro"] .i0-carimbo u { background: #fff; }
 .slide:has(.i0-rpa) .sub { max-width: none; font-size: clamp(15px, 1.6vw, 20px); }
 @media (max-height: 760px) and (min-width: 901px) { .i0-graf svg { max-height: 38vh; } .i0-trp { gap: 8px; } .i0-jan2 { min-height: 0; padding-top: 30px; } .i0-rr { padding: 1px 10px; } .i0-rl { gap: 3px; } .i0-rob svg { width: 54px; } .i0-rm { min-height: 1.4em; } .slide:has(.i0-rpa) .sub { font-size: 14.5px; } .slide:has(.i0-rpa), .slide:has(.i0-tr1) { gap: 10px; } }
 
+/* Inovação corporativa */
+.in-hz, .in-iv, .in-tgf, .in-mz, .in-pf, .in-aj, .in-bal, .in-mres, .in-ob, .in-grade { flex-shrink: 0; }
+.slide:has([class*="in-"]) h2 { max-width: none; }
+.in-tx { fill: var(--fg); font: 700 12.5px var(--fonte); opacity: .85; } .in-tx2 { fill: #fff; font: 700 14px var(--fonte); }
+.in-hz { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.in-curvas svg { width: 100%; max-height: 52vh; display: block; overflow: visible; }
+.in-cv path { fill: none; stroke: var(--c); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s ease-out; filter: drop-shadow(0 0 6px var(--c)); } .in-cv.on path { stroke-dashoffset: 0; }
+.in-hl { display: grid; gap: 9px; } .in-h { padding: 10px 16px; border-radius: 18px; border-left: 6px solid var(--c); background: rgba(var(--fg-rgb), .07); } .in-h span { font-size: 12px; font-weight: 700; opacity: .8; display: block; } .in-h b { font-size: clamp(16px, 1.9vw, 23px); display: block; } .in-h p { font-size: clamp(13.5px, 1.45vw, 17px); } .in-h em { font-style: normal; opacity: .75; }
+
+.in-iv { align-items: center; } .in-sls { display: grid; gap: 22px; } .in-sls label, .in-aj label { display: grid; gap: 8px; } .in-sls b, .in-aj b { font-size: clamp(17px, 2vw, 25px); } .in-iv input, .in-aj input { width: 100%; height: 26px; accent-color: var(--vermelho); }
+.in-rs { display: grid; justify-items: center; gap: 12px; text-align: center; } .in-orb { position: relative; width: clamp(130px, 19vw, 190px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; border: 2px dashed rgba(var(--fg-rgb), .4); }
+.in-orb i { position: absolute; inset: 6%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff6b92, var(--vermelho)); box-shadow: 0 0 34px rgba(191, 0, 55, .6); transition: transform .4s cubic-bezier(.2, .9, .3, 1.4); } .in-orb b { position: relative; color: #fff; font-size: clamp(34px, 5vw, 58px); font-variant-numeric: tabular-nums; }
+.in-vd { font-size: clamp(16px, 1.95vw, 24px); font-weight: 700; line-height: 1.25; min-height: 2.5em; }
+.in-tgf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; } .in-tgf > div { display: flex; flex-wrap: wrap; gap: 6px; align-content: start; padding: 10px 14px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); } .in-tgf b { width: 100%; } .in-tgf span { font-size: clamp(12.5px, 1.3vw, 15px); padding: 3px 11px; border-radius: 999px; background: rgba(var(--fg-rgb), .12); }
+
+.in-mz { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); } .in-mat svg { width: 100%; max-height: 58vh; display: block; overflow: visible; }
+.in-z { fill: color-mix(in srgb, var(--c) 18%, transparent); stroke: var(--c); stroke-width: 1.5; transition: fill .4s; } .in-z.on { fill: color-mix(in srgb, var(--c) 42%, transparent); stroke-width: 3; }
+.in-zt { fill: var(--fg); font: 700 13px var(--fonte); } .in-dot { transition: transform .8s cubic-bezier(.3, 1.2, .4, 1); } .in-dot circle:first-child { fill: rgba(191, 0, 55, .35); animation: ilPl 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; } .in-dot2 { fill: var(--vermelho); stroke: #fff; stroke-width: 2.5; }
+.in-mp { display: grid; gap: 14px; } .in-mp .chip, .in-pf .chip { cursor: pointer; } .i0-tar .chip { cursor: pointer; } .in-zn { display: block; font-size: 13.5px; font-weight: 700; opacity: .85; margin-bottom: 6px; }
+.in-mp .chip[aria-pressed="true"] { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+
+.in-pf { display: grid; gap: 14px; width: 100%; max-width: 1040px; } .in-bl { display: grid; gap: 5px; } .in-bl b { font-size: clamp(15px, 1.7vw, 20px); } .in-br { display: flex; gap: 4px; height: clamp(42px, 7vh, 58px); }
+.in-br i { flex: var(--w) 1 0; display: grid; place-items: center; min-width: 0; overflow: hidden; border-radius: 10px; background: var(--c); color: #16090d; font-style: normal; font-weight: 800; font-size: clamp(12px, 1.5vw, 18px); white-space: nowrap; transform: scaleX(0); transform-origin: left; transition: transform .8s cubic-bezier(.2, .8, .2, 1); } .in-bl.vis .in-br i { transform: none; }
+.in-aj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; width: 100%; max-width: 1040px; } .in-ov { color: var(--pessoa-c); }
+
+.in-bal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; } .in-bd { display: grid; justify-items: start; gap: 4px; padding: 12px 16px; border-radius: 20px; background: rgba(var(--fg-rgb), .07); border: 2px solid rgba(var(--fg-rgb), .18); color: var(--fg); text-align: left; cursor: pointer; transition: transform .2s, background .3s, border-color .3s; } .in-bd:hover { transform: translateY(-2px); } .in-bd[aria-pressed="true"] { border-color: var(--c); background: color-mix(in srgb, var(--c) 18%, transparent); } .in-bd b { font-size: clamp(16px, 1.9vw, 23px); }
+.in-tag { padding: 1px 10px; border-radius: 999px; background: var(--c); color: #16090d; font-size: 12px; font-weight: 800; }
+.in-mres { display: grid; gap: 10px; width: 100%; min-height: 104px; align-content: start; } .in-mq { font-size: clamp(15px, 1.8vw, 21px); font-weight: 700; } .in-its { display: flex; flex-wrap: wrap; gap: 8px; } .in-its span { padding: 9px 16px; border-radius: 16px; border: 1px solid var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-size: clamp(14px, 1.6vw, 19px); animation: i0Pula .4s backwards; }
+
+.in-ob { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); } .in-sat svg { width: 100%; max-height: 54vh; display: block; overflow: hidden; border-radius: 22px; background: rgba(var(--fg-rgb), .04); }
+.in-orbt { fill: none; stroke: rgba(var(--fg-rgb), .14); stroke-width: 1.6; stroke-dasharray: 3 8; transition: stroke .5s; } .in-orbt.on { stroke: rgba(var(--fg-rgb), .55); }
+.in-st { opacity: .1; transition: opacity .5s; } .in-st.on { opacity: 1; } .in-st circle { fill: var(--c); filter: drop-shadow(0 0 8px var(--c)); }
+.in-ol { display: grid; gap: 7px; } .in-oi { display: grid; grid-template-columns: 1fr auto; column-gap: 8px; padding: 7px 14px; border-radius: 16px; background: rgba(var(--fg-rgb), .07); align-items: center; } .in-oi b { font-size: clamp(15px, 1.7vw, 20px); } .in-oi span, .in-oi p { grid-column: 1; font-size: clamp(12.5px, 1.3vw, 15.5px); } .in-oi span { opacity: .8; } .in-oi .botao-peq { grid-column: 2; grid-row: 1 / span 3; white-space: nowrap; }
+
+.in-grade { display: grid; grid-template-columns: minmax(84px, .7fr) repeat(3, minmax(0, 1fr)); gap: 6px; width: 100%; } .in-gh { padding: 5px 10px; text-align: center; border-radius: 12px; background: var(--c); color: #16090d; font-size: clamp(12.5px, 1.4vw, 16px); } .in-gl { display: flex; align-items: center; padding: 4px 10px; border-left: 5px solid var(--c); font-size: clamp(12px, 1.35vw, 15.5px); line-height: 1.15; }
+.in-cel { position: relative; min-height: clamp(58px, 10vh, 84px); display: grid; place-items: center; padding: 6px 10px; border-radius: 14px; border: 1px solid rgba(var(--fg-rgb), .25); background: rgba(var(--fg-rgb), .07); color: var(--fg); cursor: pointer; transition: background .3s, transform .2s; } .in-cel:hover { transform: scale(1.02); } .in-cel i { font-style: normal; font-size: 24px; font-weight: 800; color: var(--c); transition: opacity .2s; } .in-cel span { position: absolute; inset: 6px 10px; display: grid; place-items: center; text-align: center; font-size: clamp(11.5px, 1.25vw, 15px); line-height: 1.18; opacity: 0; transform: scale(.9); transition: opacity .3s, transform .3s; }
+.in-cel[aria-pressed="true"] { background: color-mix(in srgb, var(--c) 22%, transparent); border-color: var(--c); } .in-cel[aria-pressed="true"] i { opacity: 0; } .in-cel[aria-pressed="true"] span { opacity: 1; transform: none; }
+
+@media (max-width: 900px) { .in-hz, .in-iv, .in-mz, .in-ob, .in-aj { grid-template-columns: 1fr; } .in-tgf, .in-bal { grid-template-columns: 1fr; } .in-grade { grid-template-columns: 70px repeat(3, minmax(0, 1fr)); } .in-cel { min-height: 120px; } .in-cel span { font-size: 11px; inset: 3px 4px; } .in-gl { font-size: 11px; padding: 2px 5px; } .in-oi .botao-peq { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 4px; } }
+@media (max-height: 760px) and (min-width: 901px) { .in-curvas svg { max-height: 44vh; } .in-mat svg { max-height: 52vh; } .in-sat svg { max-height: 46vh; } .slide:has(.in-grade) .sub { font-size: 14.5px; max-width: none; } .slide:has(.in-grade) { gap: 8px; } .in-cel { min-height: 54px; } .in-sls { gap: 12px; } .in-orb { width: 120px; } .in-vd { min-height: 0; } }
+@media (max-height: 760px) and (min-width: 901px) { .in-curvas svg { max-height: 38vh; } .in-mat svg { max-height: 44vh; } .in-sat svg { max-height: 40vh; } .slide:has(.in-hz), .slide:has(.in-mz), .slide:has(.in-ob) { gap: 8px; } .in-h { padding: 6px 14px; } .in-h p { font-size: 13px; } .in-oi { padding: 5px 12px; } }
+
 /* Use Case: Accenture Technology Vision 2025 */
 .acc-h { display: grid; gap: 6px; width: 100%; }
 .acc-h h2 { font-size: clamp(24px, 3.3vw, 44px); max-width: 46ch; }
@@ -1790,9 +1832,7 @@ var A2 = (function () {
     { id: 'iazero', nome: 'IA do zero: o básico, na prática', curto: 'IA do zero', d: 'Machine learning, RPA, o que é um LLM, como fazer um bom prompt, a diferença entre modelos, vibe coding e cuidados.', lib: true },
     { id: 'ferramenta', nome: 'A ferramenta certa para o momento certo', curto: 'Ferramenta certa', d: 'Quando usar IA, machine learning, RPA, julgamento humano e desenho do processo.', lib: true },
     { id: 'artefatos', nome: 'Artefatos de estratégia', curto: 'Artefatos', d: 'Nove artefatos e onde a IA entra em cada um.', lib: true },
-    { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.',
-      previa: { itens: ['Matriz de ambição de inovação', 'Horizonte 1, horizonte 2 e horizonte 3', 'Que tipo de resultado medir em cada horizonte', 'Maneiras de explorar cada horizonte'],
-        insp: 'Nagji e Tuff, "Managing Your Innovation Portfolio" (Harvard Business Review, 2012). Baghai, Coley e White, The Alchemy of Growth (1999).' } },
+    { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.', lib: true },
     { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Horizonte 2 na prática, com o Oceano Azul e a curva de valor.',
       previa: { itens: ['Horizonte 2 da inovação na prática', 'Estratégia do Oceano Azul', 'Curva de valor'], insp: 'Kim e Mauborgne, Blue Ocean Strategy (2005).' } },
     { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'Que parte a empresa faz sozinha e que parte faz com outros.', previa: { itens: [], insp: '' } },
@@ -2563,6 +2603,81 @@ var A2 = (function () {
   var tSetas; function agendar(ms) { clearTimeout(tSetas); $('#setas').innerHTML = ''; tSetas = setTimeout(setas, ms); }
   addEventListener('resize', function () { agendar(150); });
   $('#palco').addEventListener('scroll', function () { agendar(60); }, true);
+
+  /* ---------- Estratégia de inovação corporativa na era da IA. A tela fala com o aluno, sem roteiro e sem depender de aparelho da turma. ---------- */
+  var IN_H = [['Horizonte 1', 'O negócio de hoje', 'var(--motor-c)'], ['Horizonte 2', 'O próximo negócio', 'var(--elemento-c)'], ['Horizonte 3', 'O negócio que ainda não existe', 'var(--t-genai)']];
+
+  /* 1. Três horizontes: as curvas de crescimento se desenham uma a uma */
+  add('inovacao', { builds: 3, html: '<p class="rot-sec">Inovação corporativa</p><h2>Três horizontes ao mesmo tempo</h2><div class="dois in-hz"><div class="in-curvas"><svg viewBox="0 0 420 270" role="img" aria-label="Três curvas de crescimento, uma depois da outra"><path class="il-linha" d="M26,10V240H410" style="opacity:.55"/>' +
+    [['M30,190 C100,120 150,80 220,74 C290,70 340,100 400,160', 0], ['M120,226 C190,190 240,120 300,76 C340,50 370,42 400,40', 1], ['M230,236 C290,226 340,170 400,18', 2]].map(function (c, i) { return '<g class="in-cv" data-c="' + (i + 1) + '" style="--c:' + IN_H[i][2] + '"><path pathLength="1" d="' + c[0] + '"/></g>'; }).join('') +
+    '<text class="in-tx" x="218" y="262" text-anchor="middle">Tempo</text><text class="in-tx" transform="translate(14,130) rotate(-90)" text-anchor="middle">Valor para a empresa</text></svg></div>' +
+    '<div class="in-hl">' + [['Defender e melhorar o que já dá dinheiro.', 'Resultado agora.'], ['Crescer perto do que a empresa já sabe fazer.', 'Resultado em alguns anos.'], ['Criar opções para um futuro que ninguém garante.', 'Resultado incerto, e mais longe.']].map(function (t, i) { return '<div class="in-h" data-b="' + (i + 1) + '" style="--c:' + IN_H[i][2] + '"><span>' + IN_H[i][0] + '</span><b>' + IN_H[i][1] + '</b><p>' + t[0] + ' <em>' + t[1] + '</em></p></div>'; }).join('') + '</div></div><p class="fonte">Baghai, Coley e White, The Alchemy of Growth (1999).</p>',
+    ao: function (b, el) { [].forEach.call(el.querySelectorAll('.in-cv'), function (g) { g.classList.toggle('on', +g.dataset.c <= b); }); } });
+
+  /* 2. Inovação = invenção x valor: dois controles e o resultado */
+  add('inovacao', { builds: 1, html: '<p class="rot-sec">Inovação corporativa</p><h2>Inovação = invenção × valor</h2><div class="dois in-iv"><div class="in-sls"><label><b>Invenção</b><input type="range" min="0" max="100" value="80" data-iv="0" aria-label="Invenção"></label><label><b>Valor para o cliente</b><input type="range" min="0" max="100" value="15" data-iv="1" aria-label="Valor"></label></div>' +
+    '<div class="in-rs"><div class="in-orb"><i></i><b>0</b></div><p class="in-vd"></p></div></div>' +
+    '<div class="in-tgf" data-b="1"><div><b>Tipos</b><span>Produto</span><span>Processo</span><span>Marketing</span><span>Modelo de negócio</span></div><div><b>Graus</b><span>Incremental</span><span>Disruptiva</span></div><div><b>Formatos</b><span>Fechada: intra e P&amp;D</span><span>Aberta: PoC, startups, equity, universidade</span><span>Venture building</span></div></div>',
+    on: function (el) {
+      var a = el.querySelector('[data-iv="0"]'), b = el.querySelector('[data-iv="1"]'), o = el.querySelector('.in-orb');
+      function pinta() { var i = +a.value, v = +b.value, p = Math.round(i * v / 100); o.querySelector('b').textContent = p; o.querySelector('i').style.transform = 'scale(' + (.25 + p / 100 * .75) + ')';
+        el.querySelector('.in-vd').textContent = i >= 50 && v < 40 ? 'Invenção sem valor: tecnologia bonita que ninguém paga.' : i < 40 && v >= 50 ? 'Valor sem invenção: bom negócio, porém igual aos outros.' : p >= 50 ? 'Aqui existe inovação: algo novo que alguém valoriza.' : 'Pouca novidade e pouco valor: ainda não é inovação.'; }
+      a.addEventListener('input', pinta); b.addEventListener('input', pinta); pinta();
+    } });
+
+  /* 3. Matriz de ambição: onde jogar e como ganhar */
+  var IN_Z = [['Core', 'Otimizar o que já existe, para os clientes de hoje.', IN_H[0][2]], ['Adjacente', 'Levar o que a empresa sabe para um mercado ou oferta próxima.', IN_H[1][2]], ['Transformacional', 'Criar oferta nova para um mercado que ainda precisa nascer.', IN_H[2][2]]];
+  var IN_EX = [['Assistente de IA para o atendimento atual', 16, 18, 0, 'Exemplo ilustrativo: mesmo cliente, mesma oferta, operação melhor.', ''], ['VW Sign & Drive', 50, 40, 1, 'Carro por assinatura: o mesmo produto, em um modelo de negócio novo.', 'vw'], ['Eve Air Mobility', 86, 84, 2, 'Aeronave elétrica em um mercado que ainda não existe.', 'eve']];
+  add('inovacao', { html: '<p class="rot-sec">Inovação corporativa</p><h2>Matriz de ambição</h2><div class="dois in-mz"><div class="in-mat"><svg viewBox="-30 0 340 330" aria-label="Matriz de ambição com as zonas core, adjacente e transformacional">' +
+    '<rect class="in-z" data-z="2" width="300" height="300" style="--c:' + IN_Z[2][2] + '"/><rect class="in-z" data-z="1" y="90" width="210" height="210" style="--c:' + IN_Z[1][2] + '"/><rect class="in-z" data-z="0" y="195" width="105" height="105" style="--c:' + IN_Z[0][2] + '"/>' +
+    '<text class="in-zt" x="288" y="24" text-anchor="end">Transformacional</text><text class="in-zt" x="198" y="112" text-anchor="end">Adjacente</text><text class="in-zt" x="94" y="216" text-anchor="end">Core</text>' +
+    '<g class="in-dot"><circle r="15"/><circle class="in-dot2" r="7"/></g><text class="in-tx" x="150" y="322" text-anchor="middle">Como ganhar: oferta atual → nova</text><text class="in-tx" transform="translate(-12,150) rotate(-90)" text-anchor="middle">Onde jogar: mercado atual → novo</text></svg></div>' +
+    '<div class="in-mp"><div class="i0-tar">' + IN_EX.map(function (e, i) { return '<button type="button" class="chip" data-e="' + i + '" aria-pressed="' + (i === 0) + '">' + e[0] + '</button>'; }).join('') + '</div><div class="i0-res"><span class="in-zn"></span><b></b><p></p></div><button type="button" class="botao-peq in-uc" hidden>Abrir o Use Case</button></div></div><p class="fonte">Nagji e Tuff, “Managing Your Innovation Portfolio”, Harvard Business Review, 2012. Casos dos slides do professor; posição no gráfico é aproximada.</p>',
+    on: function (el) {
+      var dot = el.querySelector('.in-dot'), res = el.querySelector('.i0-res'), uc = el.querySelector('.in-uc');
+      function zona(z) { [].forEach.call(el.querySelectorAll('.in-z'), function (r) { r.classList.toggle('on', +r.dataset.z === z); }); }
+      function pinta(i) { var e = IN_EX[i], z = IN_Z[e[3]]; dot.setAttribute('transform', 'translate(' + (e[1] * 3) + ',' + (300 - e[2] * 3) + ')'); dot.style.transform = 'translate(' + (e[1] * 3) + 'px,' + (300 - e[2] * 3) + 'px)'; zona(e[3]); el.querySelector('.in-zn').textContent = z[0] + ': ' + z[1]; res.querySelector('b').textContent = e[0]; res.querySelector('p').textContent = e[4]; res.classList.remove('entra'); void res.offsetWidth; res.classList.add('entra');
+        uc.hidden = !e[5]; if (e[5]) uc.dataset.uc = e[5]; else delete uc.dataset.uc;
+        [].forEach.call(el.querySelectorAll('[data-e]'), function (b) { b.setAttribute('aria-pressed', String(+b.dataset.e === i)); }); }
+      [].forEach.call(el.querySelectorAll('[data-e]'), function (b) { b.addEventListener('click', function () { pinta(+b.dataset.e); }); });
+      pinta(0);
+    } });
+
+  /* 4. Portfólio: onde se investe contra de onde vem o retorno */
+  add('inovacao', { builds: 2, html: '<p class="rot-sec">Inovação corporativa</p><h2>Onde vai o dinheiro, de onde vem o retorno</h2><div class="in-pf"><div class="in-bl" data-b="1"><b>Investimento</b><div class="in-br"><i style="--w:70;--c:' + IN_H[0][2] + '">70% core</i><i style="--w:20;--c:' + IN_H[1][2] + '">20%</i><i style="--w:10;--c:' + IN_H[2][2] + '">10%</i></div></div><div class="in-bl" data-b="2"><b>Retorno no longo prazo</b><div class="in-br"><i style="--w:10;--c:' + IN_H[0][2] + '">10%</i><i style="--w:20;--c:' + IN_H[1][2] + '">20%</i><i style="--w:70;--c:' + IN_H[2][2] + '">70% transformacional</i></div></div></div>' +
+    '<div class="in-aj"><label><b>Quanto vai para o core? <output class="in-ov"></output></b><input type="range" min="10" max="100" step="5" value="70" aria-label="Porcentagem no core"></label><p class="in-vd"></p></div><p class="fonte">Nagji e Tuff (HBR, 2012), com base em empresas de desempenho acima da média. Serve de ponto de partida: o equilíbrio muda conforme o setor e a empresa.</p>',
+    on: function (el) {
+      var r = el.querySelector('input[type=range]');
+      function pinta() { var v = +r.value; el.querySelector('.in-ov').textContent = v + '%'; el.querySelector('.in-vd').textContent = v >= 90 ? 'O resultado de hoje está protegido, e o de amanhã fica sem semente.' : v >= 60 ? 'Protege o negócio e ainda abre espaço para apostas.' : v >= 35 ? 'Aposta alta: o negócio atual precisa aguentar esse ritmo.' : 'O futuro recebe quase tudo, e quem paga a conta hoje pode faltar.'; }
+      r.addEventListener('input', pinta); pinta();
+    } });
+
+  /* 5. O que medir: três baldes */
+  var IN_MET = [['Savings', 'H1', 'Quando o objetivo é fazer melhor o que já existe.', ['Redução de custos', 'Redução de tempo', 'Desafios estratégicos resolvidos'], IN_H[0][2]], ['Ganhos', 'H2', 'Quando o objetivo é crescer além da linha atual.', ['Crescimento de uma linha', 'Novos consumidores', 'Nova linha de receita', 'Novos mercados', 'Reputação e marca'], IN_H[1][2]], ['Exploração e aprendizado', 'H3', 'Quando ainda é cedo para falar em receita.', ['Negócios e tecnologias testadas', 'Tendências tecnológicas exploradas', 'Tendências do consumidor', 'Insights sobre consumidores'], IN_H[2][2]]];
+  add('inovacao', { html: '<p class="rot-sec">Inovação corporativa</p><h2>O que medir em cada horizonte</h2><p class="sub">Métrica de negócio maduro mata projeto novo. Cada horizonte pede a sua régua.</p><div class="in-bal">' + IN_MET.map(function (m, i) { return '<button type="button" class="in-bd" data-m="' + i + '" style="--c:' + m[4] + '" aria-pressed="' + (i === 0) + '"><span class="in-tag">' + m[1] + '</span><b>' + m[0] + '</b></button>'; }).join('') + '</div><div class="in-mres"><p class="in-mq"></p><div class="in-its"></div></div><p class="fonte">Categorias: Yang et al., Unlocking the Corporate Venture Capital (500 Startups, 2019). Sobre métricas financeiras e inovação: Christensen, Kaufman e Shih, Innovation Killers.</p>',
+    on: function (el) {
+      function pinta(i) { var m = IN_MET[i]; el.querySelector('.in-mq').textContent = m[2]; var box = el.querySelector('.in-its'); box.style.setProperty('--c', m[4]); box.innerHTML = m[3].map(function (t, k) { return '<span style="animation-delay:' + (k * 90) + 'ms">' + t + '</span>'; }).join('');
+        [].forEach.call(el.querySelectorAll('[data-m]'), function (b) { b.setAttribute('aria-pressed', String(+b.dataset.m === i)); }); }
+      [].forEach.call(el.querySelectorAll('[data-m]'), function (b) { b.addEventListener('click', function () { pinta(+b.dataset.m); }); });
+      pinta(0);
+    } });
+
+  /* 6. Como explorar: quanto mais longe do core, mais longe da empresa-mãe */
+  var IN_ORB = [['Dentro de casa', 'Intraempreendedorismo e P&D.', 'Intra e P&amp;D: rápido de começar, e preso à cultura da empresa.', 70, ''], ['Com startups', 'Provas de conceito e investimento.', 'Vivo Ventures e Conexa: compra competência que não faz sentido construir.', 118, 'vivo'], ['Empresa nova', 'Venture building, com gestão própria.', 'Cyrela e CashMe: nasceu apartada para ganhar velocidade.', 166, 'cyrela'], ['Empresa separada', 'Listada, com vida própria.', 'Embraer e Eve: fora do core, com a expertise da controladora.', 214, 'eve']];
+  add('inovacao', { builds: 4, html: '<p class="rot-sec">Inovação corporativa</p><h2>Longe do core, longe da empresa-mãe</h2><div class="dois in-ob"><div class="in-sat"><svg viewBox="0 0 460 300" aria-hidden="true">' + IN_ORB.map(function (o, i) { return '<circle class="in-orbt" cx="60" cy="240" r="' + (o[3] * 1.2) + '" data-o="' + (i + 1) + '"/>'; }).join('') + '<g class="i0-pl"><circle class="il-acc" cx="60" cy="240" r="34"/></g><text class="in-tx2" x="60" y="245" text-anchor="middle">Core</text>' +
+    IN_ORB.map(function (o, i) { var a = (-20 - i * 12) * Math.PI / 180, r = o[3] * 1.2, x = 60 + r * Math.cos(a), y = 240 + r * Math.sin(a); return '<g class="in-st" data-o="' + (i + 1) + '" style="--c:' + [IN_H[0][2], IN_H[1][2], IN_H[1][2], IN_H[2][2]][i] + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="15"/></g>'; }).join('') + '</svg></div>' +
+    '<div class="in-ol">' + IN_ORB.map(function (o, i) { return '<div class="in-oi" data-b="' + (i + 1) + '"><b>' + o[0] + '</b><p>' + o[2] + '</p>' + (o[4] ? '<button type="button" class="botao-peq" data-uc="' + o[4] + '">Abrir o Use Case</button>' : '') + '</div>'; }).join('') + '</div></div><p class="fonte">Tocar o negócio de hoje e explorar o de amanhã ao mesmo tempo é o que se chama de ambidestria organizacional. Casos dos slides do professor.</p>',
+    ao: function (b, el) { [].forEach.call(el.querySelectorAll('[data-o]'), function (g) { g.classList.toggle('on', +g.dataset.o <= b); }); } });
+
+  /* 7. A IA em cada horizonte, com as mesmas três perguntas do curso */
+  var IN_IA = [['Motor de trabalho', 'Um assistente resume chamados e reduz o tempo de atendimento.', 'A IA acelera o estudo de um mercado novo e o teste de ofertas.', 'Protótipos saem em dias, e mais apostas cabem no mesmo orçamento.'], ['Parte do que a empresa entrega', 'O produto atual ganha um recurso de IA.', 'Uma oferta nova nasce com IA embarcada para um público próximo.', 'Um negócio inteiro construído em torno de IA.'], ['Onde a pessoa decide', 'Quem responde quando a IA erra com o cliente.', 'Em qual mercado vizinho entrar, e quando parar.', 'Em qual aposta manter o dinheiro quando nada está provado.']];
+  var IN_C = ['var(--motor-c)', 'var(--elemento-c)', 'var(--pessoa-c)'];
+  add('inovacao', { html: '<p class="rot-sec">Inovação corporativa na era da IA</p><h2>A mesma IA, três ambições</h2><p class="sub">Comprar IA para o horizonte 1 tende a virar eficiência que o concorrente também compra. A diferença aparece quando ela muda o que a empresa entrega.</p><div class="in-grade" role="grid"><span></span>' + IN_H.map(function (h) { return '<b class="in-gh" style="--c:' + h[2] + '">' + h[0] + '</b>'; }).join('') + IN_IA.map(function (l, i) { return '<b class="in-gl" style="--c:' + IN_C[i] + '">' + l[0] + '</b>' + [1, 2, 3].map(function (k) { return '<button type="button" class="in-cel" style="--c:' + IN_C[i] + '" aria-pressed="false"><i>?</i><span>' + l[k] + '</span></button>'; }).join(''); }).join('') + '</div><p class="fonte">Exemplos ilustrativos, sem empresas reais.</p>',
+    on: function (el) { [].forEach.call(el.querySelectorAll('.in-cel'), function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); }); }); } });
+
+  /* 8. Fechamento */
+  var IN_FIM = ['Sei separar os três horizontes', 'Sei posicionar uma aposta na matriz de ambição', 'Sei que cada horizonte pede a sua métrica', 'Sei onde a IA muda o jogo, e onde só iguala'];
+  add('inovacao', { builds: 4, html: '<p class="rot-sec">Inovação corporativa</p><h2>Agora vocês já sabem</h2><div class="i0-fim2">' + IN_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div>' });
 
   /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
   MODS.forEach(function (m) {
