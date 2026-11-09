@@ -111,7 +111,7 @@ body { overflow: hidden; background: radial-gradient(90% 70% at 0% 100%, var(--b
 .aula.trava .conteudo i { display: block; height: 30px; border-radius: 14px; background: rgba(var(--fg-rgb), .35); } .aula.trava .conteudo i:nth-child(2) { width: 82%; } .aula.trava .conteudo i:nth-child(3) { width: 90%; } .aula.trava .conteudo i:nth-child(4) { width: 64%; }
 .cad { position: absolute; left: 0; right: 0; top: 56px; bottom: 0; display: grid; place-content: center; justify-items: center; gap: 10px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
 .cad svg { width: 46px; height: 46px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.5)); }
-.aula.trava.balanca { animation: balanca .4s; } @keyframes balanca { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.aula.trava.balanca, .aula.chegando.balanca { animation: balanca .4s; } @keyframes balanca { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 .constr { padding: 8px 0; opacity: .8; font-size: 14.5px; }
 .atalhos { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 .atalho { display: flex; align-items: center; gap: 14px; padding: 12px 24px 12px 14px; border-radius: 999px; border: 1px solid rgba(var(--fg-rgb), .3); text-align: left; transition: transform .25s, background .25s; min-width: 250px; }
@@ -2050,10 +2050,14 @@ var A2 = (function () {
       previa: { itens: ['Como saber se a estratégia e a inovação deram resultado', 'A IA tratada como a inovação do momento'], insp: '' } }
   ];
   var TOTAL_QUADRADOS = 15;
+  /* PUBLICO: na página dos alunos (GitHub Pages) o publicar.sh troca para true. Lá os módulos trancados não abrem:
+     não há botão Desbloquear e o que ficou salvo no navegador é ignorado. Só o HTML do professor desbloqueia.
+     Para liberar um módulo para os alunos, marcar lib: true nele e publicar. */
+  var PUBLICO = true;
   var LIB = {}, ISMOD = {};
   MODS.forEach(function (m) { LIB[m.id] = !!m.lib; ISMOD[m.id] = 1; });
-  try { var sv = JSON.parse(localStorage.getItem('temas-liberados') || '{}'); Object.keys(sv).forEach(function (k) { if (k in LIB && sv[k]) LIB[k] = true; }); } catch (x) { }
-  function salvaLib() { try { localStorage.setItem('temas-liberados', JSON.stringify(LIB)); } catch (x) { } }
+  if (!PUBLICO) try { var sv = JSON.parse(localStorage.getItem('temas-liberados') || '{}'); Object.keys(sv).forEach(function (k) { if (k in LIB && sv[k]) LIB[k] = true; }); } catch (x) { }
+  function salvaLib() { if (PUBLICO) return; try { localStorage.setItem('temas-liberados', JSON.stringify(LIB)); } catch (x) { } }
   function aberto(top) { return !ISMOD[top] || !!LIB[top]; }
   var TOP = [{ id: 'eu', nome: 'Quem sou eu' }].concat(MODS.map(function (m) { return { id: m.id, nome: m.curto }; })).concat([{ id: 'cases', nome: 'Banco de cases' }, { id: 'dinamicas', nome: 'Dinâmicas' }, { id: 'videos', nome: 'Vídeos' }, { id: 'noticias', nome: 'Notícias' }, { id: 'juntos', nome: 'Bora montar juntos' }]);
 
@@ -2076,7 +2080,7 @@ var A2 = (function () {
     var h = '';
     MODS.forEach(function (m) {
       if (LIB[m.id]) h += '<article class="glass aula livre"><header><span class="an">' + m.nome + '</span></header><p class="constr">' + m.d + '</p><button class="go ok" data-top="' + m.id + '">Abrir tema</button></article>';
-      else h += '<article class="glass aula chegando"><header><span class="an">' + m.nome + '</span><span class="cdd-t" aria-hidden="true">' + cadeado + '</span></header><p class="constr borrado">' + m.d + '</p><button class="go" data-lib="' + m.id + '"><span class="cdd" aria-hidden="true">' + cadeado + '</span>Desbloquear</button></article>';
+      else h += '<article class="glass aula chegando"><header><span class="an">' + m.nome + '</span><span class="cdd-t" aria-hidden="true">' + cadeado + '</span></header><p class="constr borrado">' + m.d + '</p>' + (PUBLICO ? '<button class="go" data-embreve="1"><span class="cdd" aria-hidden="true">' + cadeado + '</span>Em breve</button>' : '<button class="go" data-lib="' + m.id + '"><span class="cdd" aria-hidden="true">' + cadeado + '</span>Desbloquear</button>') + '</article>';
     });
     for (var k = MODS.length; k < TOTAL_QUADRADOS; k++) {
       h += '<article class="glass aula trava" tabindex="0" aria-label="Próximo módulo, trancado: ainda vai ser construído"><header><span class="an">Próximo módulo</span></header>' +
@@ -4253,10 +4257,11 @@ var UCIL = (function () {
   function vista(id) { ['home', 'aula'].forEach(function (v) { $('#' + v).hidden = v !== id; }); if (id !== 'aula') $('#setas').innerHTML = ''; }
   $('#b-menu').addEventListener('click', function () { vista('home'); });
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-lib],.aula.trava');
+    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-lib],[data-embreve],.aula.trava');
     /* A própria tela (section.slide) também tem data-top, só para o CSS. Clique nela não é pedido de troca de módulo. */
     if (!t || t.classList.contains('slide')) return;
     if (t.classList.contains('trava')) { t.classList.remove('balanca'); void t.offsetWidth; t.classList.add('balanca'); dica('O próximo módulo ainda vai ser construído.'); return; }
+    if (t.dataset.embreve || (PUBLICO && t.dataset.lib) || (PUBLICO && t.dataset.top && !aberto(t.dataset.top))) { var cd = t.closest('.aula'); if (cd) { cd.classList.remove('balanca'); void cd.offsetWidth; cd.classList.add('balanca'); } dica('Este módulo abre quando o professor liberar.'); return; }
     if (t.dataset.lib) { var idm = t.dataset.lib, card = t.closest('.aula'); LIB[idm] = true; salvaLib(); if (card) card.classList.add('abrindo'); setTimeout(function () { renderAbas(); renderHome(); vista('aula'); ponte = null; ir(topIdx[idm], 0); }, N.reduz ? 0 : 750); return; }
     if (t.dataset.uc) { ponte = null; ir(idxUse[t.dataset.uc], 0); return; }
     if (t.dataset.uclista) { ponte = null; ir(iUseList, 0); return; }
