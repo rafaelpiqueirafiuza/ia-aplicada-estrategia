@@ -1201,6 +1201,219 @@ html[data-tema="claro"] .i0-carimbo u { background: #fff; }
   .acc-seq .uc-pt, .acc-seq .uc-q { align-items: center; }
 }
 
+/* Blocos construídos a partir das aulas antigas (inovação aberta, modelos de negócio, proposta de valor, prototipação) */
+[class^="bl-"], [class*=" bl-"] { box-sizing: border-box; }
+.bl-fu, .bl-zn, .bl-esc, .bl-nu, .bl-cri, .bl-trl, .bl-an, .bl-br, .bl-ucs { flex-shrink: 0; }
+.slide:has([class*="bl-"]) h2 { max-width: none; }
+.bl-tx { fill: var(--fg); font: 700 13px var(--fonte); opacity: .85; } .bl-tx2 { fill: #fff; font: 700 14px var(--fonte); }
+.bl-card { display: grid; gap: 6px; padding: 14px 18px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); animation: i0Pula .35s backwards; }
+.bl-card b { font-size: clamp(17px, 2vw, 24px); } .bl-card p { font-size: clamp(14px, 1.55vw, 18px); } .bl-card small { font-size: 12.5px; opacity: .75; }
+.bl-tag { justify-self: start; padding: 2px 12px; border-radius: 999px; background: var(--c, var(--vermelho)); color: #16090d; font-size: 12.5px; font-weight: 800; }
+.bl-q { font-weight: 700; max-width: 70ch; }
+.bl-ucs { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* 1. Funil */
+.bl-fu { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+.bl-fusvg svg { width: 100%; max-height: 50vh; display: block; overflow: visible; }
+.bl-fuw { fill: rgba(var(--fg-rgb), .07); stroke: var(--fg); stroke-width: 2.5; stroke-linejoin: round; transition: stroke-dasharray .4s; } .bl-fuw.poroso { stroke-dasharray: 10 12; stroke: var(--elemento-c); }
+.bl-pt { fill: var(--motor-c); transform: translate(var(--x0), var(--y0)); animation: blVoa 4.2s var(--d) ease-in-out infinite; }
+.bl-pt.morre { fill: rgba(var(--fg-rgb), .45); animation-name: blMorre; } .bl-pt.entra { fill: var(--elemento-c); } .bl-pt.sai { fill: var(--t-genai); }
+@keyframes blVoa { 0% { transform: translate(var(--x0), var(--y0)); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translate(var(--x1), var(--y1)); opacity: 0; } }
+@keyframes blMorre { 0% { transform: translate(var(--x0), var(--y0)); opacity: 0; } 10% { opacity: 1; } 60% { transform: translate(var(--x1), var(--y1)); opacity: 1; } 100% { transform: translate(var(--x1), var(--y1)) scale(.2); opacity: 0; } }
+.bl-fut { display: grid; gap: 12px; } .bl-fuh { font-size: clamp(20px, 2.4vw, 30px); } .bl-fup { font-size: clamp(15px, 1.7vw, 20px); } .bl-fud { font-size: clamp(17px, 2vw, 25px); }
+
+/* 2. Zonas */
+.bl-zn { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bl-znsvg svg { width: 100%; max-height: 46vh; display: block; overflow: visible; }
+.bl-z { opacity: .3; transition: opacity .4s; } .bl-z.on { opacity: 1; }
+.bl-seta { fill: none; stroke: var(--c); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 10 9; } .bl-z.on .bl-seta { animation: ilFlow .7s linear infinite reverse; }
+.bl-emp { fill: color-mix(in srgb, var(--c) 26%, transparent); stroke: var(--c); stroke-width: 3; } .bl-z.on .bl-emp { animation: ilPl 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.bl-znt { display: grid; gap: 12px; align-content: start; }
+
+/* 3. Escada do compromisso */
+.bl-esc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; align-items: end; }
+.bl-deg { display: grid; gap: 6px; padding: 14px 16px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); min-height: calc(120px + var(--h, 1) * 34px); align-content: end; }
+.bl-deg b { font-size: clamp(18px, 2.1vw, 26px); } .bl-degs { font-size: 13px; font-weight: 700; opacity: .8; } .bl-deg p { font-size: clamp(13.5px, 1.45vw, 17px); }
+.bl-degb { display: grid; gap: 3px; font-size: 11.5px; opacity: .85; } .bl-degb i { display: block; height: 10px; border-radius: 6px; background: linear-gradient(90deg, var(--elemento-c), var(--vermelho)); width: 0; transition: width 1s .2s cubic-bezier(.2, .8, .2, 1); }
+.bl-deg.vis .bl-degb i { width: var(--w); }
+.bl-vb { border-style: dashed; border-color: var(--t-genai); background: color-mix(in srgb, var(--t-genai) 12%, transparent); min-height: 150px; }
+
+/* 4. Peças */
+.bl-nu { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.bl-nuv svg { width: 100%; max-height: 40vh; display: block; overflow: visible; }
+.bl-pc path { stroke: #fff; stroke-width: 2; transition: transform .7s cubic-bezier(.3, 1.2, .4, 1); } .bl-pc.a path { fill: var(--elemento-c); } .bl-pc.b path { fill: var(--vermelho); }
+.bl-pc { transition: transform .7s cubic-bezier(.3, 1.2, .4, 1), opacity .4s; }
+svg[data-m="0"] .bl-pc.a { transform: translateX(34px); } svg[data-m="0"] .bl-pc.b { opacity: .28; }
+svg[data-m="1"] .bl-pc.b { transform: translateX(-34px); } svg[data-m="1"] .bl-pc.a { opacity: .28; }
+svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc.b { transform: translateX(-40px); }
+.bl-nut { display: grid; gap: 12px; align-content: start; }
+
+/* 5. Critérios */
+.bl-cri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; }
+.bl-cr { position: relative; display: grid; gap: 4px; text-align: left; padding: 9px 14px 9px 44px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .2); color: var(--fg); cursor: pointer; font: inherit; animation: i0Pula .4s calc(var(--i) * 60ms) backwards; transition: background .3s, border-color .3s; }
+.bl-cr::before { content: ""; position: absolute; left: 14px; top: 11px; width: 20px; height: 20px; border-radius: 7px; border: 2px solid rgba(var(--fg-rgb), .5); transition: background .25s, border-color .25s; }
+.bl-cr[aria-pressed="true"] { background: color-mix(in srgb, #1b8559 20%, transparent); border-color: #1b8559; } .bl-cr[aria-pressed="true"]::before { background: #1b8559 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10l3.5 3.5L15 7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; border-color: #1b8559; }
+.bl-cr b { font-size: clamp(15px, 1.6vw, 18.5px); } .bl-cr span { font-size: clamp(12.5px, 1.25vw, 14.5px); opacity: .9; line-height: 1.25; } .bl-cr em { display: block; margin-top: 4px; font-style: normal; font-weight: 700; color: var(--t-genai); }
+
+/* 6. TRL */
+.bl-trl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bl-dgs { position: relative; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); align-items: end; gap: 5px; height: clamp(170px, 34vh, 280px); }
+.bl-dgs i { height: calc(var(--k) * 11%); border-radius: 8px 8px 3px 3px; background: rgba(var(--fg-rgb), .12); display: grid; place-items: start center; padding-top: 4px; font-style: normal; font-weight: 800; font-size: 13px; transition: background .35s; }
+.bl-dgs i.on { background: linear-gradient(180deg, var(--elemento-c), color-mix(in srgb, var(--elemento-c) 45%, transparent)); color: #16090d; }
+.bl-boneco { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: var(--vermelho); box-shadow: 0 0 0 4px rgba(191, 0, 55, .25); left: calc((var(--k) - .5) * (100% / 9) - 11px); bottom: calc(var(--k) * 11% + 6px); transition: left .5s cubic-bezier(.3, 1.3, .4, 1), bottom .5s cubic-bezier(.3, 1.3, .4, 1); }
+.bl-trlt { display: grid; gap: 12px; } .bl-trlt label { display: grid; gap: 8px; } .bl-trlt label b { font-size: clamp(17px, 2vw, 24px); } .bl-trlt input { width: 100%; height: 26px; accent-color: var(--vermelho); } .bl-trlz { font-size: clamp(15px, 1.7vw, 20px); }
+
+/* 7. AI native */
+.bl-an { align-items: stretch; } .bl-anp { display: grid; gap: 8px; justify-items: center; text-align: center; padding: 16px 20px; border-radius: 24px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); }
+.bl-anp p { font-size: clamp(15px, 1.7vw, 20px); font-weight: 700; } .bl-anp small { font-size: 12px; opacity: .75; }
+.bl-pz { position: relative; width: clamp(110px, 18vh, 150px); aspect-ratio: 1; display: grid; place-items: center; } .bl-pz svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.bl-pzb { fill: none; stroke: rgba(var(--fg-rgb), .15); stroke-width: 16; } .bl-pzs { fill: none; stroke: var(--vermelho); stroke-width: 16; stroke-dasharray: 0 100; transition: stroke-dasharray 1.2s .3s cubic-bezier(.2, .8, .2, 1); }
+.bl-anp.vis .bl-pzs { stroke-dasharray: 63 100; } .bl-pz b { font-size: clamp(28px, 4vw, 42px); }
+.bl-ppl { display: flex; gap: 10px; height: clamp(90px, 15vh, 130px); align-items: end; }
+.bl-ppl i { width: 30px; height: 64px; border-radius: 15px 15px 6px 6px; background: var(--elemento-c); position: relative; } .bl-ppl i::before { content: ""; position: absolute; top: -26px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: inherit; }
+.bl-anp.vis .bl-ppl i.sai { animation: blSai 1.4s .5s forwards; } @keyframes blSai { to { opacity: .12; transform: translateY(10px); } }
+
+/* 8. Barreiras */
+.bl-br { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: start; }
+.bl-brg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.bl-bb { display: flex; flex-wrap: wrap; gap: 5px; align-content: start; text-align: left; padding: 12px 14px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border: 2px solid rgba(var(--fg-rgb), .18); color: var(--fg); cursor: pointer; font: inherit; transition: border-color .3s, background .3s; }
+.bl-bb b { width: 100%; font-size: clamp(16px, 1.8vw, 21px); } .bl-bb span { font-size: clamp(12px, 1.25vw, 14.5px); padding: 3px 10px; border-radius: 999px; background: rgba(191, 0, 55, .18); }
+.bl-bb[aria-pressed="true"] { border-color: var(--vermelho); background: rgba(191, 0, 55, .12); }
+.bl-brt { display: grid; gap: 8px; } .bl-brl { display: grid; gap: 8px; padding: 0; margin: 0; list-style: none; counter-reset: b; }
+.bl-brl li { counter-increment: b; display: flex; gap: 10px; align-items: center; padding: 9px 14px; border-radius: 16px; background: color-mix(in srgb, #1b8559 16%, transparent); border: 1px solid #1b8559; font-size: clamp(14px, 1.55vw, 18px); animation: i0Pula .4s calc(var(--i) * 90ms) backwards; }
+.bl-brl li::before { content: counter(b); flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #1b8559; color: #fff; font-weight: 800; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .bl-fu, .bl-zn, .bl-nu, .bl-trl, .bl-br { grid-template-columns: 1fr; }
+  .bl-esc { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bl-cri { grid-template-columns: 1fr; } .bl-brg { grid-template-columns: 1fr; }
+}
+@media (max-height: 760px) and (min-width: 901px) {
+  .bl-fusvg svg { max-height: 42vh; } .bl-znsvg svg { max-height: 40vh; } .bl-cr { padding: 7px 12px 7px 42px; } .bl-cr::before { top: 8px; } .slide:has(.bl-cri) { gap: 8px; }
+  .bl-deg { min-height: calc(100px + var(--h, 1) * 26px); padding: 10px 14px; } .bl-dgs { height: 26vh; }
+}
+
+/* ===== Modelos de negócio ===== */
+.bl-rog, .bl-bmc, .bl-rec, .bl-faixa, .bl-pl, .bl-omo { flex-shrink: 0; }
+.bl-rog { display: grid; gap: 8px; width: 100%; max-width: 1060px; }
+.bl-rg { display: grid; grid-template-columns: minmax(110px, .55fr) minmax(0, 1fr) 46px minmax(0, 1.2fr); gap: 12px; align-items: center; padding: 9px 16px; border-radius: 18px; background: rgba(var(--fg-rgb), .06); border: 1px solid rgba(var(--fg-rgb), .16); }
+.bl-rg b { font-size: clamp(16px, 1.9vw, 22px); } .bl-rg .de { font-size: clamp(14px, 1.6vw, 19px); opacity: .7; text-decoration: line-through rgba(191, 0, 55, .7) 2px; }
+.bl-rg .para { font-size: clamp(14.5px, 1.7vw, 20px); font-weight: 700; color: var(--elemento-c); } .bl-rg svg { width: 46px; fill: none; stroke: var(--fg); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.bl-rg svg path { stroke-dasharray: 1; stroke-dashoffset: 1; } .bl-rg.vis svg path { animation: desenha .6s .3s forwards; }
+.bl-bmc { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: start; }
+.bl-cv { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(70px, 15vh)) minmax(54px, 10vh); gap: 6px; }
+.bl-bk { position: relative; display: grid; place-items: start; padding: 8px 10px; border-radius: 14px; border: 2px solid rgba(var(--fg-rgb), .22); background: rgba(var(--fg-rgb), .06); color: var(--fg); font: inherit; font-size: clamp(11.5px, 1.2vw, 14.5px); font-weight: 700; text-align: left; cursor: pointer; transition: background .3s, border-color .3s, transform .2s; }
+.bl-bk:hover { transform: scale(1.02); } .bl-bk[aria-pressed="true"] { border-color: var(--vermelho); background: rgba(191, 0, 55, .2); }
+.bl-ia { position: absolute; right: 7px; bottom: 7px; font-style: normal; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 999px; background: var(--t-genai); color: #16090d; animation: pula 2.4s ease-in-out infinite; animation-delay: calc(var(--k, 0) * .2s); }
+.bl-bk.pp { grid-column: 1 / 3; grid-row: 1 / 3; } .bl-bk.ak { grid-column: 3 / 5; grid-row: 1; } .bl-bk.rp { grid-column: 3 / 5; grid-row: 2; } .bl-bk.pv { grid-column: 5 / 7; grid-row: 1 / 3; }
+.bl-bk.re { grid-column: 7 / 9; grid-row: 1; } .bl-bk.ca { grid-column: 7 / 9; grid-row: 2; } .bl-bk.sc { grid-column: 9 / 11; grid-row: 1 / 3; } .bl-bk.ec { grid-column: 1 / 6; grid-row: 3; } .bl-bk.fr { grid-column: 6 / 11; grid-row: 3; }
+.bl-bmt .dest { font-size: clamp(16px, 1.9vw, 23px); max-width: none; } .bl-cq { opacity: .8; }
+.bl-rec { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: 100%; }
+.bl-rc { display: grid; gap: 3px; padding: 10px 14px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); animation: i0Pula .4s calc(var(--i) * 70ms) backwards; transition: border-color .4s, background .4s; }
+.bl-rc svg { width: 26px; height: 26px; fill: none; stroke: var(--vermelho); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .bl-rc b { font-size: clamp(15px, 1.65vw, 19px); } .bl-rc span { font-size: clamp(12.5px, 1.3vw, 15px); } .bl-rc small { font-size: 12px; opacity: .7; }
+.slide:has(.bl-faixa.vis) .bl-rc[data-ia] { border-color: var(--t-genai); background: color-mix(in srgb, var(--t-genai) 16%, transparent); }
+.bl-faixa { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; width: 100%; padding: 10px 16px; border-radius: 18px; border: 1px dashed var(--t-genai); } .bl-faixa p { font-size: clamp(14.5px, 1.6vw, 19px); flex: 1 1 400px; } .bl-faixa small { font-size: 12px; opacity: .75; }
+.bl-pl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bl-plv svg { width: 100%; max-height: 44vh; display: block; overflow: visible; }
+.bl-pll line { stroke: var(--elemento-c); stroke-width: 1.4; opacity: .55; stroke-dasharray: 400; stroke-dashoffset: 400; animation: desenha .8s var(--d) forwards; }
+.bl-pln .c { fill: var(--vermelho); } .bl-pln .v { fill: var(--motor-c); }
+.bl-plt { display: grid; gap: 14px; } .bl-plt label { display: grid; gap: 6px; } .bl-plt label b { font-size: clamp(16px, 1.8vw, 21px); } .bl-plt input { width: 100%; height: 24px; accent-color: var(--vermelho); }
+.bl-plr { display: flex; align-items: baseline; gap: 12px; } .bl-plr b { font-size: clamp(34px, 5vw, 56px); color: var(--elemento-c); font-variant-numeric: tabular-nums; } .bl-plp { font-size: clamp(14.5px, 1.6vw, 19px); }
+.bl-omo { display: grid; gap: 5px; width: 100%; max-width: 1060px; } .slide:has(.bl-omo) { gap: 10px; }
+.bl-omh, .bl-omr { display: grid; grid-template-columns: minmax(120px, .6fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px; align-items: center; }
+.bl-omh b { font-size: clamp(14px, 1.6vw, 18px); } .bl-omr span { font-weight: 700; font-size: clamp(14px, 1.6vw, 18px); }
+.bl-omr i { font-style: normal; padding: 6px 12px; border-radius: 14px; font-size: clamp(13.5px, 1.5vw, 17px); } .bl-omr .a { background: rgba(var(--fg-rgb), .07); opacity: .8; }
+.bl-omr .d { background: color-mix(in srgb, var(--elemento-c) 22%, transparent); border: 1px solid var(--elemento-c); font-weight: 700; animation: blVira .6s calc(.6s + var(--i) * .25s) backwards; transform-origin: left; }
+@keyframes blVira { from { transform: scaleX(0); opacity: 0; } }
+@media (max-width: 900px) { .bl-bmc, .bl-pl { grid-template-columns: 1fr; } .bl-rec { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bl-rg { grid-template-columns: 1fr; gap: 4px; } .bl-rg svg { transform: rotate(90deg); width: 30px; } .bl-cv { grid-template-rows: repeat(2, 90px) 60px; } .bl-omh, .bl-omr { grid-template-columns: 1fr 1fr; } .bl-omh span, .bl-omr span { grid-column: 1 / -1; } }
+@media (max-height: 760px) and (min-width: 901px) { .bl-rg { padding: 6px 14px; } .bl-rc { padding: 6px 10px; gap: 1px; } .bl-rc svg { width: 20px; height: 20px; } .bl-rec { gap: 6px; } .slide:has(.bl-rec), .slide:has(.bl-pl), .slide:has(.bl-nu) { gap: 8px; } .bl-faixa { padding: 7px 14px; } .bl-plv svg { max-height: 30vh; } .bl-omr i { padding: 5px 10px; } .bl-nuv svg { max-height: 30vh; } }
+
+/* ===== Proposta de valor ===== */
+.bl-jb, .bl-vtg, .bl-vpc, .bl-ft, .bl-tb { flex-shrink: 0; }
+.bl-jb { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); }
+.bl-jbv svg { width: 100%; max-height: 32vh; display: block; overflow: visible; }
+.bl-rd { stroke: rgba(var(--fg-rgb), .5); stroke-width: 3; } .bl-rdl { stroke: rgba(var(--fg-rgb), .35); stroke-width: 3; stroke-dasharray: 18 14; animation: ilFlow .5s linear infinite; }
+.bl-car rect, .bl-car > path { fill: var(--motor-c); } .bl-car .w { fill: #222; stroke: rgba(var(--fg-rgb), .7); stroke-width: 3; } .bl-car { animation: ilFl 1.1s ease-in-out infinite; }
+.bl-mk path { fill: #f4c2d0; stroke: var(--vermelho); stroke-width: 2; } .bl-mk .pa { fill: none; stroke: var(--vermelho); stroke-width: 3; stroke-linecap: round; }
+.bl-sol circle { fill: #f5b301; animation: ilPl 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.bl-jbt { display: grid; gap: 8px; } .bl-jq { display: grid; gap: 2px; padding: 8px 14px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border-left: 5px solid var(--vermelho); }
+.bl-jq b { font-size: clamp(16px, 1.8vw, 21px); } .bl-jq p { font-size: clamp(13.5px, 1.5vw, 17px); } .bl-jq .r { font-weight: 700; color: var(--elemento-c); }
+.bl-vpc { display: grid; grid-template-columns: minmax(0, 1fr) 50px minmax(0, 1fr); gap: 8px; width: 100%; align-items: center; }
+.bl-sq, .bl-ci { position: relative; display: grid; gap: 6px; } .bl-vh { font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: .8; text-align: center; }
+.bl-sqg { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 5px; padding: 8px; border-radius: 16px; border: 3px solid var(--motor-c); }
+.bl-sqg .prd { grid-row: 1 / 3; } .bl-cig { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 14px 22px; border-radius: 34% / 30%; border: 3px solid var(--vermelho); }
+.bl-cig .tar { grid-column: 2; grid-row: 1 / 3; } .bl-cig .gan { grid-column: 1; grid-row: 1; } .bl-cig .dor { grid-column: 1; grid-row: 2; }
+.bl-vz { display: grid; gap: 3px; align-content: start; padding: 5px 7px; border-radius: 12px; background: rgba(var(--fg-rgb), .05); } .bl-vz b { font-size: 12.5px; opacity: .85; }
+.bl-vl { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.bl-vl li { padding: 3px 7px; border-radius: 9px; background: rgba(var(--fg-rgb), .1); font-size: clamp(11.5px, 1.12vw, 13.5px); line-height: 1.18; cursor: pointer; animation: i0Pula .35s backwards; transition: background .25s, transform .25s, box-shadow .25s; }
+.bl-vl.dor li, .bl-vl.ali li { cursor: pointer; } .bl-vl li.lig { background: var(--vermelho); color: #fff; transform: scale(1.03); box-shadow: 0 0 0 3px rgba(191, 0, 55, .3); }
+.bl-vl.gan li.lig, .bl-vl.cri li.lig { background: #1b8559; box-shadow: 0 0 0 3px rgba(27, 133, 89, .3); }
+.bl-fit { width: 50px; fill: none; stroke: var(--fg); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; animation: ilFl 1.6s ease-in-out infinite; }
+.bl-vdica { font-size: 13px; opacity: .8; margin: 0; } .slide:has(.bl-vpc), .slide:has(.bl-tb), .slide:has(.bl-jb) { gap: 10px; }
+.bl-ft { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; align-items: end; }
+.bl-fs { display: grid; gap: 6px; padding: 14px 18px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .2); min-height: calc(110px + var(--h) * 40px); align-content: end; }
+.bl-fs .n { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--vermelho); color: #fff; font-weight: 800; }
+.bl-fs b { font-size: clamp(17px, 2vw, 24px); } .bl-fs p { font-size: clamp(13.5px, 1.5vw, 17px); } .bl-fs small { font-size: 12.5px; color: var(--elemento-c); font-weight: 700; }
+.bl-tb { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); align-items: start; }
+.bl-lens svg { width: 100%; max-height: 34vh; display: block; overflow: visible; }
+.bl-ln circle { fill: color-mix(in srgb, var(--c) 22%, transparent); stroke: var(--c); stroke-width: 3; mix-blend-mode: screen; transform-box: fill-box; transform-origin: center; }
+.bl-ln.pisca circle { animation: blPisca .6s; } @keyframes blPisca { 50% { fill: color-mix(in srgb, var(--c) 60%, transparent); transform: scale(1.06); } }
+.bl-hips { display: grid; gap: 5px; } .bl-hp { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 4px 10px; border-radius: 14px; background: rgba(var(--fg-rgb), .06); }
+.bl-hp p { font-size: clamp(12.5px, 1.3vw, 15px); line-height: 1.2; } .bl-hp div { display: flex; gap: 4px; } .bl-hp .chip { padding: 4px 10px; font-size: 12.5px; cursor: pointer; }
+.bl-hp .chip.ok { background: #1b8559; border-color: #1b8559; color: #fff; } .bl-hp .chip.no { background: rgba(191, 0, 55, .25); text-decoration: line-through; }
+:root[data-tema="claro"] .bl-ln circle { mix-blend-mode: multiply; }
+@media (max-width: 900px) { .bl-jb, .bl-tb { grid-template-columns: 1fr; } .bl-vpc { grid-template-columns: 1fr; } .bl-fit { transform: rotate(90deg); justify-self: center; } .bl-ft { grid-template-columns: 1fr; } .bl-fs { min-height: 0; } .bl-hp { grid-template-columns: 1fr; } }
+@media (max-height: 760px) and (min-width: 901px) { .bl-jbv svg { max-height: 25vh; } .bl-vh { font-size: 11px; } .bl-vz { padding: 4px 6px; } .bl-jq { padding: 7px 14px; } .bl-fs { min-height: calc(90px + var(--h) * 30px); padding: 10px 16px; } .bl-lens svg { max-height: 34vh; } .slide:has(.bl-vpc), .slide:has(.bl-tb) { gap: 8px; } .bl-hp { padding: 4px 10px; } }
+
+/* ===== Prototipação ===== */
+.bl-lp, .bl-mv, .bl-oz, .bl-mt, .bl-mtp, .bl-pv, .bl-rb { flex-shrink: 0; }
+.bl-lp { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.bl-lpv svg { width: 100%; max-height: 42vh; display: block; overflow: visible; }
+.bl-lpc { fill: none; stroke: rgba(var(--fg-rgb), .35); stroke-width: 4; stroke-dasharray: .02 .015; }
+.bl-lpd { animation: gira 5s linear infinite; transform-origin: 150px 140px; } .bl-lpd circle { fill: var(--vermelho); filter: drop-shadow(0 0 6px var(--vermelho)); }
+.bl-lpn circle { fill: var(--motor-c); stroke: #fff; stroke-width: 3; } .bl-lpn:nth-of-type(3) circle { fill: var(--elemento-c); } .bl-lpn:nth-of-type(4) circle { fill: var(--vermelho); }
+.bl-lpn { opacity: .2; transition: opacity .4s; } .bl-lpn.vis { opacity: 1; } svg .bl-lpn[data-b] { transform: none; filter: none; }
+.bl-lpt { display: grid; gap: 8px; }
+.bl-mv { display: grid; gap: 8px; width: 100%; }
+.bl-mvs { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); align-items: end; gap: 5px; height: clamp(140px, 24vh, 210px); }
+.bl-mvd { height: calc(22% + var(--k) * 7.8%); display: grid; place-items: end center; padding: 6px 3px; border-radius: 12px 12px 4px 4px; border: 2px solid transparent; background: linear-gradient(180deg, color-mix(in srgb, var(--elemento-c) calc(30% + var(--k) * 6%), transparent), rgba(var(--fg-rgb), .06)); color: var(--fg); font: inherit; cursor: pointer; animation: blCresce .6s calc(var(--k) * 60ms) backwards; transform-origin: bottom; transition: border-color .3s; }
+.bl-mvd span { writing-mode: vertical-rl; transform: rotate(180deg); font-size: clamp(11px, 1.15vw, 14px); font-weight: 700; white-space: nowrap; } .bl-mvd[aria-pressed="true"] { border-color: var(--vermelho); background: rgba(191, 0, 55, .35); }
+@keyframes blCresce { from { transform: scaleY(0); } }
+.bl-mvx { display: flex; justify-content: space-between; font-size: 12.5px; opacity: .8; } .bl-mvx span:last-child { text-align: right; }
+.bl-oz { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bl-ozv { display: grid; gap: 10px; justify-items: start; } .bl-ozv svg { width: 100%; max-height: 38vh; display: block; overflow: visible; }
+.bl-cel { fill: #222; stroke: rgba(var(--fg-rgb), .6); stroke-width: 3; } .bl-tela { fill: #f4f4f4; } .bl-msg rect { fill: #d7d7d7; animation: i0Pula .5s backwards; } .bl-msg .r { fill: var(--vermelho); animation-delay: .6s; } .bl-msg rect:last-child { animation-delay: 1.2s; }
+.bl-cort .c1 { fill: rgba(var(--fg-rgb), .6); } .bl-cort .pano { fill: var(--vermelho); transition: transform .8s cubic-bezier(.3, 1, .4, 1); transform-box: fill-box; }
+.bl-ozv.aberta .pano.e { transform: translateX(-60%) scaleX(.4); } .bl-ozv.aberta .pano.d { transform: translateX(60%) scaleX(.4); }
+.bl-pess circle, .bl-pess path { fill: var(--motor-c); } .bl-pess .lap { fill: rgba(var(--fg-rgb), .7); } .bl-pess { opacity: 0; transition: opacity .5s .3s; } .bl-ozv.aberta .bl-pess { opacity: 1; }
+.bl-fio { fill: none; stroke: var(--elemento-c); stroke-width: 3; stroke-dasharray: 6 6; opacity: 0; transition: opacity .5s .5s; } .bl-ozv.aberta .bl-fio { opacity: 1; animation: ilFlow .6s linear infinite; }
+.bl-ozt { display: grid; gap: 10px; }
+.bl-mt { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: 100%; }
+.bl-mtc { position: relative; min-height: clamp(52px, 9vh, 72px); border: 0; padding: 0; background: none; cursor: pointer; perspective: 600px; font: inherit; color: var(--fg); animation: i0Pula .4s calc(var(--i) * 50ms) backwards; }
+.bl-mtc span { position: absolute; inset: 0; display: grid; place-items: center; padding: 6px 10px; border-radius: 16px; text-align: center; font-size: clamp(13px, 1.4vw, 16.5px); font-weight: 700; backface-visibility: hidden; transition: transform .6s cubic-bezier(.3, 1, .4, 1); }
+.bl-mtc .f { background: rgba(var(--fg-rgb), .08); border: 1px solid rgba(var(--fg-rgb), .22); } .bl-mtc .t { transform: rotateY(180deg); color: #fff; }
+.bl-mtc[data-v="0"] .t { background: #7a6a74; } .bl-mtc[data-v="1"] .t { background: #1b8559; }
+.bl-mtc.vira .f { transform: rotateY(-180deg); } .bl-mtc.vira .t { transform: rotateY(0); }
+
+.bl-mtp { display: flex; gap: 22px; font-size: clamp(15px, 1.7vw, 20px); } .bl-mtp b { font-size: 1.4em; margin-left: 6px; } .bl-mtp .v1 { color: #1b8559; }
+.bl-pv { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; } .bl-pvg { display: flex; flex-wrap: wrap; gap: 8px; } .bl-pvg .chip { cursor: pointer; } .bl-pvg .chip[aria-pressed="true"] { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+.bl-pvc { display: grid; gap: 8px; padding: 14px 18px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); }
+.bl-pvd { font-size: clamp(16px, 1.8vw, 21px); font-weight: 700; } .bl-pvn { font-size: clamp(22px, 2.8vw, 34px); color: var(--elemento-c); }
+.bl-pvr { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .bl-pvr svg { grid-column: 1 / -1; width: 100%; max-height: 16vh; overflow: visible; }
+.bl-pvl { fill: none; stroke: var(--fg); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 0; } .bl-pvr.anda .bl-pvl { animation: blTraço .9s; } @keyframes blTraço { from { stroke-dashoffset: 1; } }
+.bl-pva { fill: rgba(var(--fg-rgb), .5); } .bl-pvb { fill: var(--vermelho); } .bl-pvr.anda .bl-pvb { animation: i0Pula .5s .7s backwards; }
+.bl-pvr span { font-size: clamp(13px, 1.4vw, 16px); } .bl-pvr .a { opacity: .75; } .bl-pvr .b { text-align: right; font-weight: 700; } .bl-pvr .a::before { content: "Antes: "; font-weight: 700; } .bl-pvr .b::before { content: "Depois: "; }
+.bl-rb { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.bl-rbv { display: grid; grid-template-columns: minmax(0, .7fr) 50px minmax(0, 1fr); align-items: center; gap: 8px; }
+.bl-rbp, .bl-rbm { display: grid; gap: 5px; padding: 12px; border-radius: 18px; } .bl-rbp { border: 2px dashed rgba(var(--fg-rgb), .5); } .bl-rbp i { height: 12px; border-radius: 6px; background: rgba(var(--fg-rgb), .25); } .bl-rbp span, .bl-rbm span { font-weight: 800; font-size: 14px; text-align: center; }
+.bl-rbm { border: 3px solid #1b8559; background: color-mix(in srgb, #1b8559 10%, transparent); display: flex; flex-wrap: wrap; justify-content: center; } .bl-rbm span { width: 100%; } .bl-rbm i { font-style: normal; font-size: 12.5px; font-weight: 700; padding: 3px 8px; border-radius: 8px; background: #1b8559; color: #fff; }
+.bl-rbv svg { width: 50px; fill: none; stroke: var(--fg); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; animation: ilFl 1.4s ease-in-out infinite; }
+.bl-rbl { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; } .bl-rbi { display: grid; gap: 2px; align-content: start; padding: 6px 12px; border-radius: 14px; background: rgba(var(--fg-rgb), .06); border-left: 5px solid #1b8559; } .bl-rbi b { font-size: clamp(15px, 1.65vw, 19px); } .bl-rbi span { font-size: clamp(12.5px, 1.35vw, 15.5px); }
+@media (max-width: 900px) { .bl-lp, .bl-oz, .bl-pv, .bl-rb, .bl-rbl { grid-template-columns: 1fr; } .bl-mvs { height: 200px; } .bl-mt { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-height: 760px) and (min-width: 901px) { .bl-lpv svg { max-height: 36vh; } .bl-mvs { height: 19vh; } .slide:has(.bl-mv) { gap: 8px; } .bl-ozv svg { max-height: 32vh; } .bl-mtc { min-height: 48px; } .bl-rbi { padding: 4px 12px; } .slide:has(.bl-mt), .slide:has(.bl-rb), .slide:has(.bl-pv) { gap: 8px; } }
+
+.bl-mtc .t { align-content: center; } .bl-mtc .t small { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: .9; }
+@media (max-width: 700px) { .bl-cv { grid-template-columns: 1fr 1fr; grid-template-rows: none; } .bl-cv .bl-bk { grid-column: auto; grid-row: auto; min-height: 54px; } .bl-cv .bl-bk.pv { grid-column: 1 / -1; } }
+
 /* Tema claro e escuro. O escuro é o padrão (valores em comum.css). Aqui ficam só as trocas do claro.
    Cores da marca seguem o manual do SME: vermelho e preto. Os tons azul, verde, rosa, amarelo, violeta, laranja e azul-água são cores de dados, não da marca,
    e no claro ficam mais fechados para ter contraste sobre fundo claro. */
@@ -2032,17 +2245,13 @@ var A2 = (function () {
     { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.', lib: true },
     { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Para onde vai o dinheiro, quem ganha, quem perde, o que muda no preço, Oceano Azul e curva de valor.', lib: true },
     { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'Que parte a empresa faz sozinha e que parte faz com outros.', previa: { itens: [], insp: '' } },
-    { id: 'aberta', nome: 'Inovação aberta e a era das startups AI native', curto: 'Startups AI native', d: 'Quando comprar, aliar ou construir.', previa: { itens: [], insp: '' } },
+    { id: 'aberta', nome: 'Inovação aberta e a era das startups AI native', curto: 'Startups AI native', d: 'Funil aberto, formatos de parceria, quando comprar, aliar ou construir e o que olhar numa startup de IA.' },
     { id: 'gtm', nome: 'Como a IA impacta o go-to-market comercial', curto: 'Go-to-market com IA', d: 'Ofertas, canal, pitch de vendas, modelo de negócio e quanto o mercado está disposto a pagar.',
       previa: { itens: ['Entender as ofertas', 'Entender o canal', 'Pitch de vendas', 'Modelo de negócio', 'Quanto o mercado está disposto a pagar pelo que você quer produzir', 'Do problem-solution fit ao market fit', 'Go-to-market dentro da empresa: stakeholders, resultado para o cliente e resultado para quem será o parceiro'],
         insp: 'Blank, The Four Steps to the Epiphany (2005). Ries, The Lean Startup (2011).' } },
-    { id: 'modelos', nome: 'Modelos de negócio baseados em inteligência artificial', curto: 'Modelos de negócio com IA', d: 'Business Model Canvas e plataformas.',
-      previa: { itens: ['Business Model Canvas', 'Plataformas', 'Ligação com proposta de valor e estratégia de produto'], insp: 'Osterwalder e Pigneur, Business Model Generation.' } },
-    { id: 'valor', nome: 'Proposta de valor e estratégia de produto com IA', curto: 'Valor e produto com IA', d: 'Proposta de valor e testes de ideias de negócio.',
-      previa: { itens: ['Proposta de valor', 'Templates para testar ideias de negócio'], insp: 'Bland e Osterwalder, Testing Business Ideas.' } },
-    { id: 'prototipacao', nome: 'IA na era da prototipação de novos produtos', curto: 'Prototipação', d: 'Prototipar uma ideia do zero com IA e o que muda quando ela precisa ganhar mercado.',
-      previa: { itens: ['Prototipar uma ideia do zero, com vibe coding', 'Ver como a solução vai se parecer', 'Entender se há problem-solution fit', 'Para ganhar mercado (market fit), a solução precisa de uma estrutura mais robusta', 'Tecnologia da informação e proteção de dados'],
-        insp: 'Blank, The Four Steps to the Epiphany (2005). Ries, The Lean Startup (2011).' } },
+    { id: 'modelos', nome: 'Modelos de negócio baseados em inteligência artificial', curto: 'Modelos de negócio com IA', d: 'O que muda no modelo de negócio, o canvas com IA bloco a bloco, jeitos de cobrar e plataformas.' },
+    { id: 'valor', nome: 'Proposta de valor e estratégia de produto com IA', curto: 'Valor e produto com IA', d: 'Job to be done, canvas da proposta de valor com e sem IA, os três encaixes e como testar hipóteses.' },
+    { id: 'prototipacao', nome: 'IA na era da prototipação de novos produtos', curto: 'Prototipação', d: 'Construir, medir e aprender, tipos de MVP, Mágico de Oz, métricas que decidem, pivôs e o que falta para o protótipo virar produto.' },
     { id: 'dados', nome: 'Dados e IA como ativo estratégico', curto: 'Dados e IA', d: 'Que dado só a empresa tem e como ele vira vantagem.', previa: { itens: [], insp: '' } },
     { id: 'organizacao', nome: 'Organização, talentos, cultura e governança de IA', curto: 'Organização e governança', d: 'Treinamento, cultura, cuidados e decisão entre construir ou contratar.',
       previa: { itens: ['Organização, talentos e cultura', 'Governança de IA', 'Treinamento das pessoas: quando usar e quando não usar', 'Cuidados', 'Tomada de decisão: construir o próprio modelo (LLM) ou portal de IAs, ou contratar do mercado com algumas travas'], insp: '' } },
@@ -3469,8 +3678,356 @@ var UCIL = (function () {
   var MK_FIM = ['A infraestrutura recebe mais da metade do dinheiro', 'Nas aplicações, os novatos estão ganhando', 'Entrar ficou mais barato, e dá para abrir um oceano azul', 'O que a IA substitui perde demanda', 'O preço migra do assento para o resultado', 'A receita prometida ainda não chegou para a maioria'];
   add('crescimento', { builds: 6, html: '<p class="rot-sec">Mercados que a IA destrava</p><h2>O mapa até aqui</h2><div class="i0-fim2 mk-fimg">' + MK_FIM.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div><p class="fonte">Fontes: Gartner (2026), Menlo Ventures (2025), Stanford AI Index (2025), Cai et al. (2025), Teutloff et al. (2025), Bain (2025), Deloitte (2025 e 2026), Brynjolfsson et al. (2026), Cetic.br (2025), Kim e Mauborgne (2015).</p>' });
 
+  /* ---------- Blocos construídos a partir das aulas antigas do Rafael (De X Para). Cada módulo registra o seu construtor em BLOCOS,
+     e o previas.js chama um a um na ordem do mapa. Módulo sem construtor continua com a prévia. Tudo nasce trancado na página dos alunos. ---------- */
+  var BLOCOS = {};
+  function blFim(top, rot, itens) {
+    add(top, { builds: itens.length, html: '<p class="rot-sec">' + rot + '</p><h2>Agora vocês já sabem</h2><div class="i0-fim2">' + itens.map(function (f, i) { return '<div class="i0-fi" data-b="' + (i + 1) + '"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path pathLength="1" d="M12 21l6 6 11-13"/></svg><span>' + f + '</span></div>'; }).join('') + '</div>' });
+  }
+  /* Liga botões de escolha (aria-pressed) a uma função. */
+  function blEscolha(el, sel, f) {
+    var bs = el.querySelectorAll(sel);
+    [].forEach.call(bs, function (b, i) { b.addEventListener('click', function () { [].forEach.call(bs, function (x) { x.setAttribute('aria-pressed', String(x === b)); }); f(i, b); }); });
+    return bs;
+  }
+
+  /* ================= Inovação aberta e a era das startups AI native =================
+     Base: STARTUPS TECH E SEUS SEGMENTOS (slides 179 a 233), PÓS FAAP 2025 (104 a 174), Use Cases Vivo + Conexa e Cyrela + CashMe,
+     e os fatos de IA já checados nos módulos de mercados e no estudo Klarna, Nubank e Magalu. */
+  BLOCOS.aberta = function () {
+    var R = 'Inovação aberta e startups';
+
+    /* 1. Funil fechado x funil aberto */
+    function pontos(aberto) {
+      var h = '', i, y;
+      for (i = 0; i < 9; i++) { y = 70 + i * 14; h += '<circle class="bl-pt ' + (i % 3 === 1 ? 'morre' : 'vai') + '" r="6" style="--x0:40px;--y0:' + y + 'px;--x1:' + (i % 3 === 1 ? 250 : 470) + 'px;--y1:' + (i % 3 === 1 ? y : 130) + 'px;--d:' + (i * .45) + 's"/>'; }
+      if (aberto) {
+        [[150, 10, 330, 120], [230, 250, 400, 132], [300, 6, 450, 128]].forEach(function (p, k) { h += '<circle class="bl-pt entra" r="6" style="--x0:' + p[0] + 'px;--y0:' + p[1] + 'px;--x1:' + p[2] + 'px;--y1:' + p[3] + 'px;--d:' + (k * 1.1 + .3) + 's"/>'; });
+        [[200, 112, 300, 250], [260, 150, 380, 8]].forEach(function (p, k) { h += '<circle class="bl-pt sai" r="6" style="--x0:' + p[0] + 'px;--y0:' + p[1] + 'px;--x1:' + p[2] + 'px;--y1:' + p[3] + 'px;--d:' + (k * 1.3 + .8) + 's"/>'; });
+      }
+      return h;
+    }
+    var FUNIL = [['Inovação fechada', 'As ideias nascem e morrem dentro de casa. O que não serve ao negócio de hoje fica para trás, mesmo que tenha valor.', 'Só o que a empresa pensa, testa e vende sozinha chega ao mercado.'],
+      ['Inovação aberta', 'A parede do funil fica porosa. Ideias e competências de fora entram, e o que não serve aqui pode sair para outro mercado, como licença, spin-off ou parceria.', 'A empresa soma o que sabe com o que o ecossistema sabe.']];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>A parede do funil ficou porosa</h2><div class="dois bl-fu"><div class="bl-fusvg"><svg viewBox="0 0 520 260" role="img" aria-label="Funil de inovação com ideias em movimento">' +
+      '<path class="bl-fuw" d="M30,20 L330,96 L500,110 L500,150 L330,164 L30,240 Z"/><text class="bl-tx" x="34" y="14">Ideias</text><text class="bl-tx" x="500" y="186" text-anchor="end">Mercado</text>' +
+      '<g class="bl-pts"></g></svg></div><div class="bl-fut"><div class="i0-tar" role="group" aria-label="Tipo de funil"><button type="button" class="chip" aria-pressed="true">Fechada</button><button type="button" class="chip" aria-pressed="false">Aberta</button></div><h3 class="bl-fuh"></h3><p class="bl-fup"></p><p class="dest bl-fud"></p></div></div>' +
+      '<p class="fonte">Baseado em Chesbrough, Open Innovation, Harvard Business Review Press, 2003.</p>',
+      on: function (el) {
+        var g = el.querySelector('.bl-pts'), w = el.querySelector('.bl-fuw');
+        function mostra(i) { g.innerHTML = pontos(i === 1); w.classList.toggle('poroso', i === 1); el.querySelector('.bl-fuh').textContent = FUNIL[i][0]; el.querySelector('.bl-fup').textContent = FUNIL[i][1]; el.querySelector('.bl-fud').textContent = FUNIL[i][2]; }
+        blEscolha(el, '.bl-fut .chip', mostra); mostra(0);
+      } });
+
+    /* 2. Para dentro, para fora, ou só dentro */
+    var FMT = [['P&D', 0, 'Pesquisa e desenvolvimento feitos pela própria empresa, com a sua equipe e o seu orçamento.'],
+      ['Intraempreendedorismo', 0, 'Programas que dão tempo e verba para funcionários testarem ideias novas.'],
+      ['Programas com startups', 1, 'A empresa testa a solução de uma startup num problema real dela, em geral com uma prova de conceito curta.'],
+      ['Universidades', 1, 'Pesquisa feita em conjunto com centros acadêmicos.'],
+      ['Corporate venture capital', 1, 'Um fundo da empresa compra participação em startups que interessam à estratégia.'],
+      ['Aquisição (M&A)', 1, 'A empresa compra a startup inteira, com time e tecnologia.'],
+      ['Corporate venture builder', 2, 'A empresa cria um negócio novo e o lança para fora, com operação própria.']];
+    var ZON = [['Fechada', 'var(--motor-c)'], ['De fora para dentro', 'var(--elemento-c)'], ['De dentro para fora', 'var(--t-genai)']];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>Para dentro, para fora ou só dentro de casa</h2><div class="dois bl-zn"><div class="bl-znsvg"><svg viewBox="0 0 420 260" role="img" aria-label="A empresa no centro, com setas entrando e saindo">' +
+      '<g class="bl-z" data-z="1" style="--c:' + ZON[1][1] + '"><path class="bl-seta" d="M10,130 L120,130"/><path class="bl-seta" d="M20,60 L130,100"/><path class="bl-seta" d="M20,200 L130,160"/><text class="bl-tx" x="16" y="34">' + ZON[1][0] + '</text></g>' +
+      '<g class="bl-z" data-z="2" style="--c:' + ZON[2][1] + '"><path class="bl-seta" d="M300,130 L410,130"/><path class="bl-seta" d="M290,100 L400,60"/><text class="bl-tx" x="404" y="236" text-anchor="end">' + ZON[2][0] + '</text></g>' +
+      '<g class="bl-z" data-z="0" style="--c:' + ZON[0][1] + '"><circle class="bl-emp" cx="210" cy="130" r="82"/><text class="bl-tx" x="210" y="126" text-anchor="middle">Empresa</text><text class="bl-tx bl-tx2" x="210" y="146" text-anchor="middle">' + ZON[0][0] + '</text></g></svg></div>' +
+      '<div class="bl-znt"><div class="i0-tar" role="group" aria-label="Formatos">' + FMT.map(function (f, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 4) + '">' + f[0] + '</button>'; }).join('') + '</div><div class="bl-card"><span class="bl-tag"></span><b class="bl-cn"></b><p class="bl-cp"></p></div></div></div>' +
+      '<p class="fonte">Formatos organizados a partir de Chesbrough, 2003, como nas aulas de Startups Tech e Pós FAAP.</p>',
+      on: function (el) {
+        function mostra(i) { var f = FMT[i], z = ZON[f[1]]; [].forEach.call(el.querySelectorAll('.bl-z'), function (g) { g.classList.toggle('on', +g.dataset.z === f[1]); }); var t = el.querySelector('.bl-tag'); t.textContent = z[0]; t.style.setProperty('--c', z[1]); el.querySelector('.bl-cn').textContent = f[0]; el.querySelector('.bl-cp').textContent = f[2]; }
+        blEscolha(el, '.bl-znt .chip', mostra); mostra(4);
+      } });
+
+    /* 3. Do namoro ao casamento: aceleração, investimento, aquisição e o venture building ao lado */
+    var DEG = [['Aceleração', 'Programa com startups', 'A empresa testa e apoia, sem comprar nada.', 1], ['Investimento', 'Corporate venture capital', 'Compra uma fatia e ganha um lugar à mesa.', 2], ['Aquisição', 'M&A', 'Compra a startup inteira, com time e tecnologia.', 3]];
+    add('aberta', { builds: 4, html: '<p class="rot-sec">' + R + '</p><h2>Do namoro ao casamento</h2><div class="bl-esc">' + DEG.map(function (d, i) {
+      return '<div class="bl-deg" data-b="' + (i + 1) + '" style="--h:' + d[3] + '"><div class="bl-degb"><i style="--w:' + (d[3] * 33) + '%"></i><span>Compromisso</span></div><b>' + d[0] + '</b><span class="bl-degs">' + d[1] + '</span><p>' + d[2] + '</p></div>'; }).join('') +
+      '<div class="bl-deg bl-vb" data-b="4"><b>Ou construir do zero, apartado</b><span class="bl-degs">Corporate venture building</span><p>A empresa cria o negócio, mas ele nasce com operação e regras próprias.</p></div></div>' +
+      '<div class="bl-ucs"><button type="button" class="botao-peq" data-uc="vivo">Use Case: Vivo + Conexa (investimento)</button><button type="button" class="botao-peq" data-uc="cyrela">Use Case: Cyrela + CashMe (venture building)</button></div>' +
+      '<p class="fonte">Slides 188 a 190 de Startups Tech e seus segmentos e 114 a 116 de Pós FAAP 2025.</p>' });
+
+    /* 4. Comprar, aliar ou construir a IA: o Nubank fez dois ao mesmo tempo */
+    var NU = [['Aliar', 'Parceria com a OpenAI', 'Em março de 2025, o banco anunciou o uso de modelos GPT-4o em três frentes: busca interna para funcionários, copiloto do atendente e assistente para o cliente.', 'Olhar Digital, 09/03/2025.', 'var(--elemento-c)'],
+      ['Construir', 'Modelo próprio, o nuFormer', 'Modelo criado pela equipe de IA do banco. Aprende com as sequências de transações dos clientes e é usado em crédito, fraude e recomendação de produto.', 'Blog de engenharia do Nubank, 20/04/2026.', 'var(--t-genai)'],
+      ['Aliar e construir', 'Magalu, no WhatsApp da Lu', 'Assistente de compras com IA no WhatsApp, lançado para 1 milhão de usuários numa primeira fase. Feito pelo Magalu com Meta, Bain e modelos do Google Cloud.', 'Mobile Time, 2025.', 'var(--motor-c)']];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>Comprar, aliar ou construir a IA?</h2><p class="sub">Na prática, as empresas misturam os caminhos. O que fica dentro de casa costuma ser o que diferencia.</p><div class="dois bl-nu"><div class="bl-nuv"><svg viewBox="0 0 300 220" role="img" aria-label="Duas peças se encaixando: uma de fora e outra de dentro">' +
+      '<g class="bl-pc a"><path d="M20,60 h90 v30 a16,16 0 0 0 0,32 v30 h-90 z"/><text class="bl-tx2" x="62" y="112" text-anchor="middle">De fora</text></g>' +
+      '<g class="bl-pc b"><path d="M190,60 h90 v92 h-90 v-30 a16,16 0 0 1 0,-32 z"/><text class="bl-tx2" x="236" y="112" text-anchor="middle">De dentro</text></g><text class="bl-tx bl-nul" x="150" y="200" text-anchor="middle"></text></svg></div>' +
+      '<div class="bl-nut"><div class="i0-tar" role="group" aria-label="Caminho">' + NU.map(function (n, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + n[0] + '</button>'; }).join('') + '</div><div class="bl-card"><span class="bl-tag"></span><b class="bl-cn"></b><p class="bl-cp"></p><small class="bl-cf"></small></div></div></div>',
+      on: function (el) {
+        var svg = el.querySelector('.bl-nuv svg');
+        function mostra(i) { var n = NU[i], t = el.querySelector('.bl-tag'); t.textContent = n[0]; t.style.setProperty('--c', n[4]); el.querySelector('.bl-cn').textContent = n[1]; el.querySelector('.bl-cp').textContent = n[2]; el.querySelector('.bl-cf').textContent = 'Fonte: ' + n[3];
+          svg.setAttribute('data-m', i); el.querySelector('.bl-nul').textContent = ['Nubank', 'Nubank', 'Magalu'][i]; }
+        blEscolha(el, '.bl-nut .chip', mostra); mostra(0);
+      } });
+
+    /* 5. O que a empresa olha antes de fechar com uma startup */
+    var CRI = [['Time de fundadores', 'Experiência, preparo técnico e se os sócios se completam.'], ['Tecnologia proprietária', 'O que é da startup e o que ela só usa de outros.', 'Numa startup de IA: o que é dela e o que é do fornecedor do modelo?'],
+      ['Maturidade da solução', 'Já encontrou o encaixe com o mercado (product-market fit)?'], ['Resultados concretos', 'Cases, clientes e reconhecimento de mercado.'],
+      ['Diferencial', 'Aspectos técnicos, modelo de negócio e proposta de valor difícil de copiar.'], ['Ganhos esperados', 'Mais eficiência, mais vendas ou testar produtos mais rápido?'],
+      ['Novo mercado', 'Abre um segmento, uma geografia ou um mercado vizinho?'], ['Tamanho de mercado', 'O público é relevante e dá para alcançar?'], ['Quem são os sócios', 'Como está dividida a startup e quem decide.']];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>O que a empresa olha antes de fechar com uma startup</h2><div class="bl-cri">' + CRI.map(function (c, i) {
+      return '<button type="button" class="bl-cr" style="--i:' + i + '" aria-pressed="false"><b>' + c[0] + '</b><span>' + c[1] + (c[2] ? '<em>' + c[2] + '</em>' : '') + '</span></button>'; }).join('') + '</div>' +
+      '<p class="fonte">Liga Ventures, Desvendando o Match, conforme slides 209 a 226 de Startups Tech e seus segmentos.</p>',
+      on: function (el) { [].forEach.call(el.querySelectorAll('.bl-cr'), function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); }); }); } });
+
+    /* 6. Régua de maturidade da tecnologia (TRL) */
+    var TRL = ['Princípios básicos observados', 'Conceito da tecnologia formulado', 'Prova de conceito em experimento', 'Validação em laboratório', 'Validação em ambiente parecido com o real', 'Demonstração em ambiente parecido com o real', 'Demonstração em ambiente real de operação', 'Sistema completo e aprovado', 'Sistema comprovado em operação'];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>Em que degrau está a tecnologia?</h2><div class="dois bl-trl"><div class="bl-trlv"><div class="bl-dgs">' + TRL.map(function (t, i) { return '<i style="--k:' + (i + 1) + '"><span>' + (i + 1) + '</span></i>'; }).join('') + '<b class="bl-boneco" aria-hidden="true"></b></div></div>' +
+      '<div class="bl-trlt"><label><b>Nível de maturidade: <output class="bl-trlo">4</output></b><input type="range" min="1" max="9" value="4" aria-label="Nível de maturidade da tecnologia"></label><p class="bl-trlp dest"></p><p class="bl-trlz"></p></div></div>' +
+      '<p class="fonte">Technology Readiness Level, baseado em Mankins (1995, 2009), como no slide 214 de Startups Tech e seus segmentos.</p>',
+      on: function (el) {
+        var r = el.querySelector('input'), ds = el.querySelectorAll('.bl-dgs i'), bo = el.querySelector('.bl-boneco');
+        function pinta() { var v = +r.value; el.querySelector('.bl-trlo').textContent = v; el.querySelector('.bl-trlp').textContent = TRL[v - 1];
+          el.querySelector('.bl-trlz').textContent = v <= 3 ? 'Ainda é pesquisa. Combina mais com universidade e P&D.' : v <= 6 ? 'Já funciona em teste. É a faixa típica de uma prova de conceito com startup.' : 'Pronta para operar. Aqui a conversa é de contrato, escala e integração.';
+          [].forEach.call(ds, function (d, i) { d.classList.toggle('on', i < v); }); bo.style.setProperty('--k', v); }
+        r.addEventListener('input', pinta); pinta();
+      } });
+
+    /* 7. Startups que já nascem com IA */
+    add('aberta', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Startups que já nascem com IA</h2><div class="dois bl-an">' +
+      '<div class="bl-anp" data-b="1"><span class="mk-ey">Gasto das empresas em aplicações de IA generativa, 2025</span><div class="bl-pz"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bl-pzb" cx="60" cy="60" r="44"/><circle class="bl-pzs" pathLength="100" cx="60" cy="60" r="44"/></svg><b>63%</b></div><p>fica com startups. O restante vai para empresas que já existiam antes da IA generativa.</p><small>Menlo Ventures, The State of Generative AI in the Enterprise, 2025. O fundo investe em empresas de IA.</small></div>' +
+      '<div class="bl-anp" data-b="2"><span class="mk-ey">Depois do ChatGPT, em regiões da China com mais talento em IA</span><div class="bl-ppl" aria-hidden="true"><i></i><i></i><i class="sai"></i><i class="sai"></i></div><p>Mais pequenas empresas abriram, com menos capital, menos sócios e menos fundadores.</p><small>Cai e outros, AI as "Co-founder", 2025. Estudo sem revisão por pares.</small></div></div>' +
+      '<p class="sub bl-q">Se a startup nasce menor e mais rápida, o que muda para a grande empresa que quer se aliar a ela?</p>' });
+
+    /* 8. Onde a parceria trava */
+    var BAR = [['Estratégico', ['Falta entender o que é uma startup', 'Estratégia e metas da inovação desalinhadas'], ['Defina objetivos claros e foque em necessidades reais', 'Promova e explique a inovação dentro de casa', 'Busque evidências no mercado e na concorrência', 'Comece com pilotos num tema de interesse geral']],
+      ['Cultura', ['Aversão a risco', 'Not invented here: o que vem de fora não presta', 'Falta de cultura empreendedora'], ['Tenha alguém com jeito diplomático para negociar com as áreas', 'Tenha empatia com quem será afetado', 'Envolva os funcionários nos projetos', 'Recompense quem inova e assume risco com responsabilidade']],
+      ['Estrutural', ['Orçamento abaixo da ambição', 'Falta de governança para inovar'], ['Invista recursos nos projetos', 'Diversifique os projetos', 'Mostre a evolução do aprendizado', 'Treine pessoas que puxem a inovação']],
+      ['Processual', ['Decisão muito lenta', 'Processos internos pouco flexíveis'], ['Ajuste a duração de cada etapa', 'Monitore gargalos', 'Lembre que tempo pesa mais para a startup', 'Crie trilhas rápidas e reduza exigências para fornecedores pequenos']]];
+    add('aberta', { html: '<p class="rot-sec">' + R + '</p><h2>Onde a parceria com startup trava</h2><div class="dois bl-br"><div class="bl-brg">' + BAR.map(function (b, i) {
+      return '<button type="button" class="bl-bb" aria-pressed="' + (i === 0) + '" style="--i:' + i + '"><b>' + b[0] + '</b>' + b[1].map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</button>'; }).join('') + '</div>' +
+      '<div class="bl-brt"><span class="mk-ey">Como destravar</span><ol class="bl-brl"></ol></div></div>' +
+      '<p class="fonte">Bannerjee, Bielli e Haley, Scaling Together: overcoming barriers in corporate-startup collaboration, conforme slides 150 a 174 de Pós FAAP 2025.</p>',
+      on: function (el) { var ol = el.querySelector('.bl-brl'); blEscolha(el, '.bl-bb', function (i) { ol.innerHTML = BAR[i][2].map(function (t, k) { return '<li style="--i:' + k + '">' + t + '</li>'; }).join(''); }); ol.innerHTML = BAR[0][2].map(function (t, k) { return '<li style="--i:' + k + '">' + t + '</li>'; }).join(''); } });
+
+    blFim('aberta', R, ['Sei a diferença entre inovação fechada e aberta', 'Sei os formatos de fora para dentro e de dentro para fora', 'Sei quando aliar, investir, comprar ou construir', 'Sei o que olhar antes de fechar com uma startup de IA']);
+  };
+
+  /* ================= Modelos de negócio baseados em inteligência artificial =================
+     Base: Transformação Digital e Modelos de Negócio (slides 7 a 9 e 26 a 29, cases VW e OMO), Business Model Canvas da Strategyzer,
+     e os fatos de IA do estudo Klarna, Nubank e Magalu e da pesquisa de mercados (Stanford AI Index 2025, Deloitte TMT 2026). */
+  BLOCOS.modelos = function () {
+    var R = 'Modelos de negócio com IA';
+
+    /* 1. De x Para: os cinco domínios de Rogers */
+    var ROG = [['Clientes', 'Mercado de massa', 'Rede de clientes que influenciam'], ['Competição', 'Setores isolados', 'Ecossistemas, plataformas e efeitos de rede'],
+      ['Dados', 'Caros, internos e em silos', 'Contínuos e tratados como ativo'], ['Inovação', 'Intuição e alto custo', 'Testes rápidos e baratos'], ['Valor', 'Definido pela indústria', 'Definido pelo cliente']];
+    add('modelos', { builds: 5, html: '<p class="rot-sec">' + R + '</p><h2>O que mudou de um modelo para o outro</h2><div class="bl-rog">' + ROG.map(function (r, i) {
+      return '<div class="bl-rg" data-b="' + (i + 1) + '"><b>' + r[0] + '</b><span class="de">' + r[1] + '</span><svg viewBox="0 0 40 16" aria-hidden="true"><path pathLength="1" d="M2 8h32M28 3l6 5-6 5"/></svg><span class="para">' + r[2] + '</span></div>'; }).join('') + '</div>' +
+      '<p class="fonte">Rogers, The Digital Transformation Playbook, Columbia Business School, 2016, p. 7, como no slide 8 de Transformação Digital e Modelos de Negócio.</p>' });
+
+    /* 2. Business Model Canvas, bloco a bloco, com um exemplo real de IA em cada um que tem fonte */
+    var BMC = [['Parcerias principais', 'Quem ajuda a entregar o que a empresa não faz sozinha.', 'Nubank e OpenAI: modelos GPT-4o em busca interna, copiloto do atendente e assistente do cliente.', 'Olhar Digital, 09/03/2025.', 'pp'],
+      ['Atividades-chave', 'O que a empresa precisa fazer muito bem.', 'Klarna: no primeiro mês, o assistente de IA fez 2,3 milhões de conversas, dois terços dos chats de atendimento.', 'Comunicado da Klarna, 27/02/2024.', 'ak'],
+      ['Recursos principais', 'O que a empresa tem e os outros não.', 'Nubank: o nuFormer, modelo próprio que aprende com as sequências de transações dos clientes.', 'Blog de engenharia do Nubank, 20/04/2026.', 'rp'],
+      ['Proposta de valor', 'Por que o cliente escolhe esta empresa.', 'Klarna: tempo de resolução abaixo de 2 minutos, contra 11 minutos antes do assistente.', 'Comunicado da Klarna, 27/02/2024.', 'pv'],
+      ['Relacionamento', 'Como a empresa conversa com o cliente.', 'Nubank: o assistente resolve até 50% das dúvidas de primeiro nível e passa para uma pessoa depois de cinco interações.', 'Olhar Digital, 09/03/2025.', 're'],
+      ['Canais', 'Por onde a oferta chega ao cliente.', 'Magalu: assistente de compras com IA no WhatsApp da Lu, lançado para 1 milhão de usuários numa primeira fase.', 'Mobile Time, 2025.', 'ca'],
+      ['Segmentos de clientes', 'Para quem a empresa cria valor.', 'Pergunta para a turma: que cliente era caro demais de atender e com IA deixa de ser?', '', 'sc'],
+      ['Estrutura de custos', 'O que pesa na conta para operar.', 'Responder no nível do GPT-3.5 ficou mais de 280 vezes mais barato entre novembro de 2022 e outubro de 2024.', 'Stanford AI Index 2025.', 'ec'],
+      ['Fontes de receita', 'Como a empresa ganha dinheiro.', 'No software, a cobrança começa a sair do assento por usuário e ir para o uso e para o resultado entregue.', 'Deloitte, TMT Predictions 2026.', 'fr']];
+    add('modelos', { html: '<p class="rot-sec">' + R + '</p><h2>Onde a IA entra no Business Model Canvas</h2><div class="dois bl-bmc"><div class="bl-cv">' + BMC.map(function (b, i) {
+      return '<button type="button" class="bl-bk ' + b[4] + '" aria-pressed="' + (i === 3) + '"><span>' + b[0] + '</span><i class="bl-ia" aria-hidden="true">IA</i></button>'; }).join('') + '</div>' +
+      '<div class="bl-card bl-bmt"><b class="bl-cn"></b><p class="bl-cq"></p><p class="bl-cp dest"></p><small class="bl-cf"></small></div></div>' +
+      '<p class="fonte">Osterwalder e Pigneur, Business Model Generation, 2010. Canvas da Strategyzer, na pasta Ferramentas Strategyzer.</p>',
+      on: function (el) {
+        var card = el.querySelector('.bl-bmt');
+        function mostra(i) { var b = BMC[i]; el.querySelector('.bl-cn').textContent = b[0]; el.querySelector('.bl-cq').textContent = b[1]; el.querySelector('.bl-cp').textContent = b[2]; el.querySelector('.bl-cf').textContent = b[3] ? 'Fonte: ' + b[3] : ''; }
+        blEscolha(el, '.bl-bk', mostra); mostra(3);
+      } });
+
+    /* 3. Como a empresa cobra: oito modelos de receita */
+    var REC = [['Freemium', 'Grátis no básico, pago no avançado.', 'Google Drive, Slack, iCloud', 'M4 14h16M7 10h10M10 6h4'],
+      ['Assinatura', 'Receita recorrente por mês ou por ano.', 'Netflix, Spotify, Tinder', 'M5 5h14v14H5zM5 10h14M10 5v5'],
+      ['Pague pelo uso', 'Cobra pelo consumo real.', 'AWS, Google Cloud', 'M12 4v16M8 8h6a3 3 0 010 6H9'],
+      ['Taxa por transação', 'Taxa fixa mais uma parte de cada operação.', 'Stripe, PayPal', 'M4 8h16v10H4zM4 12h16'],
+      ['Anúncio', 'Monetiza dados e atenção.', 'Google, Facebook, Snapchat', 'M4 10l12-5v14L4 14zM16 9h3v6h-3'],
+      ['Lâmina e aparelho', 'Produto barato, refil caro.', 'Gillette, Nespresso, HP', 'M6 4h12l-2 16H8zM9 9h6'],
+      ['Afiliado', 'Comissão sobre venda de terceiros.', 'Amazon Associates, HubSpot', 'M8 12a4 4 0 118 0 4 4 0 01-8 0M4 20l4-4M20 20l-4-4'],
+      ['Bens virtuais', 'Compra de itens dentro do app.', 'PUBG, Roblox, Candy Crush', 'M12 3l3 6 6 1-4.5 4 1 6L12 17l-5.5 3 1-6L3 10l6-1z']];
+    add('modelos', { builds: 1, html: '<p class="rot-sec">' + R + '</p><h2>Oito jeitos de cobrar</h2><div class="bl-rec">' + REC.map(function (r, i) {
+      return '<div class="bl-rc" style="--i:' + i + '"' + (i === 1 || i === 2 ? ' data-ia="1"' : '') + '><svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + r[3] + '"/></svg><b>' + r[0] + '</b><span>' + r[1] + '</span><small>' + r[2] + '</small></div>'; }).join('') + '</div>' +
+      '<div class="bl-faixa" data-b="1"><span class="bl-tag" style="--c:var(--t-genai)">Com IA</span><p><b>Do assento ao resultado.</b> No software, a cobrança por usuário começa a dar lugar à cobrança pelo uso e pelo resultado que o agente entrega.</p><small>Deloitte, TMT Predictions 2026.</small></div>' +
+      '<p class="fonte">Slide 28 de Transformação Digital e Modelos de Negócio.</p>' });
+
+    /* 4. Plataformas e efeitos de rede */
+    add('modelos', { html: '<p class="rot-sec">' + R + '</p><h2>Plataforma: cada lado atrai o outro</h2><div class="dois bl-pl"><div class="bl-plv"><svg viewBox="0 0 360 240" role="img" aria-label="Rede com compradores de um lado e vendedores do outro"><g class="bl-pll"></g><g class="bl-pln"></g><text class="bl-tx" x="40" y="230" text-anchor="middle">Compradores</text><text class="bl-tx" x="320" y="230" text-anchor="middle">Vendedores</text></svg></div>' +
+      '<div class="bl-plt"><label><b>Compradores: <output class="bl-o1">3</output></b><input type="range" min="1" max="8" value="3" data-l="0" aria-label="Compradores"></label><label><b>Vendedores: <output class="bl-o2">3</output></b><input type="range" min="1" max="8" value="3" data-l="1" aria-label="Vendedores"></label>' +
+      '<div class="bl-plr"><span>Conexões possíveis</span><b class="bl-plc">9</b></div><p class="bl-plp"></p></div></div>' +
+      '<p class="fonte">Rogers, 2016, slide 9 de Transformação Digital (de poucos dominantes a plataformas e efeitos de rede). Modelos de operação no slide 29: marketplace, agregador, venda direta, franquia, marca própria e licença de API.</p>',
+      on: function (el) {
+        var a = el.querySelector('[data-l="0"]'), b = el.querySelector('[data-l="1"]'), L = el.querySelector('.bl-pll'), Nn = el.querySelector('.bl-pln');
+        function y(i, n) { return n === 1 ? 110 : 20 + i * 180 / (n - 1); }
+        function pinta() { var m = +a.value, n = +b.value, h = '', k = '', i, j;
+          for (i = 0; i < m; i++) for (j = 0; j < n; j++) h += '<line x1="40" y1="' + y(i, m) + '" x2="320" y2="' + y(j, n) + '" style="--d:' + ((i + j) * 30) + 'ms"/>';
+          for (i = 0; i < m; i++) k += '<circle class="c" cx="40" cy="' + y(i, m) + '" r="11"/>';
+          for (j = 0; j < n; j++) k += '<rect class="v" x="309" y="' + (y(j, n) - 11) + '" width="22" height="22" rx="6"/>';
+          L.innerHTML = h; Nn.innerHTML = k; el.querySelector('.bl-o1').textContent = m; el.querySelector('.bl-o2').textContent = n; el.querySelector('.bl-plc').textContent = m * n;
+          el.querySelector('.bl-plp').textContent = m * n >= 30 ? 'Quanto mais gente de um lado, mais vale entrar do outro. Por isso plataformas tendem a concentrar o mercado.' : 'Com pouca gente nos dois lados, ninguém tem motivo para entrar. É o problema do ovo e da galinha.'; }
+        a.addEventListener('input', pinta); b.addEventListener('input', pinta); pinta();
+      } });
+
+    /* 5. Antes e depois: a OMO sai da prateleira e vira serviço */
+    var OMO = [['Proposta de valor', 'Sabão que limpa bem', 'Roupa lavada sem trabalho em casa'], ['Canais', 'Prateleira do supermercado', 'Lojas de lavanderia, inclusive em condomínios'],
+      ['Relacionamento', 'Indireto, pelo varejista', 'Direto com quem usa a loja'], ['Parcerias', 'Varejistas', 'Franqueados'], ['Fontes de receita', 'Venda do produto', 'Taxa de franquia e royalties']];
+    add('modelos', { builds: 1, html: '<p class="rot-sec">' + R + '</p><h2>Mesma marca, outro modelo de negócio</h2><div class="bl-omo"><div class="bl-omh"><span></span><b>Antes: OMO na prateleira</b><b>Depois: OMO Lavanderia</b></div>' + OMO.map(function (o, i) {
+      return '<div class="bl-omr" style="--i:' + i + '"><span>' + o[0] + '</span><i class="a">' + o[1] + '</i><i class="d">' + o[2] + '</i></div>'; }).join('') + '</div>' +
+      '<p class="sub bl-q" data-b="1">E se a lavanderia usasse os dados das lojas com IA: que bloco do canvas mudaria de novo?</p>' +
+      '<div class="bl-ucs"><button type="button" class="botao-peq" data-uc="omo">Use Case: OMO Lavanderia</button><button type="button" class="botao-peq" data-uc="vw">Use Case: VW Sign &amp; Drive</button></div>' +
+      '<p class="fonte">Slides 45 e 46 de Transformação Digital e Modelos de Negócio.</p>' });
+
+    blFim('modelos', R, ['Sei o que muda do modelo tradicional para o digital', 'Sei ler os nove blocos do canvas', 'Sei onde a IA entra em cada bloco, com exemplo real', 'Sei por que plataformas tendem a concentrar o mercado']);
+  };
+
+  /* ================= Proposta de valor e estratégia de produto com IA =================
+     Base: Transformação Digital e Modelos de Negócio (slides 10 a 24 e 38 a 43, canvas do VW Sign & Drive), Metodologias de Inovação FAAP
+     (job to be done, desenvolvimento do cliente, Value Proposition Design), CESUPA (milkshake, Testing Business Ideas) e o estudo do Nubank. */
+  BLOCOS.valor = function () {
+    var R = 'Valor e produto com IA';
+
+    /* 1. Job to be done: o milkshake */
+    var MK = [['Quem compra?', 'Dados demográficos: idade, renda, gosto.', 'Fica a pergunta: como fazer um milkshake que esse perfil goste mais?'],
+      ['Para que contrata?', 'O contexto: de manhã, no caminho longo e chato até o trabalho, com uma mão livre.', 'O milkshake foi contratado para tornar a viagem menos chata e segurar a fome até o almoço.'],
+      ['Contra quem compete?', 'Não é contra outro milkshake.', 'Compete com banana, rosquinha, pão e o tédio do trânsito.']];
+    add('valor', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>O cliente contrata o produto para um trabalho</h2><div class="dois bl-jb"><div class="bl-jbv"><svg viewBox="0 0 320 220" role="img" aria-label="Um carro na estrada com um copo de milkshake no painel">' +
+      '<path class="bl-rd" d="M0,180 H320"/><path class="bl-rdl" d="M0,196 H320"/><g class="bl-car"><rect x="70" y="120" width="150" height="46" rx="16"/><path d="M100,120 l18,-28 h60 l22,28z"/><circle class="w" cx="105" cy="168" r="14"/><circle class="w" cx="190" cy="168" r="14"/>' +
+      '<g class="bl-mk"><path d="M152,64 h22 l-4,34 h-14z"/><path d="M160,64 l6,-18" class="pa"/></g></g><g class="bl-sol"><circle cx="280" cy="40" r="16"/></g></svg></div>' +
+      '<div class="bl-jbt">' + MK.map(function (m, i) { return '<div class="bl-jq" data-b="' + (i + 1) + '"><b>' + m[0] + '</b><p>' + m[1] + '</p><p class="r">' + m[2] + '</p></div>'; }).join('') + '</div></div>' +
+      '<p class="fonte">Christensen e outros, Muito Além da Sorte, Bookman, 2018. Slides 177 a 180 do CESUPA.</p>' });
+
+    /* 2 e 3. Canvas da proposta de valor: VW Sign & Drive e Nubank, com as ligações entre dor e remédio */
+    var CV = {
+      vw: { nome: 'VW Sign & Drive', fonte: 'Itens dos slides 13 a 16 de Transformação Digital e Modelos de Negócio.',
+        tar: ['Ir ao trabalho e aos compromissos com conforto', 'Ter carro confiável sem comprometer a renda com financiamento'],
+        dor: ['Custos ocultos: IPVA, seguro, revisões, pneus', 'Surpresa com manutenção cara', 'Burocracia para comprar, financiar e revender'],
+        gan: ['Saber quanto gasta por mês', 'Dirigir carro sempre atualizado', 'Trocar de carro quando a vida muda'],
+        prd: ['Assinatura mensal com carro zero ou seminovo', 'Seguro completo incluso'],
+        ali: ['Seguro já incluso, sem cotação separada', 'Sem sustos: manutenções cobertas no plano', 'Sem financiamento, transferência ou emplacamento'],
+        cri: ['Mensalidade fixa e transparente', 'Carro sempre em bom estado', 'Planos de 12, 18 ou 24 meses'],
+        par: [[0, 0], [1, 1], [2, 2]], pag: [[0, 0], [1, 1], [2, 2]] },
+      nu: { nome: 'Nubank, atendimento com IA', fonte: 'Produto e números: Olhar Digital, 09/03/2025. Tarefas, dores e ganhos são leitura nossa.',
+        tar: ['Resolver uma dúvida sobre a conta ou o cartão', 'Fazer isso a qualquer hora, pelo celular'],
+        dor: ['Esperar na fila do atendimento', 'Repetir a história para cada atendente', 'Não conseguir falar com uma pessoa quando precisa'],
+        gan: ['Resposta na hora', 'Problema resolvido na primeira conversa', 'Confiança de que o banco entende o caso'],
+        prd: ['Assistente de IA no chat', 'Copiloto que sugere respostas e resume a conversa para o atendente'],
+        ali: ['Resposta cerca de 70% mais rápida', 'O atendente já recebe o resumo da conversa', 'Passa para uma pessoa depois de cinco interações'],
+        cri: ['Até 50% das dúvidas de primeiro nível resolvidas pela IA', 'Tempo de resolução até 2,3 vezes menor', 'Satisfação mantida alta'],
+        par: [[0, 0], [1, 1], [2, 2]], pag: [[0, 0], [1, 1], [2, 2]] } };
+    function lista(cls, its) { return '<ul class="bl-vl ' + cls + '">' + its.map(function (t, i) { return '<li data-k="' + i + '">' + t + '</li>'; }).join('') + '</ul>'; }
+    add('valor', { html: '<p class="rot-sec">' + R + '</p><h2>Canvas da proposta de valor</h2><div class="i0-tar bl-vtg" role="group" aria-label="Exemplo"><button type="button" class="chip" aria-pressed="true">VW Sign &amp; Drive</button><button type="button" class="chip" aria-pressed="false">Nubank, com IA</button></div>' +
+      '<div class="bl-vpc"><div class="bl-sq"><span class="bl-vh">Proposta de valor</span><div class="bl-sqg"><div class="bl-vz prd"><b>Produtos e serviços</b><div></div></div><div class="bl-vz cri"><b>Criadores de ganho</b><div></div></div><div class="bl-vz ali"><b>Aliviadores de dor</b><div></div></div></div></div>' +
+      '<svg class="bl-fit" viewBox="0 0 60 60" aria-hidden="true"><path d="M8 30h44M40 18l12 12-12 12"/></svg>' +
+      '<div class="bl-ci"><span class="bl-vh">Perfil do cliente</span><div class="bl-cig"><div class="bl-vz gan"><b>Ganhos</b><div></div></div><div class="bl-vz tar"><b>Tarefas</b><div></div></div><div class="bl-vz dor"><b>Dores</b><div></div></div></div></div></div>' +
+      '<p class="bl-vdica">Toque numa dor ou num ganho para ver o que responde a ele.</p><p class="fonte bl-vf"></p>',
+      on: function (el) {
+        var atual = CV.vw;
+        function monta(c) { atual = c; ['tar', 'dor', 'gan', 'prd', 'ali', 'cri'].forEach(function (k) { el.querySelector('.bl-vz.' + k + ' div').innerHTML = lista(k, c[k]); }); el.querySelector('.bl-vf').textContent = c.fonte; }
+        el.querySelector('.bl-vpc').addEventListener('click', function (e) { var li = e.target.closest('li'); if (!li) return; var ul = li.parentNode, k = +li.dataset.k; [].forEach.call(el.querySelectorAll('.bl-vl li'), function (x) { x.classList.remove('lig'); });
+          var par = ul.classList.contains('dor') ? ['ali', 'dor', atual.par] : ul.classList.contains('ali') ? ['dor', 'ali', atual.par.map(function (p) { return [p[1], p[0]]; })] : ul.classList.contains('gan') ? ['cri', 'gan', atual.pag] : ul.classList.contains('cri') ? ['gan', 'cri', atual.pag.map(function (p) { return [p[1], p[0]]; })] : null;
+          li.classList.add('lig'); if (!par) return; par[2].forEach(function (p) { if (p[0] === k) { var o = el.querySelector('.bl-vl.' + par[0] + ' li[data-k="' + p[1] + '"]'); if (o) o.classList.add('lig'); } }); });
+        blEscolha(el, '.bl-vtg .chip', function (i) { monta(i ? CV.nu : CV.vw); }); monta(CV.vw);
+      } });
+
+    /* 4. Os três encaixes */
+    var FIT = [['Problema e solução', 'Achamos tarefas, dores e ganhos que importam, e uma proposta que responde a eles.', 'Prova: o cliente reconhece o problema e se interessa pela solução.'],
+      ['Produto e mercado', 'A proposta gera tração: clientes pagam e continuam usando.', 'Prova: venda, uso recorrente, indicação.'],
+      ['Modelo de negócio', 'A proposta cabe num modelo de negócio lucrativo e que cresce.', 'Prova: a conta fecha quando a empresa cresce.']];
+    add('valor', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>Três encaixes, nesta ordem</h2><div class="bl-ft">' + FIT.map(function (f, i) {
+      return '<div class="bl-fs" data-b="' + (i + 1) + '" style="--h:' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><b>' + f[0] + '</b><p>' + f[1] + '</p><small>' + f[2] + '</small></div>'; }).join('') + '</div>' +
+      '<p class="sub bl-q">Com IA dá para montar uma solução em dias. Isso adianta o primeiro encaixe, mas não pula os outros dois.</p>' +
+      '<p class="fonte">Osterwalder, Pigneur e outros, Value Proposition Design, Wiley, 2014, slides 20 a 22 de Transformação Digital. Blank, Do sonho à realização em 4 passos, Alta Books, 2021.</p>' });
+
+    /* 5. Testar antes de construir: desejável, praticável, viável */
+    var LEN = [['Desejável', 'O cliente quer?', 'var(--vermelho)'], ['Praticável', 'Conseguimos fazer?', 'var(--motor-c)'], ['Viável', 'Dá dinheiro?', 'var(--elemento-c)']];
+    var HIP = [['Os clientes aceitam receber o lembrete de recompra pelo WhatsApp', 0], ['Conseguimos ligar o assistente ao histórico de compras da loja', 1], ['O custo de cada conversa fica abaixo da margem da recompra', 2],
+      ['Os clientes confiam no que a IA diz sobre o remédio', 0], ['A IA não troca o nome do remédio', 1], ['Quem recebe o lembrete compra mais vezes no ano', 2]];
+    add('valor', { html: '<p class="rot-sec">' + R + '</p><h2>Antes de construir, separe as hipóteses</h2><p class="sub">Caso: assistente de IA no WhatsApp de uma farmácia, que lembra o cliente de recomprar o remédio de uso contínuo. Em que lente cai cada hipótese?</p>' +
+      '<div class="dois bl-tb"><div class="bl-lens"><svg viewBox="0 0 300 260" role="img" aria-label="Três círculos que se cruzam: desejável, praticável e viável">' + LEN.map(function (l, i) { var p = [[150, 92], [100, 172], [200, 172]][i]; return '<g class="bl-ln" data-l="' + i + '" style="--c:' + l[2] + '"><circle cx="' + p[0] + '" cy="' + p[1] + '" r="74"/><text class="bl-tx" x="' + p[0] + '" y="' + (p[1] + [-30, 40, 40][i]) + '" text-anchor="middle">' + l[0] + '</text></g>'; }).join('') + '<text class="bl-tx" x="150" y="150" text-anchor="middle">Inovação</text></svg></div>' +
+      '<div class="bl-hips">' + HIP.map(function (h, i) { return '<div class="bl-hp" data-i="' + i + '"><p>' + h[0] + '</p><div>' + LEN.map(function (l, k) { return '<button type="button" class="chip" data-k="' + k + '">' + l[0] + '</button>'; }).join('') + '</div></div>'; }).join('') + '</div></div>' +
+      '<p class="fonte">Bland e Osterwalder, Testing Business Ideas, Alta Books, 2020, como no slide 190 do curso do CESUPA. Exemplo da farmácia criado para a aula.</p>',
+      on: function (el) {
+        el.querySelector('.bl-hips').addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return; var hp = b.closest('.bl-hp'), h = HIP[+hp.dataset.i], k = +b.dataset.k;
+          [].forEach.call(hp.querySelectorAll('.chip'), function (x) { x.classList.remove('ok', 'no'); }); b.classList.add(k === h[1] ? 'ok' : 'no'); if (k !== h[1]) hp.querySelectorAll('.chip')[h[1]].classList.add('ok');
+          var g = el.querySelector('.bl-ln[data-l="' + h[1] + '"]'); g.classList.remove('pisca'); void g.getBoundingClientRect(); g.classList.add('pisca'); });
+      } });
+
+    blFim('valor', R, ['Sei perguntar para que trabalho o cliente contrata o produto', 'Sei ligar cada dor a um aliviador no canvas', 'Sei a ordem dos três encaixes', 'Sei separar o que é desejável, praticável e viável']);
+  };
+
+  /* ================= IA na era da prototipação de novos produtos =================
+     Base: Lean Startup (slides 41 a 95: tipos de MVP, métricas, pivotar ou perseverar), Metodologias de Inovação FAAP (ciclo de feedback, EasyTaxi)
+     e o módulo IA do zero (vibe coding). */
+  BLOCOS.prototipacao = function () {
+    var R = 'Prototipação com IA';
+
+    /* 1. Construir, medir, aprender */
+    var CIC = [['Construir', 'o menor produto que testa a ideia'], ['Medir', 'o que o cliente faz, não o que ele diz'], ['Aprender', 'se a hipótese se confirmou, e o que muda']];
+    add('prototipacao', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>Construir, medir, aprender</h2><div class="dois bl-lp"><div class="bl-lpv"><svg viewBox="0 0 300 280" role="img" aria-label="Ciclo com três etapas">' +
+      '<circle class="bl-lpc" cx="150" cy="140" r="96" pathLength="1"/><g class="bl-lpd"><circle cx="150" cy="44" r="10"/></g>' +
+      CIC.map(function (c, i) { var a = -Math.PI / 2 + i * 2 * Math.PI / 3, x = 150 + 96 * Math.cos(a), y = 140 + 96 * Math.sin(a); return '<g class="bl-lpn" data-b="' + (i + 1) + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="40"/><text class="bl-tx2" x="' + x.toFixed(1) + '" y="' + (y + 5).toFixed(1) + '" text-anchor="middle">' + c[0] + '</text></g>'; }).join('') +
+      '<text class="bl-tx" x="150" y="134" text-anchor="middle">Falhar rápido</text><text class="bl-tx" x="150" y="154" text-anchor="middle">aprender rápido</text></svg></div>' +
+      '<div class="bl-lpt">' + CIC.map(function (c, i) { return '<div class="bl-jq" data-b="' + (i + 1) + '"><b>' + c[0] + '</b><p>' + c[1] + '</p></div>'; }).join('') + '<p class="sub bl-q" data-b="3">Se a IA deixa o construir muito mais rápido, onde fica o gargalo do ciclo?</p></div></div>' +
+      '<p class="fonte">Ries, A Startup Enxuta, Leya, 2012, como nos slides de Lean Startup e no slide 15 de Metodologias de Inovação.</p>' });
+
+    /* 2. Escada de MVPs, do papel ao beta */
+    var MVP = [['Protótipo de papel', 'Desenhos que mostram como o produto funcionaria.'], ['Landing page', 'Uma página que descreve a oferta e coleta e-mails de interessados.'], ['Porta falsa', 'A oferta parece disponível, mas não existe ainda. Mede o interesse.'],
+      ['Concierge', 'O serviço é feito à mão para o cliente, sabendo que é manual.'], ['Mágico de Oz', 'Parece automático, mas uma pessoa faz tudo por trás.'], ['Simulação', 'Protótipo visual ou funcional limitado.'],
+      ['Uma funcionalidade', 'Só o recurso principal, para testar o valor dele.'], ['Teste A/B', 'Duas versões com usuários reais, para ver qual funciona melhor.'], ['Produto mínimo completo', 'A versão mais simples que já resolve o problema.'],
+      ['Alta fidelidade', 'Quase igual ao produto final.'], ['Beta', 'Versão preliminar para um grupo pequeno.']];
+    add('prototipacao', { html: '<p class="rot-sec">' + R + '</p><h2>Onze jeitos de testar antes de construir tudo</h2><div class="bl-mv"><div class="bl-mvs">' + MVP.map(function (m, i) { return '<button type="button" class="bl-mvd" style="--k:' + i + '" aria-pressed="' + (i === 4) + '"><span>' + m[0] + '</span></button>'; }).join('') + '</div>' +
+      '<div class="bl-mvx"><span>Menos esforço, menos certeza</span><span>Mais esforço, mais certeza</span></div><div class="bl-card bl-mvc"><b class="bl-cn"></b><p class="bl-cp"></p></div></div>' +
+      '<p class="sub bl-q">Com vibe coding, quais destes dá para montar numa tarde?</p>' +
+      '<p class="fonte">Bland e Osterwalder, Testing Business Ideas, Wiley, 2019, slides 44 a 60 de Lean Startup.</p>',
+      on: function (el) { function mostra(i) { el.querySelector('.bl-mvc .bl-cn').textContent = MVP[i][0]; el.querySelector('.bl-mvc .bl-cp').textContent = MVP[i][1]; } blEscolha(el, '.bl-mvd', mostra); mostra(4); } });
+
+    /* 3. Mágico de Oz: a IA de mentira que testa a IA de verdade */
+    add('prototipacao', { html: '<p class="rot-sec">' + R + '</p><h2>Por trás da cortina, uma pessoa</h2><div class="dois bl-oz"><div class="bl-ozv"><svg viewBox="0 0 340 230" role="img" aria-label="Um celular mostra um app automático; atrás da cortina, uma pessoa faz o trabalho">' +
+      '<rect class="bl-cel" x="20" y="20" width="110" height="190" rx="18"/><rect class="bl-tela" x="30" y="44" width="90" height="142" rx="8"/><g class="bl-msg"><rect x="38" y="56" width="62" height="20" rx="8"/><rect class="r" x="54" y="86" width="58" height="20" rx="8"/><rect x="38" y="116" width="50" height="20" rx="8"/></g>' +
+      '<g class="bl-cort"><path class="c1" d="M170,14 h150 v6 h-150z"/><path class="pano e" d="M174,20 q10,100 0,196 h70 q-14,-98 0,-196z"/><path class="pano d" d="M246,20 q14,98 0,196 h70 q-10,-96 0,-196z"/></g>' +
+      '<g class="bl-pess"><circle cx="245" cy="104" r="16"/><path d="M220,170 q25,-50 50,0z"/><rect x="226" y="146" width="40" height="22" rx="4" class="lap"/></g>' +
+      '<path class="bl-fio" d="M130,110 C160,110 180,130 220,150"/></svg><button type="button" class="botao-peq bl-ozb" aria-pressed="false">Abrir a cortina</button></div>' +
+      '<div class="bl-ozt"><div class="bl-jq"><b>EasyTaxi, no começo</b><p>O cliente preenchia um formulário simples. O time da startup ligava para a cooperativa de táxi mais perto.</p></div><div class="bl-jq"><b>Com IA, o mesmo truque</b><p>Antes de montar um agente de IA, uma pessoa responde como se fosse o agente. Se ninguém quiser o serviço, não precisou construir nada.</p></div></div></div>' +
+      '<p class="fonte">Exemplo da EasyTaxi nas notas do slide 11 de Metodologias de Inovação. Mágico de Oz em Bland e Osterwalder, 2019, slide 45 de Lean Startup.</p>',
+      on: function (el) { var b = el.querySelector('.bl-ozb'), v = el.querySelector('.bl-ozv'); b.addEventListener('click', function () { var ab = !v.classList.contains('aberta'); v.classList.toggle('aberta', ab); b.setAttribute('aria-pressed', String(ab)); b.textContent = ab ? 'Fechar a cortina' : 'Abrir a cortina'; }); } });
+
+    /* 4. Métrica de vaidade ou acionável? */
+    var MET = [['Visitantes no site', 0], ['Clientes ativos no mês', 1], ['Downloads do app', 0], ['Retenção por coorte', 1], ['Seguidores nas redes', 0], ['Taxa de conversão', 1],
+      ['Curtidas e compartilhamentos', 0], ['Churn: clientes que saem', 1], ['E-mails coletados', 0], ['Receita por usuário', 1], ['Page views', 0], ['NPS: quem indica o produto', 1]];
+    add('prototipacao', { html: '<p class="rot-sec">' + R + '</p><h2>Métrica de vaidade ou métrica que decide?</h2><p class="sub">Toque em cada métrica. A de vaidade cresce e faz bem ao ego. A acionável muda a decisão.</p>' +
+      '<div class="bl-mt">' + MET.map(function (m, i) { return '<button type="button" class="bl-mtc" style="--i:' + i + '" data-v="' + m[1] + '"><span class="f">' + m[0] + '</span><span class="t">' + m[0] + '<small>' + (m[1] ? 'Acionável' : 'Vaidade') + '</small></span></button>'; }).join('') + '</div>' +
+      '<div class="bl-mtp"><span>Vaidade <b class="v0">0</b></span><span>Acionável <b class="v1">0</b></span></div>' +
+      '<p class="fonte">Ries, 2011, slides 65 a 80 de Lean Startup.</p>',
+      on: function (el) { el.querySelector('.bl-mt').addEventListener('click', function (e) { var c = e.target.closest('.bl-mtc'); if (!c || c.classList.contains('vira')) return; c.classList.add('vira');
+        var n = el.querySelectorAll('.bl-mtc.vira[data-v="' + c.dataset.v + '"]').length; el.querySelector('.v' + c.dataset.v).textContent = n; }); } });
+
+    /* 5. Pivotar ou perseverar */
+    var PIV = [['Zoom-in', 'Um recurso vira o produto.', 'Sympla', 'Plataforma de gestão de eventos', 'Venda de ingressos'], ['Zoom-out', 'O produto vira um recurso de algo maior.', '99', 'App só de táxi', 'Mobilidade com carros particulares'],
+      ['Segmento de cliente', 'Muda quem é o cliente.', 'Conta Azul', 'Pequenas empresas', 'Microempreendedores e autônomos'], ['Necessidade do cliente', 'Acha um problema maior.', 'Vindi', 'Pagamento online', 'Gestão de assinaturas'],
+      ['Plataforma', 'De aplicativos para plataforma, ou o inverso.', 'Movile', 'Vários apps separados', 'Plataforma unificada'], ['Modelo de negócio', 'Muda a forma de ganhar dinheiro.', 'Gympass', 'Planos individuais', 'Assinatura corporativa'],
+      ['Canal', 'Muda por onde chega ao cliente.', 'Méliuz', 'Cashback só online', 'Cashback também na loja física'], ['Tecnologia', 'Muda a tecnologia por trás.', 'TOTVS', 'ERP instalado no cliente', 'ERP na nuvem']];
+    add('prototipacao', { html: '<p class="rot-sec">' + R + '</p><h2>Oito jeitos de mudar de rota</h2><div class="dois bl-pv"><div class="bl-pvg">' + PIV.map(function (p, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + p[0] + '</button>'; }).join('') + '</div>' +
+      '<div class="bl-pvc"><p class="bl-pvd"></p><div class="bl-pvr"><svg viewBox="0 0 320 120" aria-hidden="true"><path class="bl-pvl" pathLength="1" d="M10,90 C90,90 120,90 150,60 C180,30 220,24 310,24"/><circle class="bl-pva" cx="10" cy="90" r="9"/><circle class="bl-pvb" cx="310" cy="24" r="11"/></svg><span class="a"></span><span class="b"></span></div><b class="bl-pvn"></b></div></div>' +
+      '<p class="sub bl-q">Perseverar também é escolha: quando as métricas acionáveis, o cliente e o mercado dizem que a hipótese segue de pé.</p>' +
+      '<p class="fonte">Ries, 2011, slides 83 a 95 de Lean Startup. Os cases de pivô estão nos slides, sem fonte própria: confira antes de citar números.</p>',
+      on: function (el) { var vr = el.querySelector('.bl-pvr'); function mostra(i) { var p = PIV[i]; el.querySelector('.bl-pvd').textContent = p[1]; el.querySelector('.bl-pvn').textContent = p[2]; vr.querySelector('.a').textContent = p[3]; vr.querySelector('.b').textContent = p[4]; vr.classList.remove('anda'); void vr.getBoundingClientRect(); vr.classList.add('anda'); }
+        blEscolha(el, '.bl-pvg .chip', mostra); mostra(0); } });
+
+    /* 6. Do protótipo ao mercado */
+    var ROB = [['Segurança', 'Quem pode entrar, o que fica exposto, senhas e chaves fora do código.'], ['Proteção de dados', 'LGPD: base legal para usar o dado, consentimento e cuidado com dado sensível.'], ['Escala', 'Funciona com 10 usuários. E com 10 mil ao mesmo tempo?'],
+      ['Integração', 'Conversa com os sistemas que a empresa já usa.'], ['Suporte', 'Quem atende quando quebra, e em quanto tempo.'], ['Custo de operar', 'Quanto custa cada uso de IA quando o volume cresce.']];
+    add('prototipacao', { builds: 6, html: '<p class="rot-sec">' + R + '</p><h2>O protótipo convence. O produto precisa aguentar.</h2><div class="dois bl-rb"><div class="bl-rbv"><div class="bl-rbp"><span>Protótipo</span><i></i><i></i><i></i></div><svg viewBox="0 0 60 30" aria-hidden="true"><path d="M4 15h48M42 6l10 9-10 9"/></svg><div class="bl-rbm">' + ROB.map(function (r, i) { return '<i data-b="' + (i + 1) + '">' + r[0] + '</i>'; }).join('') + '<span>Produto no mercado</span></div></div>' +
+      '<div class="bl-rbl">' + ROB.map(function (r, i) { return '<div class="bl-rbi" data-b="' + (i + 1) + '"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') + '</div></div>' +
+      '<p class="fonte">Tópicos da prévia do módulo (tecnologia da informação e proteção de dados). LGPD: Lei 13.709, de 2018.</p>' });
+
+    blFim('prototipacao', R, ['Sei girar o ciclo construir, medir, aprender', 'Sei escolher o MVP certo para a dúvida que tenho', 'Sei separar métrica de vaidade de métrica acionável', 'Sei o que falta para o protótipo virar produto']);
+  };
+
   /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
+  /* Módulos com conteúdo construído (BLOCOS, em blocos.js e afins) entram aqui, na ordem do mapa. Os demais ganham a prévia. */
   MODS.forEach(function (m) {
+    if (!m.lib && typeof BLOCOS !== 'undefined' && BLOCOS[m.id]) { BLOCOS[m.id](); return; }
     if (!m.previa) return;
     var its = m.previa.itens;
     add(m.id, { builds: its.length, html: '<p class="rot-sec">' + m.curto + '</p><h2>' + m.nome + '</h2><span class="ft-aviso">Módulo em construção</span>' +
