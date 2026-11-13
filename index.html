@@ -686,6 +686,44 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .vb-outro { margin-left: auto; }
 .vb-filtros { width: 100%; }
 
+/* Animações da FAAP nos Use Cases (cases_faap.js), na identidade do Mackenzie: vermelho para dinheiro e destaque, preto e branco no resto. */
+.fx-il { width: 100%; height: auto; overflow: visible; display: block; }
+.fx-il .l { fill: none; stroke: var(--il-linha); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.fx-il .lg { stroke-width: 3.2; } .fx-il .lf { stroke-width: 1.4; }
+.fx-il .la { stroke: var(--vermelho); } .fx-il .lr { stroke: var(--vermelho); }
+.fx-il .f { fill: var(--il-fundo); } .fx-il .fb { fill: var(--il-fundo); stroke: var(--il-linha); stroke-width: 1.8; stroke-linejoin: round; }
+.fx-il .ff { fill: rgba(var(--fg-rgb), .32); } .fx-il .fs { fill: var(--solid); stroke: var(--il-linha); stroke-width: 1.8; }
+.fx-il .a { fill: var(--vermelho); } .fx-il .z { fill: var(--vermelho); } .fx-il .v { fill: var(--fg); } .fx-il .r { fill: rgba(var(--fg-rgb), .45); }
+.fx-il .k { fill: #1b1115; } .fx-il .bco { fill: #fff; }
+.fx-il .t { fill: var(--fg); font: 700 13px var(--fonte); letter-spacing: .02em; }
+.fx-il .ts { font-size: 11px; font-weight: 600; opacity: .85; }
+.fx-il .tk { fill: #fff; opacity: 1; } .fx-il .tb { fill: var(--bg); opacity: 1; } .fx-il .ta { fill: var(--vermelho); opacity: 1; } .fx-il .tr { fill: rgba(var(--fg-rgb), .7); }
+.fx-il .tc { text-anchor: middle; } .fx-il .te { text-anchor: end; }
+.fx-il .fluxo { stroke-dasharray: 6 10; animation: ilFlow 1.6s linear infinite; }
+.fx-il .pisca { animation: fxPisca 1.6s ease-in-out infinite; }
+.fx-il .fl { animation: ilFl 3s ease-in-out infinite; }
+@keyframes fxPisca { 50% { opacity: .25; } }
+.fx-il [data-b] { opacity: 0; transition: opacity .5s; } .fx-il [data-b].vis { opacity: 1; }
+.fx-palco { position: relative; display: grid; gap: 6px; align-content: start; width: 100%; padding: clamp(10px, 1.4vw, 18px); border-radius: 24px;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(191, 0, 55, .16), transparent 70%), rgba(var(--fg-rgb), .04); border: 1px solid rgba(var(--fg-rgb), .14); }
+.fx-palco .rot-sec { margin: 0; }
+.fx-cy { grid-template-columns: minmax(0, 46fr) minmax(0, 56fr); align-items: stretch; width: 100%; }
+.fx-cy .fx-il { max-height: min(36vh, 360px); }
+.fx-vw .fx-il { max-height: min(46vh, 420px); }
+.fx-balao { justify-self: start; margin: 0; padding: 9px 14px; border-radius: 16px 16px 16px 4px; background: rgba(var(--fg-rgb), .1); border: 1px solid rgba(var(--fg-rgb), .2); font-weight: 600; font-size: clamp(13.5px, 1.3vw, 16px); }
+.fx-balao.forte { background: var(--vermelho); color: #fff; border-color: transparent; }
+.fx-tog { margin-bottom: 4px; }
+@media (max-height: 800px) { .fx-cy .fx-il { max-height: 24vh; } .fx-vw .fx-il { max-height: 28vh; } .fx-palco { gap: 4px; padding: 10px 14px; } }
+.slide .sub.fx-sub { max-width: none; }
+@media (max-width: 900px) { .fx-cy { grid-template-columns: 1fr; } }
+.slide:has(.fx-palco) > * { flex-shrink: 0; }
+.slide .sub.fx-nota { font-size: clamp(14.5px, 1.45vw, 18px); max-width: 70ch; }
+@media (max-height: 800px) { .fx-cy .fx-il { max-height: 22.5vh; } .fx-vw .fx-il { max-height: 24vh; } }
+.fx-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; width: 100%; }
+.fx-cab h2 { margin: 0; } .fx-cab .fx-tog { margin: 0; }
+.fx-vw .fx-il .t { font-size: 15px; } .fx-vw .fx-il .ts { font-size: 12.5px; }
+@media (max-height: 800px) { .fx-vw .fx-il { max-height: 31vh; } }
+
 /* Aba de notícias. Cores dos assuntos: rosa (pessoas), azul (processos) e âmbar (estratégia), fechadas o bastante para texto branco nos dois temas.
    Toda ilustração termina no estado normal do elemento. A animação só parte de um estado inicial, então com movimento reduzido a figura aparece pronta. */
 .nt-e-pessoas { --nc: #b8265c; } .nt-e-processos { --nc: #2756c5; } .nt-e-estrategia { --nc: #8a6200; }
@@ -3414,6 +3452,93 @@ var UCIL = (function () {
   return o;
 })();
 
+  /* Animações trazidas da aula da FAAP 2026 (Aulas antigas para referência/FAAP_2026.html) para os Use Cases do banco de cases.
+     Cyrela + CashMe: "siga o dinheiro", antes e depois da CashMe. VW Sign & Drive: o fluxo do carro e do dinheiro, venda contra assinatura.
+     Desenho igual ao da FAAP; só a identidade visual muda para a do Mackenzie (vermelho, preto e branco). Estilos em cases_faap.css.
+     Cada função registra uma tela no tópico 'cases' e é chamada pelo usecases.js logo depois da tela de abertura do case. */
+  var CASOS_FAAP = (function () {
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function b(n) { return n == null ? '' : ' data-b="' + n + '"'; }
+    function dl(n) { return ' style="animation-delay:' + n + 's"'; }
+    function svg(vb, corpo, label) { return '<svg class="fx-il" viewBox="' + vb + '" role="img" aria-label="' + esc(label || 'Ilustração') + '">' + corpo + '</svg>'; }
+    function R(x, y, w, h, rx, c, ex) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + (rx || 0) + '" class="' + (c || 'fb') + '"' + (ex || '') + '/>'; }
+    function C(x, y, r, c, ex) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" class="' + (c || 'fb') + '"' + (ex || '') + '/>'; }
+    function P(d, c, ex) { return '<path d="' + d + '" class="' + (c || 'l') + '"' + (ex || '') + '/>'; }
+    function T(x, y, t, c, ex) { return '<text x="' + x + '" y="' + y + '" class="t ' + (c || '') + '"' + (ex || '') + '>' + t + '</text>'; }
+    function G(corpo, at) { return '<g' + (at || '') + '>' + corpo + '</g>'; }
+    var IL = {
+      pessoa: function (x, y, s, c) { s = s || 1; return '<g transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' + C(0, -38, 11, c || 'fb') + P('M-17 0 Q-17 -24 0 -24 Q17 -24 17 0 Z', c || 'fb') + '</g>'; },
+      moeda: function (x, y, r) { return C(x, y, r || 9, 'a') + T(x, y + 4, '$', 'tk tc ts', ' style="font-size:' + ((r || 9) * 1.2) + 'px;font-weight:900"'); },
+      predio: function (x, y, w, h) { var s = R(x, y, w, h, 6, 'fb'); for (var i = 0; i < Math.floor((h - 16) / 22); i++) for (var j = 0; j < Math.floor((w - 10) / 20); j++) s += R(x + 8 + j * 20, y + 10 + i * 22, 10, 12, 2, 'ff'); return s; },
+      fabrica: function (x, y) { return P('M' + x + ' ' + (y + 70) + 'V' + (y + 25) + 'l30 -20v20l30 -20v20l30 -20v70Z', 'fb') + R(x + 70, y - 25, 14, 40, 2, 'fb') + C(x + 80, y - 36, 7, 'f fl') + C(x + 90, y - 50, 9, 'f fl', dl(-1.5)) + R(x + 12, y + 44, 16, 26, 2, 'ff') + R(x + 44, y + 40, 46, 12, 2, 'ff'); },
+      loja: function (x, y) { var s = R(x, y + 18, 110, 62, 6, 'fb'); for (var i = 0; i < 5; i++) s += P('M' + (x + i * 22) + ' ' + y + 'h22v18a11 11 0 0 1 -22 0Z', i % 2 ? 'a' : 'z'); return s + R(x + 14, y + 40, 34, 40, 3, 'ff') + R(x + 60, y + 40, 36, 22, 3, 'ff'); },
+      carro: function (x, y, s, c) { s = s || 1; return '<g transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' + P('M-30 0V-12Q-28 -18 -20 -19L-12 -30H12L22 -19Q30 -18 30 -10V0Z', c || 'z') + R(-9, -27, 9, 8, 1, 'bco', ' opacity=".8"') + R(3, -27, 10, 8, 1, 'bco', ' opacity=".8"') + C(-17, 0, 6, 'k') + C(17, 0, 6, 'k') + C(-17, 0, 2.5, 'bco') + C(17, 0, 2.5, 'bco') + '</g>'; },
+      celular: function (x, y, w, h, tela) { return R(x, y, w, h, Math.min(w, h) * .16, 'fs') + R(x + w * .08, y + h * .07, w * .84, h * .82, Math.min(w, h) * .08, tela || 'z') + R(x + w * .38, y + h * .925, w * .24, h * .025, 2, 'ff'); }
+    };
+
+    /* ---------- Cyrela + CashMe: antes, o banco financia e fica com os juros; depois, a CashMe financia e os juros ficam no grupo ---------- */
+    function moedaVai(cls, simb, caminho, dur, ini) { return '<g>' + C(0, 0, 10, cls) + T(0, 4, simb, 'tc ts ' + (cls === 'a' ? 'tk' : 'tb'), ' style="font-size:12px;font-weight:900"') + '<animateMotion dur="' + dur + 's" begin="' + ini + 's" repeatCount="indefinite" path="' + caminho + '"/></g>'; }
+    function fluxoMoedas(cls, simb, caminho, dur) { return P(caminho, 'l lf', ' stroke-dasharray="4 7" opacity=".6"') + [0, 1, 2].map(function (i) { return moedaVai(cls, simb, caminho, dur, i * dur / 3); }).join(''); }
+    function banco(x, y) { return P('M' + (x - 46) + ' ' + (y - 8) + 'L' + x + ' ' + (y - 36) + 'L' + (x + 46) + ' ' + (y - 8) + 'Z', 'fs') + [-30, -10, 10, 30].map(function (d) { return R(x + d - 5, y - 4, 10, 34, 2, 'fs'); }).join('') + R(x - 50, y + 30, 100, 8, 2, 'fs') + T(x, y + 58, 'BANCO', 'tc'); }
+    function cyrela(x) { return IL.predio(x, 195, 80, 110) + T(x + 40, 328, 'CYRELA', 'tc'); }
+    function comprador(x, y, rot) { return IL.pessoa(x, y, 1.4) + T(x, y + 26, rot || 'COMPRADOR', 'tc ts'); }
+    var CY_EMPR = 'M205 110L108 232', CY_APTO = 'M112 285H330', CY_JUROS = 'M62 230Q24 110 180 52';
+    function ilCyAntes() {
+      return svg('0 0 460 340', banco(230, 50) + cyrela(345) + comprador(80, 300) +
+        fluxoMoedas('a', '$', CY_EMPR, 3.2) + T(178, 186, 'empréstimo', 'ts') +
+        fluxoMoedas('a', '$', CY_APTO, 3.2) + T(222, 274, 'paga o imóvel', 'tc ts') +
+        G(fluxoMoedas('r', '%', CY_JUROS, 3.6) + T(36, 120, 'parcelas', 'tc ts tr') + T(36, 136, '+ juros', 'tc ts tr', ' style="font-weight:800"') +
+          '<g class="pisca">' + [0, 1, 2].map(function (i) { return C(362 + i * 24, 172 - i * 6, 11, 'l lr', ' fill="none" stroke-dasharray="3 3"'); }).join('') + '</g>' + T(386, 124, 'DINHEIRO', 'tc ts ta', ' style="font-weight:800"') + T(386, 140, 'NA MESA', 'tc ts ta', ' style="font-weight:800"'), b(1)),
+        'Banco empresta ao comprador, o dinheiro vai para a Cyrela e os juros voltam para o banco');
+    }
+    function ilCyDepois() {
+      return svg('0 0 560 340', R(140, 14, 180, 72, 18, 'a') + T(230, 44, 'CashMe', 'tc tk', ' style="font-size:18px;font-weight:900"') + T(230, 66, 'fintech da Cyrela', 'tc tk ts') +
+        cyrela(345) + comprador(80, 300) + P('M300 86Q380 120 385 190', 'l la lg', ' stroke-dasharray="6 6"') + T(330, 156, 'mesmo grupo', 'te ts ta', ' style="font-weight:800"') +
+        fluxoMoedas('a', '$', CY_EMPR, 3.2) + T(178, 186, 'crédito', 'ts') + fluxoMoedas('a', '$', CY_APTO, 3.2) + T(222, 274, 'paga o imóvel', 'tc ts') +
+        fluxoMoedas('v', '%', 'M62 230Q24 110 168 56', 3.6) + T(36, 120, 'juros', 'tc ts ta', ' style="font-weight:800"') + T(36, 136, 'em casa', 'tc ts ta', ' style="font-weight:800"') +
+        G(IL.predio(470, 205, 70, 100) + T(505, 328, 'CONCORRENTE', 'tc ts') + IL.pessoa(505, 168, 1.2, 'r') + fluxoMoedas('a', '$', 'M322 44Q430 40 492 116', 3.2) + fluxoMoedas('v', '%', 'M522 128Q560 24 322 24', 4), b(3)),
+        'A CashMe empresta ao comprador e os juros ficam no grupo Cyrela, até de quem compra imóvel da concorrente');
+    }
+    function cyrelaSlide() {
+      return add('cases', { builds: 3, html: '<p class="rot-sec">Cyrela + CashMe · Siga o dinheiro</p><h2>Quem fica com os juros?</h2>' +
+        '<p class="sub fx-sub">A Cyrela criou a CashMe, uma fintech de crédito com operação própria.</p>' +
+        '<div class="dois fx-cy">' +
+        '<div class="fx-palco"><p class="rot-sec">Antes: o banco financia</p>' + ilCyAntes() + '<p class="fx-balao"' + b(1) + '>Os juros ficam com o banco. A Cyrela deixa dinheiro na mesa.</p></div>' +
+        '<div class="fx-palco"' + b(2) + '><p class="rot-sec">Com a CashMe</p>' + ilCyDepois() + '<p class="fx-balao forte"' + b(3) + '>E financia até quem compra da concorrente: receita com o negócio dos outros.</p></div></div>' +
+        '<p class="fonte">Animação da aula da FAAP 2026, adaptada. Ilustração do fluxo, sem valores reais.</p>' });
+    }
+
+    /* ---------- VW Sign & Drive: modelo tradicional contra carro por assinatura ---------- */
+    function fluxoMontadora() {
+      var trad = G(T(20, 30, 'MODELO TRADICIONAL', 'ts ta') +
+        G(R(20, 110, 90, 60, 10, 'fb') + T(65, 145, 'Matéria-prima', 'tc ts')) + IL.fabrica(170, 100) + T(230, 196, 'Montadora', 'tc ts') + IL.loja(390, 92) + T(445, 196, 'Concessionária', 'tc ts') + IL.pessoa(680, 172, 1.4) + T(680, 196, 'Consumidor final', 'tc ts') +
+        P('M112 140H160', 'l fluxo') + P('M290 140H380', 'l fluxo') + P('M505 140H640', 'l fluxo') +
+        '<g>' + IL.carro(0, 0, .9) + '<animateMotion dur="5s" repeatCount="indefinite" path="M300 128H380M505 128H640"/></g>' +
+        P('M445 230Q340 270 230 230', 'l la lg') + '<g>' + C(0, 0, 18, 'a') + T(0, 5, 'R$', 'tc tk ts') + '<animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M445 230Q340 270 230 230"/></g>' +
+        T(338, 290, 'a concessionária paga de uma vez: o dinheiro entra no caixa à vista', 'tc ts'), ' class="fx-lane" data-lane="trad"');
+      var ass = G(T(20, 30, 'CARRO POR ASSINATURA', 'ts ta') + IL.fabrica(130, 100) + T(190, 196, 'Montadora', 'tc ts') + IL.pessoa(640, 172, 1.4) + T(640, 196, 'Consumidor final', 'tc ts') + IL.celular(690, 100, 30, 56, 'z') + T(705, 90, 'app', 'tc ts') +
+        P('M260 120Q440 40 610 120', 'l fluxo') + '<g>' + IL.carro(0, 0, .9) + '<animateMotion dur="4s" repeatCount="indefinite" path="M260 110Q440 30 610 110"/></g>' +
+        P('M610 210Q440 290 260 210', 'l la lg') + [0, 1, 2, 3, 4, 5].map(function (i) { return '<g>' + IL.moeda(0, 0, 9) + '<animateMotion dur="6s" begin="' + i + 's" repeatCount="indefinite" path="M610 210Q440 290 260 210"/></g>'; }).join('') +
+        T(436, 296, 'conexão direta: o dinheiro vem parcelado, todo mês, junto com dados de uso', 'tc ts'), ' class="fx-lane" data-lane="ass" style="display:none"');
+      return svg('0 0 760 310', trad + ass, 'Fluxo do carro e do dinheiro no modelo tradicional e na assinatura');
+    }
+    var VW_NOTA = { trad: 'Compra matéria-prima, monta o carro, vende para a concessionária, que vende para o consumidor. A montadora nem conhece quem dirige o carro.',
+      ass: 'A montadora fala direto com quem usa. Troca a venda única por receita recorrente e passa a conhecer o hábito do cliente.' };
+    function vwSlide() {
+      return add('cases', { html: '<p class="rot-sec">VW Sign &amp; Drive · Servitização</p><div class="fx-cab"><h2>O mesmo carro, outro negócio</h2>' +
+        '<div class="i0-tar fx-tog" role="group" aria-label="Modelo"><button type="button" class="chip" data-op="trad" aria-pressed="true">Modelo tradicional</button><button type="button" class="chip" data-op="ass" aria-pressed="false">Carro por assinatura</button></div></div>' +
+        '<div class="fx-palco fx-vw">' + fluxoMontadora() + '</div><p class="sub fx-nota">' + VW_NOTA.trad + '</p>' +
+        '<p class="fonte">Animação da aula da FAAP 2026, adaptada. Ilustração do fluxo, sem valores reais.</p>',
+        on: function (el) { var bs = el.querySelectorAll('.fx-tog .chip');
+          [].forEach.call(bs, function (bt) { bt.addEventListener('click', function () { var op = bt.dataset.op;
+            [].forEach.call(bs, function (x) { x.setAttribute('aria-pressed', String(x === bt)); });
+            [].forEach.call(el.querySelectorAll('.fx-lane'), function (l) { l.style.display = l.dataset.lane === op ? '' : 'none'; });
+            el.querySelector('.fx-nota').textContent = VW_NOTA[op]; }); }); } });
+    }
+
+    return { cyrela: cyrelaSlide, vw: vwSlide };
+  })();
+
   /* Use Cases: cases simples para discutir em sala (sexta). Tudo vem dos materiais do Rafael (Transformação Digital e Modelos de Negócio, Inovação Digital,
      Lean Startup, Startups Tech, documento de cases). Na tela só vai o que está nos slides dele. Números que eu não consegui confirmar ficam de fora
      (a lista de conferências está em Aulas/Use_Cases_banco.md).
@@ -3517,6 +3642,7 @@ var UCIL = (function () {
     var tags = u.temas.map(function (t) { return '<span class="uc-tag">' + ucEsc(t) + '</span>'; }).join('');
     idxUse[u.id] = add('cases', { html: '<div class="dois uc-abre"><div class="uc-txt"><p class="rot-sec">Use Case · ' + ucEsc(u.tipo) + '</p><h2>' + ucEsc(u.nome) + '</h2><p class="sub uc-res">' + ucEsc(u.resumo) + '</p><div class="uc-tags">' + tags + '</div><p class="fonte">' + ucEsc(u.fonte) + '</p>' +
       '<div class="acoes"><button type="button" class="botao-peq" data-uclista="1">Voltar à lista</button></div></div><div class="ilu-p">' + ucIl(u) + '</div></div>' });
+    if (typeof CASOS_FAAP !== 'undefined' && CASOS_FAAP[u.id]) CASOS_FAAP[u.id]();
     add('cases', { builds: u.pontos.length, html: '<div class="dois uc-pts"><div class="ilu-p">' + ucIl(u) + '</div><div class="uc-seq"><p class="rot-sec">' + ucEsc(u.nome) + ' · O que olhar</p><h2>Pontos do case</h2>' +
       u.pontos.map(function (p, i) { return '<div class="uc-pt" data-b="' + (i + 1) + '"><span class="n">' + (i + 1) + '</span><div><b>' + ucEsc(p[0]) + '</b><p>' + ucEsc(p[1]) + '</p></div></div>'; }).join('') + '</div></div>',
       ao: function (b, el) { if (b > 0) ucPing(el); } });
