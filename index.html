@@ -1497,7 +1497,7 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
 .b2-bow.funil .dir { transform: scaleX(0); opacity: 0; }
 .b2-bow .nf { fill: var(--vermelho); } .b2-bow .bola { fill: var(--fg); offset-path: path("M20,110 L360,110 L700,110"); animation: b2Anda 5s linear infinite; } .b2-bow.funil .bola { offset-path: path("M20,110 L360,110"); }
 .b2-bow .bola:nth-of-type(2) { animation-delay: -1.7s; } .b2-bow .bola:nth-of-type(3) { animation-delay: -3.3s; }
-.b2-est { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.b2-est { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
 .b2-est button { display: grid; gap: 2px; padding: 8px 6px; border-radius: 14px; border: 2px solid rgba(var(--fg-rgb), .2); background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--fg); font: inherit; cursor: pointer; text-align: center; }
 .b2-est button b { font-size: clamp(12.5px, 1.3vw, 15.5px); } .b2-est button small { font-size: 11px; opacity: .75; } .b2-est button[aria-pressed="true"] { border-color: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 30%, transparent); }
 .b2-bowm svg { width: 100%; max-height: 18vh; display: block; } .b2-bowm path { transition: fill .3s; fill: rgba(var(--fg-rgb), .1); stroke: rgba(var(--fg-rgb), .4); stroke-width: 1.5; } .b2-bowm path.on { fill: var(--c); }
@@ -1527,8 +1527,8 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
 .b2-chat p.pass { justify-self: center; background: none; border: 1px dashed var(--pessoa-c); font-weight: 700; }
 
 /* Lado direito: números e receita */
-.b2-vm { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 5px; align-items: end; height: 22vh; }
-.b2-vm i { display: grid; align-content: end; justify-items: center; gap: 3px; height: 100%; font-style: normal; font-size: 11.5px; text-align: center; }
+.b2-vm { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 5px; align-items: end; height: 22vh; }
+.b2-vm i { display: grid; align-content: end; justify-items: center; gap: 3px; height: 100%; font-style: normal; font-size: 14px; font-weight: 700; text-align: center; }
 .b2-vm i::before { content: ""; display: block; width: 100%; height: var(--h); border-radius: 8px 8px 3px 3px; background: var(--c); transform-origin: bottom; animation: b2Sobe .8s calc(var(--i) * .1s) backwards; }
 @keyframes b2Sobe { from { transform: scaleY(0); } }
 
@@ -1610,7 +1610,7 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
 
 @media (max-width: 900px) {
   .b2-portas, .b2-spin, .b2-reg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .b2-est { grid-template-columns: repeat(4, minmax(0, 1fr)); } .b2-vb, .b2-roda, .b2-esc { grid-template-columns: 1fr; }
+  .b2-est { grid-template-columns: repeat(3, minmax(0, 1fr)); } .b2-vb, .b2-roda, .b2-esc { grid-template-columns: 1fr; }
   .b2-ad { grid-template-columns: 1fr; } .b2-ad > svg { transform: rotate(90deg); justify-self: center; }
   .b2-cmpr { grid-template-columns: 1fr; gap: 3px; } .b2-tkr { grid-template-columns: 90px 1fr 1fr; gap: 6px; } .b2-parr { grid-template-columns: 1fr; gap: 3px; }
   .b2-vm { height: 16vh; } .b2-vm i { font-size: 9.5px; }
@@ -1639,6 +1639,12 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
   .b2-vbc { padding: 10px 14px; gap: 5px; } .b2-cmpr { padding: 4px 12px; }
 }
 @media (max-width: 900px) { .b2-wide2 .itens, .b2-estd .itens:has(> :nth-child(4)) { grid-template-columns: 1fr; } }
+/* Gravata da Astella: marcos e linha comprador / vendedor / quem cuida */
+.b2-bowm .b2-mc { font-size: 17px; font-weight: 700; fill: rgba(var(--fg-rgb), .7); }
+.b2-cv { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 6px; font-size: clamp(13px, 1.25vw, 15.5px); }
+.b2-cv b { color: var(--vermelho); margin-right: 4px; }
+.b2-vm { flex-shrink: 0; }
+@media (max-height: 800px) { .b2-bowm svg { max-height: 64px; } .b2-vm { height: 14vh; } .b2-est button small { display: none; } .b2-est button { padding: 6px; } .b2-cv { margin-bottom: 2px; } }
 
 /* Tema claro e escuro. O escuro é o padrão (valores em comum.css). Aqui ficam só as trocas do claro.
    Cores da marca seguem o manual do SME: vermelho e preto. Os tons azul, verde, rosa, amarelo, violeta, laranja e azul-água são cores de dados, não da marca,
@@ -4432,44 +4438,47 @@ var UCIL = (function () {
   };
 
   /* ================= Go-to-market com IA =================
-     Base: a gravata borboleta (Bowtie) da Winning by Design, The Bowtie Standard, 2026, e o racional do Rafael de onde a IA entra em cada momento
+     Base: a gravata borboleta do guia da Astella (Vitor Pajaro), material indicado pelo Rafael, e o racional do Rafael de onde a IA entra em cada momento
      do playbook: campanha, inteligência de marketing, estudo do lead, persona, SPIN, proposta, potencial de ganho, gestão do resultado. */
   BLOCOS.gtm = function () {
     var R = 'Go-to-market com IA';
-    var EST = [['Atração', 'Awareness', 'var(--motor-c)', 'O cliente percebe que tem um problema e descobre que existe solução.',
+    /* Etapas e marcos da gravata do guia da Astella (Vitor Pajaro, Guia de Criação de Máquina de Vendas para Go-to-Market, p. 6 e 7; funções, p. 11). */
+    var EST = [['Descoberta', 'Awareness', 'var(--motor-c)', 'A empresa e o cliente se cruzam.', 'Tem uma dor, às vezes sem saber que ela existe.', 'Gera leads do perfil de cliente ideal (ICP).', 'BDR na prospecção ativa',
         [['motor', 'Campanha', 'A IA escreve e testa versões de campanha e anúncio para cada segmento.'], ['motor', 'Inteligência de marketing', 'A IA lê buscas, redes, concorrentes e notícias para achar onde está a demanda.'], ['cuidado', 'Todo mundo soa igual', 'Se todos usam o mesmo modelo, as campanhas ficam parecidas. A voz da marca é decisão de gente.']]],
-      ['Educação', 'Education', 'var(--motor-c)', 'O lead estuda o problema, as opções e o que precisa.',
+      ['Educação', 'Educate', 'var(--motor-c)', 'Conteúdo, teste grátis e demonstração mostram se o produto resolve a dor.', 'Procura entender as soluções para o problema.', 'Confere se o lead é do ICP e se há chance de compra.', 'SDR qualifica quem chega',
         [['motor', 'Estudar o lead', 'A IA cruza site, notícias, perfil público e histórico no CRM e entrega um resumo antes do contato.'], ['motor', 'Persona', 'A IA agrupa leads parecidos e descreve quem compra, por que e com que objeção.'], ['elemento', 'Agente que qualifica', 'Um agente de IA conversa com o lead a qualquer hora e passa para a pessoa quem está pronto.']]],
-      ['Seleção', 'Selection', 'var(--motor-c)', 'O cliente compara, valida e decide. Pode ter prova de conceito.',
+      ['Seleção', 'Select', 'var(--motor-c)', 'O cliente compara, decide e negocia preço, termos e condições.', 'Esta empresa é a que mais pode resolver a minha dor?', 'Como maximizar o valor do contrato?', 'AE vende, SE prova que funciona',
         [['motor', 'SPIN e proposta', 'A IA prepara as perguntas da reunião e monta a proposta a partir do que o cliente disse.'], ['motor', 'Potencial de ganho', 'A IA lê o funil e estima a chance de fechar e o valor de cada negócio.'], ['elemento', 'Protótipo na mesa', 'O vendedor leva um protótipo funcionando, feito com IA, no lugar do PPT.'], ['pessoa', 'A conversa', 'Negociar, ler a sala e ganhar confiança continua com a pessoa.']]],
-      ['Compromisso', 'Mutual commit', 'var(--vermelho)', 'Os dois lados se comprometem: um a entregar o impacto, o outro a pagar por ele.',
-        [['motor', 'Contrato', 'A IA revisa minuta e cláusulas e aponta o que mudou.'], ['pessoa', 'O impacto prometido', 'Combinar com o cliente o que vai ser medido para dizer que deu certo.']]],
-      ['Implantação', 'Onboarding', 'var(--t-genai)', 'Levar o cliente ao primeiro resultado o mais rápido possível.',
-        [['elemento', 'Agente de implantação', 'Um agente guia o cliente passo a passo, no ritmo dele, e chama a pessoa quando trava.'], ['motor', 'Guia sob medida', 'A IA monta treinamento e material para o jeito que aquele cliente usa.']]],
-      ['Adoção', 'Retention and adoption', 'var(--t-genai)', 'O produto entra na rotina do cliente, e ele renova.',
+      ['Ativação', 'Activate', 'var(--t-genai)', 'O cliente se prepara para entrar no ar: ajustes e implantação.', '', '', 'Implementador (ONB) coloca no ar',
+        [['elemento', 'Agente de implantação', 'Um agente guia o cliente passo a passo, no ritmo dele, e chama a pessoa quando trava.'], ['motor', 'Guia sob medida', 'A IA monta treinamento e material para o jeito que aquele cliente usa.'], ['motor', 'Contrato e configuração', 'A IA lê o contrato e a proposta e monta o plano de implantação com o que foi prometido.']]],
+      ['Impacto', 'Impact', 'var(--t-genai)', 'Entregar o valor prometido na venda. É o que o resto da empresa cliente vai enxergar.', '', '', 'CS garante uso e impacto',
         [['motor', 'Risco de saída', 'A IA lê uso, chamados e tom das conversas e avisa quando um cliente começa a esfriar.'], ['elemento', 'Atendimento por agente', 'Dúvidas simples resolvidas na hora pelo agente.'], ['pessoa', 'Conta grande', 'Cliente grande pede gente conhecida do outro lado.']]],
-      ['Expansão', 'Expansion', 'var(--t-genai)', 'Crescer dentro da conta: mais licenças, plano maior, outros módulos.',
+      ['Crescimento', 'Expand', 'var(--t-genai)', 'Levar o impacto para outras áreas ou outros produtos, quando o primeiro já deu certo.', '', '', 'AM busca novas oportunidades na conta',
         [['motor', 'Sinais de expansão', 'A IA percebe novas áreas usando, uso batendo no limite do plano e pedidos repetidos.'], ['motor', 'Gestão do resultado', 'A IA monta o painel do funil inteiro e a previsão de receita.'], ['cuidado', 'Empurrar venda', 'Oferecer mais sem o cliente ter visto impacto acelera a saída dele.']]]];
+    var FONTE_A = 'Astella, Guia de Criação de Máquina de Vendas para Go-to-Market, Vitor Pajaro';
 
     /* 1. Do funil à gravata */
     var BOW = '<svg viewBox="0 0 720 230" role="img" aria-label="Funil que fecha na venda e abre do outro lado"><path class="esq" d="M20,20 L340,95 L340,135 L20,210 Z"/><path class="dir" d="M380,95 L700,20 L700,210 L380,135 Z"/><rect class="nf" x="338" y="88" width="44" height="54" rx="10"/>' +
       '<circle class="bola" r="8"/><circle class="bola" r="8"/><circle class="bola" r="8"/>' +
       '<text class="b2-tx" x="40" y="228">Marketing e vendas</text><text class="b2-tx" x="360" y="80" text-anchor="middle">Fechou</text><text class="b2-tx dirt" x="690" y="228" text-anchor="end">Sucesso do cliente</text></svg>';
-    var FG = [['Funil clássico', 'Termina na venda. Depois que o cliente assina, ele sai do desenho.'], ['Gravata borboleta', 'Fechar não é o fim, é o começo de uma relação de anos. Do outro lado, o funil abre: implantação, adoção e expansão dentro da conta.']];
+    var FG = [['Funil clássico', 'Termina na venda. Depois que o cliente assina, ele sai do desenho.'], ['Gravata borboleta', 'Fechar não é o fim, é o começo de uma relação de anos. Do outro lado, o funil abre: ativação, impacto e crescimento dentro da conta.']];
     add('gtm', { html: '<p class="rot-sec">' + R + '</p><h2>Do funil à gravata borboleta</h2><div class="b2-bow funil">' + BOW + '</div><div class="dois"><div class="i0-tar" role="group" aria-label="Modelo">' + FG.map(function (f, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + f[0] + '</button>'; }).join('') + '</div><p class="dest b2-fgp"></p></div>' +
       '<p class="sub bl-q">Num negócio de receita recorrente, onde está a maior parte do dinheiro: no lado esquerdo ou no direito?</p>' +
-      '<p class="fonte">Winning by Design, The Bowtie Standard, 2026, p. 14. O mesmo documento já fala de um jeito de crescer puxado pela IA (AI-led growth), ao lado do crescimento pelo produto e pelas pessoas.</p>',
+      '<p class="fonte">' + FONTE_A + ', p. 6: o modelo bow-tie é hoje o mais reconhecido. A Winning by Design, que publica o padrão do modelo, já fala em crescimento puxado pela IA (The Bowtie Standard, 2026).</p>',
       on: function (el) { var bw = el.querySelector('.b2-bow'); function mostra(i) { bw.classList.toggle('funil', i === 0); el.querySelector('.b2-fgp').textContent = FG[i][1]; } blEscolha(el, '.i0-tar .chip', mostra); mostra(0); } });
 
     /* 2. A gravata clicável: onde a IA entra em cada estágio */
     function yT(x) { return x <= 360 ? 20 + (x - 20) * 75 / 320 : 95 - (x - 380) * 75 / 320; }
     function seg(x0, x1) { return 'M' + x0 + ',' + yT(x0).toFixed(1) + ' L' + x1 + ',' + yT(x1).toFixed(1) + ' L' + x1 + ',' + (230 - yT(x1)).toFixed(1) + ' L' + x0 + ',' + (230 - yT(x0)).toFixed(1) + ' Z'; }
-    var SEGS = [seg(20, 126), seg(126, 233), seg(233, 340), 'M338,88 h44 v54 h-44 z', seg(380, 487), seg(487, 593), seg(593, 700)];
-    add('gtm', { html: '<p class="rot-sec">' + R + '</p><h2>Onde a IA entra em cada estágio</h2><div class="b2-bowm"><svg viewBox="0 0 720 230" aria-hidden="true">' + SEGS.map(function (d, i) { return '<path data-k="' + i + '" style="--c:' + EST[i][2] + '" d="' + d + '"/>'; }).join('') + '</svg></div>' +
+    var SEGS = [seg(20, 126), seg(126, 233), seg(233, 340), seg(380, 487), seg(487, 593), seg(593, 700)];
+    var MARCOS = [['Lead', 20], ['MQL', 126], ['SAL e Opp', 233], ['Venda', 360], ['Onboard', 487], ['ARR', 593], ['LTV', 700]];
+    add('gtm', { html: '<p class="rot-sec">' + R + '</p><h2>Onde a IA entra em cada etapa</h2><div class="b2-bowm"><svg viewBox="0 -4 720 262" aria-hidden="true">' + SEGS.map(function (d, i) { return '<path data-k="' + i + '" style="--c:' + EST[i][2] + '" d="' + d + '"/>'; }).join('') +
+      '<rect x="340" y="95" width="40" height="40" rx="6" fill="var(--vermelho)"/>' + MARCOS.map(function (m) { return '<text class="b2-mc" x="' + m[1] + '" y="252" text-anchor="' + (m[1] < 30 ? 'start' : m[1] > 690 ? 'end' : 'middle') + '">' + m[0] + '</text>'; }).join('') + '</svg></div>' +
       '<div class="b2-est">' + EST.map(function (e, i) { return '<button type="button" style="--c:' + e[2] + '" aria-pressed="' + (i === 2) + '"><b>' + e[0] + '</b><small>' + e[1] + '</small></button>'; }).join('') + '</div>' +
-      '<div class="b2-estd"></div><p class="fonte">Estágios: Winning by Design, The Bowtie Standard, 2026. Itens no formato dos Artefatos.</p>',
+      '<div class="b2-estd"></div><p class="fonte">Etapas, marcos e funções: guia da Astella (Vitor Pajaro), p. 6, 7 e 11. A IA em cada etapa: leitura da aula.</p>',
       on: function (el) { var ps = el.querySelectorAll('.b2-bowm path'); function mostra(i) { var e = EST[i]; [].forEach.call(ps, function (p) { p.classList.toggle('on', +p.dataset.k === i); });
-        el.querySelector('.b2-estd').innerHTML = '<p class="dest" style="margin:0 0 6px"><b>' + e[0] + ':</b> ' + e[3] + '</p>' + blIts(e[4]); }
+        el.querySelector('.b2-estd').innerHTML = '<p class="dest" style="margin:0 0 4px"><b>' + e[0] + ':</b> ' + e[3] + '</p>' +
+          '<p class="b2-cv">' + (e[4] ? '<span><b>Comprador</b> ' + e[4] + '</span><span><b>Vendedor</b> ' + e[5] + '</span>' : '') + '<span><b>Quem cuida</b> ' + e[6] + '</span></p>' + blIts(e[7]); }
         blEscolha(el, '.b2-est button', mostra); mostra(2); } });
 
     /* 3. SPIN com IA */
@@ -4497,11 +4506,13 @@ var UCIL = (function () {
       ao: function (b, el) { b2Conta(el); } });
 
     /* 6. O lado direito da gravata */
-    var VM = [['Prospect', 90], ['Lead', 70], ['Oportunidade', 50], ['Qualificado', 36], ['Fechado', 22], ['Receita contratada', 40], ['Receita no início', 52], ['Receita recorrente', 70], ['Valor no tempo de vida', 95]];
-    add('gtm', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Do outro lado, a conta é em dinheiro</h2><div class="b2-vm">' + VM.map(function (v, i) { return '<i style="--h:' + v[1] + '%;--i:' + i + ';--c:' + (i < 5 ? 'var(--motor-c)' : 'var(--t-genai)') + '">' + v[0] + '</i>'; }).join('') + '</div>' +
-      '<div class="dois"><p class="dest" data-b="1">À esquerda, conta-se gente: leads, oportunidades, negócios fechados. À direita, conta-se receita: o que entra todo mês e o que o cliente vale ao longo da relação.</p>' +
-      '<div data-b="2">' + blIts([['motor', 'Ler os sinais', 'A IA junta uso do produto, chamados e conversas e mostra quem vai renovar, quem vai sair e quem está pronto para crescer.'], ['pessoa', 'Quem age', 'O sinal chega ao time de sucesso do cliente, que decide a conversa.']]) + '</div></div>' +
-      '<p class="fonte">Winning by Design, The Bowtie Standard, 2026, p. 24 e 25: as métricas de volume VM1 a VM5 contam gente; VM6 a VM9, receita. Alturas ilustrativas.</p>' });
+    var VM = [['Lead', 90], ['MQL', 70], ['SAL', 50], ['Opp', 36], ['Venda', 22], ['Onboard', 40], ['ARR', 62], ['LTV', 95]];
+    add('gtm', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>Do outro lado, a conta é em dinheiro</h2><div class="b2-vm">' + VM.map(function (v, i) { return '<i style="--h:' + v[1] + '%;--i:' + i + ';--c:' + (i < 5 ? 'var(--motor-c)' : 'var(--t-genai)') + '">' + v[0] + '</i>'; }).join('') + '</div>' +
+      '<div class="dois"><div class="b2-col"><p class="dest" data-b="1">À esquerda, conta-se gente: leads, oportunidades, vendas. À direita, conta-se receita: a recorrente do ano (ARR) e o que o cliente vale ao longo da relação (LTV).</p>' +
+      '<div class="b2-duelo" data-b="3"><span>10% melhor em cada uma das 7 etapas dá</span>' + b2N(2, 'x') + '<span>de receita nova.</span></div></div>' +
+      '<div data-b="2">' + blIts([['motor', 'Ler os sinais', 'A IA junta uso, chamados e conversas e mostra quem vai renovar, sair ou crescer. O CS e o AM decidem a conversa.'], ['motor', 'Os 10% de cada etapa', 'Onde a IA tira 10% de cada passagem: qualificar mais rápido, propor melhor, ativar antes.']]) + '</div></div>' +
+      '<p class="fonte">Guia da Astella (Vitor Pajaro), p. 6 (marcos) e p. 18 (os 10% por etapa). Alturas ilustrativas.</p>',
+      ao: function (b, el) { b2Conta(el); } });
 
     blAng('gtm', R, 'Onde a IA entra no go-to-market', blIcone('M30,100 L90,70 L90,130 Z M170,100 L110,70 L110,130 Z M90,90 h20 v20 h-20 z', 'Gravata borboleta'), [
       { t: 'Atrair', oq: 'Do mercado ao lead.', i: [['motor', 'Campanha e inteligência', 'A IA cria versões de campanha e lê o mercado para achar onde está a demanda.'], ['motor', 'Lead estudado', 'Antes do contato, um resumo do lead e da empresa dele.'], ['cuidado', 'Abordagem em massa', 'Mensagem automática para milhares de pessoas queima a marca e o domínio de e-mail.']] },
@@ -4509,7 +4520,7 @@ var UCIL = (function () {
       { t: 'Crescer na conta', oq: 'Do contrato à expansão.', i: [['motor', 'Sinais da conta', 'A IA avisa risco de saída e oportunidade de expansão.'], ['elemento', 'Atendimento sempre ligado', 'O agente resolve o simples e libera o time para o cliente que precisa de gente.'], ['cuidado', 'Toda marca igual', 'Quando todos atendem com o mesmo modelo, a diferença volta a ser o jeito da empresa.']] }],
       'Leitura da IA no formato dos Artefatos. Accenture, Technology Vision 2025, tendência 2 (p. 22 a 26): quando toda interface parece igual, a marca precisa de voz própria.');
 
-    blFim('gtm', R, ['Sei por que o funil virou gravata borboleta', 'Sei onde a IA entra em cada estágio, do anúncio à expansão', 'Sei usar a IA para preparar a conversa sem tirar a pessoa dela', 'Sei onde a IA no comercial vira risco para a marca']);
+    blFim('gtm', R, ['Sei por que o funil virou gravata borboleta', 'Sei onde a IA entra em cada etapa, da descoberta ao crescimento na conta', 'Sei usar a IA para preparar a conversa sem tirar a pessoa dela', 'Sei onde a IA no comercial vira risco para a marca']);
   };
 
   /* ================= Dados e IA como ativo estratégico =================
