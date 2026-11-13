@@ -4728,7 +4728,7 @@ var UCIL = (function () {
   /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
   /* Módulos com conteúdo construído (BLOCOS, em blocos.js e afins) entram aqui, na ordem do mapa. Os demais ganham a prévia. */
   MODS.forEach(function (m) {
-    if (!m.lib && typeof BLOCOS !== 'undefined' && BLOCOS[m.id]) { BLOCOS[m.id](); return; }
+    if (typeof BLOCOS !== 'undefined' && BLOCOS[m.id]) { BLOCOS[m.id](); return; }
     if (!m.previa) return;
     var its = m.previa.itens;
     add(m.id, { builds: its.length, html: '<p class="rot-sec">' + m.curto + '</p><h2>' + m.nome + '</h2><span class="ft-aviso">Módulo em construção</span>' +
