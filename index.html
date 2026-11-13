@@ -1440,6 +1440,206 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
 
 @media (max-height: 760px) and (min-width: 901px) { .bl-plr b { font-size: 34px; } .bl-plt label b { font-size: 16px; } .bl-plt input { height: 18px; } .bl-plp { font-size: 14.5px; } .slide:has(.bl-pl) .bl-pl { gap: 20px; } }
 
+/* ---------- Módulos montados a partir da pesquisa de 13/11/2026: Parcerias, Go-to-market, Dados, Organização e Mensuração. Prefixo b2-. ---------- */
+.b2-col { display: grid; gap: 10px; align-content: start; }
+.b2-num { display: grid; gap: 4px; padding: 14px 18px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); }
+.b2-num b { font-size: clamp(34px, 5vw, 60px); line-height: 1; color: var(--elemento-c); font-variant-numeric: tabular-nums; }
+.b2-num span { font-size: clamp(14px, 1.5vw, 18px); } .b2-num small { font-size: 12px; opacity: .7; }
+.b2-num.r b { color: var(--vermelho); } .b2-num.a b { color: var(--t-genai); } .b2-num.m b { color: var(--motor-c); }
+.b2-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%; }
+.b2-nums .b2-num { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; } .b2-nums .b2-num.vis { opacity: 1; transform: none; }
+.b2-svg svg { width: 100%; max-height: 46vh; display: block; overflow: visible; }
+.b2-tx { fill: var(--fg); font: 700 13px var(--fonte); } .b2-tx.s { font-size: 11.5px; font-weight: 600; opacity: .8; } .b2-tx.b { fill: #fff; } .b2-tx.k { fill: #16090d; }
+
+/* Pilha de camadas */
+.b2-pilha { display: flex; flex-direction: column-reverse; gap: 7px; }
+.b2-cam { display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 10px; text-align: left; padding: 9px 14px; border-radius: 16px; border: 2px solid rgba(var(--fg-rgb), .2); background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--fg); font: inherit; cursor: pointer; opacity: 0; transform: translateY(-30px); transition: opacity .45s, transform .45s cubic-bezier(.3, 1.4, .5, 1), border-color .25s; margin-inline: calc(var(--k) * 3%); }
+.b2-cam.vis { opacity: 1; transform: none; }
+.b2-cam i { width: 30px; height: 30px; border-radius: 9px; background: var(--c); display: grid; place-items: center; font-style: normal; font-weight: 900; color: #16090d; }
+.b2-cam b { font-size: clamp(15px, 1.7vw, 20px); } .b2-cam[aria-pressed="true"] { border-color: var(--vermelho); box-shadow: 0 0 0 4px rgba(191, 0, 55, .18); }
+
+/* Portas */
+.b2-portas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.b2-porta { position: relative; display: grid; justify-items: center; gap: 6px; padding: 12px 8px 10px; border-radius: 18px 18px 6px 6px; border: 2px solid rgba(var(--fg-rgb), .22); background: rgba(var(--fg-rgb), .06); color: var(--fg); font: inherit; cursor: pointer; overflow: hidden; }
+.b2-porta svg { width: 54px; height: 70px; } .b2-porta svg rect { fill: none; stroke: var(--fg); stroke-width: 3; } .b2-porta svg .f { fill: var(--c); stroke: none; transform-origin: 12px 50%; transform-box: view-box; transition: transform .5s; }
+.b2-porta[aria-pressed="true"] { border-color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); } .b2-porta[aria-pressed="true"] svg .f { transform: perspective(200px) rotateY(-62deg); }
+.b2-porta b { font-size: clamp(15px, 1.6vw, 19px); }
+.b2-barras { display: grid; gap: 7px; } .b2-barra { display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 10px; font-size: 13.5px; }
+.b2-barra i { height: 12px; border-radius: 6px; background: rgba(var(--fg-rgb), .12); position: relative; overflow: hidden; } .b2-barra i::after { content: ""; position: absolute; inset: 0; width: var(--w, 0%); background: var(--c, var(--elemento-c)); border-radius: 6px; transition: width .7s cubic-bezier(.2, .8, .2, 1); }
+
+/* Duelo de contadores */
+.b2-duelo { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: baseline; padding: 10px 16px; border-radius: 18px; border: 1px dashed var(--t-genai); width: 100%; }
+.b2-duelo b { font-size: clamp(26px, 3.4vw, 40px); font-variant-numeric: tabular-nums; color: var(--t-genai); } .b2-duelo span { font-size: clamp(13.5px, 1.45vw, 17px); }
+
+/* Venture client: fluxo de moedas */
+.b2-vc text { font: 700 13px var(--fonte); fill: var(--fg); }
+.b2-vc .no { fill: rgba(var(--fg-rgb), .08); stroke: var(--fg); stroke-width: 2.5; } .b2-vc .no.s { stroke: var(--elemento-c); } .b2-vc .tr { fill: none; stroke: rgba(var(--fg-rgb), .35); stroke-width: 2; stroke-dasharray: 5 7; }
+.b2-vc .moeda { fill: var(--t-genai); offset-rotate: 0deg; animation: b2Anda 2.6s linear infinite; } .b2-vc .moeda.v { fill: var(--elemento-c); }
+.b2-vc .moeda:nth-of-type(2) { animation-delay: -.87s; } .b2-vc .moeda:nth-of-type(3) { animation-delay: -1.73s; }
+@keyframes b2Anda { from { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { offset-distance: 100%; opacity: 0; } }
+
+/* Mapa radial */
+.b2-mapa svg { width: 100%; max-height: 52vh; display: block; overflow: visible; }
+.b2-mapa .lig { stroke-width: 3; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; animation: desenha 1s calc(var(--i) * .2s) forwards; }
+.b2-mapa .nd { cursor: pointer; } .b2-mapa .nd circle { stroke-width: 3; fill: color-mix(in srgb, var(--c) 25%, var(--bg)); stroke: var(--c); transition: r .25s; animation: i0Pula .4s calc(.3s + var(--i) * .2s) backwards; transform-box: fill-box; transform-origin: center; }
+.b2-mapa .nd.on circle { stroke-width: 5; filter: drop-shadow(0 0 8px var(--c)); } .b2-mapa .nd text { pointer-events: none; }
+.b2-mapa .centro { fill: var(--vermelho); } .b2-leg2 { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; } .b2-leg2 span { display: inline-flex; gap: 6px; align-items: center; } .b2-leg2 i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+
+/* Abandono de pilotos */
+.b2-pil { display: grid; grid-template-columns: repeat(20, 1fr); gap: 5px; max-width: 520px; }
+.b2-pil i { aspect-ratio: 1; border-radius: 4px; background: var(--elemento-c); transition: background .4s, transform .4s; transition-delay: calc(var(--i) * 18ms); }
+.b2-pil.cai i.x { background: rgba(var(--fg-rgb), .18); transform: translateY(6px) scale(.7); }
+
+/* Gravata borboleta */
+.b2-bow svg { width: 100%; max-height: 40vh; display: block; overflow: visible; }
+.b2-bow .esq, .b2-bow .dir { fill: color-mix(in srgb, var(--elemento-c) 22%, transparent); stroke: var(--elemento-c); stroke-width: 3; stroke-linejoin: round; }
+.b2-bow .dir { fill: color-mix(in srgb, var(--t-genai) 22%, transparent); stroke: var(--t-genai); transform-origin: 360px 110px; transform-box: view-box; transition: transform .8s cubic-bezier(.3, 1.3, .5, 1), opacity .5s; }
+.b2-bow.funil .dir { transform: scaleX(0); opacity: 0; }
+.b2-bow .nf { fill: var(--vermelho); } .b2-bow .bola { fill: var(--fg); offset-path: path("M20,110 L360,110 L700,110"); animation: b2Anda 5s linear infinite; } .b2-bow.funil .bola { offset-path: path("M20,110 L360,110"); }
+.b2-bow .bola:nth-of-type(2) { animation-delay: -1.7s; } .b2-bow .bola:nth-of-type(3) { animation-delay: -3.3s; }
+.b2-est { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.b2-est button { display: grid; gap: 2px; padding: 8px 6px; border-radius: 14px; border: 2px solid rgba(var(--fg-rgb), .2); background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--fg); font: inherit; cursor: pointer; text-align: center; }
+.b2-est button b { font-size: clamp(12.5px, 1.3vw, 15.5px); } .b2-est button small { font-size: 11px; opacity: .75; } .b2-est button[aria-pressed="true"] { border-color: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 30%, transparent); }
+.b2-bowm svg { width: 100%; max-height: 18vh; display: block; } .b2-bowm path { transition: fill .3s; fill: rgba(var(--fg-rgb), .1); stroke: rgba(var(--fg-rgb), .4); stroke-width: 1.5; } .b2-bowm path.on { fill: var(--c); }
+
+/* SPIN */
+.b2-spin { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.b2-sp { display: grid; gap: 6px; align-content: start; padding: 12px 14px; border-radius: 20px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .18); opacity: 0; transform: rotateY(80deg); transition: opacity .3s, transform .6s cubic-bezier(.3, 1.3, .5, 1); }
+.b2-sp.vis { opacity: 1; transform: none; } .b2-sp .l { font-size: 44px; font-weight: 900; color: var(--vermelho); line-height: 1; } .b2-sp b { font-size: clamp(14.5px, 1.5vw, 18px); }
+.b2-sp .ia, .b2-sp .ps { font-size: clamp(12.5px, 1.25vw, 14.5px); padding: 6px 9px; border-radius: 12px; } .b2-sp .ia { background: color-mix(in srgb, var(--motor-c) 18%, transparent); } .b2-sp .ps { background: color-mix(in srgb, var(--pessoa-c) 18%, transparent); }
+.b2-sp .ia::before { content: "IA prepara: "; font-weight: 800; } .b2-sp .ps::before { content: "Pessoa pergunta: "; font-weight: 800; }
+
+/* Antes e depois (PPT x protótipo) */
+.b2-ad { display: grid; grid-template-columns: 1fr 44px 1fr; gap: 12px; align-items: center; }
+.b2-tela { aspect-ratio: 16 / 10; border-radius: 16px; border: 3px solid rgba(var(--fg-rgb), .45); background: rgba(var(--fg-rgb), .05); padding: 10px; display: grid; gap: 6px; align-content: start; position: relative; overflow: hidden; }
+.b2-tela i { display: block; height: 9px; border-radius: 5px; background: rgba(var(--fg-rgb), .25); } .b2-tela i.t { height: 14px; width: 60%; background: rgba(var(--fg-rgb), .45); }
+.b2-tela.prot { border-color: var(--elemento-c); } .b2-tela.prot .bt { justify-self: start; padding: 4px 10px; border-radius: 999px; background: var(--vermelho); color: #fff; font-size: 11px; font-weight: 800; animation: pula 1.6s ease-in-out infinite; }
+.b2-tela.prot .card { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; } .b2-tela.prot .card span { height: 34px; border-radius: 8px; background: color-mix(in srgb, var(--elemento-c) 30%, transparent); animation: i0Pula .5s calc(var(--i) * .3s) infinite alternate; }
+.b2-tela .cur { position: absolute; width: 16px; height: 16px; border-left: 3px solid var(--fg); border-top: 3px solid var(--fg); transform: rotate(-20deg); animation: b2Cur 3s ease-in-out infinite; }
+@keyframes b2Cur { 0% { left: 70%; top: 80%; } 40% { left: 20%; top: 62%; } 60% { left: 20%; top: 62%; } 100% { left: 70%; top: 80%; } }
+.b2-ad > svg { width: 44px; fill: none; stroke: var(--fg); stroke-width: 3; stroke-linecap: round; }
+.b2-ad .rot { font-weight: 800; font-size: 14px; margin-bottom: 6px; display: block; }
+
+/* Chat do agente */
+.b2-chat { display: grid; gap: 8px; padding: 14px; border-radius: 22px; border: 2px solid rgba(var(--fg-rgb), .25); max-width: 430px; }
+.b2-chat p { max-width: 85%; padding: 8px 12px; border-radius: 16px; font-size: clamp(13px, 1.3vw, 15.5px); background: rgba(var(--fg-rgb), .08); opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .4s; }
+.b2-chat p.ag { justify-self: end; background: color-mix(in srgb, var(--motor-c) 25%, transparent); } .b2-chat p.vis { opacity: 1; transform: none; }
+.b2-chat p.pass { justify-self: center; background: none; border: 1px dashed var(--pessoa-c); font-weight: 700; }
+
+/* Lado direito: números e receita */
+.b2-vm { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 5px; align-items: end; height: 22vh; }
+.b2-vm i { display: grid; align-content: end; justify-items: center; gap: 3px; height: 100%; font-style: normal; font-size: 11.5px; text-align: center; }
+.b2-vm i::before { content: ""; display: block; width: 100%; height: var(--h); border-radius: 8px 8px 3px 3px; background: var(--c); transform-origin: bottom; animation: b2Sobe .8s calc(var(--i) * .1s) backwards; }
+@keyframes b2Sobe { from { transform: scaleY(0); } }
+
+/* Pipeline de dado */
+.b2-cano svg { width: 100%; max-height: 40vh; display: block; overflow: visible; }
+.b2-cano .tubo { fill: none; stroke: rgba(var(--fg-rgb), .25); stroke-width: 26; stroke-linecap: round; }
+.b2-cano .gota { offset-path: path("M30,110 L560,110"); animation: b2Anda 3.4s linear infinite; }
+.b2-cano .gota.l { fill: var(--elemento-c); } .b2-cano .gota.s { fill: #8a6d4a; } .b2-cano .gota:nth-child(2n) { animation-delay: -1.1s; } .b2-cano .gota:nth-child(3n) { animation-delay: -2.2s; }
+.b2-cano .mod { fill: var(--motor-c); } .b2-cano .res { transition: fill .4s; } .b2-cano.sujo .res { fill: var(--vermelho); } .b2-cano .res { fill: var(--elemento-c); }
+
+/* Simulador de rótulos errados */
+.b2-sim { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; max-width: 420px; }
+.b2-sim i { aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--elemento-c); position: relative; transition: border-color .3s; } .b2-sim i.n { border-color: var(--vermelho); border-radius: 6px; }
+.b2-sim i.err::after { content: "?"; position: absolute; inset: 0; display: grid; place-items: center; font-weight: 900; font-size: 12px; color: var(--t-genai); }
+.b2-gauge { font-size: clamp(38px, 5.5vw, 66px); font-weight: 900; font-variant-numeric: tabular-nums; color: var(--elemento-c); transition: color .3s; } .b2-gauge.mal { color: var(--vermelho); }
+
+/* Volante */
+.b2-vol svg { width: 100%; max-height: 44vh; display: block; overflow: visible; }
+.b2-vol .aro { fill: none; stroke: rgba(var(--fg-rgb), .25); stroke-width: 18; } .b2-vol .giro { transform-origin: 160px 150px; transform-box: view-box; animation: b2Gira 9s linear infinite; }
+@keyframes b2Gira { to { transform: rotate(360deg); } }
+.b2-vol .seg { fill: none; stroke: var(--elemento-c); stroke-width: 18; stroke-linecap: round; }
+.b2-vol .nv circle { fill: var(--bg); stroke: var(--elemento-c); stroke-width: 3; }
+
+/* Duas colunas de vibe coding */
+.b2-vb { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.b2-vbc { display: grid; gap: 8px; align-content: start; padding: 14px 16px; border-radius: 22px; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 10%, transparent); }
+.b2-vbc h3 { margin: 0; } .b2-vbc li { font-size: clamp(13.5px, 1.4vw, 16.5px); margin: 2px 0; }
+.b2-form { display: grid; gap: 5px; padding: 8px; border-radius: 12px; background: rgba(var(--fg-rgb), .06); font-family: ui-monospace, monospace; font-size: 12.5px; }
+.b2-form span { padding: 3px 8px; border-radius: 6px; background: rgba(var(--fg-rgb), .08); } .b2-form span.ruim { background: rgba(191, 0, 55, .22); animation: b2Pisca 1.6s ease-in-out infinite; }
+@keyframes b2Pisca { 50% { background: rgba(191, 0, 55, .45); } }
+
+/* Iceberg */
+.b2-ice svg { width: 100%; max-height: 48vh; display: block; overflow: visible; }
+.b2-ice .mar { fill: color-mix(in srgb, var(--motor-c) 22%, transparent); } .b2-ice .gelo { fill: #e8f4ff; stroke: #9cc9ee; stroke-width: 2; } .b2-ice .gelo.f { fill: #bcdcf5; }
+.b2-ice .flut { animation: b2Bob 4s ease-in-out infinite; } @keyframes b2Bob { 50% { transform: translateY(5px); } }
+.b2-ice .et { opacity: 0; transition: opacity .5s; } .b2-ice[data-p="1"] .et.a, .b2-ice[data-p="2"] .et, .b2-ice[data-p="3"] .et { opacity: 1; }
+.b2-ice .et text { font: 700 13px var(--fonte); fill: #16090d; } .b2-ice .et.b text { fill: var(--fg); }
+
+/* Comparação lado a lado */
+.b2-cmp { display: grid; gap: 6px; width: 100%; }
+.b2-cmpr { display: grid; grid-template-columns: minmax(110px, .6fr) 1fr 1fr; gap: 10px; align-items: center; padding: 7px 14px; border-radius: 14px; background: rgba(var(--fg-rgb), .05); font-size: clamp(13px, 1.35vw, 16px); }
+.b2-cmpr.h { background: none; font-weight: 800; } .b2-cmpr b { font-size: clamp(13px, 1.35vw, 16px); }
+.b2-cmpr span { padding: 3px 8px; border-radius: 10px; transition: background .3s; } .b2-cmpr span.bom { background: color-mix(in srgb, var(--elemento-c) 22%, transparent); } .b2-cmpr span.ruim { background: rgba(191, 0, 55, .14); }
+
+/* Painel de tokens */
+.b2-tok { display: grid; gap: 8px; width: 100%; }
+.b2-tkr { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 12px; align-items: center; font-size: clamp(13px, 1.35vw, 16px); }
+.b2-tkr .bar { height: 18px; border-radius: 9px; background: rgba(var(--fg-rgb), .1); position: relative; overflow: hidden; }
+.b2-tkr .bar::after { content: ""; position: absolute; inset: 0; width: var(--w); border-radius: 9px; background: var(--c); animation: b2Cresce 1.2s calc(var(--i) * .15s) backwards cubic-bezier(.2, .8, .2, 1); }
+@keyframes b2Cresce { from { width: 0; } }
+.b2-tkr.h { font-weight: 800; font-size: 12.5px; opacity: .8; }
+.b2-tkr .alerta { color: var(--vermelho); font-weight: 800; }
+
+/* Barras de pares (já colhe x espera) */
+.b2-par { display: grid; gap: 7px; width: 100%; }
+.b2-parr { display: grid; grid-template-columns: minmax(150px, .7fr) 1fr; gap: 12px; align-items: center; font-size: clamp(13px, 1.35vw, 16px); }
+.b2-parr .bs { display: grid; gap: 3px; } .b2-parr .bs i { height: 13px; border-radius: 7px; width: 0; transition: width .9s cubic-bezier(.2, .8, .2, 1); font-style: normal; font-size: 11px; font-weight: 800; line-height: 13px; padding-left: 6px; color: #16090d; white-space: nowrap; }
+.b2-parr .bs i.j { background: var(--elemento-c); } .b2-parr .bs i.e { background: color-mix(in srgb, var(--t-genai) 70%, transparent); }
+.b2-par.vis .bs i { width: var(--w); }
+.b2-parr.dest { font-weight: 800; }
+
+/* Réguas */
+.b2-reg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.b2-rg { display: grid; gap: 7px; align-content: start; padding: 12px 14px; border-radius: 20px; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 10%, transparent); opacity: 0; transform: translateY(20px); transition: opacity .45s, transform .45s; }
+.b2-rg.vis { opacity: 1; transform: none; } .b2-rg svg { width: 100%; height: 26px; } .b2-rg svg line { stroke: var(--c); stroke-width: 4; stroke-linecap: round; } .b2-rg svg .tk { stroke-width: 2; }
+.b2-rg svg circle { fill: var(--c); animation: b2Regua 2.5s ease-in-out infinite alternate; } @keyframes b2Regua { from { transform: translateX(0); } to { transform: translateX(var(--x, 120px)); } }
+.b2-rg b { font-size: clamp(16px, 1.8vw, 21px); } .b2-rg p { font-size: clamp(12.5px, 1.3vw, 15px); } .b2-rg .m { font-size: clamp(12.5px, 1.25vw, 14.5px); padding: 6px 9px; border-radius: 12px; background: rgba(var(--fg-rgb), .08); }
+
+/* Escada usar, redesenhar, inventar */
+.b2-esc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.b2-dg { display: grid; gap: 6px; align-content: end; padding: 12px 14px; border-radius: 20px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .2); min-height: calc(90px + var(--k) * 40px); }
+.b2-dg b { font-size: clamp(16px, 1.8vw, 22px); } .b2-dg .pc { font-size: clamp(28px, 3.6vw, 44px); font-weight: 900; color: var(--elemento-c); line-height: 1; } .b2-dg p { font-size: clamp(12.5px, 1.3vw, 15px); }
+
+/* Roda do aprendizado */
+.b2-roda { display: grid; grid-template-columns: minmax(0, .9fr) 1fr; gap: 16px; align-items: center; }
+.b2-roda svg { width: 100%; max-height: 40vh; display: block; overflow: visible; } .b2-roda .aro { fill: none; stroke: rgba(var(--fg-rgb), .2); stroke-width: 14; }
+.b2-roda .gira { transform-origin: 150px 140px; transform-box: view-box; transition: transform 1.2s cubic-bezier(.3, 1.2, .4, 1); }
+.b2-volta { display: grid; gap: 8px; } .b2-volta .bl-card { animation: i0Pula .4s backwards; }
+
+@media (max-width: 900px) {
+  .b2-portas, .b2-spin, .b2-reg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b2-est { grid-template-columns: repeat(4, minmax(0, 1fr)); } .b2-vb, .b2-roda, .b2-esc { grid-template-columns: 1fr; }
+  .b2-ad { grid-template-columns: 1fr; } .b2-ad > svg { transform: rotate(90deg); justify-self: center; }
+  .b2-cmpr { grid-template-columns: 1fr; gap: 3px; } .b2-tkr { grid-template-columns: 90px 1fr 1fr; gap: 6px; } .b2-parr { grid-template-columns: 1fr; gap: 3px; }
+  .b2-vm { height: 16vh; } .b2-vm i { font-size: 9.5px; }
+}
+@media (max-height: 760px) and (min-width: 901px) {
+  .b2-svg svg, .b2-mapa svg, .b2-ice svg { max-height: 40vh; } .b2-bow svg { max-height: 30vh; } .b2-vol svg, .b2-cano svg, .b2-roda svg { max-height: 34vh; }
+  .b2-cam { padding: 6px 12px; } .b2-cam i { width: 24px; height: 24px; } .b2-num { padding: 9px 14px; } .b2-num b { font-size: clamp(28px, 3.6vw, 44px); }
+  .b2-sp, .b2-rg, .b2-dg { padding: 9px 12px; } .b2-dg { min-height: calc(70px + var(--k) * 30px); } .b2-vm { height: 17vh; } .b2-cmpr { padding: 5px 12px; } .b2-tok, .b2-par { gap: 5px; }
+}
+.b2-bow .dirt { transition: opacity .5s; } .b2-bow.funil .dirt { opacity: 0; }
+
+/* Compactação: as telas b2 cabem em 1280x720 */
+.slide:has([class*="b2-"]) h2 { max-width: none; }
+.slide:has([class*="b2-"]) .dest { font-size: clamp(16px, 1.8vw, 22px); max-width: none; letter-spacing: 0; }
+.slide:has([class*="b2-"]) .sub, .slide:has([class*="b2-"]) .bl-q { max-width: none; }
+.slide:has([class*="b2-"]) .itens { gap: 6px; }
+.b2-estd .itens, .slide > .b2-ad ~ .itens, .b2-wide .itens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+.b2-estd .itens:has(> :nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.b2-col .b2-num span { font-size: clamp(13px, 1.35vw, 16px); }
+@media (max-width: 900px) { .b2-estd .itens, .slide > .b2-ad ~ .itens, .b2-wide .itens, .b2-estd .itens:has(> :nth-child(4)) { grid-template-columns: 1fr; } }
+.b2-wide2 .itens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.b2-estd .itens:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-height: 760px) and (min-width: 901px) {
+  .b2-bowm svg { max-height: 64px; } .b2-ice svg { max-height: 36vh; } .b2-roda svg { max-height: 30vh; }
+  .b2-chat { gap: 5px; padding: 10px; } .b2-chat p { padding: 5px 10px; } .b2-num { gap: 2px; }
+  .b2-vbc { padding: 10px 14px; gap: 5px; } .b2-cmpr { padding: 4px 12px; }
+}
+@media (max-width: 900px) { .b2-wide2 .itens, .b2-estd .itens:has(> :nth-child(4)) { grid-template-columns: 1fr; } }
+
 /* Tema claro e escuro. O escuro é o padrão (valores em comum.css). Aqui ficam só as trocas do claro.
    Cores da marca seguem o manual do SME: vermelho e preto. Os tons azul, verde, rosa, amarelo, violeta, laranja e azul-água são cores de dados, não da marca,
    e no claro ficam mais fechados para ter contraste sobre fundo claro. */
@@ -2270,19 +2470,15 @@ var A2 = (function () {
     { id: 'artefatos', nome: 'Artefatos de estratégia', curto: 'Artefatos', d: 'Nove artefatos e onde a IA entra em cada um.', lib: true },
     { id: 'inovacao', nome: 'Estratégia de inovação corporativa na era da IA', curto: 'Inovação com IA', d: 'Matriz de ambição, horizontes 1, 2 e 3, o que medir em cada um e como explorá-los.', lib: true },
     { id: 'crescimento', nome: 'Quais mercados a IA está destravando', curto: 'Mercados que a IA destrava', d: 'Para onde vai o dinheiro, quem ganha, quem perde, o que muda no preço, Oceano Azul e curva de valor.', lib: true },
-    { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'Que parte a empresa faz sozinha e que parte faz com outros.', previa: { itens: [], insp: '' } },
+    { id: 'parcerias', nome: 'Parcerias, alianças e ecossistemas de IA', curto: 'Parcerias de IA', d: 'As camadas da IA, adotar, aliar, construir ou comprar, virar o primeiro cliente da startup e o mapa de IA do Itaú.' },
     { id: 'aberta', nome: 'Inovação aberta e a era das startups AI native', curto: 'Startups AI native', d: 'Funil aberto, formatos de parceria, quando comprar, aliar ou construir e o que olhar numa startup de IA.' },
-    { id: 'gtm', nome: 'Como a IA impacta o go-to-market comercial', curto: 'Go-to-market com IA', d: 'Ofertas, canal, pitch de vendas, modelo de negócio e quanto o mercado está disposto a pagar.',
-      previa: { itens: ['Entender as ofertas', 'Entender o canal', 'Pitch de vendas', 'Modelo de negócio', 'Quanto o mercado está disposto a pagar pelo que você quer produzir', 'Do problem-solution fit ao market fit', 'Go-to-market dentro da empresa: stakeholders, resultado para o cliente e resultado para quem será o parceiro'],
-        insp: 'Blank, The Four Steps to the Epiphany (2005). Ries, The Lean Startup (2011).' } },
+    { id: 'gtm', nome: 'Como a IA impacta o go-to-market comercial', curto: 'Go-to-market com IA', d: 'A gravata borboleta do go-to-market e onde a IA entra em cada estágio: campanha, lead, SPIN, proposta, agente, protótipo e expansão.' },
     { id: 'modelos', nome: 'Modelos de negócio baseados em inteligência artificial', curto: 'Modelos de negócio com IA', d: 'O que muda no modelo de negócio, o canvas com IA bloco a bloco, jeitos de cobrar e plataformas.' },
     { id: 'valor', nome: 'Proposta de valor e estratégia de produto com IA', curto: 'Valor e produto com IA', d: 'Job to be done, canvas da proposta de valor com e sem IA, os três encaixes e como testar hipóteses.' },
     { id: 'prototipacao', nome: 'IA na era da prototipação de novos produtos', curto: 'Prototipação', d: 'Construir, medir e aprender, tipos de MVP, Mágico de Oz, métricas que decidem, pivôs e o que falta para o protótipo virar produto.' },
-    { id: 'dados', nome: 'Dados e IA como ativo estratégico', curto: 'Dados e IA', d: 'Que dado só a empresa tem e como ele vira vantagem.', previa: { itens: [], insp: '' } },
-    { id: 'organizacao', nome: 'Organização, talentos, cultura e governança de IA', curto: 'Organização e governança', d: 'Treinamento, cultura, cuidados e decisão entre construir ou contratar.',
-      previa: { itens: ['Organização, talentos e cultura', 'Governança de IA', 'Treinamento das pessoas: quando usar e quando não usar', 'Cuidados', 'Tomada de decisão: construir o próprio modelo (LLM) ou portal de IAs, ou contratar do mercado com algumas travas'], insp: '' } },
-    { id: 'mensuracao', nome: 'Mensuração de resultado na era da IA', curto: 'Mensuração com IA', d: 'Como saber se a estratégia e a inovação deram resultado, com a IA como a inovação do momento.',
-      previa: { itens: ['Como saber se a estratégia e a inovação deram resultado', 'A IA tratada como a inovação do momento'], insp: '' } }
+    { id: 'dados', nome: 'Dados e IA como ativo estratégico', curto: 'Dados e IA', d: 'Dado bom entra, resposta boa sai: o dado que só a empresa tem, cinco perguntas antes de alimentar a IA e o cuidado com vibe coding.' },
+    { id: 'organizacao', nome: 'Organização, talentos, cultura e governança de IA', curto: 'Organização e governança', d: 'Shadow AI, cultura, assinar ferramentas ou montar o próprio pool de IA, gasto de tokens e governança.' },
+    { id: 'mensuracao', nome: 'Mensuração de resultado na era da IA', curto: 'Mensuração com IA', d: 'Medir a IA para eficiência, receita, resultado ou aprendizado.' }
   ];
   var TOTAL_QUADRADOS = 15;
   /* PUBLICO: na página dos alunos (GitHub Pages) o publicar.sh troca para true. Lá os módulos trancados não abrem:
@@ -4119,6 +4315,403 @@ var UCIL = (function () {
       'Leitura da IA no formato dos Artefatos, ligada a Cadeia de valor.');
 
     blFim('prototipacao', R, ['Sei onde a IA acelera o ciclo e onde a pessoa decide', 'Sei testar um produto de IA com Mágico de Oz antes de construir', 'Sei separar métrica de vaidade de métrica que decide num assistente de IA', 'Sei o que falta para um protótipo de IA virar produto']);
+  };
+
+  /* ================= Parcerias, alianças e ecossistemas de IA =================
+     Base: pesquisa de 13/11/2026 (Aulas/Proposta_modulos_restantes.md). Formato inspirado na Aula 2 da FAAP 2026 (mapa radial, siga o dinheiro).
+     Não repete Inovação aberta: aqui ficam as camadas da IA, adotar/aliar/construir/comprar, o primeiro cliente e o mapa do Itaú. */
+
+  /* Ajudantes dos cinco módulos desta rodada (Parcerias, Go-to-market, Dados, Organização, Mensuração). */
+  function b2Fmt(v) { return Math.round(v).toLocaleString('pt-BR'); }
+  /* Anima números [data-n] que já estão à vista. Os que estão em bloco ainda escondido voltam a zero. */
+  function b2Conta(el) {
+    [].forEach.call(el.querySelectorAll('[data-n]'), function (x) {
+      var g = x.closest('[data-b]'), n = +x.dataset.n, pre = x.dataset.pre || '', suf = x.dataset.suf || '';
+      if (g && !g.classList.contains('vis')) { x._f = 0; x.textContent = pre + '0' + suf; return; }
+      if (x._f) return; x._f = 1; var t0 = performance.now();
+      (function f(t) { var p = Math.min(1, (t - t0) / 1300); x.textContent = pre + b2Fmt(n * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(f); })(t0);
+    });
+  }
+  function b2N(n, suf, pre) { return '<b data-n="' + n + '"' + (suf ? ' data-suf="' + suf + '"' : '') + (pre ? ' data-pre="' + pre + '"' : '') + '>' + (pre || '') + '0' + (suf || '') + '</b>'; }
+
+  BLOCOS.parcerias = function () {
+    var R = 'Parcerias de IA';
+
+    /* 1. As camadas da IA */
+    var CAM = [['Chips e data centers', 'var(--cuidado-c)', 'Quem fabrica o processador e opera o data center onde a IA roda.', 'A empresa quase nunca compra aqui direto. Paga por capacidade, em geral dentro da nuvem.'],
+      ['Nuvem', 'var(--motor-c)', 'AWS, Microsoft Azure e Google Cloud alugam a máquina e os serviços de IA prontos.', 'Contrato de uso, pago pelo consumo. É onde mora o dado da empresa.'],
+      ['Modelos', 'var(--t-genai)', 'OpenAI, Anthropic, Google, Meta e Mistral fazem os grandes modelos de linguagem.', 'Uso por API, cobrado por token, ou aliança com acesso antecipado. O Bradesco montou a sua plataforma para trocar de modelo quando quiser.'],
+      ['Aplicações', 'var(--elemento-c)', 'Startups que já nascem com IA e resolvem uma tarefa: programar, atender, analisar contratos.', 'Piloto, contrato de cliente, investimento ou compra. É a camada das startups AI native.'],
+      ['Integradores', 'var(--pessoa-c)', 'Consultorias e casas de software que juntam as peças dentro da empresa.', 'Contrato de projeto. O Bradesco construiu a Bridge com Microsoft, Avanade e Bain.']];
+    add('parcerias', { builds: 5, html: '<p class="rot-sec">' + R + '</p><h2>Ninguém faz IA sozinho</h2><div class="dois"><div class="b2-pilha">' + CAM.map(function (c, i) {
+      return '<button type="button" class="b2-cam" data-b="' + (i + 1) + '" style="--c:' + c[1] + ';--k:' + (4 - i) + ';transition-delay:' + (i * .05) + 's" aria-pressed="' + (i === 2) + '"><i>' + (i + 1) + '</i><b>' + c[0] + '</b></button>'; }).join('') + '</div>' +
+      '<div class="b2-col"><div class="bl-card"><span class="bl-tag"></span><b class="bl-cn"></b><p class="bl-cp"></p><p class="bl-cp2" style="font-weight:700"></p></div><p class="sub bl-q" data-b="5">Em que camada a sua empresa joga? E com quem ela se alia em cada uma das outras?</p></div></div>' +
+      '<p class="fonte">Camadas organizadas para a aula. Bradesco: Bain & Company e Canaltech.</p>',
+      on: function (el) { function mostra(i) { var c = CAM[i], t = el.querySelector('.bl-tag'); t.textContent = 'Camada ' + (i + 1); t.style.setProperty('--c', c[1]); el.querySelector('.bl-cn').textContent = c[0]; el.querySelector('.bl-cp').textContent = c[2]; el.querySelector('.bl-cp2').textContent = c[3]; }
+        blEscolha(el, '.b2-cam', mostra); mostra(2); } });
+
+    /* 2. Adotar, aliar, construir ou comprar */
+    var POR = [['Adotar', 'var(--motor-c)', 'Usar uma ferramenta de IA pronta, do jeito que vem.', [30, 20, 25], 'O Itaú adotou o Devin, agente de programação da startup Cognition, e ampliou o contrato seis meses depois.'],
+      ['Aliar', 'var(--elemento-c)', 'Construir junto com um parceiro que entra com tecnologia ou gente.', [55, 55, 45], 'O Bradesco montou a Bridge, sua plataforma de IA generativa, com Microsoft, Avanade e Bain.'],
+      ['Construir', 'var(--t-genai)', 'Fazer o próprio modelo ou sistema, com time e dado próprios.', [90, 90, 80], 'O Nubank criou o nuFormer, modelo que aprende com as transações dos clientes.'],
+      ['Comprar', 'var(--vermelho)', 'Adquirir a empresa que já tem a tecnologia e o time.', [60, 100, 95], 'O Itaú comprou a NeoSpace, startup de modelos de IA para finanças, por R$ 2,925 bilhões.']];
+    var EIX = ['Tempo', 'Controle', 'Risco e custo'];
+    add('parcerias', { builds: 1, html: '<p class="rot-sec">' + R + '</p><h2>Adotar, aliar, construir ou comprar</h2><div class="dois"><div class="b2-col"><div class="b2-portas">' + POR.map(function (p, i) {
+      return '<button type="button" class="b2-porta" style="--c:' + p[1] + '" aria-pressed="' + (i === 1) + '"><svg viewBox="0 0 54 70" aria-hidden="true"><rect x="10" y="4" width="34" height="62" rx="3"/><rect class="f" x="12" y="6" width="30" height="58" rx="2"/></svg><b>' + p[0] + '</b></button>'; }).join('') + '</div>' +
+      '<div class="b2-duelo" data-b="1"><span>Em 2025, no mundo:</span><span>' + b2N(1340) + ' alianças e joint ventures de IA</span><span>' + b2N(1355) + ' aquisições de IA</span></div></div>' +
+      '<div class="bl-card"><b class="bl-cn"></b><p class="bl-cp"></p><div class="b2-barras">' + EIX.map(function (e) { return '<div class="b2-barra"><span>' + e + '</span><i></i></div>'; }).join('') + '</div><p class="b2-ex" style="font-weight:700"></p></div></div>' +
+      '<p class="fonte">BCG, How Non-Tech Companies Buy AI, 2026: as quatro escolhas e os números de 2025. As barras são uma leitura nossa, para comparar. Exemplos: IT Forum (Itaú e Cognition), Bain (Bradesco), blog do Nubank, Bloomberg Línea, 26/10/2026 (NeoSpace).</p>',
+      on: function (el) { function mostra(i) { var p = POR[i]; el.querySelector('.bl-cn').textContent = p[0]; el.querySelector('.bl-cp').textContent = p[2]; el.querySelector('.b2-ex').textContent = p[4];
+        [].forEach.call(el.querySelectorAll('.b2-barra i'), function (b, k) { b.style.setProperty('--w', p[3][k] + '%'); b.style.setProperty('--c', p[1]); }); }
+        blEscolha(el, '.b2-porta', mostra); mostra(1); },
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 3. Por que se aliar */
+    add('parcerias', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>Por que as grandes empresas se aliam</h2><div class="b2-nums">' +
+      '<div class="b2-num" data-b="1">' + b2N(61, '%') + '<span>das grandes empresas preferem se aliar a <b>startups</b> nos projetos de IA generativa. 64% preferem integradores e consultorias.</span><small>Capgemini, 1.100 executivos, 2024, p. 52</small></div>' +
+      '<div class="b2-num a" data-b="2">' + b2N(3, ' vezes') + '<span>mais chance de testar agentes de IA entre as empresas que usam o ecossistema de parceiros. Para o BCG, a aliança é muitas vezes a única forma de ter talento e tecnologia nova.</span><small>BCG, The Widening AI Value Gap, 2025, p. 10 e 15</small></div>' +
+      '<div class="b2-num r" data-b="3">' + b2N(70, '%') + '<span>das empresas que já fizeram projetos de IA com startups dizem que elas foram cruciais para executar a estratégia de IA.</span><small>Sopra Steria, Open Innovation Report, 2025</small></div></div>' +
+      '<p class="sub bl-q" data-b="3">Se até quem tem time de IA próprio precisa de parceiro, o que a startup traz que a empresa não tem?</p>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 4. Virar o primeiro cliente */
+    function fluxo(d, cls) { return '<path class="tr" d="' + d + '"/>' + [0, 1, 2].map(function () { return '<circle class="moeda ' + cls + '" r="8" style="offset-path:path(\'' + d + '\')"/>'; }).join(''); }
+    var VC = [['Investir', 'Corporate venture capital', 'A empresa coloca dinheiro e recebe uma fatia da startup. Ganha um lugar à mesa, mas não usa o produto.', fluxo('M110,70 L390,70', '') + fluxo('M390,130 L110,130', 'v'), 'dinheiro', 'participação'],
+      ['Comprar o produto', 'Venture client', 'A empresa vira cliente: paga por um piloto e, se funcionar, por um contrato. A startup ganha receita e uma referência de peso.', fluxo('M110,70 L390,70', '') + fluxo('M390,130 L110,130', 'v'), 'pagamento', 'produto rodando']];
+    add('parcerias', { html: '<p class="rot-sec">' + R + '</p><h2>Virar o primeiro cliente da startup</h2><div class="dois"><div class="b2-svg"><svg class="b2-vc" viewBox="0 0 500 200" role="img" aria-label="Empresa e startup trocando dinheiro por participação ou por produto">' +
+      '<rect class="no" x="10" y="40" width="100" height="120" rx="14"/><text x="60" y="105" text-anchor="middle">Empresa</text><circle class="no s" cx="440" cy="100" r="52"/><text x="440" y="105" text-anchor="middle">Startup</text>' +
+      '<g class="b2-fl"></g><text class="t1" x="250" y="58" text-anchor="middle"></text><text class="t2" x="250" y="156" text-anchor="middle"></text></svg></div>' +
+      '<div class="b2-col"><div class="i0-tar" role="group" aria-label="Forma de relação">' + VC.map(function (v, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 1) + '">' + v[0] + '</button>'; }).join('') + '</div><div class="bl-card"><span class="bl-tag"></span><b class="bl-cn"></b><p class="bl-cp"></p></div>' +
+      blIts([['elemento', 'Para a startup de IA', 'Um cliente grande vale mais que um cheque: dado real, receita e prova de que funciona.']]) + '</div></div>' +
+      '<p class="fonte">Modelo criado na BMW Startup Garage, em 2015, por Gregor Gimmy (Munich Startup e INSEAD).</p>',
+      on: function (el) { function mostra(i) { var v = VC[i], t = el.querySelector('.bl-tag'); el.querySelector('.b2-fl').innerHTML = v[3]; el.querySelector('.t1').textContent = v[4]; el.querySelector('.t2').textContent = v[5]; t.textContent = v[1]; t.style.setProperty('--c', i ? 'var(--elemento-c)' : 'var(--t-genai)'); el.querySelector('.bl-cn').textContent = v[0]; el.querySelector('.bl-cp').textContent = v[2]; }
+        blEscolha(el, '.i0-tar .chip', mostra); mostra(1); } });
+
+    /* 5. O mapa de IA do Itaú (formato do mapa radial da FAAP) */
+    var REL = { c: ['Cliente', 'var(--motor-c)'], d: ['Dono', 'var(--t-genai)'], i: ['Investiu e depois comprou', 'var(--vermelho)'], a: ['Hub e aliança', 'var(--elemento-c)'] };
+    var MP = [['Cognition', 'c', 'O Itaú usa o Devin, agente de programação da startup americana, desde o fim de 2024. Ampliou o contrato seis meses depois, e o banco diz que a migração de serviços ficou seis vezes mais rápida.', 'IT Forum e Baguete'],
+      ['NeoSpace', 'i', 'Em janeiro de 2025, comprou 15% da startup brasileira de modelos de IA para finanças. Em 26/10/2026, anunciou a compra de 100% por R$ 2,925 bilhões. A NeoSpace segue autônoma, com o mesmo CEO. A compra depende de Cade e Banco Central.', 'Bloomberg Línea, 26/10/2026'],
+      ['OpenAI e outros modelos', 'c', 'O banco montou a IARA, plataforma que dá aos times acesso controlado a modelos de vários fornecedores, entre eles a OpenAI. O assistente ia.i começou com 300 mil clientes.', 'Caso publicado pela OpenAI, 2026'],
+      ['Zup', 'd', 'Casa de software comprada pelo Itaú em 2019. Fechou acordo com a AWS para levar projetos de IA a grandes empresas: o grupo também vende IA.', 'IT Forum'],
+      ['Cubo Itaú', 'a', 'Hub de startups criado pelo banco em 2015, com a Redpoint eventures. É uma das portas de entrada das startups.', 'Cubo Itaú']];
+    var CX = 380, CY = 210;
+    add('parcerias', { html: '<p class="rot-sec">' + R + '</p><h2>O mapa de IA do Itaú</h2><div class="dois"><div class="b2-mapa"><svg viewBox="0 0 760 420" role="img" aria-label="Itaú no centro e cinco parceiros de IA em volta">' +
+      MP.map(function (m, i) { var a = -Math.PI / 2 + i * 2 * Math.PI / MP.length, x = CX + 270 * Math.cos(a), y = CY + 160 * Math.sin(a), c = REL[m[1]][1];
+        return '<path class="lig" style="--i:' + i + ';stroke:' + c + '" d="M' + CX + ',' + CY + ' L' + x.toFixed(0) + ',' + y.toFixed(0) + '"/>'; }).join('') +
+      '<circle class="centro" cx="' + CX + '" cy="' + CY + '" r="62"/><text class="b2-tx b" x="' + CX + '" y="' + (CY + 6) + '" text-anchor="middle" style="font-size:20px">ITAÚ</text>' +
+      MP.map(function (m, i) { var a = -Math.PI / 2 + i * 2 * Math.PI / MP.length, x = CX + 270 * Math.cos(a), y = CY + 160 * Math.sin(a), c = REL[m[1]][1];
+        return '<g class="nd" data-k="' + i + '" style="--c:' + c + ';--i:' + i + '" tabindex="0" role="button" aria-label="' + m[0] + '"><circle cx="' + x.toFixed(0) + '" cy="' + y.toFixed(0) + '" r="46"/>' +
+          m[0].split(' ').reduce(function (acc, w) { var l = acc[acc.length - 1]; if (l && (l + ' ' + w).length < 11) acc[acc.length - 1] = l + ' ' + w; else acc.push(w); return acc; }, []).map(function (l, k, arr) { return '<text class="b2-tx" x="' + x.toFixed(0) + '" y="' + (y + 5 + (k - (arr.length - 1) / 2) * 15).toFixed(0) + '" text-anchor="middle">' + l + '</text>'; }).join('') + '</g>'; }).join('') + '</svg>' +
+      '<div class="b2-leg2">' + Object.keys(REL).map(function (k) { return '<span style="--c:' + REL[k][1] + '"><i></i>' + REL[k][0] + '</span>'; }).join('') + '</div></div>' +
+      '<div class="b2-col"><div class="bl-card"><span class="bl-tag"></span><b class="bl-cn"></b><p class="bl-cp"></p><small class="bl-cf"></small></div><p class="sub bl-q">Toque em cada parceiro. Que tipo de relação o banco escolheu, e por quê?</p></div></div>' +
+      '<p class="fonte">Mapa não exaustivo, de iniciativas anunciadas publicamente, no formato dos mapas de inovação da Liga Ventures. Números informados pelo banco e pelos fornecedores.</p>',
+      on: function (el) { var nds = el.querySelectorAll('.nd'); function mostra(i) { var m = MP[i], t = el.querySelector('.bl-tag'); [].forEach.call(nds, function (n) { n.classList.toggle('on', +n.dataset.k === i); }); t.textContent = REL[m[1]][0]; t.style.setProperty('--c', REL[m[1]][1]); el.querySelector('.bl-cn').textContent = m[0]; el.querySelector('.bl-cp').textContent = m[2]; el.querySelector('.bl-cf').textContent = 'Fonte: ' + m[3]; }
+        [].forEach.call(nds, function (n) { n.addEventListener('click', function () { mostra(+n.dataset.k); }); n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostra(+n.dataset.k); } }); }); mostra(1); } });
+
+    blAng('parcerias', R, 'Onde a IA entra na parceria', blIcone('M40,120 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0 M100,120 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0', 'Duas pontas, uma aliança'), [
+      { t: 'Mapear o ecossistema', oq: 'Quem faz o quê em cada camada.', i: [['motor', 'Radar de startups', 'A IA varre bases de startups, notícias e patentes e entrega uma lista curta para o problema da empresa.'],
+        ['motor', 'Comparar fornecedores', 'A IA lê propostas, contratos e documentação e mostra as diferenças lado a lado.'],
+        ['elemento', 'Ofertas de agentes', 'Os grandes fornecedores já vendem agentes prontos. Mapear o que eles oferecem evita construir o que já existe.']] },
+      { t: 'Escolher a porta', oq: 'Adotar, aliar, construir ou comprar.', i: [['elemento', 'A camada é a estratégia', 'Onde a empresa decide construir é onde ela quer se diferenciar. No resto, ela se alia.'],
+        ['pessoa', 'Negociar com os grandes', 'Preço por token, uso do dado e saída do contrato são conversa de gente, não de ferramenta.'],
+        ['cuidado', 'Um fornecedor só', 'Depender de um único modelo deixa a empresa refém de preço e de regra de uso. A Bridge do Bradesco foi feita para trocar de modelo.']] },
+      { t: 'Gerir o piloto', oq: 'Do teste ao contrato.', i: [['motor', 'Medir o piloto', 'A IA acompanha uso, erro e custo do piloto e mostra se ele está entregando.'],
+        ['pessoa', 'Dono do piloto', 'Alguém da empresa responde pelo piloto e pela decisão de escalar ou parar.'],
+        ['cuidado', 'Dado do cliente', 'Antes de abrir dado para a startup, definir o que ela pode ver, guardar e usar para treinar.']] }],
+      'Leitura da IA no formato dos Artefatos. Accenture, Technology Vision 2025, p. 20: mapear as ofertas de agentes dos parceiros.');
+
+    /* 7. Onde a parceria de IA trava */
+    var PIL = ''; for (var k = 0; k < 100; k++) PIL += '<i class="' + (k % 10 > 6 ? 'x' : '') + '" style="--i:' + k + '"></i>';
+    add('parcerias', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Onde a parceria de IA trava</h2><div class="dois"><div class="b2-col"><div class="b2-pil">' + PIL + '</div>' +
+      '<p class="dest" data-b="1">O Gartner previu que pelo menos 30% dos projetos de IA generativa seriam abandonados depois da prova de conceito até o fim de 2025.</p></div>' +
+      '<div class="b2-col b2-wide2" data-b="2"><h3>Os motivos que o Gartner apontou</h3>' + blIts([['cuidado', 'Dado ruim', 'O piloto usou dado arrumado à mão.'], ['cuidado', 'Risco sem controle', 'Ninguém definiu quem responde pelo erro.'], ['cuidado', 'Custo que cresce', 'O preço por uso subiu com o volume.'], ['pessoa', 'Valor pouco claro', 'Sem métrica de negócio desde o começo.']]) + '</div></div>' +
+      '<p class="fonte">Gartner, comunicado de 29/07/2024. A PwC Brasil (2026) aponta também segurança, dados e regulação como a maior preocupação das grandes empresas.</p>',
+      ao: function (b, el) { el.querySelector('.b2-pil').classList.toggle('cai', b >= 1); } });
+
+    blFim('parcerias', R, ['Sei em que camada da IA a empresa joga e com quem se alia nas outras', 'Sei comparar adotar, aliar, construir e comprar', 'Sei o que muda quando a empresa vira cliente da startup em vez de investidora', 'Sei por que tantos pilotos de IA com parceiros param na prova de conceito']);
+  };
+
+  /* ================= Go-to-market com IA =================
+     Base: a gravata borboleta (Bowtie) da Winning by Design, The Bowtie Standard, 2026, e o racional do Rafael de onde a IA entra em cada momento
+     do playbook: campanha, inteligência de marketing, estudo do lead, persona, SPIN, proposta, potencial de ganho, gestão do resultado. */
+  BLOCOS.gtm = function () {
+    var R = 'Go-to-market com IA';
+    var EST = [['Atração', 'Awareness', 'var(--motor-c)', 'O cliente percebe que tem um problema e descobre que existe solução.',
+        [['motor', 'Campanha', 'A IA escreve e testa versões de campanha e anúncio para cada segmento.'], ['motor', 'Inteligência de marketing', 'A IA lê buscas, redes, concorrentes e notícias para achar onde está a demanda.'], ['cuidado', 'Todo mundo soa igual', 'Se todos usam o mesmo modelo, as campanhas ficam parecidas. A voz da marca é decisão de gente.']]],
+      ['Educação', 'Education', 'var(--motor-c)', 'O lead estuda o problema, as opções e o que precisa.',
+        [['motor', 'Estudar o lead', 'A IA cruza site, notícias, perfil público e histórico no CRM e entrega um resumo antes do contato.'], ['motor', 'Persona', 'A IA agrupa leads parecidos e descreve quem compra, por que e com que objeção.'], ['elemento', 'Agente que qualifica', 'Um agente de IA conversa com o lead a qualquer hora e passa para a pessoa quem está pronto.']]],
+      ['Seleção', 'Selection', 'var(--motor-c)', 'O cliente compara, valida e decide. Pode ter prova de conceito.',
+        [['motor', 'SPIN e proposta', 'A IA prepara as perguntas da reunião e monta a proposta a partir do que o cliente disse.'], ['motor', 'Potencial de ganho', 'A IA lê o funil e estima a chance de fechar e o valor de cada negócio.'], ['elemento', 'Protótipo na mesa', 'O vendedor leva um protótipo funcionando, feito com IA, no lugar do PPT.'], ['pessoa', 'A conversa', 'Negociar, ler a sala e ganhar confiança continua com a pessoa.']]],
+      ['Compromisso', 'Mutual commit', 'var(--vermelho)', 'Os dois lados se comprometem: um a entregar o impacto, o outro a pagar por ele.',
+        [['motor', 'Contrato', 'A IA revisa minuta e cláusulas e aponta o que mudou.'], ['pessoa', 'O impacto prometido', 'Combinar com o cliente o que vai ser medido para dizer que deu certo.']]],
+      ['Implantação', 'Onboarding', 'var(--t-genai)', 'Levar o cliente ao primeiro resultado o mais rápido possível.',
+        [['elemento', 'Agente de implantação', 'Um agente guia o cliente passo a passo, no ritmo dele, e chama a pessoa quando trava.'], ['motor', 'Guia sob medida', 'A IA monta treinamento e material para o jeito que aquele cliente usa.']]],
+      ['Adoção', 'Retention and adoption', 'var(--t-genai)', 'O produto entra na rotina do cliente, e ele renova.',
+        [['motor', 'Risco de saída', 'A IA lê uso, chamados e tom das conversas e avisa quando um cliente começa a esfriar.'], ['elemento', 'Atendimento por agente', 'Dúvidas simples resolvidas na hora pelo agente.'], ['pessoa', 'Conta grande', 'Cliente grande pede gente conhecida do outro lado.']]],
+      ['Expansão', 'Expansion', 'var(--t-genai)', 'Crescer dentro da conta: mais licenças, plano maior, outros módulos.',
+        [['motor', 'Sinais de expansão', 'A IA percebe novas áreas usando, uso batendo no limite do plano e pedidos repetidos.'], ['motor', 'Gestão do resultado', 'A IA monta o painel do funil inteiro e a previsão de receita.'], ['cuidado', 'Empurrar venda', 'Oferecer mais sem o cliente ter visto impacto acelera a saída dele.']]]];
+
+    /* 1. Do funil à gravata */
+    var BOW = '<svg viewBox="0 0 720 230" role="img" aria-label="Funil que fecha na venda e abre do outro lado"><path class="esq" d="M20,20 L340,95 L340,135 L20,210 Z"/><path class="dir" d="M380,95 L700,20 L700,210 L380,135 Z"/><rect class="nf" x="338" y="88" width="44" height="54" rx="10"/>' +
+      '<circle class="bola" r="8"/><circle class="bola" r="8"/><circle class="bola" r="8"/>' +
+      '<text class="b2-tx" x="40" y="228">Marketing e vendas</text><text class="b2-tx" x="360" y="80" text-anchor="middle">Fechou</text><text class="b2-tx dirt" x="690" y="228" text-anchor="end">Sucesso do cliente</text></svg>';
+    var FG = [['Funil clássico', 'Termina na venda. Depois que o cliente assina, ele sai do desenho.'], ['Gravata borboleta', 'Fechar não é o fim, é o começo de uma relação de anos. Do outro lado, o funil abre: implantação, adoção e expansão dentro da conta.']];
+    add('gtm', { html: '<p class="rot-sec">' + R + '</p><h2>Do funil à gravata borboleta</h2><div class="b2-bow funil">' + BOW + '</div><div class="dois"><div class="i0-tar" role="group" aria-label="Modelo">' + FG.map(function (f, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + f[0] + '</button>'; }).join('') + '</div><p class="dest b2-fgp"></p></div>' +
+      '<p class="sub bl-q">Num negócio de receita recorrente, onde está a maior parte do dinheiro: no lado esquerdo ou no direito?</p>' +
+      '<p class="fonte">Winning by Design, The Bowtie Standard, 2026, p. 14. O mesmo documento já fala de um jeito de crescer puxado pela IA (AI-led growth), ao lado do crescimento pelo produto e pelas pessoas.</p>',
+      on: function (el) { var bw = el.querySelector('.b2-bow'); function mostra(i) { bw.classList.toggle('funil', i === 0); el.querySelector('.b2-fgp').textContent = FG[i][1]; } blEscolha(el, '.i0-tar .chip', mostra); mostra(0); } });
+
+    /* 2. A gravata clicável: onde a IA entra em cada estágio */
+    function yT(x) { return x <= 360 ? 20 + (x - 20) * 75 / 320 : 95 - (x - 380) * 75 / 320; }
+    function seg(x0, x1) { return 'M' + x0 + ',' + yT(x0).toFixed(1) + ' L' + x1 + ',' + yT(x1).toFixed(1) + ' L' + x1 + ',' + (230 - yT(x1)).toFixed(1) + ' L' + x0 + ',' + (230 - yT(x0)).toFixed(1) + ' Z'; }
+    var SEGS = [seg(20, 126), seg(126, 233), seg(233, 340), 'M338,88 h44 v54 h-44 z', seg(380, 487), seg(487, 593), seg(593, 700)];
+    add('gtm', { html: '<p class="rot-sec">' + R + '</p><h2>Onde a IA entra em cada estágio</h2><div class="b2-bowm"><svg viewBox="0 0 720 230" aria-hidden="true">' + SEGS.map(function (d, i) { return '<path data-k="' + i + '" style="--c:' + EST[i][2] + '" d="' + d + '"/>'; }).join('') + '</svg></div>' +
+      '<div class="b2-est">' + EST.map(function (e, i) { return '<button type="button" style="--c:' + e[2] + '" aria-pressed="' + (i === 2) + '"><b>' + e[0] + '</b><small>' + e[1] + '</small></button>'; }).join('') + '</div>' +
+      '<div class="b2-estd"></div><p class="fonte">Estágios: Winning by Design, The Bowtie Standard, 2026. Itens no formato dos Artefatos.</p>',
+      on: function (el) { var ps = el.querySelectorAll('.b2-bowm path'); function mostra(i) { var e = EST[i]; [].forEach.call(ps, function (p) { p.classList.toggle('on', +p.dataset.k === i); });
+        el.querySelector('.b2-estd').innerHTML = '<p class="dest" style="margin:0 0 6px"><b>' + e[0] + ':</b> ' + e[3] + '</p>' + blIts(e[4]); }
+        blEscolha(el, '.b2-est button', mostra); mostra(2); } });
+
+    /* 3. SPIN com IA */
+    var SP = [['S', 'Situação', 'Rede com 40 lojas, abriu 6 no último ano, segundo o site e as notícias.', 'Como vocês controlam o estoque entre as lojas hoje?'],
+      ['P', 'Problema', 'Avaliações online reclamam de remédio em falta.', 'Com que frequência falta remédio na prateleira?'],
+      ['I', 'Implicação', 'Estimativa de quanto cada loja perde por dia quando falta produto.', 'O que o cliente faz quando não encontra o remédio?'],
+      ['N', 'Necessidade de solução', 'Proposta montada com o número que o próprio cliente falou.', 'Se a falta caísse pela metade, o que mudaria para vocês?']];
+    add('gtm', { builds: 4, html: '<p class="rot-sec">' + R + '</p><h2>SPIN: a IA prepara, a pessoa conversa</h2><div class="b2-spin">' + SP.map(function (s, i) {
+      return '<div class="b2-sp" data-b="' + (i + 1) + '"><span class="l">' + s[0] + '</span><b>' + s[1] + '</b><span class="ia">' + s[2] + '</span><span class="ps">' + s[3] + '</span></div>'; }).join('') + '</div>' +
+      '<p class="sub bl-q" data-b="4">Se a IA já sabe tanto do cliente antes da reunião, o que a pessoa ainda precisa descobrir na conversa?</p>' +
+      '<p class="fonte">Rackham, SPIN Selling, 1988. Exemplo criado para a aula: sistema de estoque para uma rede de farmácias.</p>' });
+
+    /* 4. O protótipo que fecha a venda */
+    add('gtm', { builds: 1, html: '<p class="rot-sec">' + R + '</p><h2>O protótipo que ajuda a fechar</h2><div class="b2-ad"><div><span class="rot">Antes: a apresentação</span><div class="b2-tela"><i class="t"></i><i></i><i style="width:80%"></i><i style="width:65%"></i><i style="width:75%"></i></div></div>' +
+      '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M4 15h32M28 6l9 9-9 9"/></svg><div data-b="1"><span class="rot">Com IA: o produto na mão do cliente</span><div class="b2-tela prot"><i class="t"></i><div class="card"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span></div><span class="bt">Simular com os seus dados</span><span class="cur"></span></div></div></div>' +
+      blIts([['elemento', 'Venda com protótipo', 'Com vibe coding, o time monta em dias um protótipo que roda com um pedaço do dado do cliente. Ele vê o resultado antes de assinar.'], ['pessoa', 'Quem conduz', 'O vendedor escolhe o que mostrar e liga o protótipo à dor que o cliente contou.'], ['cuidado', 'Protótipo não é produto', 'O que encanta na reunião ainda precisa de segurança, escala e LGPD para entrar na operação. Veja o módulo de Dados.']]) +
+      '<p class="fonte">Leitura nossa, ligada aos módulos de Prototipação e de Dados.</p>' });
+
+    /* 5. Um agente na ponta do funil */
+    var CH = [['', 'Oi, vi o anúncio de vocês. Funciona para rede de farmácias?'], ['ag', 'Funciona. Quantas lojas vocês têm e como controlam o estoque hoje?'], ['', '40 lojas. Cada uma faz o pedido numa planilha.'], ['ag', 'Entendi. Posso marcar 30 minutos com um especialista amanhã às 10h?'], ['pass', 'Lead qualificado: passa para o vendedor, com o resumo da conversa.']];
+    add('gtm', { builds: 5, html: '<p class="rot-sec">' + R + '</p><h2>Um agente na ponta do funil</h2><div class="dois"><div class="b2-chat">' + CH.map(function (c, i) { return '<p class="' + c[0] + '" data-b="' + (i + 1) + '">' + c[1] + '</p>'; }).join('') + '</div>' +
+      '<div class="b2-col"><div class="b2-num m">' + b2N(10, '%') + '<span>dos times de venda B2B terão o chatbot como principal ferramenta para qualificar leads até 2027 (previsão do Gartner).</span><small>Accenture, Technology Vision 2025, p. 25</small></div>' +
+      '<div class="b2-num a">' + b2N(100, ' milhões', 'US$ ') + '<span>de receita a mais é o que uma empresa de beleza espera do assistente virtual feito em menos de 12 meses.</span><small>BCG, The Widening AI Value Gap, 2025, p. 9</small></div></div></div>' +
+      '<p class="fonte">Conversa criada para a aula. Para a Accenture, é ganho de quem chega primeiro.</p>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 6. O lado direito da gravata */
+    var VM = [['Prospect', 90], ['Lead', 70], ['Oportunidade', 50], ['Qualificado', 36], ['Fechado', 22], ['Receita contratada', 40], ['Receita no início', 52], ['Receita recorrente', 70], ['Valor no tempo de vida', 95]];
+    add('gtm', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Do outro lado, a conta é em dinheiro</h2><div class="b2-vm">' + VM.map(function (v, i) { return '<i style="--h:' + v[1] + '%;--i:' + i + ';--c:' + (i < 5 ? 'var(--motor-c)' : 'var(--t-genai)') + '">' + v[0] + '</i>'; }).join('') + '</div>' +
+      '<div class="dois"><p class="dest" data-b="1">À esquerda, conta-se gente: leads, oportunidades, negócios fechados. À direita, conta-se receita: o que entra todo mês e o que o cliente vale ao longo da relação.</p>' +
+      '<div data-b="2">' + blIts([['motor', 'Ler os sinais', 'A IA junta uso do produto, chamados e conversas e mostra quem vai renovar, quem vai sair e quem está pronto para crescer.'], ['pessoa', 'Quem age', 'O sinal chega ao time de sucesso do cliente, que decide a conversa.']]) + '</div></div>' +
+      '<p class="fonte">Winning by Design, The Bowtie Standard, 2026, p. 24 e 25: as métricas de volume VM1 a VM5 contam gente; VM6 a VM9, receita. Alturas ilustrativas.</p>' });
+
+    blAng('gtm', R, 'Onde a IA entra no go-to-market', blIcone('M30,100 L90,70 L90,130 Z M170,100 L110,70 L110,130 Z M90,90 h20 v20 h-20 z', 'Gravata borboleta'), [
+      { t: 'Atrair', oq: 'Do mercado ao lead.', i: [['motor', 'Campanha e inteligência', 'A IA cria versões de campanha e lê o mercado para achar onde está a demanda.'], ['motor', 'Lead estudado', 'Antes do contato, um resumo do lead e da empresa dele.'], ['cuidado', 'Abordagem em massa', 'Mensagem automática para milhares de pessoas queima a marca e o domínio de e-mail.']] },
+      { t: 'Vender', oq: 'Do lead ao contrato.', i: [['elemento', 'Agente e protótipo', 'Um agente qualifica a qualquer hora, e o protótipo feito com IA ajuda o cliente a decidir.'], ['motor', 'Proposta e previsão', 'A IA monta a proposta e estima a chance de fechar cada negócio.'], ['pessoa', 'Confiança', 'Em venda complexa, quem fecha é a relação entre pessoas.']] },
+      { t: 'Crescer na conta', oq: 'Do contrato à expansão.', i: [['motor', 'Sinais da conta', 'A IA avisa risco de saída e oportunidade de expansão.'], ['elemento', 'Atendimento sempre ligado', 'O agente resolve o simples e libera o time para o cliente que precisa de gente.'], ['cuidado', 'Toda marca igual', 'Quando todos atendem com o mesmo modelo, a diferença volta a ser o jeito da empresa.']] }],
+      'Leitura da IA no formato dos Artefatos. Accenture, Technology Vision 2025, tendência 2 (p. 22 a 26): quando toda interface parece igual, a marca precisa de voz própria.');
+
+    blFim('gtm', R, ['Sei por que o funil virou gravata borboleta', 'Sei onde a IA entra em cada estágio, do anúncio à expansão', 'Sei usar a IA para preparar a conversa sem tirar a pessoa dela', 'Sei onde a IA no comercial vira risco para a marca']);
+  };
+
+  /* ================= Dados e IA como ativo estratégico =================
+     Mantra do Rafael: quanto melhor o dado que entra, melhor a resposta que sai. Quem gera muito dado e sabe tratá-lo sai na frente.
+     Retoma o machine learning do módulo IA do zero e o cuidado com vibe coding (protótipo do zero ao um, não produto com dado de cliente). */
+  BLOCOS.dados = function () {
+    var R = 'Dados e IA';
+
+    /* 1. Lixo entra, lixo sai */
+    function gotas(sujo) { var h = ''; for (var i = 0; i < 9; i++) h += '<circle class="gota ' + (sujo && i % 2 ? 's' : 'l') + '" r="' + (sujo && i % 3 === 0 ? 11 : 8) + '" style="animation-delay:' + (-i * .38) + 's"/>'; return h; }
+    var LX = [['Dado limpo', 'O modelo recebe registros completos, corretos e atualizados. A resposta sai certa e dá para confiar nela.', 'Resposta confiável'],
+      ['Dado sujo', 'Campos vazios, cadastros duplicados, nomes escritos de três jeitos. O mesmo modelo, com a mesma potência, devolve uma resposta torta, e com toda a segurança.', 'Resposta torta']];
+    add('dados', { html: '<p class="rot-sec">' + R + '</p><h2>Dado bom entra, resposta boa sai</h2><div class="b2-cano"><svg viewBox="0 0 700 220" role="img" aria-label="Dado entra num cano, passa pelo modelo e vira resposta">' +
+      '<path class="tubo" d="M30,110 L560,110"/><g class="gs"></g><rect class="mod" x="250" y="62" width="110" height="96" rx="20"/><text class="b2-tx b" x="305" y="116" text-anchor="middle">Modelo</text>' +
+      '<circle class="res" cx="625" cy="110" r="56"/><text class="b2-tx b rt" x="625" y="114" text-anchor="middle" style="font-size:12px"></text><text class="b2-tx" x="30" y="70">Dado</text></svg></div>' +
+      '<div class="dois"><div class="i0-tar" role="group" aria-label="Tipo de dado">' + LX.map(function (l, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + l[0] + '</button>'; }).join('') + '</div><p class="dest b2-lxp"></p></div>' +
+      '<p class="sub bl-q">Se o modelo é o mesmo para todo mundo, o que diferencia a resposta de uma empresa da resposta da concorrente?</p>',
+      on: function (el) { var c = el.querySelector('.b2-cano'); function mostra(i) { c.classList.toggle('sujo', i === 1); c.querySelector('.gs').innerHTML = gotas(i === 1); c.querySelector('.rt').textContent = LX[i][2]; el.querySelector('.b2-lxp').textContent = LX[i][1]; } blEscolha(el, '.i0-tar .chip', mostra); mostra(0); } });
+
+    /* 2. Lembram da máquina que aprende errando? */
+    var CEL = ''; for (var k = 0; k < 40; k++) CEL += '<i class="' + (k % 2 ? 'n' : '') + '"></i>';
+    var ORD = [3, 17, 28, 9, 34, 22, 1, 13, 38, 6, 25, 31, 15, 0, 19, 36, 11, 27, 4, 32];
+    add('dados', { html: '<p class="rot-sec">' + R + '</p><h2>Lembram da máquina que aprende errando?</h2><div class="dois"><div class="b2-col"><div class="b2-sim">' + CEL + '</div>' +
+      '<div class="b2-leg2"><span style="--c:var(--elemento-c)"><i></i>Pagou</span><span style="--c:var(--vermelho)"><i style="border-radius:3px"></i>Não pagou</span><span style="--c:var(--t-genai)"><i></i>? Rótulo errado no cadastro</span></div></div>' +
+      '<div class="b2-col"><label class="bl-trlt"><b>Cadastros com rótulo errado: <span class="b2-pe">0%</span></b><input type="range" min="0" max="50" step="5" value="0" aria-label="Porcentagem de rótulos errados"></label>' +
+      '<p>O modelo de crédito acerta</p><div class="b2-gauge">94%</div><p class="sub">No módulo IA do zero, a máquina aprendia com exemplos de quem pagou e de quem não pagou. Se o cadastro marca errado, ela aprende errado.</p></div></div>' +
+      '<p class="fonte">Simulação ilustrativa, com números criados para a aula: mostra a direção do efeito, não um resultado medido.</p>',
+      on: function (el) { var r = el.querySelector('input'), cs = el.querySelectorAll('.b2-sim i'), g = el.querySelector('.b2-gauge');
+        function mostra() { var p = +r.value, n = Math.round(p / 100 * 40), ac = Math.max(50, Math.round(94 - p * .85)); [].forEach.call(cs, function (c) { c.classList.remove('err'); }); ORD.concat(ORD.map(function (x) { return 39 - x; })).slice(0, n).forEach(function (i) { cs[i].classList.add('err'); });
+          el.querySelector('.b2-pe').textContent = p + '%'; g.textContent = ac + '%'; g.classList.toggle('mal', ac < 75); }
+        r.addEventListener('input', mostra); mostra(); } });
+
+    /* 3. O dado é o que trava */
+    add('dados', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>O que trava a IA, quase sempre, é o dado</h2><div class="b2-nums">' +
+      '<div class="b2-num r" data-b="1">' + b2N(60, '%') + '<span>dos projetos de IA sem dado pronto para IA serão abandonados até 2026, prevê o Gartner.</span><small>Gartner, comunicado de 26/02/2025</small></div>' +
+      '<div class="b2-num a" data-b="2"><b>3 em 5</b><span>executivos dizem que precisam mudar muito a coleta, a guarda, o reuso e a governança do dado para tirar proveito da IA generativa.</span><small>Capgemini, 2024, p. 32</small></div>' +
+      '<div class="b2-num m" data-b="3">' + b2N(87, '%') + '<span>das grandes empresas ainda não usam dado de fora nos projetos de IA generativa.</span><small>Capgemini, 2024, p. 32</small></div></div>' +
+      '<p class="sub bl-q" data-b="3">Quem gera muito dado e sabe tratá-lo sai na frente. Quem é esse no setor de vocês?</p>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 4. O dado que só você tem: o volante */
+    var VN = [['Mais clientes', 'usando'], ['Mais dado', 'próprio'], ['Modelo', 'melhor'], ['Produto', 'melhor']];
+    var CAS = [['Nubank', 'O nuFormer aprende com as sequências de transações dos clientes e é usado em crédito, fraude e recomendação.', 'Blog do Nubank, 20/04/2026'],
+      ['Itaú', 'O banco mantém uma camada de contexto financeiro de cerca de 70 milhões de clientes, que os modelos consultam. E comprou a NeoSpace, que faz modelos para finanças.', 'Caso publicado pela OpenAI, 2026; Bloomberg Línea, 26/10/2026'],
+      ['Accenture', 'Chama de camada de conhecimento a parte do "cérebro digital" da empresa que reúne e organiza o dado para os modelos e os agentes.', 'Technology Vision 2025, p. 5']];
+    add('dados', { html: '<p class="rot-sec">' + R + '</p><h2>O dado que só a sua empresa tem</h2><div class="dois"><div class="b2-vol"><svg viewBox="0 0 320 300" role="img" aria-label="Volante: mais clientes geram mais dado, que melhora o modelo e o produto">' +
+      '<circle class="aro" cx="160" cy="150" r="100"/><g class="giro"><path class="seg" d="M160,50 A100,100 0 0,1 248,102"/></g>' +
+      VN.map(function (v, i) { var a = -Math.PI / 2 + i * Math.PI / 2, x = 160 + 100 * Math.cos(a), y = 150 + 100 * Math.sin(a); return '<g class="nv"><circle cx="' + x.toFixed(0) + '" cy="' + y.toFixed(0) + '" r="44"/><text class="b2-tx" x="' + x.toFixed(0) + '" y="' + (y - 2).toFixed(0) + '" text-anchor="middle">' + v[0] + '</text><text class="b2-tx s" x="' + x.toFixed(0) + '" y="' + (y + 14).toFixed(0) + '" text-anchor="middle">' + v[1] + '</text></g>'; }).join('') + '</svg></div>' +
+      '<div class="b2-col"><div class="i0-tar" role="group" aria-label="Casos">' + CAS.map(function (c, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + c[0] + '</button>'; }).join('') + '</div><div class="bl-card"><b class="bl-cn"></b><p class="bl-cp"></p><small class="bl-cf"></small></div>' +
+      blIts([['elemento', 'Vantagem que não se copia', 'Qualquer um contrata o mesmo modelo. O dado de anos de relação com o cliente, não.']]) + '</div></div>',
+      on: function (el) { function mostra(i) { var c = CAS[i]; el.querySelector('.bl-cn').textContent = c[0]; el.querySelector('.bl-cp').textContent = c[1]; el.querySelector('.bl-cf').textContent = 'Fonte: ' + c[2]; } blEscolha(el, '.i0-tar .chip', mostra); mostra(0); } });
+
+    /* 5. Cinco perguntas antes de alimentar a IA */
+    var PQ = [['Está completo?', 'Faltam campos? Metade dos clientes sem cidade não serve para prever demanda por região.'], ['Está correto?', 'O mesmo cliente aparece duas vezes? O valor foi digitado em reais ou em centavos?'],
+      ['Está atualizado?', 'O dado de três anos atrás ainda descreve o cliente de hoje?'], ['Tem dono?', 'Quem responde quando o dado está errado e quem pode mudar o padrão?'], ['Pode ser usado?', 'A LGPD permite usar esse dado para essa finalidade? O cliente consentiu? É dado sensível?']];
+    add('dados', { html: '<p class="rot-sec">' + R + '</p><h2>Cinco perguntas antes de alimentar a IA</h2><div class="bl-cri">' + PQ.map(function (q, i) {
+      return '<button type="button" class="bl-cr" style="--i:' + i + '" aria-pressed="false"><b>' + q[0] + '</b><span>' + q[1] + '</span></button>'; }).join('') + '</div>' +
+      '<p class="sub bl-q">Toque nas perguntas que a empresa de vocês já consegue responder com segurança.</p>' +
+      '<p class="fonte">Perguntas organizadas para a aula. A Capgemini (2024, p. 48) recomenda protocolos definidos para todo dado que entra nos modelos. LGPD: Lei 13.709, de 2018.</p>',
+      on: function (el) { [].forEach.call(el.querySelectorAll('.bl-cr'), function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); }); }); } });
+
+    /* 6. Vibe coding: do zero ao um, sim. Cadastro de cliente, não. */
+    add('dados', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Vibe coding: do zero ao um</h2><div class="b2-vb">' +
+      '<div class="b2-vbc" style="--c:var(--elemento-c)"><h3>Do zero ao um</h3><ul><li>Uma tarde para ver a ideia funcionando</li><li>Teste com poucas pessoas, sem dado real</li></ul></div>' +
+      '<div class="b2-vbc" style="--c:var(--vermelho)" data-b="1"><h3>No ar, coletando dado de cliente</h3><div class="b2-form"><span>nome: "joao silva"</span><span class="ruim">cpf: "123" (sem validação)</span><span class="ruim">senha: guardada em texto aberto</span><span class="ruim">consentimento: não pedido</span></div><ul><li>Dado sem padrão estraga a IA de amanhã</li></ul></div></div>' +
+      '<div class="b2-duelo" data-b="2"><span>Código gerado por mais de 100 modelos de IA trouxe falha de segurança em</span>' + b2N(45, '%') + '<span>das tarefas testadas.</span></div>' +
+      '<p class="fonte">Veracode, GenAI Code Security Report, julho de 2025, com 80 tarefas de programação.</p>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    blAng('dados', R, 'Onde a IA entra no dado', blIcone('M60,60 h80 v30 h-80 z M60,100 h80 v30 h-80 z M60,140 h80 v20 h-80 z', 'Dado como ativo'), [
+      { t: 'Coletar', oq: 'O que entra.', i: [['elemento', 'Desenhar para coletar', 'Produto e atendimento pensados para gerar o dado que vai treinar o modelo de amanhã.'], ['cuidado', 'App feito às pressas', 'Formulário montado com vibe coding coletando dado de cliente sem validação, sem segurança e sem consentimento.'], ['pessoa', 'O que não coletar', 'Decidir o que a empresa não precisa saber também protege o cliente.']] },
+      { t: 'Tratar', oq: 'Do dado sujo ao dado pronto.', i: [['motor', 'Limpeza com IA', 'A IA acha duplicados, padroniza nomes e preenche o que dá para inferir.'], ['pessoa', 'Dono do dado', 'Cada base tem alguém que responde pela qualidade dela.'], ['cuidado', 'Viés', 'Dado do passado carrega as escolhas do passado. O modelo aprende e repete.']] },
+      { t: 'Usar', oq: 'Do dado à vantagem.', i: [['elemento', 'Modelo próprio', 'O dado que só a empresa tem vira modelo, como o nuFormer do Nubank.'], ['motor', 'Contexto para a IA', 'Os modelos consultam a base organizada da empresa antes de responder.'], ['cuidado', 'Dado velho', 'Base que ninguém atualiza faz a IA responder sobre um cliente que já mudou.']] }],
+      'Leitura da IA no formato dos Artefatos. Accenture, Technology Vision 2025, p. 5 e 7: confiança em sistemas e dados é uma das três frentes da IA.');
+
+    blFim('dados', R, ['Sei por que dado bom entra e resposta boa sai', 'Sei fazer cinco perguntas antes de alimentar a IA', 'Sei por que o dado próprio é a vantagem que não se copia', 'Sei onde o vibe coding ajuda e onde ele vira risco para o dado']);
+  };
+
+  /* ================= Organização, talentos, cultura e governança de IA =================
+     Racional do Rafael: cuidado com Shadow AI, trabalhar cultura e ensinar os riscos, decidir entre assinar ferramentas para o time ou montar
+     o próprio pool de IA com chaves de API, e ter alguém olhando gasto de tokens, retorno e o que se produz com eles. */
+  BLOCOS.organizacao = function () {
+    var R = 'Organização e governança';
+
+    /* 1. O iceberg da Shadow AI */
+    add('organizacao', { builds: 3, html: '<p class="rot-sec">' + R + '</p><h2>O iceberg da Shadow AI</h2><div class="dois"><div class="b2-ice" data-p="0"><svg viewBox="0 0 400 320" role="img" aria-label="Iceberg: acima da água, as ferramentas liberadas; abaixo, o uso escondido">' +
+      '<rect class="mar" x="0" y="112" width="400" height="208" rx="18"/><g class="flut"><path class="gelo f" d="M112,112 L290,112 L345,215 L255,300 L130,292 L66,200 Z"/><path class="gelo" d="M150,112 L192,36 L232,66 L262,112 Z"/></g>' +
+      '<g class="et a"><rect x="128" y="4" width="148" height="24" rx="12" fill="#fff"/><text x="202" y="21" text-anchor="middle">Ferramentas liberadas</text></g>' +
+      '<g class="et">' + [['IA pessoal no celular', 150], ['Dado do cliente no prompt', 185], ['Contrato colado no chat', 220], ['App grátis de transcrição', 255]].map(function (t) { return '<text x="205" y="' + t[1] + '" text-anchor="middle">' + t[0] + '</text>'; }).join('') + '</g></svg></div>' +
+      '<div class="b2-col"><div class="b2-num m" data-b="1">' + b2N(75, '%') + '<span>dos trabalhadores do conhecimento já usam IA no trabalho.</span></div>' +
+      '<div class="b2-num a" data-b="2">' + b2N(78, '%') + '<span>de quem usa leva a própria IA, sem passar pela empresa.</span></div>' +
+      '<div class="b2-num r" data-b="3">' + b2N(52, '%') + '<span>relutam em admitir que usam IA nas tarefas mais importantes.</span></div></div></div>' +
+      '<p class="fonte">Microsoft e LinkedIn, Work Trend Index, 08/05/2024 (citado pela Accenture, p. 6 e 7).</p>',
+      ao: function (b, el) { el.querySelector('.b2-ice').setAttribute('data-p', b); b2Conta(el); } });
+
+    /* 2. Proibir não funciona: cultura */
+    var CUL = [['Ensinar os riscos', 'Dado do cliente no prompt, resposta inventada, código inseguro.', 'pessoa'], ['Liberar com regra', 'Ferramenta boa e política clara. Com caminho oficial, o uso escondido diminui.', 'elemento'], ['Reservar tempo para aprender', 'Quem mais ganha com IA tem 4 vezes mais chance de separar tempo para aprender.', 'motor']];
+    add('organizacao', { builds: 4, html: '<p class="rot-sec">' + R + '</p><h2>Proibir não funciona</h2><div class="bl-esc">' + CUL.map(function (c, i) {
+      return '<div class="bl-deg" data-b="' + (i + 1) + '" style="--h:1"><span class="bl-tag" style="--c:var(--' + c[2] + '-c)">' + (i + 1) + '</span><b>' + c[0] + '</b><p>' + c[1] + '</p></div>'; }).join('') + '</div>' +
+      '<div class="b2-duelo" data-b="4"><span>Só</span>' + b2N(47, '%') + '<span>dos executivos pretendem dar acesso amplo à IA ao time em três anos.</span></div>' +
+      '<p class="fonte">Accenture, Technology Vision 2025, p. 53. BCG, The Widening AI Value Gap, 2025, p. 15.</p>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 3. Assinar ferramentas ou montar o próprio pool */
+    var CMP = [['Para começar', ['Rápido: contrata e distribui', 'bom'], ['Exige time de plataforma', 'ruim']], ['Custo', ['Por pessoa, previsível', 'bom'], ['Por token, varia com o uso', 'ruim']],
+      ['Escolha do modelo', ['O do fornecedor', 'ruim'], ['O melhor para cada tarefa', 'bom']], ['Visão do uso', ['Pouca: quem usou e quanto', 'ruim'], ['Cada chamada registrada', 'bom']],
+      ['Dado da empresa', ['Segue a regra do fornecedor', 'ruim'], ['Passa pela plataforma, com regra da empresa', 'bom']]];
+    add('organizacao', { builds: 6, html: '<p class="rot-sec">' + R + '</p><h2>Assinar ou montar o pool de IA?</h2><div class="b2-cmp"><div class="b2-cmpr h"><span></span><span>Assinar para o time</span><span>Pool próprio com chaves de API</span></div>' +
+      CMP.map(function (c, i) { return '<div class="b2-cmpr" data-b="' + (i + 1) + '"><b>' + c[0] + '</b><span class="' + c[1][1] + '">' + c[1][0] + '</span><span class="' + c[2][1] + '">' + c[2][0] + '</span></div>'; }).join('') + '</div>' +
+      '<p class="dest" data-b="6">Itaú (IARA) e Bradesco (Bridge) montaram o próprio pool, ligado a vários modelos.</p>' +
+      '<p class="fonte">Comparação organizada para a aula. Itaú: caso publicado pela OpenAI, 2026. Bradesco: Bain e IT Forum.</p>' });
+
+    /* 4. Alguém precisa olhar os tokens */
+    var TK = [['Atendimento', 80, 85], ['Jurídico', 35, 70], ['Marketing', 65, 25], ['Tecnologia', 70, 75], ['RH', 25, 10]];
+    add('organizacao', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Alguém precisa olhar os tokens</h2><div class="dois"><div class="b2-tok"><div class="b2-tkr h"><span>Área</span><span>Gasto com tokens</span><span>O que entregou</span></div>' +
+      TK.map(function (t, i) { return '<div class="b2-tkr"><span' + (t[2] < t[1] / 2 ? ' class="alerta"' : '') + '>' + t[0] + '</span><span class="bar" style="--w:' + t[1] + '%;--c:var(--t-genai);--i:' + i + '"></span><span class="bar" style="--w:' + t[2] + '%;--c:var(--elemento-c);--i:' + i + '"></span></div>'; }).join('') +
+      '<p class="sub">Painel criado para a aula. Em vermelho, quem gasta muito e entrega pouco.</p></div>' +
+      '<div class="b2-col"><div class="b2-num" data-b="1">' + b2N(65, '%') + '<span>foi o corte do Itaú no custo com tokens depois de centralizar a IA numa plataforma única, com o "FinOps" da nuvem. O uso cresceu.</span><small>Mobile Time, 27/07/2026; TI Inside, 24/08/2026</small></div>' +
+      '<div data-b="2">' + blIts([['pessoa', 'Um dono do gasto', 'Alguém olha gasto, retorno e o que cada área produziu com os tokens.'], ['cuidado', 'Chave pessoal', 'Chave de API no cartão de alguém é gasto e dado fora do radar.']]) + '</div></div></div>',
+      ao: function (b, el) { b2Conta(el); } });
+
+    /* 5. Quem responde quando a IA erra? */
+    var RIS = [['Privacidade e segurança do dado', 73], ['Jurídico, propriedade intelectual e regulação', 50], ['Capacidade de governança e supervisão', 46], ['Qualidade e explicação do modelo', 46], ['Impacto nas pessoas', 30]];
+    add('organizacao', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Quem responde quando a IA erra?</h2><div class="dois"><div class="b2-col"><div class="b2-num r">' + b2N(21, '%') + '<span>das empresas têm um modelo maduro de governança para agentes de IA, que agem sozinhos.</span><small>Deloitte, State of AI in the Enterprise, 2026, p. 6 e 20</small></div>' +
+      '<div data-b="2">' + blIts([['pessoa', 'Comitê de verdade', 'TI, jurídico, compliance e negócio juntos, definindo política, acompanhando e decidindo quando escalar.'], ['pessoa', 'Liderança no comitê', 'Onde a alta liderança participa da governança, o valor da IA é maior.']]) + '</div></div>' +
+      '<div class="b2-col" data-b="1"><h3>Os riscos que mais preocupam</h3><div class="b2-par">' + RIS.map(function (r) { return '<div class="b2-parr"><span>' + r[0] + '</span><div class="bs"><i class="j" style="--w:' + r[1] + '%">' + r[1] + '%</i></div></div>'; }).join('') + '</div></div></div>' +
+      '<p class="fonte">Deloitte, State of AI in the Enterprise, 2026, p. 21 e 32.</p>',
+      ao: function (b, el) { b2Conta(el); el.querySelector('.b2-par').classList.toggle('vis', b >= 1); } });
+
+    blAng('organizacao', R, 'Onde a IA entra na organização', blIcone('M70,150 v-30 a30,30 0 0,1 60,0 v30 M100,85 a18,18 0 1,1 0.1,0', 'Gente, regra e ferramenta'), [
+      { t: 'Cultura', oq: 'Gente que sabe usar e fala que usa.', i: [['pessoa', 'Ensinar quando usar', 'Treinar o time no quando usar e no quando não usar IA.'], ['motor', 'IA que ensina', 'A própria IA vira tutora: explica, corrige e acompanha quem está aprendendo.'], ['cuidado', 'Medo de admitir', 'Se usar IA parece sinal de ser substituível, o uso vai para a sombra.']] },
+      { t: 'Ferramentas', oq: 'Assinar ou montar o pool.', i: [['elemento', 'Plataforma própria', 'Uma porta única para vários modelos dá controle, escolha e registro.'], ['motor', 'Modelo certo por tarefa', 'Tarefa simples em modelo barato, raciocínio pesado em modelo caro.'], ['cuidado', 'Gasto sem dono', 'Token espalhado em cartões e áreas ninguém soma.']] },
+      { t: 'Governança', oq: 'Quem decide e quem responde.', i: [['pessoa', 'Negócio e TI donos juntos', 'Nas empresas que mais ganham com IA, o investimento é decidido no centro e o resultado é cobrado das áreas.'], ['pessoa', 'Responsável pelo agente', 'Todo agente que age sozinho tem uma pessoa que responde por ele.'], ['cuidado', 'Regra e lei', 'Política de uso alinhada à LGPD e às regras de IA em discussão no país.']] }],
+      'Leitura da IA no formato dos Artefatos. BCG, The Widening AI Value Gap, 2025, p. 12, 15 e 19: IA de propriedade conjunta do negócio e da TI.');
+
+    blFim('organizacao', R, ['Sei por que proibir IA empurra o uso para a sombra', 'Sei comparar assinar ferramentas com montar o próprio pool de IA', 'Sei por que alguém precisa olhar gasto de tokens e retorno', 'Sei quem precisa estar na governança de IA']);
+  };
+
+  /* ================= Mensuração de resultado na era da IA =================
+     Racional do Rafael: medir a IA para ganhar eficiência, para gerar receita, para ganhar resultado ou para aprender (o que a roda ensinou).
+     Base: Deloitte 2026, BCG 2025 e o caso do Itaú com o Devin. */
+  BLOCOS.mensuracao = function () {
+    var R = 'Mensuração com IA';
+
+    /* 1. Quatro réguas */
+    var RG = [['Eficiência', 'var(--motor-c)', 'Fazemos o mesmo com menos tempo ou custo?', 'Tempo por tarefa, custo por atendimento, horas liberadas'],
+      ['Receita', 'var(--t-genai)', 'Vendemos mais, ou vendemos algo novo?', 'Conversão, tíquete médio, receita de produto novo'],
+      ['Resultado', 'var(--elemento-c)', 'O cliente e o negócio ficaram melhores?', 'Problema resolvido de primeira, satisfação, retenção'],
+      ['Aprendizado', 'var(--vermelho)', 'O que esta volta da roda ensinou?', 'Hipóteses testadas e decisões tomadas por ciclo']];
+    add('mensuracao', { builds: 4, html: '<p class="rot-sec">' + R + '</p><h2>Para que você está medindo?</h2><div class="b2-reg">' + RG.map(function (r, i) {
+      return '<div class="b2-rg" data-b="' + (i + 1) + '" style="--c:' + r[1] + '"><svg viewBox="0 0 160 26" aria-hidden="true"><line x1="6" y1="13" x2="154" y2="13"/>' + [0, 1, 2, 3, 4].map(function (k) { return '<line class="tk" x1="' + (6 + k * 37) + '" y1="6" x2="' + (6 + k * 37) + '" y2="20"/>'; }).join('') + '<circle cx="10" cy="13" r="7"/></svg><b>' + r[0] + '</b><p>' + r[2] + '</p><span class="m">' + r[3] + '</span></div>'; }).join('') + '</div>' +
+      '<p class="sub bl-q" data-b="4">Num projeto de IA, a régua é escolhida antes de começar. Qual delas vocês usariam no primeiro piloto?</p>' });
+
+    /* 2. O que as empresas já colhem e o que só esperam */
+    var DL = [['Eficiência e produtividade', 66, 60], ['Decisão com dados', 53, 61], ['Redução de custo', 40, 65], ['Relação com o cliente', 38, 60], ['Produtos e inovação', 38, 60], ['Receita', 20, 74]];
+    add('mensuracao', { builds: 2, html: '<p class="rot-sec">' + R + '</p><h2>Já colhem ou só esperam?</h2><div class="b2-leg2"><span style="--c:var(--elemento-c)"><i></i>Já conseguem hoje</span><span style="--c:var(--t-genai)"><i></i>Esperam conseguir</span></div>' +
+      '<div class="b2-par">' + DL.map(function (d, i) { return '<div class="b2-parr' + (i === 5 ? ' dest' : '') + '"><span>' + d[0] + '</span><div class="bs"><i class="j" style="--w:' + d[1] + '%">' + d[1] + '%</i><i class="e" style="--w:' + d[2] + '%">' + d[2] + '%</i></div></div>'; }).join('') + '</div>' +
+      '<p class="dest" data-b="2">A eficiência já chegou. A receita ainda é promessa: 20% já conseguem, 74% esperam.</p>' +
+      '<p class="fonte">Deloitte, State of AI in the Enterprise, 2026, p. 10, com 3.235 líderes.</p>',
+      ao: function (b, el) { el.querySelector('.b2-par').classList.toggle('vis', b >= 1); } });
+
+    /* 3. Usar, redesenhar, inventar */
+    var DG = [['Usar', 37, 'A IA entra no processo que já existe, quase sem mudar nada.', 'Mede eficiência: tempo e custo da mesma tarefa.'],
+      ['Redesenhar', 30, 'O processo é refeito em volta da IA.', 'Mede resultado: o processo inteiro, de ponta a ponta.'],
+      ['Inventar', 34, 'A IA muda o negócio: produto, oferta ou modelo novo.', 'Mede receita e aprendizado: o que é novo e o que se descobriu.']];
+    add('mensuracao', { builds: 4, html: '<p class="rot-sec">' + R + '</p><h2>Usar, redesenhar, inventar</h2><div class="b2-esc">' + DG.map(function (d, i) {
+      return '<div class="b2-dg" data-b="' + (i + 1) + '" style="--k:' + (i + 1) + '"><span class="pc">' + d[1] + '%</span><b>' + d[0] + '</b><p>' + d[2] + '</p><p style="font-weight:700">' + d[3] + '</p></div>'; }).join('') + '</div>' +
+      '<p class="dest" data-b="4">Quase 90% das empresas mais avançadas esperam que a maior parte do valor da IA venha de redesenhar e de inventar, não só de usar.</p>' +
+      '<p class="fonte">Percentuais: Deloitte, 2026, p. 4 (como as empresas estão usando IA hoje). Os 90%: BCG, The Widening AI Value Gap, 2025, p. 13.</p>' });
+
+    /* 4. A régua do aprendizado */
+    var VT = [['Volta 1', 'Hipótese: o assistente resolve dúvidas de segunda via de boleto.', 'Aprendemos: resolve, mas os clientes perguntam mais sobre prazo do que sobre boleto.'],
+      ['Volta 2', 'Hipótese: incluir prazo de entrega reduz contatos repetidos.', 'Aprendemos: os repetidos caíram, mas o dado de prazo estava desatualizado em parte das lojas.'],
+      ['Volta 3', 'Hipótese: com a base de prazos corrigida, a resposta fica confiável.', 'Aprendemos: o gargalo era o dado, não o modelo. Hora de escalar.']];
+    add('mensuracao', { html: '<p class="rot-sec">' + R + '</p><h2>A régua do aprendizado</h2><div class="b2-roda"><div><svg viewBox="0 0 300 280" role="img" aria-label="Roda construir, medir, aprender"><circle class="aro" cx="150" cy="140" r="100"/><g class="gira"><circle cx="150" cy="40" r="14" fill="var(--vermelho)"/></g>' +
+      [['Construir', 150, 30], ['Medir', 262, 205], ['Aprender', 38, 205]].map(function (n) { return '<text class="b2-tx" x="' + n[1] + '" y="' + n[2] + '" text-anchor="middle">' + n[0] + '</text>'; }).join('') + '<text class="b2-tx b2-vn" x="150" y="146" text-anchor="middle" style="font-size:22px">0 voltas</text></svg>' +
+      '<button type="button" class="botao-peq b2-gir">Girar a roda</button></div><div class="b2-volta"><p class="sub">Exemplo criado para a aula: o piloto de um assistente de atendimento.</p></div></div>' +
+      '<p class="dest">95% dos pilotos sem retorno mensurável: faltou aprender com o uso (MIT).</p>' +
+      '<p class="fonte">MIT NANDA, The GenAI Divide, 2025, segundo a Fortune, 18/08/2025.</p>',
+      on: function (el) { var n = 0, g = el.querySelector('.gira'), box = el.querySelector('.b2-volta'), bt = el.querySelector('.b2-gir');
+        bt.addEventListener('click', function () { if (n >= VT.length) { n = 0; g.style.transform = ''; box.innerHTML = '<p class="sub">Exemplo criado para a aula: o piloto de um assistente de atendimento.</p>'; el.querySelector('.b2-vn').textContent = '0 voltas'; bt.textContent = 'Girar a roda'; return; }
+          var v = VT[n]; n++; g.style.transform = 'rotate(' + (n * 360) + 'deg)'; el.querySelector('.b2-vn').textContent = n + (n > 1 ? ' voltas' : ' volta');
+          box.innerHTML = '<div class="bl-card"><b>' + v[0] + ' de ' + VT.length + '</b><p>' + v[1] + '</p><p style="font-weight:700">' + v[2] + '</p></div>'; if (n >= VT.length) bt.textContent = 'Recomeçar'; }); } });
+
+    /* 5. Antes e depois, no processo: as quatro réguas num caso real */
+    var IT = [['Eficiência', 'O Itaú diz que a migração de serviços ficou seis vezes mais rápida com o Devin, agente de programação da Cognition. É o número que o banco divulgou.'],
+      ['Receita', 'O caso não traz número de receita. A pergunta seria: o que o time fez com o tempo que sobrou? Lançou produto mais cedo?'],
+      ['Resultado', 'Mais serviços na nuvem, mais cedo. O banco quer migrar toda a infraestrutura até 2028.'],
+      ['Aprendizado', 'Seis meses depois de começar, o banco ampliou o contrato porque a procura interna foi maior que o previsto.']];
+    add('mensuracao', { html: '<p class="rot-sec">' + R + '</p><h2>Um projeto, quatro réguas</h2><div class="dois"><div class="b2-col"><div class="b2-num m"><b>6x</b><span>mais rápida ficou a migração de serviços do Itaú com um agente de IA, segundo o banco.</span><small>IT Forum e Baguete</small></div>' +
+      '<div class="i0-tar" role="group" aria-label="Réguas">' + IT.map(function (r, i) { return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '">' + r[0] + '</button>'; }).join('') + '</div></div>' +
+      '<div class="b2-col"><div class="bl-card"><span class="bl-tag"></span><p class="bl-cp"></p></div><p class="sub bl-q">Que régua faltou o banco divulgar? E qual vocês cobrariam de um fornecedor?</p></div></div>' +
+      '<p class="fonte">Números informados pelo banco e pelo fornecedor, sem medição independente.</p>',
+      on: function (el) { function mostra(i) { var t = el.querySelector('.bl-tag'); t.textContent = IT[i][0]; t.style.setProperty('--c', RG[i][1]); el.querySelector('.bl-cp').textContent = IT[i][1]; } blEscolha(el, '.i0-tar .chip', mostra); mostra(0); } });
+
+    blAng('mensuracao', R, 'Onde a IA entra na mensuração', blIcone('M40,150 h120 M50,150 v-30 M80,150 v-55 M110,150 v-40 M140,150 v-75', 'Medir o que importa'), [
+      { t: 'Antes do piloto', oq: 'Escolher a régua.', i: [['pessoa', 'O que conta como resultado', 'Definir com o dono do negócio a régua e a meta antes de ligar a IA.'], ['motor', 'Linha de base', 'A IA levanta como o processo está hoje: tempo, custo, erro.']] },
+      { t: 'Durante', oq: 'Medir sem se enganar.', i: [['motor', 'A IA mede a IA', 'Registro de uso, custo por tarefa e qualidade da resposta, de forma contínua.'], ['cuidado', 'Vaidade', 'Número de conversas e de prompts cresce fácil e não prova valor.'], ['elemento', 'Métrica de produto de IA', 'Problema resolvido, contato repetido e confiança do cliente.']] },
+      { t: 'Depois', oq: 'Escalar, mudar ou parar.', i: [['pessoa', 'Decidir', 'A régua serve para decidir: escalar, ajustar ou desligar.'], ['cuidado', 'Ganho que vira padrão', 'Quando o setor inteiro adota a mesma IA, a eficiência deixa de ser vantagem.'], ['cuidado', 'Poucos colhem em escala', 'Só 5% das empresas tiram valor da IA em escala, e 60% não tiram valor relevante.']] }],
+      'Leitura da IA no formato dos Artefatos, ligada a Estratégias genéricas. BCG, The Widening AI Value Gap, 2025, p. 3.');
+
+    blFim('mensuracao', R, ['Sei escolher a régua antes do projeto: eficiência, receita, resultado ou aprendizado', 'Sei por que a receita com IA ainda é promessa para a maioria', 'Sei medir o que um piloto de IA ensinou', 'Sei por que só uma minoria tira valor da IA em escala']);
   };
 
   /* Prévias: um slide por módulo ainda sem conteúdo, com os tópicos previstos. */
