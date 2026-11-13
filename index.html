@@ -723,6 +723,14 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .fx-cab h2 { margin: 0; } .fx-cab .fx-tog { margin: 0; }
 .fx-vw .fx-il .t { font-size: 15px; } .fx-vw .fx-il .ts { font-size: 12.5px; }
 @media (max-height: 800px) { .fx-vw .fx-il { max-height: 31vh; } }
+/* Zoom na projeção (1920x1080 do Rafael), no mesmo padrão dos Artefatos: a tela inteira cresce e o desenho ocupa a altura que sobra. */
+@media (min-width: 1500px) and (min-height: 950px) {
+  .slide:has(.fx-palco) { --z: 1.45; zoom: var(--z); padding-top: calc(84px / var(--z)); padding-bottom: calc(103px / var(--z)); gap: calc(14px / var(--z)); }
+  .slide:has(.fx-palco) h2 { max-width: none; }
+  .fx-cy .fx-il { max-height: calc((100vh - 187px) / var(--z) - 328px); }
+  .fx-vw .fx-il { max-height: calc((100vh - 187px) / var(--z) - 253px); }
+}
+.fx-cy .fx-il .ts { font-size: 12.5px; }
 
 /* Aba de notícias. Cores dos assuntos: rosa (pessoas), azul (processos) e âmbar (estratégia), fechadas o bastante para texto branco nos dois temas.
    Toda ilustração termina no estado normal do elemento. A animação só parte de um estado inicial, então com movimento reduzido a figura aparece pronta. */
@@ -3477,7 +3485,7 @@ var UCIL = (function () {
     };
 
     /* ---------- Cyrela + CashMe: antes, o banco financia e fica com os juros; depois, a CashMe financia e os juros ficam no grupo ---------- */
-    function moedaVai(cls, simb, caminho, dur, ini) { return '<g>' + C(0, 0, 10, cls) + T(0, 4, simb, 'tc ts ' + (cls === 'a' ? 'tk' : 'tb'), ' style="font-size:12px;font-weight:900"') + '<animateMotion dur="' + dur + 's" begin="' + ini + 's" repeatCount="indefinite" path="' + caminho + '"/></g>'; }
+    function moedaVai(cls, simb, caminho, dur, ini) { return '<g opacity="0">' + C(0, 0, 10, cls) + T(0, 4, simb, 'tc ts ' + (cls === 'a' ? 'tk' : 'tb'), ' style="font-size:12px;font-weight:900"') + '<animateMotion dur="' + dur + 's" begin="' + ini + 's" repeatCount="indefinite" path="' + caminho + '"/><set attributeName="opacity" to="1" begin="' + ini + 's"/></g>'; }
     function fluxoMoedas(cls, simb, caminho, dur) { return P(caminho, 'l lf', ' stroke-dasharray="4 7" opacity=".6"') + [0, 1, 2].map(function (i) { return moedaVai(cls, simb, caminho, dur, i * dur / 3); }).join(''); }
     function banco(x, y) { return P('M' + (x - 46) + ' ' + (y - 8) + 'L' + x + ' ' + (y - 36) + 'L' + (x + 46) + ' ' + (y - 8) + 'Z', 'fs') + [-30, -10, 10, 30].map(function (d) { return R(x + d - 5, y - 4, 10, 34, 2, 'fs'); }).join('') + R(x - 50, y + 30, 100, 8, 2, 'fs') + T(x, y + 58, 'BANCO', 'tc'); }
     function cyrela(x) { return IL.predio(x, 195, 80, 110) + T(x + 40, 328, 'CYRELA', 'tc'); }
@@ -3518,7 +3526,7 @@ var UCIL = (function () {
         T(338, 290, 'a concessionária paga de uma vez: o dinheiro entra no caixa à vista', 'tc ts'), ' class="fx-lane" data-lane="trad"');
       var ass = G(T(20, 30, 'CARRO POR ASSINATURA', 'ts ta') + IL.fabrica(130, 100) + T(190, 196, 'Montadora', 'tc ts') + IL.pessoa(640, 172, 1.4) + T(640, 196, 'Consumidor final', 'tc ts') + IL.celular(690, 100, 30, 56, 'z') + T(705, 90, 'app', 'tc ts') +
         P('M260 120Q440 40 610 120', 'l fluxo') + '<g>' + IL.carro(0, 0, .9) + '<animateMotion dur="4s" repeatCount="indefinite" path="M260 110Q440 30 610 110"/></g>' +
-        P('M610 210Q440 290 260 210', 'l la lg') + [0, 1, 2, 3, 4, 5].map(function (i) { return '<g>' + IL.moeda(0, 0, 9) + '<animateMotion dur="6s" begin="' + i + 's" repeatCount="indefinite" path="M610 210Q440 290 260 210"/></g>'; }).join('') +
+        P('M610 210Q440 290 260 210', 'l la lg') + [0, 1, 2, 3, 4, 5].map(function (i) { return '<g opacity="0">' + IL.moeda(0, 0, 9) + '<animateMotion dur="6s" begin="' + i + 's" repeatCount="indefinite" path="M610 210Q440 290 260 210"/><set attributeName="opacity" to="1" begin="' + i + 's"/></g>'; }).join('') +
         T(436, 296, 'conexão direta: o dinheiro vem parcelado, todo mês, junto com dados de uso', 'tc ts'), ' class="fx-lane" data-lane="ass" style="display:none"');
       return svg('0 0 760 310', trad + ass, 'Fluxo do carro e do dinheiro no modelo tradicional e na assinatura');
     }
