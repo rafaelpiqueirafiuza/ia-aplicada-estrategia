@@ -874,6 +874,11 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .bc-pdfpalco iframe { width: 100%; height: 100%; border: 0; background: #fff; }
 @media (max-width: 900px) { .bc-escolha { grid-template-columns: 1fr; } .bc-pdfpalco { height: 58vh; } }
 @media (prefers-reduced-motion: reduce) { .bc-barra { animation: none; } }
+/* Perguntas dos Business Cases: enunciado + 5 ou 6 perguntas longas cabem sem rolar na projeção */
+.uc-prg:has(.bc-sub) { grid-template-columns: minmax(0, 1.7fr) minmax(0, .5fr); }
+.uc-prg:has(.bc-sub) .uc-pergs { max-width: none; gap: 8px; }
+.uc-prg:has(.bc-sub) .uc-q { padding: 8px 18px; }
+.uc-prg:has(.bc-sub) .uc-q p { font-size: clamp(15px, 1.45vw, 21px); }
 
 /* IA do zero: brinquedos e demonstrações ao vivo */
 .i0-trilha, .i0-termo, .i0-nin, .i0-jogo, .i0-tok, .i0-cx, .i0-vivo, .i0-mp, .i0-chat, .i0-mod, .i0-du, .i0-vb, .i0-nao, .i0-vibevivo, .i0-cola, .i0-fim2 { flex-shrink: 0; }
@@ -4900,6 +4905,33 @@ var UCIL = (function () {
       '<rect class="il-linha il-acc-l" x="202" y="82" width="16" height="16" rx="3" stroke-dasharray="3 3"/><text class="il-txt il-sm" x="210" y="68" text-anchor="middle">falta</text>' +
       '<rect class="il-fundo il-b" x="184" y="112" width="36" height="18" rx="9"/><text class="il-txt il-sm" x="202" y="125" text-anchor="middle">vence</text>' +
       '<text class="il-txt il-sm" x="120" y="166" text-anchor="middle">falta aqui, sobra ali</text>');
+    /* Klarna: conversas entrando no assistente de IA e uma pessoa que volta a aparecer do outro lado */
+    o.klarna = svg(
+      [0, 1, 2].map(function (i) { var y = 30 + i * 42; return '<g class="fl" style="animation-delay:' + (-i * 1) + 's"><rect class="il-fundo il-b" x="10" y="' + y + '" width="64" height="26" rx="13"/><path class="il-linha" d="M23,' + (y + 13) + ' h38" stroke-dasharray="4 5"/></g><path class="il-linha bc-fluxo" d="M76,' + (y + 13) + ' C100,' + (y + 13) + ' 104,85 122,85"/>'; }).join('') +
+      '<g class="pl"><circle class="il-acc" cx="146" cy="85" r="25"/><rect class="il-fundo" x="133" y="76" width="26" height="18" rx="6"/><circle cx="141" cy="85" r="2.8" fill="var(--vermelho)"/><circle cx="151" cy="85" r="2.8" fill="var(--vermelho)"/><path class="il-linha" d="M146,60 v-8"/><circle class="il-acc" cx="146" cy="50" r="3"/></g>' +
+      '<path class="il-linha il-acc-l bc-fluxo" d="M172,85 H192"/>' +
+      '<g class="bc-bob"><circle class="il-fundo il-b" cx="212" cy="70" r="10"/><path class="il-fundo il-b" d="M196,106 a16,16 0 0 1 32,0 z"/></g>' +
+      '<text class="il-txt il-sm" x="120" y="166" text-anchor="middle">IA no volume, pessoa quando precisa</text>');
+    /* McDonald's: carro no drive-thru, alto-falante com ondas de voz e a comanda enchendo de itens errados */
+    var cmd = ['1 lanche', '1 sorvete', '+ bacon', '+ nuggets', '+ nuggets', '+ nuggets'];
+    o.mcd = svg(
+      '<path class="il-linha" d="M6,152 H234"/>' +
+      '<path class="il-fundo il-b" d="M10,144 v-18 l14,-17 h34 l14,17 h10 v18 z"/><path class="il-linha" d="M30,109 v17 M50,109 v17"/><circle class="il-fundo il-b" cx="28" cy="146" r="7"/><circle class="il-fundo il-b" cx="70" cy="146" r="7"/>' +
+      [0, 1, 2].map(function (i) { return '<path class="il-linha il-acc-l fl" style="animation-delay:' + (-i * .5) + 's" d="M' + (98 - i * 7) + ',' + (84 - i * 5) + ' q-9,' + (14 + i * 5) + ' 0,' + (28 + i * 10) + '"/>'; }).join('') +
+      '<rect class="il-fundo il-b" x="106" y="104" width="14" height="48" rx="3"/><rect class="il-acc" x="100" y="78" width="26" height="34" rx="6"/><path d="M106,88 h14 M106,95 h14 M106,102 h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/>' +
+      '<rect class="il-fundo il-b" x="146" y="14" width="84" height="132" rx="6"/><text class="il-txt il-sm" x="188" y="32" text-anchor="middle">pedido</text><path class="il-linha" d="M154,38 H222" stroke-dasharray="2 4"/>' +
+      cmd.map(function (t, i) { var ini = (i / cmd.length).toFixed(2), err = i >= 2; return '<text class="il-txt il-sm' + (err ? '" style="fill:var(--vermelho)' : '') + '" x="156" y="' + (56 + i * 16) + '" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;' + ini + ';' + Math.min(.95, +ini + .04).toFixed(2) + ';.96;1" dur="7s" repeatCount="indefinite"/>' + t + '</text>'; }).join('') +
+      '<text class="il-txt il-sm" x="120" y="172" text-anchor="middle">o pedido ouvido errado</text>');
+    /* Zillow: preço previsto subindo, preço real desacelerando, e as casas compradas no meio do caminho */
+    var prev = 'M20,140 C70,124 110,92 150,64 S206,22 224,14', real = 'M20,140 C70,124 110,94 150,82 S206,78 224,80';
+    o.zillow = svg(
+      '<path class="il-linha" d="M20,18 V146 H226"/>' +
+      '<path class="il-linha il-acc-l" d="' + prev + '" stroke-dasharray="6 6"/><path class="il-linha lg" style="stroke-width:3" d="' + real + '"/>' +
+      '<path class="il-linha il-acc-l bc-fluxo" d="M196,30 V78"/>' +
+      [[96, 104], [132, 84], [168, 76]].map(function (p, i) { return '<g class="bc-bob" style="animation-delay:' + (-i * .6) + 's"><path class="il-acc" d="M' + (p[0] - 9) + ',' + (p[1] - 6) + ' l9,-9 l9,9 v10 h-18 z"/></g>'; }).join('') +
+      '<g><circle class="il-acc" r="5"/><animateMotion dur="6s" repeatCount="indefinite" path="' + real + '"/></g>' +
+      '<text class="il-txt il-sm" x="150" y="40" text-anchor="end" style="fill:var(--vermelho)">previsto</text><text class="il-txt il-sm" x="222" y="100" text-anchor="end">vendido</text>' +
+      '<text class="il-txt il-sm" x="120" y="170" text-anchor="middle">comprou pelo previsto, vendeu pelo real</text>');
     return o;
   })();
 
@@ -4987,11 +5019,85 @@ var UCIL = (function () {
       perguntas: ['Que combinação de opções o grupo levaria ao Rogério, e o que ficaria como está?', 'Aprovada a proposta, qual seria o primeiro passo do projeto? Por que esse e não outro?', 'Quais cuidados o projeto precisa tomar? Pense nos dados que a empresa tem e nos que ela não tem.',
         'Que ações a empresa deveria fazer com a área comercial e com as redes de supermercado para a mudança funcionar? Quem precisa estar convencido?', 'Em quais itens a previsão com IA ajuda e em quais não ajuda? Por quê?', 'O que o Rogério acompanharia mês a mês, e que resultado em 6 meses o faria mudar de rota?'],
       chunks: [2, 2],
-      fonte: 'Caso fictício criado para a disciplina.' }
+      fonte: 'Caso fictício criado para a disciplina.' },
+
+    /* Três casos reais em que a IA não entregou o esperado (pedido do Rafael em 14/11/2026) */
+    { id: 'klarna', nome: 'Klarna e o assistente de IA', real: true, tipo: 'Caso real', curto: 'A IA fazia o trabalho de 700 atendentes. Depois, a qualidade caiu.',
+      tema: 'IA no atendimento ao cliente, custo e qualidade',
+      situacao: 'É maio de 2025. Durante mais de um ano, a Klarna, empresa sueca de pagamentos, divulgou que seu assistente de IA fazia o trabalho de 700 atendentes. Agora o próprio presidente, Sebastian Siemiatkowski, diz à Bloomberg que o peso dado ao custo levou a um atendimento de qualidade menor, e anuncia que a empresa vai investir de novo em atendimento feito por pessoas. A IA continua. O grupo faz o papel da equipe que vai redesenhar o atendimento: o que fica com a IA, o que volta para pessoas e como saber se o novo desenho funciona.',
+      aviso: 'Este case reconstrói uma situação a partir de fontes públicas. Os números do assistente vêm da própria Klarna e não foram verificados por fonte independente. O momento da decisão é um recorte para a atividade. Não há cenas nem falas inventadas.',
+      contexto: [
+        [['O negócio', 'A Klarna vende no modelo "compre agora, pague depois": o cliente parcela a compra numa loja parceira e a Klarna paga a loja. Em 2024, teve receita de US$ 2,8 bilhões e lucro de US$ 21 milhões, depois de um prejuízo de cerca de US$ 240 milhões em 2023.'],
+         ['A aposta', 'No fim de 2023, a empresa parou de contratar. Com a saída natural de funcionários, o quadro caiu de 4.352 pessoas em 2023 para 3.422 em 2024, segundo o pedido de abertura de capital. Em 2025, o presidente disse que a IA já podia fazer todos os trabalhos humanos.'],
+         ['O assistente', 'Feito com a OpenAI, entrou no ar no início de 2024. No primeiro mês, teve 2,3 milhões de conversas, dois terços dos chats, e fez o trabalho de 700 atendentes, que eram terceirizados. O tempo para resolver um caso caiu de 11 para menos de 2 minutos, segundo a empresa.']],
+        [['Os sinais', 'Um engenheiro conhecido no setor testou o assistente e o achou limitado: repetia trechos da documentação e passava o cliente rápido para um humano. Por outro lado, não inventava respostas. A Klarna não publicou notas de satisfação depois do primeiro mês.'],
+         ['A virada', 'Em maio de 2025, o presidente disse que o custo pesou demais e que o resultado foi uma qualidade menor. Prometeu que o cliente sempre poderá falar com uma pessoa e começou a testar atendentes autônomos, num modelo que chamou de "tipo Uber".'],
+         ['O que as fontes não contam', 'Em que tipo de atendimento a qualidade caiu, a satisfação depois de 2024, o custo por atendimento e os resultados do teste com autônomos. Um porta-voz disse que a empresa continua "IA em primeiro lugar".']]
+      ],
+      numeros: { titulo: 'O que a Klarna declarou', nota: 'Os números do assistente nascem na Klarna e não foram verificados por fonte independente. O presidente deu contagens diferentes do quadro de funcionários em entrevistas diferentes.',
+        itens: [[{ valor: 2.3, dec: 1, suf: ' mi' }, 'conversas no primeiro mês, dois terços dos chats de atendimento'], [{ valor: 700 }, 'atendentes em tempo integral: o trabalho que a IA passou a fazer'], [{ txt: '11 → 2 min' }, 'tempo para resolver um caso, antes e depois do assistente'],
+          [{ valor: 40, pre: 'US$ ', suf: ' mi' }, 'de melhora no lucro de 2024 (estimativa da própria Klarna)'], [{ valor: 3422 }, 'funcionários no fim de 2024, contra 5.527 em 2022 (pedido de abertura de capital)'], [{ valor: 21, pre: 'US$ ', suf: ' mi' }, 'de lucro em 2024, com receita de US$ 2,8 bilhões']] },
+      tempo: { titulo: 'Da aposta ao ajuste', eventos: [['Fim de 2023', 'A Klarna para de contratar'], ['Início de 2024', 'O assistente de IA, feito com a OpenAI, entra no ar'], ['27/02/2024', 'Números do primeiro mês: 2,3 milhões de conversas e o trabalho de 700 atendentes'],
+          ['Fevereiro de 2025', 'O presidente diz que a IA já pode fazer todos os trabalhos humanos'], ['Março de 2025', 'Pedido de abertura de capital: 3.422 funcionários e lucro de US$ 21 milhões em 2024'], ['Maio de 2025', 'À Bloomberg, o presidente admite qualidade menor e volta a investir em atendimento humano'], ['Junho de 2025', 'Diz que o atendimento humano vai ser "uma coisa VIP"']] },
+      tarefa: 'A IA continua, e o cliente sempre poderá falar com uma pessoa. Falta o desenho: o que a IA resolve sozinha, quando uma pessoa assume e como medir a qualidade.',
+      perguntas: ['Se o grupo fosse redesenhar o atendimento da Klarna em maio de 2025, qual seria o primeiro passo? Por que esse e não outro?', 'Que conversas o grupo deixaria só com a IA e quais passariam para uma pessoa? Como o cliente chegaria a um atendente humano quando precisasse?',
+        'Quais cuidados a Klarna deveria ter tomado em 2024, antes de anunciar que a IA fazia o trabalho de 700 atendentes? O que deveria medir além do tempo de resposta e do custo?', 'Que ações a empresa precisa fazer com as pessoas? Pense nos atendentes que vão chegar no modelo "tipo Uber" e nos funcionários que ouviram o presidente dizer que a IA faria o trabalho deles.',
+        'Como a Klarna saberia, seis meses depois, se o novo desenho deu certo? Que resultado faria a empresa mudar de rota outra vez?'],
+      chunks: [3, 3],
+      fonte: 'Fontes: Klarna, comunicado de 27/02/2024. Fortune, 03/02/2025 e 09/05/2025. TechCrunch, 14/03/2025 e 04/06/2025. CX Network, 17/03/2025. CX Today, 12/05/2025.' },
+
+    { id: 'mcd', nome: "McDonald's e a IA no drive-thru", real: true, tipo: 'Caso real', curto: 'Três anos de teste, pedidos errados e o sistema desligado.',
+      tema: 'IA de voz no atendimento, operação e adoção pelas pessoas',
+      situacao: "É junho de 2024. Depois de cerca de três anos de testes, dois anos e meio deles em parceria com a IBM, o McDonald's avisa os franqueados dos Estados Unidos que vai desligar, até 26 de julho, o sistema de IA que anotava os pedidos por voz no drive-thru de pouco mais de 100 restaurantes. A empresa diz que o pedido por voz ainda fará parte do futuro e que vai escolher uma nova solução até o fim do ano. O grupo faz o papel da equipe que vai preparar essa nova tentativa.",
+      aviso: 'Este case reconstrói uma situação a partir de fontes públicas. Parte das informações sobre os problemas vem de fontes anônimas ouvidas pela imprensa e de relatórios do banco BTIG. O momento da decisão é um recorte para a atividade. Não há cenas nem falas inventadas.',
+      contexto: [
+        [['O negócio e o problema', "No drive-thru, o cliente pede por um alto-falante e um funcionário anota. O McDonald's queria que uma IA anotasse os pedidos falados, para simplificar o trabalho e acelerar o atendimento. A empresa tem cerca de 14 mil restaurantes nos Estados Unidos."],
+         ['Como o sistema nasceu', 'Em 2019, a empresa comprou a Apprente, startup de IA de voz. Em 2021, testou em 10 lojas de Chicago: cerca de 85% dos pedidos saíam certos, e 1 em cada 5 ainda precisava de uma pessoa. Em outubro de 2021, vendeu essa área à IBM e as duas viraram parceiras.'],
+         ['A meta', 'Passar de 95% de pedidos certos antes de levar o sistema a mais lojas. O presidente avisou em 2021: ir de 10 para 14 mil restaurantes seria um grande salto e levaria mais de um ou dois anos.']],
+        [['O que deu errado', 'Segundo o banco BTIG, a precisão ficou entre 80% e 85% até 2024, com custo de operação alto. Fontes ouvidas pela CNBC dizem que o sistema tinha dificuldade com sotaques e dialetos. Franqueados reclamavam de atualizações raras.'],
+         ['Nas redes sociais', 'Vídeos no TikTok mostraram mais de cem porções de nuggets num só pedido, sorvete com bacon, sorvete com ketchup e manteiga e pedidos captados do carro ao lado.'],
+         ['O fim e o que vem', 'O sistema foi desligado até 26 de julho de 2024. A empresa disse que o pedido por voz fará parte do futuro e que escolheria uma nova solução até o fim do ano. Desde dezembro de 2023, tem parceria com o Google Cloud. Concorrentes como Wendy\'s e White Castle seguiam testando.']]
+      ],
+      numeros: { titulo: 'A precisão em números', nota: "Os números de 2021 são do McDonald's. Os de 2022 e 2024 são do banco BTIG, e a empresa não quis comentar a precisão em 2024.",
+        itens: [[{ txt: '~100' }, 'restaurantes no teste com a IBM, nos Estados Unidos'], [{ valor: 85, suf: '%' }, "de pedidos certos no teste de Chicago, em 2021 (McDonald's)"], [{ txt: '1 em 5' }, 'pedidos que ainda precisavam de uma pessoa, em 2021'],
+          [{ txt: '80 a 85%' }, 'de pedidos certos em 2024, segundo o banco BTIG'], [{ valor: 95, suf: '%' }, 'meta de precisão para levar o sistema a mais lojas'], [{ valor: 14000 }, 'restaurantes nos EUA: o tamanho do salto, segundo o presidente em 2021']] },
+      tempo: { titulo: 'Do teste ao desligamento', eventos: [['2019', 'Compra da Apprente, startup de IA para pedidos por voz'], ['Junho de 2021', 'Teste em 10 lojas de Chicago, com cerca de 85% de precisão'], ['Outubro de 2021', 'A área é vendida à IBM, e começa a parceria'], ['2023', 'Vídeos de pedidos errados circulam no TikTok'],
+          ['Dezembro de 2023', 'Parceria de vários anos com o Google Cloud'], ['Abril de 2024', 'Demonstração na convenção de Barcelona decepciona, segundo o BTIG'], ['Junho de 2024', 'Comunicado aos franqueados: o sistema será desligado'], ['Até 26/07/2024', 'Sistema desligado em todas as lojas do teste']] },
+      tarefa: "O primeiro teste não chegou à precisão exigida, irritou franqueados e virou piada nas redes. A empresa vai escolher uma nova solução até o fim do ano. O grupo propõe como conduzir a nova tentativa.",
+      perguntas: ["O McDonald's vai tentar de novo o pedido por voz com IA. Qual seria o primeiro passo do grupo? Por que esse e não outro?", 'Quais cuidados a nova tentativa precisa tomar para não repetir o teste com a IBM? Pense no cliente na fila, no funcionário da loja e na imagem da marca nas redes sociais.',
+        'Que ações a empresa deveria fazer com os franqueados e com os funcionários das lojas para que eles confiem no sistema? Quem precisa convencer quem?', 'Em que momentos uma pessoa deve assumir o pedido no lugar da IA? Como o funcionário percebe isso a tempo, sem atrasar a fila?',
+        'Que resultado o grupo exigiria antes de levar o sistema a mais lojas? Além da precisão de 95%, o que acompanharia?'],
+      chunks: [3, 3],
+      fonte: "Fontes: CNBC, 02/06/2021 e 17/06/2024. Nation's Restaurant News, 17/06/2024. Associated Press, 18/06/2024. Al Jazeera, 19/06/2024. Food Ingredients First, 20/06/2024." },
+
+    { id: 'zillow', nome: 'Zillow Offers', real: true, tipo: 'Caso real', curto: 'Um algoritmo para comprar casas e mais de US$ 500 milhões de perdas.',
+      tema: 'Previsão com IA ligada a capital e operação',
+      situacao: 'É 2 de novembro de 2021. O conselho da Zillow, um dos principais portais de imóveis dos Estados Unidos, decide encerrar o Zillow Offers, o negócio em que a empresa comprava casas, reformava e revendia, usando algoritmos para estimar quanto pagar. A empresa reconhece uma perda de US$ 304 milhões no valor do estoque e espera perder mais US$ 240 a 265 milhões. Cerca de 25% dos funcionários serão desligados. O grupo faz o papel da equipe que revisa o caso e propõe como um negócio desse tipo deveria ter sido conduzido.',
+      aviso: 'Este case reconstrói uma situação a partir de fontes públicas. A maior parte dos números vem dos documentos que a Zillow entregou à SEC, a comissão que regula o mercado de capitais americano. A empresa não descreveu em detalhe o modelo de preço. Não há cenas nem falas inventadas.',
+      contexto: [
+        [['O negócio', 'A Zillow é um portal de imóveis com mais de 220 milhões de visitantes por mês. O lucro vinha principalmente da publicidade para corretores. O site ficou conhecido pelo Zestimate, a estimativa de preço que ele mostra para milhões de casas.'],
+         ['A aposta', 'Em 2018, a Zillow passou a comprar, reformar e revender casas com o próprio dinheiro, como já faziam Opendoor e Offerpad. Segundo o Wall Street Journal, a oferta saía do algoritmo do Zestimate. A empresa chegou a dizer que o negócio poderia gerar US$ 20 bilhões por ano.'],
+         ['A lógica', 'Ganhar pouco por casa e muito no volume. Para isso, era preciso prever o preço de revenda de três a seis meses à frente. A promessa ao mercado era ficar a no máximo 2 pontos percentuais do ponto de equilíbrio em cada casa.']],
+        [['O mercado muda de ritmo', 'A alta anual dos preços caiu de 23,6% em maio de 2021 para 13,3% em setembro. Enquanto concorrentes reduziam as compras em Phoenix, a Zillow acelerou e pagou, em média, US$ 65 mil acima do preço mediano, segundo análise citada pelo Wall Street Journal.'],
+         ['O estoque trava', 'No 3º trimestre, a Zillow comprou 9.680 casas e vendeu 3.032. Faltavam mão de obra e materiais para reformar. Em outubro, 66% das casas anunciadas estavam abaixo do preço de compra, segundo o banco KeyBanc.'],
+         ['O fim', 'Em 18 de outubro, a empresa suspendeu novas compras. Em 2 de novembro, encerrou o negócio. O presidente, Rich Barton, disse que a imprevisibilidade dos preços superou em muito o que a empresa previa. A Zillow não disse que "o algoritmo errou".']]
+      ],
+      numeros: { titulo: 'O que a Zillow declarou', nota: 'Todos os números foram declarados pela Zillow em 02/11/2021, na carta aos acionistas e no formulário 8-K entregues à SEC.',
+        itens: [[{ valor: 9680 }, 'casas compradas no 3º trimestre de 2021'], [{ valor: 3032 }, 'casas vendidas no mesmo trimestre'], [{ valor: 304, pre: 'US$ ', suf: ' mi' }, 'de baixa no valor das casas em estoque'],
+          [{ txt: 'US$ 240 a 265 mi' }, 'de perdas esperadas no 4º trimestre'], [{ valor: 25, suf: '%' }, 'dos funcionários desligados ao longo de vários trimestres'], [{ valor: 10, suf: '%' }, 'dos vendedores sérios que pediam uma oferta viravam compra']] },
+      tempo: { titulo: 'Do teste ao encerramento', eventos: [['Maio de 2017', 'Teste de ofertas instantâneas em Las Vegas e Orlando'], ['Abril de 2018', 'A Zillow anuncia que vai comprar e vender casas em Phoenix e Las Vegas'], ['Maio de 2021', 'Preço mediano das casas sobe 23,6% em 12 meses'],
+          ['Meio de 2021', 'Concorrentes reduzem compras em Phoenix. A Zillow acelera'], ['Setembro de 2021', 'A alta dos preços desacelera para 13,3%'], ['18/10/2021', 'Suspensão de novos contratos de compra até o fim do ano'], ['02/11/2021', 'Encerramento do Zillow Offers e corte de cerca de 25% dos funcionários']] },
+      tarefa: 'A Zillow tinha dados, tecnologia e marca forte, e o negócio terminou em prejuízo. O grupo volta ao começo e propõe como conduzir um negócio que depende de prever preços.',
+      perguntas: ['Se o grupo estivesse na Zillow em 2018, começando o Zillow Offers, qual seria o primeiro passo antes de deixar um modelo de preços definir quanto pagar pelas casas? Por que esse e não outro?', 'Quais cuidados faltaram? Pense em limites de compra, no tempo que a casa fica parada na reforma e no que acontece quando o mercado muda de ritmo.',
+        'Em que pontos uma pessoa deveria decidir no lugar do modelo, por exemplo quantas casas comprar por mês em cada cidade ou quando parar de comprar? Quem na empresa teria essa autoridade?', 'Que ações a Zillow precisava fazer com as equipes de compra, de reforma e de venda para que elas avisassem cedo quando a previsão e a realidade começassem a se afastar?',
+        'O que a Zillow deveria acompanhar mês a mês para perceber o problema antes do prejuízo? Que sinal faria o grupo frear as compras?'],
+      chunks: [3, 3],
+      fonte: 'Fontes: Zillow, carta aos acionistas e formulário 8-K de 02/11/2021 (SEC). The Wall Street Journal, 02/11/2021, via Fox Business. Levelset, 25/10/2021. Zillow, comunicado de 12/04/2018.' }
   ];
   var BCFICHA = [['A decisão do grupo', 'O que o grupo recomenda, em uma ou duas linhas.'], ['Três razões', 'Por que essa decisão e não outra.'], ['O primeiro passo', 'Por onde o projeto começa.'], ['Os principais cuidados', 'O que pode dar errado e como evitar.'],
     ['O que faríamos com as pessoas', 'Ações para a mudança funcionar.'], ['Onde a IA entra e onde a pessoa decide', 'Os dois lados da mesma resposta.'], ['O que acompanharíamos', 'Como saber se deu certo.']];
-  var BCPDF = { ups: ['business-cases/BC1_UPS_e_o_ORION.pdf', 'BC1 UPS e o ORION.pdf'], meridiano: ['business-cases/BC2_Meridiano_Seguros.pdf', 'BC2 Meridiano Seguros.pdf'], graos: ['business-cases/BC3_Graos_do_Cerrado.pdf', 'BC3 Graos do Cerrado.pdf'] };
+  var BCPDF = { ups: ['business-cases/BC1_UPS_e_o_ORION.pdf', 'BC1 UPS e o ORION.pdf'], meridiano: ['business-cases/BC2_Meridiano_Seguros.pdf', 'BC2 Meridiano Seguros.pdf'], graos: ['business-cases/BC3_Graos_do_Cerrado.pdf', 'BC3 Graos do Cerrado.pdf'],
+    klarna: ['business-cases/BC4_Klarna.pdf', 'BC4 Klarna.pdf'], mcd: ['business-cases/BC5_McDonalds.pdf', 'BC5 McDonalds.pdf'], zillow: ['business-cases/BC6_Zillow.pdf', 'BC6 Zillow.pdf'] };
   var BCICO = {
     pdf: '<svg class="bc-ico" viewBox="0 0 64 64" aria-hidden="true"><path class="il-fundo il-b" d="M14,6 H38 L52,20 V58 H14 Z"/><path class="il-linha" d="M38,6 V20 H52"/><path class="il-linha" d="M22,30 H44 M22,37 H44 M22,44 H36"/><g class="bc-bob"><circle class="il-acc" cx="46" cy="50" r="10"/><path d="M46,44 V54 M41.5,50 L46,54.5 L50.5,50" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>',
     vis: '<svg class="bc-ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="il-fundo il-b" x="6" y="10" width="52" height="44" rx="8"/><rect class="il-acc bc-barra" style="--d:0s" x="14" y="34" width="8" height="14" rx="2"/><rect class="il-acc bc-barra" style="--d:.3s" x="27" y="26" width="8" height="22" rx="2"/><rect class="il-acc bc-barra" style="--d:.6s" x="40" y="18" width="8" height="30" rx="2"/></svg>' };
