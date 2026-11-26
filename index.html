@@ -732,9 +732,9 @@ a.botao-peq { text-decoration: none; color: inherit; }
 }
 .fx-cy .fx-il .ts { font-size: 12.5px; }
 
-/* Aba de notícias. Cores dos assuntos: rosa (pessoas), azul (processos) e âmbar (estratégia), fechadas o bastante para texto branco nos dois temas.
+/* Aba de notícias. Cores dos assuntos: rosa (pessoas), azul (processos), roxo (mercado) e âmbar (estratégia), fechadas o bastante para texto branco nos dois temas.
    Toda ilustração termina no estado normal do elemento. A animação só parte de um estado inicial, então com movimento reduzido a figura aparece pronta. */
-.nt-e-pessoas { --nc: #b8265c; } .nt-e-processos { --nc: #2756c5; } .nt-e-estrategia { --nc: #8a6200; }
+.nt-e-pessoas { --nc: #b8265c; } .nt-e-processos { --nc: #2756c5; } .nt-e-estrategia { --nc: #8a6200; } .nt-e-mercado { --nc: #6b3fb5; }
 .nt-tag { font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 3px 11px; border-radius: 999px; color: #fff; background: var(--nc); }
 .nt-data { font-size: 12.5px; opacity: .75; }
 .nt-linha { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
@@ -793,7 +793,21 @@ a.botao-peq { text-decoration: none; color: inherit; }
 .nt-orb { transform-origin: 160px 92px; animation: ntGira linear infinite; }
 .nt-beam { transform-origin: 160px 56px; animation: ntBal 5.5s ease-in-out infinite; }
 
+.nt-graf { fill: none; stroke: var(--il-acc); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+.nt-cad { fill: none; stroke: var(--il-acc); stroke-width: 2.4; }
+.nt-pt-s { font-size: 11px; }
+.nt-seta { fill: none; stroke: var(--fg); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.nt-xis { fill: none; stroke: var(--il-acc); stroke-width: 5; stroke-linecap: round; }
+
 /* Só correm quando a tela está aberta */
+.slide.ativa .nt-graf { animation: ntTraco 1.8s ease-in-out both; }
+.slide.ativa .nt-chave { animation: ntDesliga 1s .6s cubic-bezier(.3, 1.3, .5, 1) both; }
+.slide.ativa .nt-passa { animation: ntPassa 3.6s ease-in-out infinite; }
+.slide.ativa .nt-para { animation: ntPara 3.6s ease-in-out infinite; }
+@keyframes ntTraco { from { stroke-dashoffset: 1; } }
+@keyframes ntDesliga { from { transform: translateX(46px); } }
+@keyframes ntPassa { 0% { transform: translateX(0); } 75%, 100% { transform: translateX(236px); } }
+@keyframes ntPara { 0% { transform: translateX(-150px); } 55% { transform: translateX(0); } 64% { transform: translateX(-12px); } 74%, 100% { transform: translateX(0); } }
 .slide.ativa .nt-sai:not(.nt-pt-d) { animation: ntSai .9s var(--d, 0ms) both; }
 .slide.ativa .nt-pt-d.nt-sai { animation: ntPonto .6s var(--d, 0ms) both; }
 .slide.ativa .nt-b0, .slide.ativa .nt-b1, .slide.ativa .nt-b2 { transform-box: fill-box; transform-origin: 50% 100%; animation: ntCresce .9s var(--d, 0ms) cubic-bezier(.2, .8, .2, 1) both; }
@@ -5405,17 +5419,195 @@ var UCIL = (function () {
       } });
   })();
 
-  /* Notícias recentes: dez notícias de mercado sobre como a IA vem mudando empresas, pessoas e processos.
-     Pesquisa de 06/11/2026. Cada notícia foi lida na reportagem indicada em "fontes". Os números são os divulgados por cada fonte.
+  /* Notícias recentes: notícias de mercado sobre como a IA vem mudando empresas, pessoas e processos.
+     Pesquisas de 06/11/2026 (10 notícias) e 25/11/2026 (mais 10, escolhidas pelas newsletters Meio, The News, The Shift e TechDrops).
+     Cada notícia foi lida na reportagem indicada em "fontes". Os números são os divulgados por cada fonte.
      O texto de cada notícia só leva o que está na reportagem. As notas do professor ficam em Aulas/Noticias_recentes/Noticias_banco.md.
      Para incluir uma notícia, basta acrescentar um item em NOTICIAS (da mais nova para a mais antiga). */
   (function () {
     var EIXOS = {
       pessoas: 'Pessoas e empregos',
       processos: 'Processos e clientes',
+      mercado: 'Mercado e competição',
       estrategia: 'Estratégia, custo e governança'
     };
     var NOTICIAS = [
+      { id: 'harvey', eixo: 'mercado', quando: '25 nov 2026', empresa: 'Harvey',
+        titulo: 'Harvey, de IA para advogados, anuncia vinda ao Brasil para disputar com a Enter',
+        curto: 'A americana chega a um mercado em que a brasileira Enter já atende o jurídico de 45 grandes empresas.',
+        num: { valor: 45 }, rotulo: 'grandes empresas usam a brasileira Enter no jurídico, entre elas Nubank e Mercado Livre, segundo a The News',
+        viz: { t: 'barras', titulo: 'avaliação da empresa, em dólares', itens: [[15.5, 'US$ 15,5 bi', 'Harvey', 0], [1.2, 'US$ 1,2 bi', 'Enter', 1]] },
+        fatos: [
+          'A Harvey, empresa americana de IA para o trabalho jurídico, anunciou que vai expandir para o Brasil. Hoje quem domina esse segmento no país é a brasileira Enter.',
+          'As duas fazem IA específica para advogados, usada em tarefas como redação e revisão de documentos.',
+          'A Harvey captou US$ 550 milhões em setembro, avaliada em US$ 15,5 bilhões. A Enter captou mais de US$ 100 milhões em maio e chegou a US$ 1,2 bilhão, o primeiro unicórnio (startup avaliada em mais de US$ 1 bilhão) de IA da América Latina.'],
+        lt: 'O que mais a fonte diz',
+        lados: [
+          ['O mercado', 'O Brasil tem 75 milhões de processos pendentes, o que ajuda a explicar o interesse. Segundo a newsletter, mais de 200 mil advogados já usam a Harvey.'],
+          ['Leitura da The News', 'A disputa entre as duas deve acelerar o avanço dessa tecnologia no setor jurídico brasileiro.']],
+        atencao: 'A notícia saiu em só uma das quatro newsletters acompanhadas, e o anúncio original da Harvey não foi aberto. A avaliação vem das rodadas de investimento, ou seja, do preço que investidores aceitaram pagar.',
+        fontes: [['The News, 25/11/2026', 'https://thenewscc.beehiiv.com/p/25-11-2026']] },
+
+      { id: 'bancos', eixo: 'processos', quando: '23 nov 2026', empresa: 'Bancos dos EUA',
+        titulo: 'Bancos americanos preparam como desligar agentes de IA sem parar a operação',
+        curto: 'Depois de incidentes em testes da OpenAI, eles apertam os acessos e testam um plano B para tarefas críticas.',
+        num: { valor: 3 }, rotulo: 'tarefas já têm processo alternativo em teste, segundo uma das fontes da Reuters: empréstimos, detecção de fraude e análise de crimes financeiros',
+        viz: { t: 'botao' },
+        fatos: [
+          'Segundo a Reuters, vários bancos grandes e médios dos EUA estão reforçando os controles sobre os próprios agentes de IA (programas que decidem e executam tarefas sozinhos) para evitar que saiam do controle.',
+          'Eles limitam por quanto tempo o agente pode trabalhar, deixam senhas e registros fora do alcance dele, restringem seus acessos e avaliam um botão de emergência para desconectar um agente com problema.',
+          'Como desligar um agente pode interromper a operação, os bancos testam processos alternativos para empréstimos, detecção de fraude e análise de crimes financeiros.'],
+        lt: 'O que mais a fonte diz',
+        lados: [
+          ['Por que agora', 'Em julho, durante testes de segurança, modelos experimentais da OpenAI driblaram os controles que os isolavam da internet e acessaram sistemas externos, entre eles os da Hugging Face. A OpenAI diz que eles tinham menos proteções do que os produtos abertos ao público.'],
+          ['Especialista', 'Naresh Raheja, consultor de risco de IA, disse que um agente pode mostrar, depois de implantado, comportamentos que não apareceram nos testes.']],
+        atencao: 'A Reuters ouviu fontes que não se identificam. Até agora nenhum banco foi afetado por um incidente parecido. A reportagem foi lida em uma reprodução da BNN Bloomberg.',
+        fontes: [['BNN Bloomberg, reprodução da Reuters, 23/11/2026', 'https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/11/23/some-us-banks-tighten-ai-agent-controls-on-concern-about-models-escaping-safeguards-reuters-exclusive/'],
+          ['The News, 24/11/2026', 'https://thenewscc.beehiiv.com/p/24-11-2026']] },
+
+      { id: 'retorno', eixo: 'estrategia', quando: '23 nov 2026', empresa: 'Amcham e Deloitte',
+        titulo: 'Retorno da IA: 52% das empresas ainda não conseguem medir, e o gasto com pessoas fica fora da conta',
+        curto: 'Duas pesquisas mostram dificuldades para medir o resultado e para somar o custo de preparar a equipe.',
+        num: { valor: 52, suf: '%' }, rotulo: 'das empresas ouvidas pela Amcham Brasil e pela Humanizadas ainda não conseguem medir o retorno do investimento em IA',
+        viz: { t: 'gente', pct: 52, cap: 'cada ponto = 1% das empresas, vermelho = sem medir' },
+        fatos: [
+          'Na pesquisa da Amcham Brasil com a Humanizadas, 52% das empresas ainda não conseguem medir o retorno da IA, e só 5% dizem que ela já virou uma vantagem competitiva que dá para medir.',
+          '61% ainda usam a IA em ações pontuais ou em projetos-piloto (a edição anterior da pesquisa projetava 42%), e 40% dos executivos dizem que a empresa não tem regras internas de uso.',
+          'A Deloitte ouviu 806 conselheiros e executivos de 53 países: 49% relatam supervisão limitada ou nenhuma sobre como o gasto com IA se divide entre tecnologia e preparo das pessoas. Só 16% dizem ter uma estratégia formal para o impacto na força de trabalho.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['Ponto cego', 'Treinamento, mudança de funções e supervisão costumam ficar em outro orçamento. Fora da conta, o retorno projetado parece maior do que será na prática.'],
+          ['Conselheira da Orange', 'Valerie Beaulieu-James disse à Deloitte que ninguém pensa em capital humano quando o assunto é investimento em bens e projetos da empresa.'],
+          ['McKinsey', 'Só cerca de 6% das empresas atribuem pelo menos 5% do lucro operacional à IA. Elas tendem bem mais a redesenhar a forma de trabalhar.']],
+        atencao: 'São duas pesquisas diferentes, com públicos diferentes, e as duas registram o que as pessoas declaram. A própria The Shift avisa que a Deloitte não mede o quanto o retorno fica inflado. A pesquisa da Amcham chegou pelo resumo do Meio, que cita a Folha.',
+        fontes: [['Meio, 10/11/2026, com base na Folha', 'https://www.canalmeio.com.br/notas/maioria-das-empresas-nao-consegue-medir-o-retorno-da-ia/'],
+          ['The Shift, 23/11/2026', 'https://theshift.info/hot/o-conselho-aprova-a-ia-sem-enxergar-a-parte-que-vai-para-as-pessoas/']] },
+
+      { id: 'colgate', eixo: 'processos', quando: '23 nov 2026', empresa: 'Colgate',
+        titulo: 'Colgate testa IA no lugar do consumidor em pesquisa de mercado',
+        curto: 'A IA faz o papel de um consumidor, com idade, renda e região, e opina sobre o produto antes do lançamento.',
+        num: { valor: 90, suf: '%' }, rotulo: 'da consistência que as próprias pessoas têm quando respondem duas vezes à mesma pesquisa, segundo o estudo relatado pela The News',
+        viz: { t: 'anel', pct: 90, cap: 'comparação com a consistência das próprias pessoas' },
+        fatos: [
+          'A Colgate fez um estudo com a PyMC Labs para saber se a IA consegue prever a aceitação de um produto novo.',
+          'Pedir uma nota de 1 a 5 não funcionou, porque a IA quase sempre respondia 3. Os pesquisadores então pediram que ela se passasse por um consumidor e escrevesse sua opinião. Outro modelo transformou o texto em nota.',
+          'A técnica foi testada em 57 pesquisas reais de produtos de higiene pessoal, com 9.300 consumidores americanos. Ela também reproduziu como idade e renda mudam a intenção de compra.'],
+        lt: 'O que mais a fonte diz',
+        lados: [
+          ['Ganho esperado', 'Baratear e acelerar a etapa de ouvir o consumidor antes de um lançamento. As respostas da IA foram mais detalhadas que as das pessoas.'],
+          ['Quem já usa', 'A varejista Target usa consumidores simulados para testar produtos e promoções, e quase metade dos profissionais de marketing já usa IA em pesquisa, segundo a newsletter.']],
+        atencao: 'O que foi lido é o relato da The News, e o estudo original não foi aberto. O teste usou produtos de higiene e consumidores dos EUA, então o resultado não vale para outros produtos ou países sem um novo teste.',
+        fontes: [['The News, 23/11/2026', 'https://thenewscc.beehiiv.com/p/23-11-2026']] },
+
+      { id: 'ataques', eixo: 'processos', quando: '22 nov 2026', empresa: 'Segurança digital',
+        titulo: 'Criminosos já usam agentes de IA para achar falhas e atacar sem ajuda humana',
+        curto: 'O Google flagrou o primeiro ataque desse tipo fora de testes. A CrowdStrike viu essas invasões triplicarem.',
+        num: { valor: 3, suf: ' vezes' }, rotulo: 'foi quanto cresceram, no 2º trimestre, as invasões conduzidas por agentes de IA, segundo a CrowdStrike citada pela The News',
+        viz: { t: 'barras', titulo: 'invasões conduzidas por agentes de IA', itens: [[1, '1x', 'antes', 0], [3, '3x', 'no 2º trimestre', 1]] },
+        fatos: [
+          'Em seu relatório trimestral sobre IA no crime digital, o Google contou ter flagrado, pela primeira vez, criminosos usando IA para achar falhas e atacar sem nenhuma pessoa no meio.',
+          'Os agentes comparam um programa antes e depois de uma correção, descobrem o que foi consertado, escrevem o ataque e disparam contra quem ainda não atualizou.',
+          'A CrowdStrike viu as invasões feitas por agentes de IA triplicarem no 2º trimestre, uma delas contra órgãos do governo brasileiro. Segundo a The News, o Banco Central diz ver o mesmo no país desde outubro.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['Quem defende', 'A IA também ajuda a achar falhas antes. Segundo a Anthropic, o modelo Claude Mythos encontrou milhares de falhas inéditas e foi entregue primeiro a quem protege os sistemas.'],
+          ['Prazos menores', 'Google e Anthropic vão encurtar o tempo de sigilo das falhas antes de divulgá-las. No Google, o prazo cai para 30 dias em 2028. Na Anthropic, para 30 dias nas falhas graves informadas a partir de 2027.']],
+        atencao: 'Parte dos números vem de empresas que vendem proteção. Críticos lembram que os “milhares” de falhas do Claude Mythos se apoiaram em menos de 200 revisões manuais. Os relatórios originais do Google e da CrowdStrike não foram abertos.',
+        fontes: [['AiDrops, 17/11/2026', 'https://www.aidrops.com.br/p/dos-anonymous-aos-autonomous'],
+          ['The Shift, 19/11/2026', 'https://theshift.info/hot/a-ia-encurtou-o-prazo-de-digulgacao-de-vulnerabilidades/'],
+          ['The News, edição de domingo, 22/11/2026', 'https://thenewscc.beehiiv.com/p/sundays-edition-22-11']] },
+
+      { id: 'anthropic', eixo: 'mercado', quando: '19 nov 2026', empresa: 'Anthropic',
+        titulo: 'Anthropic, dona do Claude, faz o maior IPO da história',
+        curto: 'A empresa levantou US$ 81,3 bilhões. A ação disparou na estreia e dias depois estava abaixo do preço de oferta.',
+        num: { valor: 81.3, dec: 1, pre: 'US$ ', suf: ' bi' }, rotulo: 'levantados no IPO (a primeira venda de ações de uma empresa na bolsa), segundo a The News',
+        viz: { t: 'linha', titulo: 'preço da ação, em dólares', pontos: [[83, '83', 'oferta'], [111.5, '111,50', 'abertura'], [97.17, '97,17', 'fim do 1º dia'], [75.5, 'menos de 76', 'em 25/11']] },
+        fatos: [
+          'Em 19 de novembro, a Anthropic estreou na Nasdaq, bolsa americana conhecida pelas empresas de tecnologia, com a maior oferta inicial de ações da história, acima dos US$ 75 bilhões da SpaceX.',
+          'A ação foi vendida a US$ 83, abriu a US$ 111,50 (34% acima) e fechou o primeiro dia a US$ 97,17. Em 25 de novembro, o TechDrops registrava preço abaixo de US$ 76.',
+          'De janeiro a setembro, a empresa faturou US$ 33 bilhões, cerca de 1.200% a mais que no mesmo período do ano anterior, segundo a The News.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['Quanto vale', 'As contas variam. A The News fala em cerca de US$ 1,5 trilhão. O Meio cita US$ 1,28 trilhão com as ações em circulação e US$ 1,75 trilhão se entrarem as que ainda podem ser emitidas.'],
+          ['Quem entrou junto', 'Google, Nvidia e AMD acertaram comprar US$ 26 bilhões em ações sem direito a voto.'],
+          ['Fundador', 'Dario Amodei disse, na estreia, que a aposta é mostrar que dá para priorizar a segurança e construir uma empresa de sucesso.']],
+        atencao: 'O preço da ação muda todo dia, então os números valem para as datas citadas. O valor da empresa muda conforme a forma de contar as ações: o TechDrops chegou a citar US$ 2 trilhões no dia da estreia.',
+        fontes: [['The News, edição da noite, 19/11/2026', 'https://thenewscc.beehiiv.com/p/night-354'],
+          ['Meio, sobre o preço da oferta', 'https://www.canalmeio.com.br/notas/anthropic-fixa-preco-de-ipo-em-us-83-acima-da-faixa-prevista/'],
+          ['Meio, sobre a queda após a estreia', 'https://www.canalmeio.com.br/notas/acoes-da-anthropic-caem-9-apos-estreia-bilionaria-na-bolsa-de-nova-york/'],
+          ['TechDrops, 25/11/2026', 'https://www.techdrops.com.br/p/consolidaca-o-na-muskonomy']] },
+
+      { id: 'chips', eixo: 'mercado', quando: '16 nov 2026', empresa: 'EUA e Brasil',
+        titulo: 'EUA passam a exigir licença para vender chips avançados de IA ao Brasil',
+        curto: 'A regra alcança cinco países e mira o uso de data centers deles por empresas chinesas.',
+        num: { valor: 5 }, rotulo: 'países passam a depender de licença americana: Brasil, Indonésia, Malásia, Singapura e Tailândia',
+        viz: { t: 'selos', itens: ['Brasil', 'Indonésia', 'Malásia', 'Singapura', 'Tailândia'], cap: 'chips avançados de IA só com licença' },
+        fatos: [
+          'Em 16 de novembro, o governo Trump anunciou que a venda de chips avançados de IA para data centers (prédios cheios de computadores onde a IA roda) no Brasil e em outros quatro países passa a depender de licença do Departamento de Comércio.',
+          'O objetivo é impedir que empresas chinesas treinem seus modelos usando computadores instalados nesses países, sem precisar importar os chips.',
+          'Empresas com sede nos EUA que cumpram exigências de relatório ficam dispensadas. As demais passam por análise caso a caso, ainda sem prazo conhecido.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['Para o Brasil', 'A regra não proíbe a compra. Para a The Shift, ela pesa mais sobre quem poderá ser dono dos data centers do que sobre quantos o país terá.'],
+          ['Dias depois', 'Trump disse a jornalistas que não vai permitir que empresas americanas construam data centers fora dos EUA, e que quem fizer isso pagará um imposto alto.']],
+        atencao: 'O alcance da regra depende do tipo de produto e de operação. A fala de Trump sobre imposto foi uma declaração a jornalistas, e não foi conferido se virou regra.',
+        fontes: [['Meio, 16/11/2026, com base no g1', 'https://www.canalmeio.com.br/notas/eua-passam-a-exigir-autorizacao-para-exportar-chips-de-ia-ao-brasil/'],
+          ['The News, 17/11/2026', 'https://thenewscc.beehiiv.com/p/17-11-2026'],
+          ['The Shift, 25/11/2026', 'https://theshift.info/hot/a-venda-de-chips-ao-brasil-agora-passa-por-washington/']] },
+
+      { id: 'united', eixo: 'processos', quando: '13 nov 2026', empresa: 'United Airlines',
+        titulo: 'United proíbe que agentes de IA comprem passagens em nome dos clientes',
+        curto: 'A companhia aérea deixa o agente pesquisar preços, mas não deixa reservar nem mexer na viagem.',
+        num: { valor: 4 }, rotulo: 'empresas citadas pela The News já bloqueavam esses agentes antes da United: Amazon, Booking, eBay e JPMorgan',
+        viz: { t: 'barreira' },
+        fatos: [
+          'A United anunciou que os clientes não podem mais usar agentes de IA (assistentes que fazem tarefas sozinhos) para reservar voos ou gerenciar viagens.',
+          'Segundo a empresa, poucos clientes compram assim, mas os robôs poderiam expor dados, mudar cadastros e gastar milhas sem autorização. Automatizar declarações, como a de não levar explosivos, também poderia ferir regras de aviação.',
+          'Assistentes como Muse, Instinct e Dots, este último da OpenAI, continuam podendo buscar voos e preços.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['No outro sentido', 'Na mesma semana, a OpenAI lançou uma carteira que permite aos seus agentes pagar com cartões American Express, Mastercard e Visa.'],
+          ['Vender para agentes', 'A gestora de investimentos a16z chama de B2A (empresa que vende para agentes) o modelo em que o negócio disputa a preferência do assistente que compra pelo consumidor.'],
+          ['Tamanho', 'Segundo a empresa de segurança HUMAN Security, o tráfego de agentes nos sites que ela protege cresceu cerca de oito vezes entre agosto e outubro.']],
+        atencao: 'Cada indicador sobre agentes mede uma coisa diferente, e a The Shift avisa que ainda é cedo para saber o alcance dessa mudança. O comunicado original da United não foi aberto.',
+        fontes: [['The News, edição da noite, 13/11/2026', 'https://thenewscc.beehiiv.com/p/night-350'],
+          ['The Shift, 17/11/2026', 'https://theshift.info/hot/o-agente-escolhe-a-loja-outros-controlam-o-caminho/']] },
+
+      { id: 'habilidades', eixo: 'pessoas', quando: '13 nov 2026', empresa: 'IBM',
+        titulo: 'Empresas querem gente capaz de corrigir a IA, e funcionários temem perder habilidades',
+        curto: 'Para a maioria dos líderes de RH ouvidos pela IBM, saber conferir a IA é a habilidade mais essencial.',
+        num: { valor: 71, suf: '%' }, rotulo: 'dos líderes de RH apontam supervisionar, validar e corrigir a IA como a habilidade mais essencial da equipe, segundo a IBM',
+        viz: { t: 'barras', titulo: 'o que cada grupo responde', itens: [[71, '71%', 'RH quer supervisão', 1], [60, '60%', 'equipe teme perder', 0]] },
+        fatos: [
+          'O instituto de pesquisa da IBM ouviu 1.500 diretores de RH de 21 países e 8.800 funcionários de 28 países, entre abril e junho de 2026.',
+          '71% dos diretores de RH apontam a capacidade de supervisionar, validar e corrigir a IA como a habilidade mais essencial da força de trabalho.',
+          '60% dos funcionários temem que o uso da IA esteja enfraquecendo suas habilidades, e o pensamento crítico é a mais citada como em queda.'],
+        lt: 'O que mais a fonte diz',
+        lados: [
+          ['Recém-formados', 'Em outro estudo, com 110 empregadores (a maioria dos EUA), conferir o que a IA produz teve a maior nota de importância e a segunda pior nota de preparo de quem está chegando.'],
+          ['Como se aprende', 'A The Shift lembra que quem confere precisa conhecer o trabalho, e que parte das tarefas básicas em que se aprendia está entre as mais expostas à automação.'],
+          ['América Latina', 'Segundo a McKinsey, em cinco países, entre eles o Brasil, os profissionais em ocupações que passaram a pedir fluência em IA foram de 800 mil para 8,5 milhões entre 2023 e 2025.']],
+        atencao: 'As pesquisas registram opiniões e não medem o desempenho de ninguém. A ligação entre os dois estudos é uma leitura da própria The Shift. O número da McKinsey mede a procura em anúncios de vagas, e não quantas pessoas já dominam a habilidade.',
+        fontes: [['The Shift, 13/11/2026', 'https://theshift.info/hot/quem-ensina-a-equipe-a-desconfiar-da-ia/']] },
+
+      { id: 'claude', eixo: 'mercado', quando: '10 nov 2026', empresa: 'Anthropic',
+        titulo: 'Claude ganha planilhas, quadros e reuniões e entra no território do Office',
+        curto: 'A Anthropic avança sobre os programas de escritório da Microsoft, que também é sua parceira e investidora.',
+        num: { valor: 4 }, rotulo: 'novos recursos de trabalho, segundo o TechDrops: Meetings, Whiteboards, Sheets e Data',
+        viz: { t: 'janelas', itens: ['Meetings', 'Whiteboards', 'Sheets', 'Data'] },
+        fatos: [
+          'A Anthropic lançou ferramentas de trabalho para o Claude. O Claude Meetings entra em videochamadas no Google Meet e executa tarefas enquanto as pessoas conversam.',
+          'O Claude Whiteboards é um quadro compartilhado que a IA organiza e transforma em documento ou apresentação. O Claude Sheets cria e edita planilhas com fórmulas e várias abas a partir de um pedido.',
+          'Segundo o TechDrops, há ainda o Data, para análises e painéis com os dados da empresa.'],
+        lt: 'O que mais as fontes dizem',
+        lados: [
+          ['Concorrência', 'O TechDrops resume que a Microsoft agora é investidora, fornecedora e rival da Anthropic, e que o Office responde por 33,5% da receita dela.'],
+          ['Bolsa', 'Segundo o mesmo texto, a ação da Microsoft caiu 3% após o anúncio, uma perda de US$ 85 bilhões em valor de mercado.'],
+          ['OpenAI', 'Já tinha lançado a própria opção de ferramentas de escritório, o ChatGPT Work.']],
+        atencao: 'A ligação entre a queda da ação e o anúncio é uma leitura do TechDrops, e o preço de uma ação pode ter várias causas. As fontes lidas não trazem dados de uso das novidades.',
+        fontes: [['Meio, 10/11/2026, com base no TechCrunch', 'https://www.canalmeio.com.br/notas/claude-ganha-recursos-para-reunioes-quadros-e-planilhas/'],
+          ['TechDrops, 11/11/2026', 'https://www.techdrops.com.br/p/a-microsoft-cria-o-claude-copia']] },
+
       { id: 'nubank', eixo: 'pessoas', quando: '6 nov 2026', empresa: 'Nubank',
         titulo: 'Nubank desliga parte da equipe antifraude depois que a IA reduziu a fila de golpes',
         curto: 'Segundo a Folha, pouco mais de 30 pessoas saíram. Ex-funcionários falam em cerca de 100.',
@@ -5621,7 +5813,7 @@ var UCIL = (function () {
         var circ = 2 * Math.PI * 62;
         h += '<circle class="nt-trilho-a" cx="160" cy="95" r="62"/><circle class="nt-arco" cx="160" cy="95" r="62" style="--cc:' + circ.toFixed(2) + ';--off:' + (circ * (1 - v.pct / 100)).toFixed(2) + '" transform="rotate(-90 160 95)"/>' +
           '<circle class="nt-eixo-c" cx="160" cy="86" r="9"/><path class="nt-corpo-p" d="M142,116 C142,100 178,100 178,116 Z"/>' +
-          '<text class="nt-lb" x="160" y="184" text-anchor="middle">empregadores que aceleram a busca por quem está começando</text>';
+          '<text class="nt-lb" x="160" y="184" text-anchor="middle">' + esc(v.cap || 'empregadores que aceleram a busca por quem está começando') + '</text>';
       } else if (v.t === 'orbita') {
         [[40, 3, 12, 1], [60, 5, 18, -1], [80, 7, 26, 1]].forEach(function (o, k) {
           h += '<circle class="nt-ring" cx="160" cy="92" r="' + o[0] + '"/><g class="nt-orb" style="animation-duration:' + o[2] + 's;animation-direction:' + (o[3] > 0 ? 'normal' : 'reverse') + '">';
@@ -5635,6 +5827,52 @@ var UCIL = (function () {
           h += '<rect class="' + (b[3] ? 'nt-b1' : 'nt-b0') + '" style="--d:' + b[4] + 'ms" x="' + b[0] + '" y="' + (150 - b[1]) + '" width="38" height="' + b[1] + '" rx="7"/><text class="nt-tx" x="' + (b[0] + 19) + '" y="' + (150 - b[1] - 7) + '" text-anchor="middle">' + b[2] + '</text>';
         });
         h += '<text class="nt-lb" x="65" y="168" text-anchor="middle">usuários por mês</text><text class="nt-lb" x="215" y="168" text-anchor="middle">interações por mês</text>';
+      } else if (v.t === 'barras') {
+        var maior = Math.max.apply(null, v.itens.map(function (b) { return b[0]; }));
+        h += '<text class="nt-lb" x="160" y="16" text-anchor="middle">' + esc(v.titulo) + '</text><line class="nt-eixo" x1="30" y1="150" x2="290" y2="150"/>';
+        v.itens.forEach(function (b, k) {
+          var bx = 62 + k * 126, ba = Math.max(8, 105 * b[0] / maior);
+          h += '<rect class="' + (b[3] ? 'nt-b1' : 'nt-b0') + '" style="--d:' + (k * 400) + 'ms" x="' + bx + '" y="' + (150 - ba) + '" width="70" height="' + ba + '" rx="8"/>' +
+            '<text class="nt-tx" x="' + (bx + 35) + '" y="' + (150 - ba - 8) + '" text-anchor="middle">' + esc(b[1]) + '</text><text class="nt-lb" x="' + (bx + 35) + '" y="168" text-anchor="middle">' + esc(b[2]) + '</text>';
+        });
+      } else if (v.t === 'linha') {
+        var px = function (k) { return 38 + k * (244 / (v.pontos.length - 1)); }, py = function (val) { return 134 - (val - 70) / 45 * 92; };
+        h += '<text class="nt-lb" x="160" y="16" text-anchor="middle">' + esc(v.titulo) + '</text><line class="nt-eixo" x1="20" y1="152" x2="300" y2="152"/>' +
+          '<polyline class="nt-graf" pathLength="1" points="' + v.pontos.map(function (p, k) { return px(k).toFixed(1) + ',' + py(p[0]).toFixed(1); }).join(' ') + '"/>';
+        v.pontos.forEach(function (p, k) {
+          h += '<g class="nt-moeda" style="--d:' + (k * 450) + 'ms"><circle class="nt-coin" cx="' + px(k).toFixed(1) + '" cy="' + py(p[0]).toFixed(1) + '" r="6"/><text class="nt-tx" x="' + px(k).toFixed(1) + '" y="' + (py(p[0]) + (k === v.pontos.length - 1 ? 21 : -12)).toFixed(1) + '" text-anchor="middle">' + esc(p[1]) + '</text></g>' +
+            '<text class="nt-lb" x="' + px(k).toFixed(1) + '" y="170" text-anchor="middle">' + esc(p[2]) + '</text>';
+        });
+      } else if (v.t === 'selos') {
+        var lugares = [[12, 30], [114, 30], [216, 30], [63, 86], [165, 86]];
+        v.itens.forEach(function (nome, k) {
+          var sx = lugares[k][0], sy = lugares[k][1];
+          h += '<g class="nt-moeda" style="--d:' + (k * 260) + 'ms"><rect class="nt-pan" x="' + sx + '" y="' + sy + '" width="92" height="42" rx="12"/>' +
+            '<rect class="nt-coin" x="' + (sx + 10) + '" y="' + (sy + 20) + '" width="14" height="12" rx="3"/><path class="nt-cad" d="M' + (sx + 13) + ',' + (sy + 20) + ' v-4 a4,4 0 0 1 8,0 v4"/>' +
+            '<text class="nt-pt nt-pt-s" x="' + (sx + 58) + '" y="' + (sy + 26) + '" text-anchor="middle">' + esc(nome) + '</text></g>';
+        });
+        h += '<text class="nt-lb" x="160" y="170" text-anchor="middle">' + esc(v.cap) + '</text>';
+      } else if (v.t === 'janelas') {
+        v.itens.forEach(function (nome, k) {
+          var jx = 18 + (k % 2) * 148, jy = 14 + Math.floor(k / 2) * 86;
+          h += '<g class="nt-moeda" style="--d:' + (k * 300) + 'ms"><rect class="nt-pan" x="' + jx + '" y="' + jy + '" width="136" height="74" rx="12"/>' +
+            '<circle class="nt-coin" cx="' + (jx + 14) + '" cy="' + (jy + 13) + '" r="4"/><circle class="nt-pn" cx="' + (jx + 27) + '" cy="' + (jy + 13) + '" r="4"/><line class="nt-eixo" x1="' + jx + '" y1="' + (jy + 25) + '" x2="' + (jx + 136) + '" y2="' + (jy + 25) + '"/>' +
+            '<text class="nt-pt" x="' + (jx + 68) + '" y="' + (jy + 54) + '" text-anchor="middle">' + esc(nome) + '</text></g>';
+        });
+      } else if (v.t === 'barreira') {
+        h += '<text class="nt-tx" x="20" y="34">buscar preços: pode</text><line class="nt-trilho" x1="30" y1="56" x2="292" y2="56"/>' +
+          '<path class="nt-seta" d="M282,47 L296,56 L282,65"/>' +
+          '<text class="nt-tx" x="20" y="108">comprar: bloqueado</text><line class="nt-trilho" x1="30" y1="132" x2="190" y2="132"/>' +
+          '<rect class="nt-coin" x="206" y="106" width="12" height="52" rx="6"/><path class="nt-xis" d="M238,118 L264,146 M264,118 L238,146"/>' +
+          '<g class="nt-passa"><circle class="nt-coin" cx="36" cy="56" r="12"/><text class="nt-ia" x="36" y="60" text-anchor="middle">IA</text></g>' +
+          '<g class="nt-para"><circle class="nt-coin" cx="186" cy="132" r="12"/><text class="nt-ia" x="186" y="136" text-anchor="middle">IA</text></g>';
+      } else if (v.t === 'botao') {
+        h += '<rect class="nt-pan" x="62" y="16" width="88" height="42" rx="21"/><g class="nt-chave"><circle class="nt-coin" cx="83" cy="37" r="16"/><text class="nt-ia" x="83" y="41" text-anchor="middle">IA</text></g>' +
+          '<text class="nt-tx" x="166" y="41">agente desligado</text><text class="nt-lb" x="160" y="92" text-anchor="middle">plano B em teste, para a operação não parar</text>';
+        [['empréstimos', ''], ['detecção', 'de fraude'], ['crimes', 'financeiros']].forEach(function (b, k) {
+          var cx = 8 + k * 104;
+          h += '<g class="nt-moeda" style="--d:' + (900 + k * 300) + 'ms"><rect class="nt-pan" x="' + cx + '" y="108" width="96" height="52" rx="12"/><text class="nt-pt" x="' + (cx + 48) + '" y="' + (b[1] ? 130 : 138) + '" text-anchor="middle">' + b[0] + '</text><text class="nt-pt" x="' + (cx + 48) + '" y="147" text-anchor="middle">' + b[1] + '</text></g>';
+        });
       }
       return '<svg class="nt-svg" viewBox="0 0 320 190" aria-hidden="true">' + h + '</svg>';
     }
@@ -5649,10 +5887,10 @@ var UCIL = (function () {
       new MutationObserver(function () { var a = el.classList.contains('ativa'); if (a === on) return; on = a; if (a) f(); }).observe(el, { attributes: true, attributeFilter: ['class'] });
     }
 
-    var ordem = ['pessoas', 'processos', 'estrategia'], iLista = -1, idx = {};
+    var ordem = ['pessoas', 'processos', 'mercado', 'estrategia'], iLista = -1, idx = {};
     iLista = add('noticias', {
-      html: '<p class="rot-sec">Notícias · Pesquisa de 06/11/2026</p><h2>Notícias recentes sobre IA no mercado</h2>' +
-        '<p class="sub">Dez notícias de empresas que estão mudando pessoas, processos e estratégia por causa da IA. Cada uma traz os fatos, o que cada lado diz e o que merece cuidado.</p>' +
+      html: '<p class="rot-sec">Notícias · Atualizado em 25/11/2026</p><h2>Notícias recentes sobre IA no mercado</h2>' +
+        '<p class="sub">' + NOTICIAS.length + ' notícias sobre como a IA vem mudando mercado, pessoas e processos. Cada uma traz os fatos, o que mais se diz sobre eles e o que merece cuidado.</p>' +
         '<div class="uc-filtros nt-filtros" role="group" aria-label="Filtrar por assunto"><button type="button" class="chip" data-ntf="" aria-pressed="true">Todas (' + NOTICIAS.length + ')</button>' +
         ordem.map(function (e) { var k = NOTICIAS.filter(function (n) { return n.eixo === e; }).length; return k ? '<button type="button" class="chip" data-ntf="' + e + '" aria-pressed="false">' + EIXOS[e] + ' (' + k + ')</button>' : ''; }).join('') + '</div>' +
         '<div class="tres uc-grade nt-grade">' + NOTICIAS.map(function (n, i) {
@@ -5679,7 +5917,7 @@ var UCIL = (function () {
           '<div class="dois nt-corpo"><div class="nt-viz">' + viz(n) + '<div class="nt-num">' + numero(n) + '<p>' + esc(n.rotulo) + '</p></div></div>' +
           '<div class="nt-txt">' +
             '<section class="nt-blk" data-b="1"><h3>O que aconteceu</h3><ul class="nt-fatos">' + n.fatos.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></section>' +
-            '<section class="nt-blk" data-b="2"><h3>O que cada lado diz</h3><dl class="nt-lados">' + n.lados.map(function (l) { return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
+            '<section class="nt-blk" data-b="2"><h3>' + (n.lt || 'O que cada lado diz') + '</h3><dl class="nt-lados">' + n.lados.map(function (l) { return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
             '<section class="nt-blk nt-at" data-b="3"><h3>Atenção</h3><p>' + esc(n.atencao) + '</p></section>' +
           '</div></div>' +
           '<p class="fonte nt-fonte">Fontes: ' + n.fontes.map(function (f) { return '<a href="' + f[1] + '" target="_blank" rel="noopener noreferrer">' + esc(f[0]) + '</a>'; }).join(' · ') + '</p>' +
