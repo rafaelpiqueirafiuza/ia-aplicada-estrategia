@@ -2672,6 +2672,8 @@ var A2 = (function () {
      não há botão Desbloquear e o que ficou salvo no navegador é ignorado. Só o HTML do professor desbloqueia.
      Para liberar um módulo para os alunos, marcar lib: true nele e publicar. */
   var PUBLICO = true;
+  /* Dinâmica Jornada Empreendedora: trancada na página dos alunos até o Rafael pedir para liberar (true). */
+  var DJ_LIB = false;
   var LIB = {}, ISMOD = {};
   MODS.forEach(function (m) { LIB[m.id] = !!m.lib; ISMOD[m.id] = 1; });
   if (!PUBLICO) try { var sv = JSON.parse(localStorage.getItem('temas-liberados') || '{}'); Object.keys(sv).forEach(function (k) { if (k in LIB && sv[k]) LIB[k] = true; }); } catch (x) { }
@@ -5308,7 +5310,9 @@ var UCIL = (function () {
   });
   /* Dinâmicas: atividades em grupo, tema a tema. Ainda vazio. */
   add('dinamicas', { html: '<p class="rot-sec">Dinâmicas</p><h2>Atividades em grupo, tema a tema</h2><p class="sub">As dinâmicas ficam organizadas pelos mesmos temas do mapa. Elas entram aqui conforme forem construídas.</p>' +
-    '<button type="button" class="cartao dj-card" data-dinj="1"><span class="bc-tag real">27 e 28/11</span><h3>Jornada Empreendedora com IA</h3><p>Em duplas ou trios, do palpite de solução ao protótipo testado, com o Gem Mentor e o Gem Persona.</p></button>' });
+    ((PUBLICO && !DJ_LIB) ? '<div class="glass mini-trava"><div class="conteudo" aria-hidden="true"><i></i><i style="width:70%"></i></div><div class="cad"><span style="display:flex;gap:10px;align-items:center">' + cadeado.replace('<svg', '<svg style="width:26px;height:26px"') + 'Em breve</span></div></div>' :
+    '<button type="button" class="cartao dj-card" data-dinj="1"><span class="bc-tag real">27 e 28/11</span><h3>Jornada Empreendedora com IA</h3><p>Em duplas ou trios, do palpite de solução ao protótipo testado, com o Gem Mentor e o Gem Persona.</p></button>') });
+  if (!PUBLICO || DJ_LIB) {
   /* Dinâmica: Jornada Empreendedora com IA (27 e 28/11/2026). Desenho do Rafael; kit em Aulas/Dinamica_Empreendedora.
      Telas para os empreendedores: mapa da jornada, as três peças (Mentor, Persona, Diário), comandos, tipos de informação,
      personas, frase do problema, cinco soluções, três voltas de protótipo, estratégia e pitch, ferramentas. */
@@ -5436,6 +5440,7 @@ var UCIL = (function () {
   add('dinamicas', { builds: 2, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Em que ferramenta</h2><div class="dj-tab" data-b="1">' + DJ_FE.map(function (r, i) { return '<div class="dj-tr' + (i ? '' : ' cab') + '" style="--i:' + i + '">' + r.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</div>'; }).join('') + '</div>' +
     '<div class="dj-b" data-b="2"><b>Plano B</b><p>Acabou o limite de uma conta? Outro empreendedor do grupo assume com a dele, levando o Diário. O Diário funciona em qualquer uma das três ferramentas.</p></div>' +
     '<p class="fonte">Recursos conforme as páginas de ajuda do Google, da OpenAI e da Anthropic, consultadas em novembro de 2026. No ChatGPT gratuito, cada projeto aceita até 5 arquivos.</p>' });
+  }
 
 
   /* Banco de vídeos: cases em vídeo, cada um com o trecho sugerido.
@@ -6249,7 +6254,7 @@ var UCIL = (function () {
     if (t.dataset.bclista) { ponte = null; ir(iBusList, 0); return; }
     if (t.dataset.bcpdf) { ponte = null; ir(idxBusPdf[t.dataset.bcpdf], 0); return; }
     if (t.dataset.bcvis) { ponte = null; ir(idxBusVis[t.dataset.bcvis], 0); return; }
-    if (t.dataset.dinj) { ponte = null; ir(iDinJ, 0); return; }
+    if (t.dataset.dinj) { if (typeof iDinJ === 'number') { ponte = null; ir(iDinJ, 0); } return; }
     if (t.dataset.bcopc) { ponte = null; ir(idxBus[t.dataset.bcopc], 0); return; }
     if (t.dataset.pasta) { if (t.dataset.pasta === 'usecases') { ponte = null; ir(iUseList, 0); } else if (t.dataset.pasta === 'business') { ponte = null; ir(iBusList, 0); } else if (t.dataset.pasta === 'artefatos') { ponte = null; ir(iCases, 0); } else dica('Ainda não há cases neste tema.'); return; }
     if (t.dataset.passo) { var cs = S[atual]; cs.b = +t.dataset.passo; aplicar(cs); botoes(); agendar(420); return; }
