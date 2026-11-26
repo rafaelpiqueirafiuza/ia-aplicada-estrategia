@@ -1711,6 +1711,122 @@ svg[data-m="2"] .bl-pc.a { transform: translateX(40px); } svg[data-m="2"] .bl-pc
 .b2-vm { flex-shrink: 0; }
 @media (max-height: 800px) { .b2-bowm svg { max-height: 64px; } .b2-vm { height: 14vh; } .b2-est button small { display: none; } .b2-est button { padding: 6px; } .b2-cv { margin-bottom: 2px; } }
 
+/* Dinâmica Jornada Empreendedora com IA (dinamica.js). Prefixo dj-. */
+.dj-palco { position: relative; width: 100%; padding: clamp(10px, 1.4vw, 18px); border-radius: 24px; background: radial-gradient(120% 90% at 50% 0%, rgba(191, 0, 55, .14), transparent 70%), rgba(var(--fg-rgb), .04); border: 1px solid rgba(var(--fg-rgb), .14); }
+.slide:has(.dj-palco) > * { flex-shrink: 0; }
+.dj-t { fill: var(--fg); font: 700 13px var(--fonte); text-anchor: middle; }
+.dj-dd { width: 100%; height: auto; max-height: 34vh; display: block; overflow: visible; }
+.dj-dia { fill: rgba(var(--fg-rgb), .05); stroke: var(--il-linha); stroke-width: 2; stroke-linejoin: round; }
+.dj-fim { stroke: var(--il-linha); stroke-width: 2; stroke-dasharray: 4 6; }
+.dj-rota { fill: none; stroke: var(--vermelho); stroke-width: 2.4; stroke-dasharray: 6 9; animation: ilFlow 1.6s linear infinite; opacity: .75; }
+.dj-tf { font-size: 12px; font-weight: 600; opacity: .6; } .dj-tg { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.dj-viaja { fill: var(--vermelho); filter: drop-shadow(0 0 6px rgba(191, 0, 55, .8)); }
+.dj-st circle { fill: var(--bg); stroke: var(--fg); stroke-width: 2.2; transition: fill .3s, stroke .3s, r .3s; }
+.dj-st text { fill: var(--fg); font: 700 14px var(--fonte); text-anchor: middle; pointer-events: none; }
+.dj-st:not(.fixo) { cursor: pointer; outline: none; } .dj-st:not(.fixo):hover circle, .dj-st:focus-visible circle { stroke: var(--vermelho); stroke-width: 3; }
+.dj-st.sel circle { fill: var(--vermelho); stroke: var(--vermelho); r: 18; } .dj-st.sel text { fill: #fff; }
+.dj-tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.dj-n { display: grid; gap: 2px; padding: 12px 16px; border-radius: 18px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .16); }
+.dj-n b { font-size: clamp(26px, 3vw, 40px); color: var(--vermelho); line-height: 1; } .dj-n span { font-weight: 600; font-size: clamp(13px, 1.25vw, 16px); }
+.dj-mapa { display: grid; gap: 14px; width: 100%; }
+.dj-info { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding: 16px 20px; border-radius: 22px; background: rgba(var(--fg-rgb), .08); border: 1px solid rgba(var(--fg-rgb), .18); }
+.dj-info.pop { animation: djPop .45s ease both; }
+@keyframes djPop { from { opacity: .2; transform: translateY(8px); } }
+.dj-num { width: 52px; height: 52px; border-radius: 999px; background: var(--vermelho); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 24px; }
+.dj-nome { font-size: clamp(18px, 1.9vw, 24px); } .dj-info p { margin: 4px 0 0; font-size: clamp(14px, 1.35vw, 17px); }
+.dj-meta { display: flex; flex-wrap: wrap; gap: 8px; } .dj-meta span { padding: 3px 10px; border-radius: 999px; background: rgba(var(--fg-rgb), .1); font-weight: 600; font-size: 13px; }
+.dj-dica { opacity: .7; }
+.dj-pecas, .dj-pso, .dj-sol, .dj-voltas, .dj-cmdbox { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; width: 100%; }
+.dj-fluxo { width: 100%; height: auto; max-height: 40vh; display: block; overflow: visible; }
+.dj-chat rect { fill: rgba(var(--fg-rgb), .08); stroke: var(--il-linha); stroke-width: 1.6; } .dj-chat path { stroke: var(--il-linha); stroke-width: 3; stroke-linecap: round; }
+.dj-chat text { fill: var(--fg); font: 700 12px var(--fonte); text-anchor: middle; }
+.dj-chat { animation: djSobe 4s ease-in-out infinite; animation-delay: calc(var(--k) * .5s); }
+@keyframes djSobe { 50% { transform: translateY(-5px); } }
+.dj-doc rect { fill: var(--vermelho); } .dj-doc path { stroke: #fff; stroke-width: 2.4; stroke-linecap: round; }
+.dj-pers circle { fill: rgba(var(--fg-rgb), .2); stroke: var(--il-linha); stroke-width: 1.6; }
+.dj-lista { display: grid; gap: 10px; }
+.dj-pc { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 12px 16px; border-radius: 20px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .16); }
+.dj-pc > span { min-width: 38px; height: 38px; padding: 0 8px; border-radius: 999px; background: var(--vermelho); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.dj-pc b { display: block; font-size: clamp(16px, 1.6vw, 20px); } .dj-pc em { display: block; font-style: normal; color: var(--vermelho); font-weight: 700; font-size: 14px; }
+.dj-pc p { margin: 4px 0 0; font-size: clamp(14px, 1.3vw, 16.5px); }
+.dj-pc.contra { border-color: var(--vermelho); } .dj-pc.contra > span { background: var(--fg); color: var(--bg); }
+.dj-tela { display: grid; gap: 8px; padding: 14px; border-radius: 22px; background: rgba(var(--fg-rgb), .06); border: 1px solid rgba(var(--fg-rgb), .16); }
+.dj-tela-t { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
+.dj-msg { margin: 0; max-width: 88%; padding: 8px 13px; border-radius: 16px; font-size: clamp(13.5px, 1.25vw, 16px); line-height: 1.35; }
+.dj-msg.eu { justify-self: end; background: var(--vermelho); color: #fff; border-bottom-right-radius: 4px; font-family: ui-monospace, Menlo, monospace; font-weight: 600; }
+.dj-msg.ia { justify-self: start; background: rgba(var(--fg-rgb), .12); border-bottom-left-radius: 4px; }
+.dj-cmds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.dj-cmd { display: grid; gap: 1px; padding: 7px 12px; border-radius: 14px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .15); animation: djPop .5s ease both; animation-delay: calc(var(--i) * .06s); }
+.dj-cmd code { color: var(--vermelho); font-weight: 700; font-size: clamp(14px, 1.3vw, 16px); } .dj-cmd span { font-size: 13px; opacity: .85; }
+.dj-tipos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; }
+.dj-ti { display: grid; gap: 6px; padding: 14px 18px; border-radius: 22px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .16); border-top: 5px solid var(--c); }
+.dj-ti svg { width: 100%; max-width: 200px; height: auto; } .dj-ti b { font-size: clamp(18px, 1.9vw, 24px); color: var(--c); } .dj-ti p { margin: 0; font-size: clamp(14px, 1.35vw, 17px); }
+.dj-post { fill: var(--c); animation: djCai 2.8s ease-in infinite; } .dj-base { stroke: var(--il-linha); stroke-width: 2; }
+@keyframes djCai { 0% { transform: translateY(-12px); opacity: 0; } 30% { opacity: 1; } 70%, 100% { transform: translateY(30px); opacity: 1; } }
+.dj-leque { min-height: 230px; display: grid; place-items: center; }
+.dj-fc { position: absolute; width: 92px; height: 124px; border-radius: 14px; background: var(--bg); border: 1.6px solid var(--il-linha); display: grid; align-content: start; justify-items: center; gap: 6px; padding-top: 12px;
+  transform: rotate(calc(var(--k) * 11deg)) translateX(calc(var(--k) * 26px)); transform-origin: 50% 140%; animation: djLeque 5s ease-in-out infinite; animation-delay: calc(var(--k) * .2s); }
+.dj-fc i { width: 30px; height: 30px; border-radius: 999px; background: rgba(var(--fg-rgb), .25); } .dj-fc span { width: 60%; height: 6px; border-radius: 3px; background: rgba(var(--fg-rgb), .2); }
+.dj-fc.contra { border-color: var(--vermelho); border-width: 2.4px; } .dj-fc.contra i { background: var(--vermelho); } .dj-fc b { font-size: 11px; color: var(--vermelho); }
+@keyframes djLeque { 50% { transform: rotate(calc(var(--k) * 13deg)) translateX(calc(var(--k) * 30px)) translateY(-4px); } }
+.dj-perg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .dj-perg > div { padding: 10px 14px; border-radius: 16px; background: rgba(46, 155, 106, .14); border: 1px solid rgba(46, 155, 106, .5); }
+.dj-perg > div.nao { background: rgba(191, 0, 55, .12); border-color: rgba(191, 0, 55, .5); } .dj-perg p { margin: 3px 0 0; font-size: clamp(13.5px, 1.25vw, 15.5px); }
+.dj-frase { font-size: clamp(20px, 2.5vw, 34px); line-height: 1.45; font-weight: 600; max-width: 34ch; margin: 0; }
+.dj-slot { padding: 0 6px; border-radius: 8px; border-bottom: 3px dashed rgba(var(--fg-rgb), .45); color: rgba(var(--fg-rgb), .55); transition: all .4s; }
+.dj-slot.vis { color: var(--fg); border-bottom: 3px solid var(--vermelho); } .dj-slot.agora { background: var(--vermelho); color: #fff; border-color: transparent; }
+.dj-regras { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.dj-rg { padding: 10px 14px; border-radius: 16px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .16); } .dj-rg b { color: var(--vermelho); } .dj-rg p { margin: 3px 0 0; font-size: clamp(13.5px, 1.25vw, 15.5px); }
+.dj-estrela { width: 100%; height: auto; max-height: 38vh; display: block; overflow: visible; }
+.dj-raio { stroke: var(--il-linha); stroke-width: 2; stroke-dasharray: 5 7; animation: ilFlow 1.6s linear infinite; }
+.dj-so circle { fill: var(--bg); stroke: var(--fg); stroke-width: 2; transition: all .4s; } .dj-so text { fill: var(--fg); font: 700 16px var(--fonte); text-anchor: middle; }
+.dj-so { animation: djSobe 3.5s ease-in-out infinite; } .dj-centro { fill: var(--vermelho); } .dj-tc { fill: #fff; font-size: 13px; }
+.dj-estrela.escolheu .dj-so:not(.esc) { opacity: .3; } .dj-estrela.escolheu .esc circle { fill: var(--vermelho); stroke: var(--vermelho); r: 30; } .dj-estrela.escolheu .esc text { fill: #fff; }
+.dj-aviso { font-weight: 700; color: var(--vermelho); }
+.dj-roda { width: 100%; height: auto; max-height: 36vh; display: block; overflow: visible; }
+.dj-aro { fill: none; stroke: var(--il-linha); stroke-width: 3; stroke-dasharray: 8 8; animation: ilFlow 2s linear infinite; }
+.dj-gira { transform-origin: 160px 140px; transition: transform 1.4s cubic-bezier(.6, 0, .3, 1); } .dj-gira circle { fill: var(--vermelho); }
+.dj-tro { font-size: 14px; } .dj-vn { font-size: 20px; }
+.dj-voltas .botao-peq { margin-top: 10px; }
+.dj-vtx { max-width: none; }
+.dj-fb { display: flex; flex-wrap: wrap; gap: 8px; } .dj-fb span { padding: 6px 12px; border-radius: 999px; background: rgba(var(--fg-rgb), .1); border: 1px solid rgba(var(--fg-rgb), .2); font-weight: 600; font-size: 14px; animation: djPop .5s ease both; animation-delay: calc(var(--i) * .1s); }
+.dj-est { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; width: 100%; }
+.dj-sw { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: clamp(170px, 18vw, 240px); } .dj-sw span { aspect-ratio: 1.3; display: grid; place-items: center; border-radius: 12px; font-weight: 700; font-size: 13px; background: rgba(var(--fg-rgb), .1); border: 1px solid rgba(var(--fg-rgb), .2); }
+.dj-sw span:nth-child(1) { background: rgba(46, 155, 106, .25); } .dj-sw span:nth-child(4) { background: rgba(191, 0, 55, .25); }
+.dj-est p { margin: 4px 0 8px; font-size: clamp(14px, 1.35vw, 17px); } .dj-fw { display: flex; flex-wrap: wrap; gap: 6px; } .dj-fw span { padding: 4px 10px; border-radius: 999px; background: var(--vermelho); color: #fff; font-weight: 600; font-size: 13px; }
+.dj-pitch { width: 100%; } .dj-barra { display: flex; width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(var(--fg-rgb), .2); }
+.dj-barra > div { flex: var(--w) 1 0; min-width: 0; display: grid; gap: 2px; padding: 10px 8px; background: rgba(191, 0, 55, calc(.18 + var(--i) * .12)); border-right: 1px solid rgba(var(--fg-rgb), .2); transform-origin: left; }
+.dj-pitch.vis .dj-barra > div { animation: djEnche .6s ease both; animation-delay: calc(var(--i) * .18s); }
+@keyframes djEnche { from { transform: scaleX(0); opacity: 0; } }
+.dj-barra b { font-size: clamp(12px, 1.2vw, 15px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .dj-barra span { font-size: 12.5px; font-weight: 600; opacity: .85; }
+.dj-tab { display: grid; gap: 6px; width: 100%; }
+.dj-tr { display: grid; grid-template-columns: .8fr 1.2fr 1fr 1fr; gap: 6px; } .dj-tr span { padding: 9px 12px; border-radius: 12px; background: rgba(var(--fg-rgb), .07); font-size: clamp(13.5px, 1.3vw, 16px); }
+.dj-tr span:first-child { font-weight: 700; } .dj-tr.cab span { background: var(--vermelho); color: #fff; font-weight: 700; } .dj-tr.cab span:first-child { background: transparent; }
+.dj-tab.vis .dj-tr { animation: djPop .5s ease both; animation-delay: calc(var(--i) * .12s); }
+.dj-b { padding: 12px 18px; border-radius: 18px; border: 1.6px solid var(--vermelho); width: 100%; } .dj-b p { margin: 3px 0 0; }
+.dj-card { cursor: pointer; text-align: left; max-width: 520px; }
+@media (max-height: 800px) { .dj-dd { max-height: 30vh; } .dj-fluxo, .dj-estrela, .dj-roda { max-height: 30vh; } .dj-leque { min-height: 180px; } .dj-pc { padding: 8px 12px; } }
+@media (max-width: 900px) {
+  .dj-pecas, .dj-pso, .dj-sol, .dj-voltas, .dj-cmdbox { grid-template-columns: 1fr; }
+  .dj-tipos, .dj-tres { grid-template-columns: 1fr; } .dj-regras { grid-template-columns: 1fr 1fr; } .dj-cmds { grid-template-columns: 1fr; }
+  .dj-est { grid-template-columns: 1fr; } .dj-tr { grid-template-columns: 1fr 1fr; } .dj-tr span:first-child { grid-column: 1 / -1; }
+  .dj-barra { flex-wrap: wrap; } .dj-barra > div { flex: 1 1 30%; }
+  .dj-perg { grid-template-columns: 1fr; }
+}
+.slide:has(.dj-palco) h2, .slide:has(.dj-tipos) h2, .slide:has(.dj-frase) h2, .slide:has(.dj-tab) h2, .slide:has(.dj-est) h2 { max-width: none; }
+.slide:has(.dj-tres) .dj-dd { max-height: 28vh; }
+.dj-msg.eu:not(.cmd) { font-family: inherit; font-weight: 500; }
+.dj-frase { max-width: 42ch; }
+.dj-vt { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .dj-vt > div { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; padding: 9px 12px; border-radius: 16px; background: rgba(var(--fg-rgb), .07); border: 1px solid rgba(var(--fg-rgb), .16); animation: djPop .5s ease both; animation-delay: calc(var(--i) * .12s); }
+.dj-vt span { grid-row: span 2; width: 30px; height: 30px; border-radius: 999px; background: var(--vermelho); color: #fff; display: grid; place-items: center; font-weight: 700; } .dj-vt p { margin: 0; font-size: 14px; }
+@media (max-width: 900px) { .dj-vt { grid-template-columns: 1fr; } }
+@media (max-height: 800px) and (min-width: 901px) {
+  .dj-dd { max-height: 24vh; } .slide:has(.dj-tres) .dj-dd { max-height: 20vh; } .dj-n { padding: 6px 12px; } .dj-n b { font-size: 22px; }
+  .dj-msg { padding: 5px 10px; font-size: 13px; } .dj-tela { gap: 5px; padding: 10px; } .dj-cmds { gap: 5px; } .dj-cmd { padding: 4px 10px; } .dj-cmd span { font-size: 12px; }
+  .dj-ti svg { max-width: 110px; } .dj-ti { padding: 10px 14px; } .dj-info { padding: 10px 14px; } .dj-num { width: 42px; height: 42px; font-size: 20px; }
+  .dj-fluxo, .dj-estrela { max-height: 26vh; } .dj-leque { min-height: 150px; } .dj-dica { display: none; } .dj-pc p { font-size: 13.5px; } .dj-tr span { padding: 6px 10px; }
+}
+.dj-leque { overflow: hidden; }
+
 /* Tema claro e escuro. O escuro é o padrão (valores em comum.css). Aqui ficam só as trocas do claro.
    Cores da marca seguem o manual do SME: vermelho e preto. Os tons azul, verde, rosa, amarelo, violeta, laranja e azul-água são cores de dados, não da marca,
    e no claro ficam mais fechados para ter contraste sobre fundo claro. */
@@ -5192,7 +5308,135 @@ var UCIL = (function () {
   });
   /* Dinâmicas: atividades em grupo, tema a tema. Ainda vazio. */
   add('dinamicas', { html: '<p class="rot-sec">Dinâmicas</p><h2>Atividades em grupo, tema a tema</h2><p class="sub">As dinâmicas ficam organizadas pelos mesmos temas do mapa. Elas entram aqui conforme forem construídas.</p>' +
-    '<div class="glass mini-trava"><div class="conteudo" aria-hidden="true"><i></i><i style="width:70%"></i></div><div class="cad"><span style="display:flex;gap:10px;align-items:center">' + cadeado.replace('<svg', '<svg style="width:26px;height:26px"') + 'A construir</span></div></div>' });
+    '<button type="button" class="cartao dj-card" data-dinj="1"><span class="bc-tag real">27 e 28/11</span><h3>Jornada Empreendedora com IA</h3><p>Em duplas ou trios, do palpite de solução ao protótipo testado, com o Gem Mentor e o Gem Persona.</p></button>' });
+  /* Dinâmica: Jornada Empreendedora com IA (27 e 28/11/2026). Desenho do Rafael; kit em Aulas/Dinamica_Empreendedora.
+     Telas para os empreendedores: mapa da jornada, as três peças (Mentor, Persona, Diário), comandos, tipos de informação,
+     personas, frase do problema, cinco soluções, três voltas de protótipo, estratégia e pitch, ferramentas. */
+  var DJ_R = 'Dinâmica · Jornada Empreendedora com IA';
+  var DJ_E = [
+    ['A ideia que eu sempre tive', 'Contar uma solução que vocês já imaginaram e descobrir que ela ainda é palpite.', 'O palpite de solução escolhido pelo grupo.', 'Gem Mentor', 'Sexta, 19h20'],
+    ['Descobrir', 'Abrir o problema: pesquisa, pelo menos 10 dores de atores diferentes, tamanho de mercado e quem sofre.', 'Mapa de dores, TAM, SAM e SOM com fonte e o perfil de quem sofre.', 'Gem Mentor e pesquisa aprofundada', 'Sexta, 19h35'],
+    ['Personas sintéticas', 'Criar até 5 personas por empreendedor, mais 1 persona do contra.', 'As fichas de persona.', 'Gem Mentor', 'Sexta, 20h55'],
+    ['Entrevistas', 'Ouvir como cada persona vive o problema, sem vender a ideia.', 'O resumo de cada entrevista e a síntese do grupo.', 'Gem Persona, uma conversa por persona', 'Sexta, 21h15'],
+    ['Definir', 'Fechar o problema numa frase, com o tamanho de mercado.', 'A frase do problema com SOM.', 'Gem Mentor', 'Sexta, 22h05'],
+    ['Solução', 'Levantar 5 soluções, escolher uma e recortar o protótipo, ainda sem construir nada.', 'A escolha, a marca e o SDD.', 'Gem Mentor', 'Sábado, 8h30'],
+    ['Protótipo', 'Construir a partir do SDD e melhorar em 3 rodadas de teste com as personas.', 'O protótipo testado.', 'Canvas, Gem Persona e Gem Mentor', 'Sábado, 9h20'],
+    ['Estratégia', 'Ligar o produto ao mercado com os frameworks da disciplina.', 'SWOT e estratégias comercial e de crescimento.', 'Gem Mentor', 'Sábado, 11h00'],
+    ['Pitch', 'Contar a jornada inteira em 5 minutos.', 'A apresentação, com o protótipo na tela.', 'Gem Mentor', 'Sábado, 11h20']];
+  var DJ_P = [[20, 110], [95, 65], [170, 20], [245, 65], [320, 110], [420, 50], [520, 50], [620, 110], [680, 110]];
+  var DJ_CAM = 'M' + DJ_P.map(function (p) { return p.join(','); }).join(' L');
+  function djDiamante(id) {
+    return '<svg class="dj-dd" viewBox="0 0 700 236" role="img" aria-label="Duplo diamante com as nove etapas da jornada">' +
+      '<path class="dj-dia" d="M20,110 L170,20 L320,110 L170,200 Z"/><path class="dj-dia" d="M320,110 L470,20 L620,110 L470,200 Z"/><path class="dj-fim" d="M620,110 H680"/>' +
+      '<path class="dj-rota" d="' + DJ_CAM + '"/>' +
+      [['abrir', 95, 116], ['fechar', 245, 116], ['abrir', 420, 116], ['fechar', 520, 116]].map(function (t) { return '<text class="dj-t dj-tf" x="' + t[1] + '" y="' + t[2] + '">' + t[0] + '</text>'; }).join('') +
+      '<text class="dj-t dj-tg" x="170" y="226">Problema</text><text class="dj-t dj-tg" x="470" y="226">Solução</text>' +
+      '<circle class="dj-viaja" r="7"><animateMotion dur="9s" repeatCount="indefinite" path="' + DJ_CAM + '"/></circle>' +
+      DJ_P.map(function (p, i) { return '<g class="dj-st' + (id ? '' : ' fixo') + '" data-dj="' + i + '" tabindex="' + (id ? 0 : -1) + '" role="' + (id ? 'button' : 'presentation') + '"' + (id ? ' aria-label="Etapa ' + (i + 1) + ', ' + DJ_E[i][0] + '"' : '') + '><circle cx="' + p[0] + '" cy="' + p[1] + '" r="15"/><text x="' + p[0] + '" y="' + (p[1] + 5) + '">' + (i + 1) + '</text></g>'; }).join('') + '</svg>';
+  }
+
+  /* 1. Abertura */
+  var iDinJ = add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Da ideia que vocês sempre tiveram a um protótipo testado</h2>' +
+    '<p class="sub">Em duplas ou trios, vocês vão viver um processo empreendedor inteiro com IA, da sexta à noite à manhã de sábado.</p><div class="dj-palco">' + djDiamante(false) + '</div>' +
+    '<div class="dj-tres"><div class="dj-n" data-b="1"><b>9</b><span>etapas, do palpite ao pitch</span></div><div class="dj-n" data-b="2"><b>2</b><span>Gems: o Mentor e a Persona</span></div><div class="dj-n" data-b="3"><b>5 min</b><span>de pitch, com o protótipo rodando</span></div></div>' +
+    '<p class="fonte">A lógica do duplo diamante vem do Design Council (2005): primeiro abrir e fechar o problema, depois abrir e fechar a solução.</p>' });
+
+  /* 2. O mapa: clique em cada estação */
+  add('dinamicas', { html: '<p class="rot-sec">' + DJ_R + '</p><h2>O mapa da jornada</h2><div class="dj-mapa"><div class="dj-palco">' + djDiamante(true) + '</div>' +
+    '<div class="dj-info" aria-live="polite"><span class="dj-num"></span><div><b class="dj-nome"></b><p class="dj-obj"></p><p><strong>Entrega:</strong> <span class="dj-ent"></span></p><p class="dj-meta"><span class="dj-ond"></span><span class="dj-qdo"></span></p></div></div></div>' +
+    '<p class="sub dj-dica">Clique em cada número para ver a etapa.</p>',
+    on: function (el) {
+      function mostra(i) {
+        [].forEach.call(el.querySelectorAll('.dj-st'), function (g) { g.classList.toggle('sel', +g.dataset.dj === i); });
+        var e = DJ_E[i]; el.querySelector('.dj-num').textContent = i + 1; el.querySelector('.dj-nome').textContent = e[0]; el.querySelector('.dj-obj').textContent = e[1];
+        el.querySelector('.dj-ent').textContent = e[2]; el.querySelector('.dj-ond').textContent = e[3]; el.querySelector('.dj-qdo').textContent = e[4];
+        var c = el.querySelector('.dj-info'); c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop');
+      }
+      el.addEventListener('click', function (ev) { var g = ev.target.closest('.dj-st'); if (g) mostra(+g.dataset.dj); });
+      el.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.dj-st'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); ev.stopPropagation(); mostra(+g.dataset.dj); } });
+      mostra(0);
+    } });
+
+  /* 3. As três peças: Mentor, Persona e Diário */
+  var DJ_PC = [['Gem Mentor', 'A casa do projeto', 'Cada etapa é uma conversa nova com ele. Ele conduz, provoca e não deixa vocês pularem para a solução antes da hora.'],
+    ['Gem Persona', 'Uma pessoa por conversa', 'Cola a ficha e ele vira aquela persona. Serve para as entrevistas e para os testes do protótipo.'],
+    ['Diário do projeto', 'A memória do grupo', 'Um Google Doc. No fim de cada etapa, o resumo vai para ele. No começo da seguinte, ele vai anexado ao Mentor.']];
+  add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Três peças, e nenhuma conversa gigante</h2><div class="dois dj-pecas"><div class="dj-palco">' +
+    '<svg class="dj-fluxo" viewBox="0 0 420 260" aria-hidden="true">' +
+    [0, 1, 2, 3].map(function (k) { return '<g class="dj-chat" style="--k:' + k + '"><rect x="' + (18 + k * 92) + '" y="34" width="78" height="96" rx="12"/><path d="M' + (30 + k * 92) + ',58 h46 M' + (30 + k * 92) + ',74 h34 M' + (30 + k * 92) + ',90 h42"/><text x="' + (57 + k * 92) + '" y="150">etapa ' + (k + 1) + '</text></g>'; }).join('') +
+    '<g class="dj-doc"><rect x="-17" y="-22" width="34" height="44" rx="5"/><path d="M-9,-10 h18 M-9,-1 h18 M-9,8 h12"/><animateMotion dur="7s" repeatCount="indefinite" path="M57,182 C90,215 130,215 149,182 C180,215 220,215 241,182 C272,215 312,215 333,182 C300,240 120,240 57,182"/></g>' +
+    '<text class="dj-t" x="210" y="252">o Diário passa de uma conversa para a outra</text>' +
+    '<g class="dj-pers"><circle cx="372" cy="14" r="9"/><circle cx="398" cy="14" r="9"/><text class="dj-t" x="385" y="-4" style="font-size:11px">personas à parte</text></g></svg></div><div class="dj-lista">' +
+    DJ_PC.map(function (p, i) { return '<div class="dj-pc" data-b="' + (i + 1) + '"><span>' + (i + 1) + '</span><div><b>' + p[0] + '</b><em>' + p[1] + '</em><p>' + p[2] + '</p></div></div>'; }).join('') + '</div></div>' });
+
+  /* 4. Comandos do Mentor, com uma conversa de exemplo */
+  var DJ_CHAT = [['eu', '/etapa 2'], ['ia', 'Etapa 2, Descobrir. Antes de pensar em produto, vamos abrir o problema. Quem mais sofre com isso além de vocês?'],
+    ['eu', 'Faz logo as telas do app?'], ['ia', 'Ainda não. Pular para a tela é o viés que esta jornada quer quebrar. Que gambiarra as pessoas usam hoje para resolver isso?'],
+    ['eu', '/provoca'], ['ia', 'Três caminhos: quem paga pode não ser quem sofre; a dor pode estar antes desse momento; alguém hoje ganha dinheiro com o problema existir.']];
+  var DJ_CMD = [['/etapa N', 'começa uma etapa'], ['/onde', 'em que ponto estamos'], ['/provoca', 'três caminhos novos'], ['/personas', 'gera as fichas'], ['/roteiro', 'roteiro de entrevista'], ['/frase', 'avalia a frase do problema'],
+    ['/sdd', 'gera o SDD'], ['/teste', 'tarefa para testar o protótipo'], ['/ajuste', 'prioriza os feedbacks'], ['/pitch', 'roteiro de 5 minutos'], ['/passagem', 'resumo para o Diário']];
+  add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Fale com o Mentor por comandos</h2><div class="dois dj-cmdbox"><div class="dj-tela"><p class="dj-tela-t">Exemplo de conversa</p>' +
+    DJ_CHAT.map(function (m, i) { return '<p class="dj-msg ' + m[0] + (m[1].charAt(0) === '/' ? ' cmd' : '') + '" data-b="' + (Math.floor(i / 2) + 1) + '">' + m[1] + '</p>'; }).join('') + '</div>' +
+    '<div class="dj-cmds">' + DJ_CMD.map(function (c, i) { return '<div class="dj-cmd" style="--i:' + i + '"><code>' + c[0] + '</code><span>' + c[1] + '</span></div>'; }).join('') + '</div></div>' });
+
+  /* 5. Evidência, sinal e hipótese */
+  var DJ_TI = [['Evidência', 'Veio de pesquisa ou de fonte que vocês abriram e conferiram.', 'var(--elemento-c, #2e9b6a)'], ['Sinal', 'Veio de uma persona sintética. Ajuda a pensar, mas não prova nada.', 'var(--t-genai, #e7a21b)'], ['Hipótese', 'Palpite do grupo, ainda sem evidência.', 'var(--vermelho)']];
+  add('dinamicas', { builds: 4, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Evidência, sinal ou hipótese?</h2><div class="dj-tipos">' +
+    DJ_TI.map(function (t, i) { return '<div class="dj-ti" data-b="' + (i + 1) + '" style="--c:' + t[2] + '"><svg viewBox="0 0 120 70" aria-hidden="true">' + [0, 1, 2].map(function (k) { return '<rect class="dj-post" style="animation-delay:' + (k * .7 + i * .3) + 's" x="' + (14 + k * 34) + '" y="8" width="26" height="22" rx="4"/>'; }).join('') + '<path class="dj-base" d="M6,62 H114"/></svg><b>' + t[0] + '</b><p>' + t[1] + '</p></div>'; }).join('') + '</div>' +
+    '<p class="dest" data-b="4">Persona sintética prepara a conversa com pessoas reais. Ela não substitui essa conversa.</p>' });
+
+  /* 6. Personas sintéticas e entrevista */
+  add('dinamicas', { builds: 2, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Cinco personas e uma do contra</h2><div class="dois dj-pso"><div class="dj-palco dj-leque" aria-hidden="true">' +
+    [0, 1, 2, 3, 4].map(function (k) { return '<div class="dj-fc" style="--k:' + (k - 2) + '"><i></i><span></span><span></span><span></span></div>'; }).join('') + '<div class="dj-fc contra" style="--k:3"><i></i><span></span><span></span><span></span><b>do contra</b></div></div>' +
+    '<div class="dj-lista"><div class="dj-pc" data-b="1"><span>5</span><div><b>Até 5 personas por empreendedor</b><p>Diferentes entre si, nascidas da pesquisa. Pelo menos uma sente a dor de forma fraca, para vocês não ouvirem só quem concorda.</p></div></div>' +
+    '<div class="dj-pc contra" data-b="1"><span>+1</span><div><b>A persona do contra</b><p>Cética, mas quer ajudar. Questiona as premissas, mostra os ângulos que vocês não estão vendo e, no fim, diz o que de fato a ajudaria.</p></div></div>' +
+    '<div class="dj-perg" data-b="2"><div><b>Pergunte assim</b><p>"Me conta a última vez que isso aconteceu."</p><p>"Quanto tempo ou dinheiro isso custou?"</p></div><div class="nao"><b>Evite</b><p>"Você usaria um app que...?"</p><p>"Você pagaria por...?"</p></div></div></div></div>' +
+    '<p class="fonte">Perguntar sobre o que a pessoa já fez, e não sobre o que faria: Rob Fitzpatrick, The Mom Test (2013).</p>' });
+
+  /* 7. A frase do problema */
+  var DJ_FR = [['quem', 'Específica o bastante para vocês acharem 10 pessoas assim na segunda-feira.'], ['objetivo', 'O objetivo é da persona, e não do produto.'], ['problema', 'Uma causa. "Falta um app" não é problema.'], ['SOM', 'Com fonte e com a conta escrita.']];
+  add('dinamicas', { builds: 4, html: '<p class="rot-sec">' + DJ_R + '</p><h2>O problema numa frase</h2><p class="dj-frase">A persona <span class="dj-slot" data-s="1">[quem]</span> tenta <span class="dj-slot" data-s="2">[objetivo]</span>, mas sempre dá errado ou fica incompleto por causa de <span class="dj-slot" data-s="3">[problema]</span>. Esse é um mercado com tamanho endereçável de <span class="dj-slot" data-s="4">[SOM]</span>.</p>' +
+    '<div class="dj-regras">' + DJ_FR.map(function (r, i) { return '<div class="dj-rg" data-b="' + (i + 1) + '"><b>' + r[0] + '</b><p>' + r[1] + '</p></div>'; }).join('') + '</div>',
+    ao: function (b, el) { [].forEach.call(el.querySelectorAll('.dj-slot'), function (s) { s.classList.toggle('vis', +s.dataset.s <= b); s.classList.toggle('agora', +s.dataset.s === b); }); } });
+
+  /* 8. Cinco soluções antes de construir */
+  var DJ_SOL = ['Produto digital', 'Serviço feito por pessoas', 'Processo ou modelo de negócio', 'Parceria ou plataforma', 'IA no centro'];
+  var DJ_SP = [[200, 34], [352, 104], [306, 222], [94, 222], [48, 104]];
+  add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Cinco soluções antes de construir</h2><div class="dois dj-sol"><div class="dj-palco"><svg class="dj-estrela" viewBox="0 0 400 260" aria-label="Cinco soluções ligadas ao mesmo problema" role="img">' +
+    DJ_SP.map(function (p, i) { return '<path class="dj-raio" d="M200,140 L' + p[0] + ',' + p[1] + '"/><g class="dj-so' + (i === 2 ? ' esc' : '') + '"><circle cx="' + p[0] + '" cy="' + p[1] + '" r="24"/><text x="' + p[0] + '" y="' + (p[1] + 5) + '">' + (i + 1) + '</text></g>'; }).join('') +
+    '<circle class="dj-centro" cx="200" cy="140" r="38"/><text class="dj-t dj-tc" x="200" y="145">problema</text></svg></div>' +
+    '<div class="dj-lista"><div class="dj-pc" data-b="1"><span>5</span><div><b>Um problema, cinco ângulos</b><p>' + DJ_SOL.join(', ') + '. Para cada uma: recursos que exige, o que precisa ser verdade e o maior risco.</p></div></div>' +
+    '<div class="dj-pc" data-b="2"><span>1</span><div><b>Escolha e recorte</b><p>Uma solução segue. O protótipo mostra só a jornada principal, de 3 a 5 telas.</p></div></div>' +
+    '<div class="dj-pc" data-b="3"><span>SDD</span><div><b>Marca e especificação</b><p>Nome, slogan, logo, cores e tom de voz. Tudo vai para o SDD, a especificação que guia a construção.</p></div></div></div></div>' +
+    '<p class="sub dj-aviso" data-b="3">Até aqui, o Mentor não gera tela nem código. Pensar antes de construir faz parte do exercício.</p>',
+    ao: function (b, el) { el.querySelector('.dj-estrela').classList.toggle('escolheu', b >= 2); } });
+
+  /* 9. Três voltas de protótipo */
+  var DJ_V = [['SDD', 'A ferramenta de código constrói'], ['Persona testa', 'Prints, a palavra TESTE e uma tarefa'], ['Mentor prioriza', 'Feedbacks viram pedido de ajuste'], ['Nova versão', 'O protótipo melhora']];
+  var DJ_FB = ['Clareza de uso', 'Experiência de uso', 'Visual', 'Resolve o problema?', 'O que faltou', 'O que nem percebeu'];
+  add('dinamicas', { html: '<p class="rot-sec">' + DJ_R + '</p><h2>Construir, testar e ajustar: três voltas</h2><div class="dois dj-voltas"><div class="dj-palco"><svg class="dj-roda" viewBox="0 0 320 280" role="img" aria-label="Ciclo de construir, testar e ajustar">' +
+    '<circle class="dj-aro" cx="160" cy="140" r="96"/><g class="dj-gira"><circle cx="160" cy="44" r="11"/></g>' +
+    [[160, 22], [284, 145], [160, 272], [36, 145]].map(function (p, i) { return '<text class="dj-t dj-tro" x="' + p[0] + '" y="' + p[1] + '">' + DJ_V[i][0] + '</text>'; }).join('') +
+    '<text class="dj-t dj-vn" x="160" y="150">volta 0 de 3</text></svg><button type="button" class="botao-peq dj-gir">Girar a roda</button></div>' +
+    '<div class="dj-lista"><div class="dj-vt">' + DJ_V.map(function (v, i) { return '<div style="--i:' + i + '"><span>' + (i + 1) + '</span><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div>' +
+    '<div class="dj-fb">' + DJ_FB.map(function (f, i) { return '<span style="--i:' + i + '">' + f + '</span>'; }).join('') + '</div><p class="sub">O que cada persona devolve depois de "usar" o protótipo.</p></div></div>',
+    on: function (el) { var n = 0, g = el.querySelector('.dj-gira'), vn = el.querySelector('.dj-vn'), bt = el.querySelector('.dj-gir');
+      bt.addEventListener('click', function () { if (n >= 3) { n = 0; g.style.transform = ''; vn.textContent = 'volta 0 de 3'; bt.textContent = 'Girar a roda'; return; }
+        n++; g.style.transform = 'rotate(' + (n * 360) + 'deg)'; vn.textContent = 'volta ' + n + ' de 3'; if (n >= 3) bt.textContent = 'Recomeçar'; }); } });
+
+  /* 10. Estratégia e pitch */
+  var DJ_PT = [['Problema', 45], ['Tamanho', 30], ['Solução', 45], ['Protótipo', 90], ['Estratégia', 60], ['Frase final', 30]];
+  add('dinamicas', { builds: 2, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Estratégia e pitch de 5 minutos</h2><div class="dj-est" data-b="1"><div class="dj-sw">' + ['Forças', 'Fraquezas', 'Oportunidades', 'Ameaças'].map(function (s) { return '<span>' + s + '</span>'; }).join('') + '</div>' +
+    '<div><b>SWOT da solução contra o mercado</b><p>Cada item ligado a uma evidência da pesquisa ou a um sinal das personas. Depois, pelo menos 2 frameworks da disciplina para a estratégia comercial e de crescimento.</p><div class="dj-fw">' + ['Ansoff', 'Estratégias genéricas', '5 Forças', 'Oceano Azul', 'Cadeia de valor', 'BCG'].map(function (f) { return '<span>' + f + '</span>'; }).join('') + '</div></div></div>' +
+    '<div class="dj-pitch" data-b="2"><div class="dj-barra">' + DJ_PT.map(function (p, i) { return '<div style="--w:' + (p[1] / 3) + ';--i:' + i + '"><b>' + p[0] + '</b><span>' + (p[1] >= 60 ? (p[1] / 60).toString().replace('.', ',') + ' min' : p[1] + ' s') + '</span></div>'; }).join('') + '</div></div>' });
+
+  /* 11. Em que ferramenta */
+  var DJ_FE = [['', 'Gemini (conta Mackenzie)', 'ChatGPT', 'Claude'], ['Mentor e Persona', 'Dois Gems, pelo link do professor', 'Dois Projetos', 'Dois Projetos'], ['Memória', 'Diário do projeto', 'Diário e o próprio projeto', 'Diário e o próprio projeto'],
+    ['Pesquisa', 'Deep Research', 'Pesquisa aprofundada', 'Research, se o plano tiver'], ['Protótipo', 'Canvas', 'canvas', 'Artefatos']];
+  add('dinamicas', { builds: 2, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Em que ferramenta</h2><div class="dj-tab" data-b="1">' + DJ_FE.map(function (r, i) { return '<div class="dj-tr' + (i ? '' : ' cab') + '" style="--i:' + i + '">' + r.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</div>'; }).join('') + '</div>' +
+    '<div class="dj-b" data-b="2"><b>Plano B</b><p>Acabou o limite de uma conta? Outro empreendedor do grupo assume com a dele, levando o Diário. O Diário funciona em qualquer uma das três ferramentas.</p></div>' +
+    '<p class="fonte">Recursos conforme as páginas de ajuda do Google, da OpenAI e da Anthropic, consultadas em novembro de 2026. No ChatGPT gratuito, cada projeto aceita até 5 arquivos.</p>' });
+
 
   /* Banco de vídeos: cases em vídeo, cada um com o trecho sugerido.
      Tipos: certo (deu certo), errado (deu errado), dois (os dois lados), bastidor (como a empresa organizou a adoção).
@@ -5993,7 +6237,7 @@ var UCIL = (function () {
   function vista(id) { ['home', 'aula'].forEach(function (v) { $('#' + v).hidden = v !== id; }); if (id !== 'aula') $('#setas').innerHTML = ''; }
   $('#b-menu').addEventListener('click', function () { vista('home'); });
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-lib],[data-embreve],.aula.trava');
+    var t = e.target.closest('[data-passo],[data-top],[data-ir],[data-art],[data-sug],[data-caso],[data-volta],[data-pasta],[data-uc],[data-uclista],[data-bc],[data-bclista],[data-bcpdf],[data-bcvis],[data-bcopc],[data-dinj],[data-lib],[data-embreve],.aula.trava');
     /* A própria tela (section.slide) também tem data-top, só para o CSS. Clique nela não é pedido de troca de módulo. */
     if (!t || t.classList.contains('slide')) return;
     if (t.classList.contains('trava')) { t.classList.remove('balanca'); void t.offsetWidth; t.classList.add('balanca'); dica('O próximo módulo ainda vai ser construído.'); return; }
@@ -6005,6 +6249,7 @@ var UCIL = (function () {
     if (t.dataset.bclista) { ponte = null; ir(iBusList, 0); return; }
     if (t.dataset.bcpdf) { ponte = null; ir(idxBusPdf[t.dataset.bcpdf], 0); return; }
     if (t.dataset.bcvis) { ponte = null; ir(idxBusVis[t.dataset.bcvis], 0); return; }
+    if (t.dataset.dinj) { ponte = null; ir(iDinJ, 0); return; }
     if (t.dataset.bcopc) { ponte = null; ir(idxBus[t.dataset.bcopc], 0); return; }
     if (t.dataset.pasta) { if (t.dataset.pasta === 'usecases') { ponte = null; ir(iUseList, 0); } else if (t.dataset.pasta === 'business') { ponte = null; ir(iBusList, 0); } else if (t.dataset.pasta === 'artefatos') { ponte = null; ir(iCases, 0); } else dica('Ainda não há cases neste tema.'); return; }
     if (t.dataset.passo) { var cs = S[atual]; cs.b = +t.dataset.passo; aplicar(cs); botoes(); agendar(420); return; }
