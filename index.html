@@ -5362,8 +5362,8 @@ var UCIL = (function () {
     } });
 
   /* 3. As três peças: Mentor, Persona e Diário */
-  var DJ_PC = [['Gem Mentor', 'A casa do projeto', 'Cada etapa é uma conversa nova com ele. Ele conduz, provoca e não deixa vocês pularem para a solução antes da hora.'],
-    ['Gem Persona', 'Uma pessoa por conversa', 'Cola a ficha e ele vira aquela persona. Serve para as entrevistas e para os testes do protótipo.'],
+  var DJ_PC = [['Mentor', 'A casa do projeto', 'Um Gem (conta do Mackenzie) ou uma skill (conta pessoal). Cada etapa é uma conversa nova com ele. Ele conduz, provoca e não deixa vocês pularem para a solução antes da hora.'],
+    ['Persona', 'Uma pessoa por conversa', 'Também Gem ou skill. Cola a ficha e ele vira aquela persona. Serve para as entrevistas e para os testes do protótipo.'],
     ['Diário do projeto', 'A memória do grupo', 'Um Google Doc. No fim de cada etapa, o resumo vai para ele. No começo da seguinte, ele vai anexado ao Mentor.']];
   add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Três peças, e nenhuma conversa gigante</h2><div class="dois dj-pecas"><div class="dj-palco">' +
     '<svg class="dj-fluxo" viewBox="0 0 420 260" aria-hidden="true">' +
@@ -5374,13 +5374,13 @@ var UCIL = (function () {
     DJ_PC.map(function (p, i) { return '<div class="dj-pc" data-b="' + (i + 1) + '"><span>' + (i + 1) + '</span><div><b>' + p[0] + '</b><em>' + p[1] + '</em><p>' + p[2] + '</p></div></div>'; }).join('') + '</div></div>' });
 
   /* 4. Comandos do Mentor, com uma conversa de exemplo */
-  var DJ_CHAT = [['eu', '/etapa 2'], ['ia', 'Etapa 2, Descobrir. Antes de pensar em produto, vamos abrir o problema. Quem mais sofre com isso além de vocês?'],
+  var DJ_CHAT = [['eu', '#etapa 2'], ['ia', 'Etapa 2, Descobrir. Antes de pensar em produto, vamos abrir o problema. Quem mais sofre com isso além de vocês?'],
     ['eu', 'Faz logo as telas do app?'], ['ia', 'Ainda não. Pular para a tela é o viés que esta jornada quer quebrar. Que gambiarra as pessoas usam hoje para resolver isso?'],
-    ['eu', '/provoca'], ['ia', 'Três caminhos: quem paga pode não ser quem sofre; a dor pode estar antes desse momento; alguém hoje ganha dinheiro com o problema existir.']];
-  var DJ_CMD = [['/etapa N', 'começa uma etapa'], ['/onde', 'em que ponto estamos'], ['/provoca', 'três caminhos novos'], ['/personas', 'gera as fichas'], ['/roteiro', 'roteiro de entrevista'], ['/frase', 'avalia a frase do problema'],
-    ['/sdd', 'gera o SDD'], ['/teste', 'tarefa para testar o protótipo'], ['/ajuste', 'prioriza os feedbacks'], ['/pitch', 'roteiro de 5 minutos'], ['/passagem', 'resumo para o Diário']];
+    ['eu', '#provoca'], ['ia', 'Três caminhos: quem paga pode não ser quem sofre; a dor pode estar antes desse momento; alguém hoje ganha dinheiro com o problema existir.']];
+  var DJ_CMD = [['#etapa N', 'começa uma etapa'], ['#onde', 'em que ponto estamos'], ['#provoca', 'três caminhos novos'], ['#personas', 'gera as fichas'], ['#roteiro', 'roteiro de entrevista'], ['#frase', 'avalia a frase do problema'],
+    ['#sdd', 'gera o SDD'], ['#teste', 'tarefa para testar o protótipo'], ['#ajuste', 'prioriza os feedbacks'], ['#pitch', 'roteiro de 5 minutos'], ['#passagem', 'resumo para o Diário']];
   add('dinamicas', { builds: 3, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Fale com o Mentor por comandos</h2><div class="dois dj-cmdbox"><div class="dj-tela"><p class="dj-tela-t">Exemplo de conversa</p>' +
-    DJ_CHAT.map(function (m, i) { return '<p class="dj-msg ' + m[0] + (m[1].charAt(0) === '/' ? ' cmd' : '') + '" data-b="' + (Math.floor(i / 2) + 1) + '">' + m[1] + '</p>'; }).join('') + '</div>' +
+    DJ_CHAT.map(function (m, i) { return '<p class="dj-msg ' + m[0] + (m[1].charAt(0) === '#' ? ' cmd' : '') + '" data-b="' + (Math.floor(i / 2) + 1) + '">' + m[1] + '</p>'; }).join('') + '</div>' +
     '<div class="dj-cmds">' + DJ_CMD.map(function (c, i) { return '<div class="dj-cmd" style="--i:' + i + '"><code>' + c[0] + '</code><span>' + c[1] + '</span></div>'; }).join('') + '</div></div>' });
 
   /* 5. Evidência, sinal e hipótese */
@@ -5435,11 +5435,11 @@ var UCIL = (function () {
     '<div class="dj-pitch" data-b="2"><div class="dj-barra">' + DJ_PT.map(function (p, i) { return '<div style="--w:' + (p[1] / 3) + ';--i:' + i + '"><b>' + p[0] + '</b><span>' + (p[1] >= 60 ? (p[1] / 60).toString().replace('.', ',') + ' min' : p[1] + ' s') + '</span></div>'; }).join('') + '</div></div>' });
 
   /* 11. Em que ferramenta */
-  var DJ_FE = [['', 'Gemini (conta Mackenzie)', 'ChatGPT', 'Claude'], ['Mentor e Persona', 'Dois Gems, pelo link do professor', 'Dois Projetos', 'Dois Projetos'], ['Memória', 'Diário do projeto', 'Diário e o próprio projeto', 'Diário e o próprio projeto'],
+  var DJ_FE = [['', 'Gemini (conta Mackenzie)', 'ChatGPT', 'Claude'], ['Mentor e Persona', 'Dois Gems (conta Mackenzie) ou duas skills (conta pessoal)', 'Dois Projetos', 'Dois Projetos'], ['Memória', 'Diário do projeto', 'Diário e o próprio projeto', 'Diário e o próprio projeto'],
     ['Pesquisa', 'Deep Research', 'Pesquisa aprofundada', 'Research, se o plano tiver'], ['Protótipo', 'Canvas', 'canvas', 'Artefatos']];
   add('dinamicas', { builds: 2, html: '<p class="rot-sec">' + DJ_R + '</p><h2>Em que ferramenta</h2><div class="dj-tab" data-b="1">' + DJ_FE.map(function (r, i) { return '<div class="dj-tr' + (i ? '' : ' cab') + '" style="--i:' + i + '">' + r.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</div>'; }).join('') + '</div>' +
     '<div class="dj-b" data-b="2"><b>Plano B</b><p>Acabou o limite de uma conta? Outro empreendedor do grupo assume com a dele, levando o Diário. O Diário funciona em qualquer uma das três ferramentas.</p></div>' +
-    '<p class="fonte">Recursos conforme as páginas de ajuda do Google, da OpenAI e da Anthropic, consultadas em novembro de 2026. No ChatGPT gratuito, cada projeto aceita até 5 arquivos.</p>' });
+    '<p class="fonte">No Gemini, os comandos da jornada começam com #, porque a barra / chama as skills. Recursos conforme as páginas de ajuda do Google, da OpenAI e da Anthropic, consultadas em novembro de 2026. No ChatGPT gratuito, cada projeto aceita até 5 arquivos.</p>' });
   }
 
 
