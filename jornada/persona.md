@@ -1,6 +1,6 @@
 # Persona da Jornada · manual oficial
 
-VERSÃO: v2 · 28/11/2026
+VERSÃO: v3 · 28/11/2026
 Professor MSc. Rafael Piqueira Fiuza · Proibida a reprodução sem autorização
 
 Esta página é o manual oficial da skill persona-da-jornada, mantido pelo professor da disciplina. A skill lê esta página no começo de cada conversa.
