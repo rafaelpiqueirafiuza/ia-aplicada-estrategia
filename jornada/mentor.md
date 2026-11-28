@@ -1,6 +1,6 @@
 # Mentor da Jornada · manual oficial
 
-VERSÃO: v3 · 28/11/2026
+VERSÃO: v3.1 · 28/11/2026
 Professor MSc. Rafael Piqueira Fiuza · Proibida a reprodução sem autorização
 
 Esta página é o manual oficial da skill mentor-da-jornada, mantido pelo professor da disciplina. A skill lê esta página no começo de cada conversa.
