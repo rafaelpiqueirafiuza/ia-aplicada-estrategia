@@ -2672,8 +2672,8 @@ var A2 = (function () {
      não há botão Desbloquear e o que ficou salvo no navegador é ignorado. Só o HTML do professor desbloqueia.
      Para liberar um módulo para os alunos, marcar lib: true nele e publicar. */
   var PUBLICO = true;
-  /* Dinâmica Jornada Empreendedora: trancada na página dos alunos até o Rafael pedir para liberar (true). */
-  var DJ_LIB = false;
+  /* Dinâmica Jornada Empreendedora: liberada para os alunos em 28/11/2026 (false tranca de novo). */
+  var DJ_LIB = true;
   var LIB = {}, ISMOD = {};
   MODS.forEach(function (m) { LIB[m.id] = !!m.lib; ISMOD[m.id] = 1; });
   if (!PUBLICO) try { var sv = JSON.parse(localStorage.getItem('temas-liberados') || '{}'); Object.keys(sv).forEach(function (k) { if (k in LIB && sv[k]) LIB[k] = true; }); } catch (x) { }
